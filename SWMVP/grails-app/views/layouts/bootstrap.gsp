@@ -47,7 +47,7 @@
 						<ul class="nav">							
 							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
 							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<g:if test="${c.name != 'Dbdoc'}">
+								<g:if test="${!['Dbdoc', 'Record'].contains(c.name)}">
 									<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
 								</g:if>
 							</g:each>

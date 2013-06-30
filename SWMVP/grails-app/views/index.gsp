@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="bootstrap"/>
-		<title>Grails Twitter Bootstrap Scaffolding</title>
+		<title>SmartWard</title>
 	</head>
 
 	<body>
@@ -19,6 +19,14 @@
 					<ul>
 						<li>Some good news</li>
 						<li>Some bad</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
+						<li>Feed</li>
 					</ul>
 				</div>
 			</aside>

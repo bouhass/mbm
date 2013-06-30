@@ -9,4 +9,8 @@ class BoardController {
 	def ward = {
 		[patients: Patient.list()]
 	}
+	
+	def handover = {
+		[patients: Patient.list()]
+	}
 }

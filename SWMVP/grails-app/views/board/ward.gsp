@@ -16,11 +16,25 @@
 						${p.firstName} ${p.lastName}
 					</td>
 					<td>
-						<table id="table-${p.id}" class="inner-table">
-							<tr><td><a onclick="addRow('#table-${p.id}')">+ ADD NEW</a></td></tr>
+						<table id="task-NURSE-${p.id}" class="inner-table">
+							<tr><td><a onclick="addTask('${p.id}', 'NURSE')">+ ADD NEW</a></td></tr>
+							<g:each var="t" in="${p.tasks}">
+								<g:if test="${t.category == 'NURSE'}">
+									<tr><td>${t.name}</td></tr>
+								</g:if>
+							</g:each>
 						</table>
 					</td>
-					<td>${p.id}</td>
+					<td>
+						<table id="task-DOCTOR-${p.id}" class="inner-table">
+							<tr><td><a onclick="addTask('${p.id}', 'DOCTOR')">+ ADD NEW</a></td></tr>
+							<g:each var="t" in="${p.tasks}">
+								<g:if test="${t.category == 'DOCTOR'}">
+									<tr><td>${t.name}</td></tr>
+								</g:if>
+							</g:each>
+						</table>
+					</td>
 				</tr>
 			</g:each>
 			</tbody>

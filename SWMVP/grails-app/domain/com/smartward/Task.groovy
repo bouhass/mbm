@@ -3,9 +3,14 @@ package com.smartward
 class Task {
 	
 	String name
-	String status
+	String status = 'PENDING'
+	String category = 'NURSE'
+	static belongsTo = Patient
 
     static constraints = {
-		status nullable:true
+		status inList: ['PENDING', 'STARTED', 'COMPLETED']
+		category inList: ['NURSE', 'DOCTOR']
     }
+	
+	String toString() { "${name}" }
 }
