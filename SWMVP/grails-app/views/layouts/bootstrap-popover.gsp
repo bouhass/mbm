@@ -30,43 +30,13 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					
-					<a class="brand" href="${createLink(uri: '/')}">
-						<g:img dir="images" file="sw-logo.png" width="15" height="15"/>
-						SmatWard
-					</a>
-
-					<div class="nav-collapse">
-						<ul class="nav">							
-							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
-							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<g:if test="${!['Dbdoc', 'Record'].contains(c.name)}">
-									<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
-								</g:if>
-							</g:each>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
 
 		<div class="container-fluid">
+		
 			<g:layoutBody/>
 
 			<hr>
 
-			<footer>
-				<p>&copy; SmartWard 2013</p>
-			</footer>
 		</div>
 
 		<r:layoutResources/>

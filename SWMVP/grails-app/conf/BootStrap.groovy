@@ -13,9 +13,12 @@ class BootStrap {
 			firstName: 'JOSEPH', 
 			lastName: 'LOVE', 
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "15-Mar-1966"),
+			gender: 'MALE',
 			nhsNumber: '18374957563', 
-			status: 'FOR HOME', 
+			status: 'For Home', 
 			location: 'B1B1',
+			consultant: 'Dr Teo',
+			speciality: 'Cardiology',
 			tasks: [
 				new Task(name: 'Blood test', status: 'PENDING', category: 'NURSE'),
 				new Task(name: 'X-Ray', status: 'PENDING', category: 'DOCTOR')
@@ -31,9 +34,12 @@ class BootStrap {
 			firstName: 'JOSH',
 			lastName: 'KNIGHT',
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "28-Feb-1930"),
+			gender: 'MALE',
 			nhsNumber: '447292749509573',
-			status: 'ADMITTED',
+			status: 'Default (no concerns)',
 			location: 'B2B4',
+			consultant: 'Dr Teo',
+			speciality: 'Cardiology',
 			tasks: [
 				new Task(name: 'Antibiotics allergy', status: 'PENDING', category: 'NURSE')
 			],
@@ -48,9 +54,12 @@ class BootStrap {
 			firstName: 'ANISH',
 			lastName: 'LEE',
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "03-Jul-1980"),
+			gender: 'FEMALE',
 			nhsNumber: '39476720475853',
-			status: 'FOR HOME',
+			status: 'For Home',
 			location: 'B3B7',
+			consultant: 'Dr Teo',
+			speciality: 'Cardiology',
 			tasks: [
 				new Task(name: 'Blood pressure', status: 'PENDING', category: 'DOCTOR'),
 				new Task(name: 'Feed', status: 'PENDING', category: 'NURSE')
