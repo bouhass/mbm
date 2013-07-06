@@ -5,7 +5,7 @@ class Task {
 	String name
 	String status = 'PENDING'
 	String category = 'NURSE'
-	static belongsTo = Patient
+	static belongsTo = [patient: Patient]
 
     static constraints = {
 		status inList: ['PENDING', 'STARTED', 'COMPLETED']

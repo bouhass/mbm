@@ -9,7 +9,7 @@ class BootStrap {
     def init = { servletContext ->
 		
 		// Joseph Love
-		new Patient(
+		def josephLove = new Patient(
 			firstName: 'JOSEPH', 
 			lastName: 'LOVE', 
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "15-Mar-1966"),
@@ -19,18 +19,18 @@ class BootStrap {
 			location: 'B1B1',
 			consultant: 'Dr Teo',
 			speciality: 'Cardiology',
-			tasks: [
-				new Task(name: 'Blood test', status: 'PENDING', category: 'NURSE'),
-				new Task(name: 'X-Ray', status: 'PENDING', category: 'DOCTOR')
-			],
 			records: [
 				new Record(description: 'High blood pressure')
 			]
 			)
-		.save(failOnError: true)
+		
+		josephLove.addToTasks(new Task(name: 'Blood test', status: 'PENDING', category: 'NURSE'))
+		josephLove.addToTasks(new Task(name: 'X-Ray', status: 'PENDING', category: 'DOCTOR'))
+		
+		josephLove.save(failOnError: true)
 		
 		// Josh Knight
-		new Patient(
+		def joshKnight = new Patient(
 			firstName: 'JOSH',
 			lastName: 'KNIGHT',
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "28-Feb-1930"),
@@ -40,17 +40,17 @@ class BootStrap {
 			location: 'B2B4',
 			consultant: 'Dr Teo',
 			speciality: 'Cardiology',
-			tasks: [
-				new Task(name: 'Antibiotics allergy', status: 'PENDING', category: 'NURSE')
-			],
 			records: [
 				new Record(description: 'Allergy to peniciline')
 			]
 			)
-		.save(failOnError: true)
+		
+		joshKnight.addToTasks(new Task(name: 'Antibiotics allergy', status: 'PENDING', category: 'NURSE'))
+		
+		joshKnight.save(failOnError: true)
 		
 		// Anish Lee
-		new Patient(
+		def anishLee = new Patient(
 			firstName: 'ANISH',
 			lastName: 'LEE',
 			dateOfBirth: Date.parse("dd-MMM-yyyy", "03-Jul-1980"),
@@ -60,17 +60,17 @@ class BootStrap {
 			location: 'B3B7',
 			consultant: 'Dr Teo',
 			speciality: 'Cardiology',
-			tasks: [
-				new Task(name: 'Blood pressure', status: 'PENDING', category: 'DOCTOR'),
-				new Task(name: 'Feed', status: 'PENDING', category: 'NURSE')
-			],
 			records: [
 				new Record(description: 'Appendicitus'),
 				new Record(description: 'Heart issues'),
 				new Record(description: 'Does not eat')
 			]
 			)
-		.save(failOnError: true)
+		
+		anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'PENDING', category: 'DOCTOR'))
+		anishLee.addToTasks(new Task(name: 'Feed', status: 'PENDING', category: 'NURSE'))
+		
+		anishLee.save(failOnError: true)
 		
     }
     def destroy = {
