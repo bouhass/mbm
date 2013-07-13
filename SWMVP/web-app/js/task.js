@@ -98,7 +98,7 @@
        input2value: function() { 
            return {
               name: this.$input.filter('[name="name"]').val(), 
-              status: this.$select.filter('[name="status"]').val(), 
+              status: this.$select.filter('[name="status"]').val()
            };
        },        
        
@@ -131,8 +131,7 @@
              '<option value="PENDING">PENDING</option>'+
              '<option value="STARTED">STARTED</option>'+
              '<option value="COMPLETED">COMPLETED</option>'+
-             '</select></label></div>'+
-             '<input type="hidden" name="category">',
+             '</select></label></div>',
              
         inputclass: ''
     });

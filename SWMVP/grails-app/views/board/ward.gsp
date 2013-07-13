@@ -17,10 +17,22 @@
 					</td>
 					<td>
 						<table id="task-NURSE-${p.id}" class="inner-table">
-							<tr><td><a onclick="addTask('${p.id}', 'NURSE')">+ ADD NEW</a></td></tr>
+							<tr>
+                                <td><a onclick="addTask('${p.id}', 'NURSE')">+ ADD NEW</a></td>
+                            </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
-									<tr><td data-type="task" data-pid="${p.id}" data-tid="${t.id}" data-category="${t.category}" class="editable editable-click">${t.name}</td></tr>
+									<tr>
+                                        <td data-type="task"
+                                            data-tid="${t.id}"
+                                            data-name="${t.name}"
+                                            data-status="${t.status}"
+                                            data-category="${t.category}"
+                                            data-pid="${p.id}"
+                                            class="editable editable-click">
+                                            ${t.name}
+                                        </td>
+                                    </tr>
 								</g:if>
 							</g:each>
 						</table>
@@ -30,7 +42,17 @@
 							<tr><td><a onclick="addTask('${p.id}', 'DOCTOR')">+ ADD NEW</a></td></tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
-									<tr><td data-type="task" data-pid="${p.id}" data-tid="${t.id}" data-category="${t.category}" class="editable editable-click">${t.name}</td></tr>
+									<tr>
+                                        <td data-type="task"
+                                            data-tid="${t.id}"
+                                            data-name="${t.name}"
+                                            data-status="${t.status}"
+                                            data-category="${t.category}"
+                                            data-pid="${p.id}"
+                                            class="editable editable-click">
+                                            ${t.name}
+                                        </td>
+                                    </tr>
 								</g:if>
 							</g:each>
 						</table>
@@ -70,6 +92,10 @@
 				type : 'text',
 				pk : $(this).attr('data-tid'),
 				url : '/SmartWardMVP/task/saveOrUpdate',
+                value: {
+                    name: $(this).attr('data-name'),
+                    status: $(this).attr('data-status')
+                },
 				params : function(params) {
 					return {
 						'id' : $(this).attr('data-tid'),
