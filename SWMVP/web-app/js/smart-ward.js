@@ -1,19 +1,22 @@
 
 function addTask(patient_id, category) {
 	var id = new Date().getTime();
-	$('#task-'+category+'-'+patient_id).append('<tr><td id="'+id+'"></td></tr>');
+	$('#task-'+category+'-'+patient_id).append('<tr><td id="'+id+'" data-type="task" class="editable editable-click"></td></tr>');
 	$('#'+id).editable({
 	    type: 'text',
 	    pk: patient_id,
-	    url: '/SmartWardMVP/task/create',
+	    url: '/SmartWardMVP/task/saveOrUpdate',
 	    params: function(params) {
-	        //originally params contain pk, name and value
-	        // override name as Task domain class need name field
-	        params['name'] = params.value;
-	        params['status'] = 'PENDING';
-	        params['category'] = category;
-	        params['patient.id'] = patient_id;
-	        return params;
-	    }
+	    	return {
+	    		'id': $(this).attr('data-tid'),
+	    		'name': params.value.name,
+	    		'status': params.value.status,
+	    		'category': category,
+	    		'patient.id': patient_id
+	    	}
+	    },
+	    success: function(response, newValue) {
+	    	$(this).attr('data-tid', response.id);
+        }
 	});
 }

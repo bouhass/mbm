@@ -4,3 +4,13 @@
 	width: 49%;
 	max-height: 80%;
 }
+
+.editable-task {
+    display: block;
+    margin-bottom: 5px;  
+}
+
+.editable-task span {
+    width: 70px;  
+    display: inline-block;
+}

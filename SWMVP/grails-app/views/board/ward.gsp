@@ -20,7 +20,7 @@
 							<tr><td><a onclick="addTask('${p.id}', 'NURSE')">+ ADD NEW</a></td></tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
-									<tr><td>${t.name}</td></tr>
+									<tr><td data-type="task" data-pid="${p.id}" data-tid="${t.id}" data-category="${t.category}" class="editable editable-click">${t.name}</td></tr>
 								</g:if>
 							</g:each>
 						</table>
@@ -30,7 +30,7 @@
 							<tr><td><a onclick="addTask('${p.id}', 'DOCTOR')">+ ADD NEW</a></td></tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
-									<tr><td>${t.name}</td></tr>
+									<tr><td data-type="task" data-pid="${p.id}" data-tid="${t.id}" data-category="${t.category}" class="editable editable-click">${t.name}</td></tr>
 								</g:if>
 							</g:each>
 						</table>
@@ -44,9 +44,10 @@
 	<script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
 	<script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
 	<script src="${resource(dir: 'js', file: 'smart-ward.js')}"></script>
+	<script src="${resource(dir: 'js', file: 'task.js')}"></script>
 	
 	<script>
-		$.fn.editable.defaults.mode = 'inline';
+		$.fn.editable.defaults.mode = 'popup';
 		
 		// data tables
 		/* Default class modification */
@@ -62,6 +63,24 @@
 				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
 			} );
 		} );
+
+		
+		$('.editable').each(function() {
+			$(this).editable({
+				type : 'text',
+				pk : $(this).attr('data-tid'),
+				url : '/SmartWardMVP/task/saveOrUpdate',
+				params : function(params) {
+					return {
+						'id' : $(this).attr('data-tid'),
+						'name' : params.value.name,
+						'status' : params.value.status,
+						'category' : $(this).attr('data-category'),
+						'patient.id' : $(this).attr('data-pid')
+					}
+				}
+			});
+		});
 	</script>
 		
 </g:applyLayout>
