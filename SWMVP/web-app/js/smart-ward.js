@@ -1,4 +1,10 @@
 
+function statusToClass(status) {
+    if (status == 'PENDING')    return 'icon-pause';
+    if (status == 'STARTED')    return 'icon-play';
+    if (status == 'COMPLETED')  return 'icon-stop';
+}
+
 function addTask(patient_id, category) {
 	var id = new Date().getTime();
 	$('#task-'+category+'-'+patient_id).append('<tr><td id="'+id+'" data-type="task" class="editable editable-click"></td></tr>');
@@ -15,8 +21,8 @@ function addTask(patient_id, category) {
 	    		'patient.id': patient_id
 	    	}
 	    },
-	    success: function(response, newValue) {
-	    	$(this).attr('data-tid', response.id);
+	    success: function(task, newValue) {
+	    	$(this).attr('data-tid', task.id);
         }
 	});
 }

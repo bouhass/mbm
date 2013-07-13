@@ -30,7 +30,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click">
-                                            ${t.name}
+                                            <i></i>&nbsp;${t.name}
                                         </td>
                                     </tr>
 								</g:if>
@@ -50,7 +50,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click">
-                                            ${t.name}
+                                            <i></i>&nbsp;${t.name}
                                         </td>
                                     </tr>
 								</g:if>
@@ -79,33 +79,41 @@
 			"sSortable": "header"
 		} );
 
-		/* Table initialisation */
+
 		$(document).ready(function() {
+
+            /* Table initialisation */
 			$('#example').dataTable( {
 				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
-			} );
-		} );
-
-		
-		$('.editable').each(function() {
-			$(this).editable({
-				type : 'text',
-				pk : $(this).attr('data-tid'),
-				url : '/SmartWardMVP/task/saveOrUpdate',
-                value: {
-                    name: $(this).attr('data-name'),
-                    status: $(this).attr('data-status')
-                },
-				params : function(params) {
-					return {
-						'id' : $(this).attr('data-tid'),
-						'name' : params.value.name,
-						'status' : params.value.status,
-						'category' : $(this).attr('data-category'),
-						'patient.id' : $(this).attr('data-pid')
-					}
-				}
 			});
+
+            /* Init tasks status icons. */
+            $('.editable').each(function() {
+                $(this).children('i').attr('class', statusToClass($(this).attr('data-status')));
+            });
+
+            /* Init popover functionality. */
+            $('.editable').each(function() {
+                $(this).editable({
+                    type : 'text',
+                    pk : $(this).attr('data-tid'),
+                    url : '/SmartWardMVP/task/saveOrUpdate',
+                    value: {
+                        name: $(this).attr('data-name'),
+                        status: $(this).attr('data-status')
+                    },
+                    params : function(params) {
+                        return {
+                            'id' : $(this).attr('data-tid'),
+                            'name' : params.value.name,
+                            'status' : params.value.status,
+                            'category' : $(this).attr('data-category'),
+                            'patient.id' : $(this).attr('data-pid')
+                        }
+                    }
+                });
+            });
+
 		});
 	</script>
 		
