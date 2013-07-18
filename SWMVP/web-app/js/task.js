@@ -21,7 +21,7 @@
                 $(element).empty();
                 return; 
             }
-            var html = '<i class="'+statusToClass(value.status)+'"></i>'+'&nbsp;'+$('<div>').text(value.name).html();
+            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<i class="'+statusToClass(value.status)+'" style="float: right;"></i>';
             $(element).html(html); 
         },
         

@@ -30,7 +30,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click">
-                                            <i></i>&nbsp;${t.name}
+                                            ${t.name}&nbsp;<i style="float: right;"></i>
                                         </td>
                                     </tr>
 								</g:if>
@@ -50,7 +50,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click">
-                                            <i></i>&nbsp;${t.name}
+                                            ${t.name}&nbsp;<i style="float: right;"></i>
                                         </td>
                                     </tr>
 								</g:if>
