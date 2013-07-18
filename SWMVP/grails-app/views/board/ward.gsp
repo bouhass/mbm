@@ -1,10 +1,11 @@
 <g:applyLayout name="board">
 
+
 	<div class="page-body">
 		<table id="example" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th>PATIENT INFO</th>
+					<th width="40%">PATIENT INFO</th>
 					<th>NURSING JOBS</th>
 					<th>DOCTORS JOBS</th>
 				</tr>
@@ -13,7 +14,32 @@
 			<g:each var="p" in="${patients}">
 				<tr>
 					<td>
-						${p.firstName} ${p.lastName}
+                        <table class="patient-info">
+                            <tr>
+                                <td>
+                                    ${p} - ${p.gender[0]}
+                                </td>
+                                <td>
+                                    <b>LOC</b> ${p.location}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>DOB</b> ${p.dateOfBirth}
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>STATUS</b> <a href="#" data-pid="${p.id}" data-status="${p.status}" class="patient-status">${p.status}</a>
+                                </td>
+                                <td>
+                                    <b>CONS</b> ${p.consultant}
+                                </td>
+                            </tr>
+                        </table>
 					</td>
 					<td>
 						<table id="task-NURSE-${p.id}" class="inner-table">
@@ -29,7 +55,7 @@
                                             data-status="${t.status}"
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
-                                            class="editable editable-click">
+                                            class="editable editable-click task">
                                             ${t.name}&nbsp;<i style="float: right;"></i>
                                         </td>
                                     </tr>
@@ -49,7 +75,7 @@
                                             data-status="${t.status}"
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
-                                            class="editable editable-click">
+                                            class="editable editable-click task">
                                             ${t.name}&nbsp;<i style="float: right;"></i>
                                         </td>
                                     </tr>
@@ -88,16 +114,16 @@
 			});
 
             /* Init tasks status icons. */
-            $('.editable').each(function() {
+            $('.task').each(function() {
                 $(this).children('i').attr('class', statusToClass($(this).attr('data-status')));
             });
 
             /* Init popover functionality. */
-            $('.editable').each(function() {
+            $('.task').each(function() {
                 $(this).editable({
                     type : 'text',
                     pk : $(this).attr('data-tid'),
-                    url : '/SmartWardMVP/task/saveOrUpdate',
+                    url : '${createLink(controller: 'task', action: 'saveOrUpdate')}',
                     value: {
                         name: $(this).attr('data-name'),
                         status: $(this).attr('data-status')
@@ -109,6 +135,28 @@
                             'status' : params.value.status,
                             'category' : $(this).attr('data-category'),
                             'patient.id' : $(this).attr('data-pid')
+                        }
+                    }
+                });
+            });
+
+            $('.patient-status').each(function() {
+                $(this).editable({
+                    mode: 'inline',
+                    type: 'select',
+                    pk : $(this).attr('data-pid'),
+                    url: '${createLink(controller: 'patient', action: 'updateStatus')}',
+                    value: $(this).attr('data-status'),
+                    source: [
+                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
+                        {value: 'New Admission', text: 'New Admission'},
+                        {value: 'Unwell', text: 'Unwell'},
+                        {value: 'For Home', text: 'For Home'}
+                    ],
+                    params : function(params) {
+                        return {
+                            'id' : $(this).attr('data-pid'),
+                            'status' : params.value
                         }
                     }
                 });

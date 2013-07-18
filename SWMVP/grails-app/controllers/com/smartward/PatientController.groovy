@@ -1,5 +1,7 @@
 package com.smartward
 
+import grails.converters.JSON
+
 class PatientController {
 
     static scaffold = true
@@ -26,4 +28,20 @@ class PatientController {
 	def add() {
 		[patientInstance: new Patient(params)]
 	}
+
+    def updateStatus() {
+        def patientInstance = Patient.get(params.id)
+        if (!patientInstance) {
+            flash.message = message(code: 'default.not.found.message', args: ['Patient', params.id])
+            return
+        }
+
+        patientInstance.status = params.status
+        if (!patientInstance.save(flush: true)) {
+//            render view: 'create', model: [patientInstance: patientInstance]
+            return
+        }
+
+        render patientInstance as JSON
+    }
 }

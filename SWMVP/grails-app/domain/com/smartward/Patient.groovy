@@ -17,7 +17,7 @@ class Patient {
 		firstName nullable:false
 		lastName nullable:false
 		gender inList: ['MALE', 'FEMALE']
-		status inList: ['For Home', 'Unwell', 'New Admission', 'Default (no concerns)']
+		status inList: ['Default (no concerns)', 'New Admission', 'Unwell', 'For Home']
 		location nullable:true
 		nhsNumber nullable:true
     }

@@ -42,6 +42,10 @@ th,td {
 	padding: 8px;
 }
 
+.patient-info td {
+    border: 0px;
+}
+
 .page-body .patients-table .inner-table {
 	width: 100%;
 }
