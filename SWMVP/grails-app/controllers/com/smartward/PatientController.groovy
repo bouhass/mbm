@@ -44,4 +44,14 @@ class PatientController {
 
         render patientInstance as JSON
     }
+
+    def statuses() {
+        def statuses = [
+                'Default (no concerns)': 'Default (no concerns)',
+                'New Admission': 'New Admission',
+                'Unwell': 'Unwell',
+                'For Home': 'For Home'
+        ]
+        render statuses as JSON
+    }
 }

@@ -25,10 +25,11 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <b>DOB</b> ${p.dateOfBirth}
+                                    <b>DOB</b> <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
+                                    <b>AGE</b> ${new Date().year - p.dateOfBirth.year}
                                 </td>
                                 <td>
-
+                                    <b>NHS</b> ${p.nhsNumber}
                                 </td>
                             </tr>
                             <tr>
@@ -147,12 +148,14 @@
                     pk : $(this).attr('data-pid'),
                     url: '${createLink(controller: 'patient', action: 'updateStatus')}',
                     value: $(this).attr('data-status'),
-                    source: [
-                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
-                        {value: 'New Admission', text: 'New Admission'},
-                        {value: 'Unwell', text: 'Unwell'},
-                        {value: 'For Home', text: 'For Home'}
-                    ],
+                    source: '${createLink(controller: 'patient', action: 'statuses')}',
+//                    source: [
+//                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
+//                        {value: 'New Admission', text: 'New Admission'},
+//                        {value: 'Unwell', text: 'Unwell'},
+//                        {value: 'For Home', text: 'For Home'}
+//                    ],
+                    showbuttons: false,
                     params : function(params) {
                         return {
                             'id' : $(this).attr('data-pid'),
