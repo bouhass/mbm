@@ -122,7 +122,7 @@
 
             /* Init tasks status icons. */
             $('.task').each(function() {
-                $(this).children('img').attr('src', statusToImage($(this).attr('data-status')));
+                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
             });
 
             /* Init popover functionality. */

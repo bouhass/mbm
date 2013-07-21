@@ -1,17 +1,14 @@
-package com.smartward
+package com.wardbook
 
 
 
 import grails.test.mixin.*
-import org.junit.*
-
-import com.smartward.Patient;
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Patient)
-class PatientTests {
+@TestFor(Task)
+class TaskTests {
 
     void testSomething() {
        fail "Implement me"

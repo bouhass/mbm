@@ -1,8 +1,8 @@
 import java.util.Date;
 
-import com.smartward.Patient
-import com.smartward.Record
-import com.smartward.Task
+import com.wardbook.Patient
+import com.wardbook.Record
+import com.wardbook.Task
 
 class BootStrap {
 

@@ -1,9 +1,8 @@
-package com.smartward
+package com.wardbook
 
 
 
 import grails.test.mixin.*
-import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions

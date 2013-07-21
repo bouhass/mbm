@@ -1,4 +1,4 @@
-<%@ page import="com.smartward.Patient" %>
+<%@ page import="com.wardbook.Patient" %>
 <!doctype html>
 <html>
 	<head>

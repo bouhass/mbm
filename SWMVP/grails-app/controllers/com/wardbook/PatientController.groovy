@@ -1,4 +1,4 @@
-package com.smartward
+package com.wardbook
 
 import grails.converters.JSON
 

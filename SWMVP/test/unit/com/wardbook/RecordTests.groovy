@@ -1,17 +1,14 @@
-package com.smartward
+package com.wardbook
 
 
 
 import grails.test.mixin.*
-import org.junit.*
-
-import com.smartward.Task;
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Task)
-class TaskTests {
+@TestFor(Record)
+class RecordTests {
 
     void testSomething() {
        fail "Implement me"

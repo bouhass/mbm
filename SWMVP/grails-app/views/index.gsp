@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="bootstrap"/>
-		<title>SmartWard</title>
+		<title><g:meta name="app.name"/></title>
 	</head>
 
 	<body>

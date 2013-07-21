@@ -42,7 +42,7 @@
 					
 					<a class="brand" href="${createLink(uri: '/')}">
 						<g:img dir="images" file="sw-logo.png" width="15" height="15"/>
-						SmatWard
+                        <g:meta name="app.name"/>
 					</a>
 
 					<div class="nav-collapse">
@@ -50,7 +50,7 @@
 							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
 							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 								<g:if test="${!['Dbdoc', 'Record'].contains(c.name)}">
-									<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
+									<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name.toUpperCase()}</g:link></li>
 								</g:if>
 							</g:each>
 						</ul>
@@ -65,7 +65,7 @@
 			<hr>
 
 			<footer>
-				<p>&copy; SmartWard 2013</p>
+				<p>&copy; <g:meta name="app.name"/> 2013</p>
 			</footer>
 		</div>
 

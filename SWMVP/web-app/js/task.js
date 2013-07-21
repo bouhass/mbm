@@ -22,7 +22,7 @@
                 $(element).empty();
                 return; 
             }
-            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<img src="'+statusToImage(value.status)+'" style="float: right;"/>';
+            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<img src="'+taskStatusToImage(value.status)+'" style="float: right;"/>';
             $(element).html(html); 
         },
         

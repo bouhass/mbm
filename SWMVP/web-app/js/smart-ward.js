@@ -1,5 +1,5 @@
 
-function statusToImage(status) {
+function taskStatusToImage(status) {
     if (status == 'PENDING')    return WEB_APP_ROOT+'/images/empty-square.png';
     if (status == 'STARTED')    return WEB_APP_ROOT+'/images/half-square.png';
     if (status == 'COMPLETED')  return WEB_APP_ROOT+'/images/full-square.png';
@@ -11,7 +11,7 @@ function addTask(patient_id, category) {
 	$('#'+id).editable({
 	    type: 'text',
 	    pk: patient_id,
-	    url: WEB_APP_ROOT+'/task/saveOrUpdate',
+	    url: WEB_APP_ROOT+'task/saveOrUpdate',
 	    params: function(params) {
 	    	return {
 	    		'id': $(this).attr('data-tid'),
