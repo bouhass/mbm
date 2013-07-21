@@ -26,7 +26,7 @@
                             <tr>
                                 <td>
                                     <b>DOB</b> <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
-                                    <b>AGE</b> ${new Date().year - p.dateOfBirth.year}
+                                    (${new Date().year - p.dateOfBirth.year}y)
                                 </td>
                                 <td>
                                     <b>NHS</b> ${p.nhsNumber}
@@ -54,10 +54,13 @@
                                             data-tid="${t.id}"
                                             data-name="${t.name}"
                                             data-status="${t.status}"
+                                            data-priority="${t.priority}"
+                                            data-comment="${t.comment}"
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click task">
-                                            ${t.name}&nbsp;<i style="float: right;"></i>
+                                            ${t.name}&nbsp;
+                                            <img style="float: right;" />
                                         </td>
                                     </tr>
 								</g:if>
@@ -74,10 +77,13 @@
                                             data-tid="${t.id}"
                                             data-name="${t.name}"
                                             data-status="${t.status}"
+                                            data-priority="${t.priority}"
+                                            data-comment="${t.comment}"
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click task">
-                                            ${t.name}&nbsp;<i style="float: right;"></i>
+                                            ${t.name}&nbsp;
+                                            <img style="float: right;" />
                                         </td>
                                     </tr>
 								</g:if>
@@ -116,7 +122,7 @@
 
             /* Init tasks status icons. */
             $('.task').each(function() {
-                $(this).children('i').attr('class', statusToClass($(this).attr('data-status')));
+                $(this).children('img').attr('src', statusToImage($(this).attr('data-status')));
             });
 
             /* Init popover functionality. */
@@ -127,13 +133,17 @@
                     url : '${createLink(controller: 'task', action: 'saveOrUpdate')}',
                     value: {
                         name: $(this).attr('data-name'),
-                        status: $(this).attr('data-status')
+                        status: $(this).attr('data-status'),
+                        priority: $(this).attr('data-priority'),
+                        comment: $(this).attr('data-comment')
                     },
                     params : function(params) {
                         return {
                             'id' : $(this).attr('data-tid'),
                             'name' : params.value.name,
                             'status' : params.value.status,
+                            'priority': params.value.priority,
+                            'comment': params.value.comment,
                             'category' : $(this).attr('data-category'),
                             'patient.id' : $(this).attr('data-pid')
                         }

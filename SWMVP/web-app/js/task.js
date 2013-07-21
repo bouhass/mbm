@@ -13,6 +13,7 @@
         render: function() {
            this.$input = this.$tpl.find('input');
            this.$select = this.$tpl.find('select');
+           this.$textarea = this.$tpl.find('textarea');
         },
         
         /** Default value to be shown **/
@@ -21,7 +22,7 @@
                 $(element).empty();
                 return; 
             }
-            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<i class="'+statusToClass(value.status)+'" style="float: right;"></i>';
+            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<img src="'+statusToImage(value.status)+'" style="float: right;"/>';
             $(element).html(html); 
         },
         
@@ -88,7 +89,9 @@
            }
            this.$input.filter('[name="name"]').val(value.name);
            this.$select.filter('[name="status"]').val(value.status);
-       },       
+           this.$select.filter('[name="priority"]').val(value.priority);
+           this.$textarea.filter('[name="comment"]').val(value.comment);
+       },
        
        /**
         Returns value of input.
@@ -98,7 +101,9 @@
        input2value: function() { 
            return {
               name: this.$input.filter('[name="name"]').val(), 
-              status: this.$select.filter('[name="status"]').val()
+              status: this.$select.filter('[name="status"]').val(),
+              priority: this.$select.filter('[name="priority"]').val(),
+              comment: this.$textarea.filter('[name="comment"]').val()
            };
        },        
        
@@ -126,12 +131,40 @@
     });
     
     Task.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
-        tpl: '<div class="editable-task"><label><span>Name: </span><input type="text" name="name" class="input-medium"></label></div>'+
-             '<div class="editable-task"><label><span>Status: </span><select name="status" class="input-medium">'+
-             '<option value="PENDING">PENDING</option>'+
-             '<option value="STARTED">STARTED</option>'+
-             '<option value="COMPLETED">COMPLETED</option>'+
-             '</select></label></div>',
+        tpl:
+            '<div class="editable-task">' +
+                '<label>' +
+                    '<span>Name: </span>' +
+                    '<input type="text" name="name" class="input-medium">' +
+                '</label>' +
+            '</div>'+
+            '<div class="editable-task">' +
+                '<label>' +
+                    '<span>Status: </span>' +
+                    '<select name="status" class="input-medium">'+
+                        '<option value="PENDING">PENDING</option>'+
+                        '<option value="STARTED">STARTED</option>'+
+                        '<option value="COMPLETED">COMPLETED</option>'+
+                    '</select>' +
+                '</label>' +
+            '</div>' +
+            '<div class="editable-task">' +
+                '<label>' +
+                    '<span>Priority: </span>' +
+                    '<select name="priority" class="input-medium">'+
+                        '<option value="NORMAL">NORMAL</option>'+
+                        '<option value="HIGH">HIGH</option>'+
+                        '<option value="URGENT">URGENT</option>'+
+                    '</select>' +
+                '</label>' +
+            '</div>' +
+            '<div class="editable-task">' +
+                '<label>' +
+                    '<span>Comments: </span>' +
+                    '<br/>' +
+                    '<textarea name="comment" class="input-large"/>' +
+                '</label>' +
+            '</div>'+'',
              
         inputclass: ''
     });

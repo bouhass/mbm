@@ -69,6 +69,10 @@
 			</footer>
 		</div>
 
+        <script>
+            WEB_APP_ROOT = ${createLink(uri: '/')}
+        </script>
+
 		<r:layoutResources/>
 
 	</body>

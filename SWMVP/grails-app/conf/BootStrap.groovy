@@ -24,7 +24,7 @@ class BootStrap {
 			]
 			)
 		
-		josephLove.addToTasks(new Task(name: 'Blood test', status: 'PENDING', category: 'NURSE'))
+		josephLove.addToTasks(new Task(name: 'Blood test', status: 'COMPLETED', category: 'NURSE'))
 		josephLove.addToTasks(new Task(name: 'X-Ray', status: 'PENDING', category: 'DOCTOR'))
 		
 		josephLove.save(failOnError: true)
@@ -67,7 +67,7 @@ class BootStrap {
 			]
 			)
 		
-		anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'PENDING', category: 'DOCTOR'))
+		anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'STARTED', category: 'DOCTOR'))
 		anishLee.addToTasks(new Task(name: 'Feed', status: 'PENDING', category: 'NURSE'))
 		
 		anishLee.save(failOnError: true)

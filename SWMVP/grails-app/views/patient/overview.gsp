@@ -127,7 +127,7 @@
 				});
 			});
 
-			var frameSrc = "/SmartWardMVP/patient/add";
+			var frameSrc = WEB_APP_ROOT+'patient/add';
 
 			$('#openBtn').click(function(){
 			    $('#myModal').on('show', function () {

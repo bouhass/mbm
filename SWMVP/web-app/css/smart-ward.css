@@ -7,10 +7,27 @@
 
 .editable-task {
     display: block;
-    margin-bottom: 5px;  
+    margin-bottom: 5px;
 }
 
 .editable-task span {
-    width: 70px;  
+    width: 70px;
     display: inline-block;
+}
+
+
+
+.navbar ul.nav>li {
+    width: 276px;
+    text-transform:uppercase;
+    text-align:center;
+    font-size:1.8em;
+}
+
+.navbar ul.nav>li.active {
+    border-top: 3px solid #333;
+}
+
+.second-level-nav {
+    margin-top: -18px;
 }
