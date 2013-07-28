@@ -45,7 +45,9 @@
 					<td>
 						<table id="task-NURSE-${p.id}" class="inner-table">
 							<tr>
-                                <td><a onclick="addTask('${p.id}', 'NURSE')">+ ADD NEW</a></td>
+                                <td>
+                                    <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input" />
+                                </td>
                             </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
@@ -69,7 +71,11 @@
 					</td>
 					<td>
 						<table id="task-DOCTOR-${p.id}" class="inner-table">
-							<tr><td><a onclick="addTask('${p.id}', 'DOCTOR')">+ ADD NEW</a></td></tr>
+							<tr>
+                                <td>
+                                    <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input" />
+                                </td>
+                            </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
 									<tr>
@@ -119,6 +125,15 @@
 			$('#example').dataTable( {
 				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
 			});
+
+            $('.add-task-input').each(function() {
+                $(this).keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        addTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
+                        $(this).val('');
+                    }
+                });
+            });
 
             /* Init tasks status icons. */
             $('.task').each(function() {
