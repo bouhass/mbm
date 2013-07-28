@@ -11,8 +11,8 @@
 		<div class="second-level-nav navbar navbar-inverse">
 			<div class="second-level-nav navbar-inner">
 				<ul class="nav">
-					<li><g:link controller="board" action="ward"> WARD </g:link></li>
-					<li><g:link controller="board" action="handover"> HANDOVER </g:link></li>
+					<li <%= actionName == 'ward' ? ' class="active"' : '' %>><g:link controller="board" action="ward"> WARD </g:link></li>
+					<li <%= actionName == 'handover' ? ' class="active"' : '' %>><g:link controller="board" action="handover"> HANDOVER </g:link></li>
 				</ul>
 			</div>
 		</div>

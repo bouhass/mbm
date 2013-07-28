@@ -1,8 +1,8 @@
 
 function taskStatusToImage(status) {
-    if (status == 'PENDING')    return WEB_APP_ROOT+'/images/empty-square.png';
-    if (status == 'STARTED')    return WEB_APP_ROOT+'/images/half-square.png';
-    if (status == 'COMPLETED')  return WEB_APP_ROOT+'/images/full-square.png';
+    if (status == 'PENDING')    return WEB_APP_ROOT+'images/empty-square.png';
+    if (status == 'STARTED')    return WEB_APP_ROOT+'images/half-square.png';
+    if (status == 'COMPLETED')  return WEB_APP_ROOT+'images/full-square.png';
 }
 
 function addTask(patient_id, category) {
