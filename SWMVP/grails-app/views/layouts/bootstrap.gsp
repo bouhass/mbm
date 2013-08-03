@@ -45,7 +45,7 @@
                         <g:meta name="app.name"/>
 					</a>
 
-					<div class="nav-collapse">
+					<div class="first-level-nav nav-collapse">
 						<ul class="nav">							
 							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">HOME</a></li>
 							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">

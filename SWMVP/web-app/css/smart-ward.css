@@ -16,17 +16,36 @@
 }
 
 
-
+/* nav common */
 .navbar ul.nav>li {
     width: 276px;
     text-align:center;
     font-size:1.8em;
 }
 
-.navbar ul.nav>li.active {
+/* first level nav */
+.first-level-nav ul.nav>li {
+    border-top: 3px solid #bbb;
+}
+
+.first-level-nav ul.nav>li.active {
     border-top: 3px solid #333;
 }
 
+/* second level nav */
 .second-level-nav {
-    margin-top: -18px;
+    margin-top: -16px;
+}
+
+.second-level-nav .navbar-inner {
+    background: #bbb;
+}
+
+.second-level-nav ul.nav>li>a {
+    color: #eee;
+}
+
+.second-level-nav ul.nav>li.active>a {
+    color: #fff;
+    background-color: #888;
 }
