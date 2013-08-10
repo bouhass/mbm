@@ -4,28 +4,82 @@
 		<table id="example" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th>LOCATION</th>
-					<th>NAME</th>
-					<th>PROBLEM LIST</th>
-					<th>ADDITIONAL INFO</th>
-					<th>TASKS</th>
+					<th>PATIENT INFO</th>
+					<th>HISTORY</th>
+					<th>PROBLEMS</th>
+					<th>ALERTS</th>
+					<th>PROGRESS</th>
+                    <th>JOBS</th>
 				</tr>
 			</thead>
 			<tbody>
 			<g:each var="p" in="${patients}">
 				<tr>
-					<td>${p.location}</td>
+                    <td>
+                        <table class="patient-info">
+                            <tr>
+                                <td>
+                                    ${p} - ${p.gender[0]}
+                                </td>
+                                <td>
+                                    <b>LOC</b> ${p.location}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>DOB</b> <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
+                                (${new Date().year - p.dateOfBirth.year}y)
+                                </td>
+                                <td>
+                                    <b>NHS</b> ${p.nhsNumber}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>STATUS</b> ${p.status}
+                                </td>
+                                <td>
+                                    <b>CONS</b> ${p.consultant}
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
 					<td>
-						${p.firstName} ${p.lastName}
+                        <ul>
+                            <g:each var="record" in="${p.records}">
+                                <g:if test="${record.type == 'HISTORY'}">
+                                    <li>${record.name}</li>
+                                </g:if>
+                            </g:each>
+                        </ul>
 					</td>
 					<td>
 						<ul>
 							<g:each var="record" in="${p.records}">
-								<li>${record.description}</li>
+                                <g:if test="${record.type == 'PROBLEM'}">
+								    <li>${record.name}</li>
+                                </g:if>
 							</g:each>
 						</ul>
 					</td>
-					<td></td>
+					<td>
+                        <ul>
+                            <g:each var="record" in="${p.records}">
+                                <g:if test="${record.type == 'ALERT'}">
+                                    <li>${record.name}</li>
+                                </g:if>
+                            </g:each>
+                        </ul>
+					</td>
+					<td>
+                        <ul>
+                            <g:each var="record" in="${p.records}">
+                                <g:if test="${record.type == 'PROGRESS'}">
+                                    <li>${record.name}</li>
+                                </g:if>
+                            </g:each>
+                        </ul>
+					</td>
 					<td>
 						<ul>
 							<g:each var="task" in="${p.tasks}">
