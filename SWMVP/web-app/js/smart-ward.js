@@ -42,3 +42,18 @@ function addTask(name, patient_id, category) {
             alert("ERROR: could not add the task");
         })
 }
+
+function addRecord(name, patient_id, type) {
+    $.post(WEB_APP_ROOT+'record/saveOrUpdate', {
+        'name': name,
+        'type': type,
+        'patient.id': patient_id
+    })
+        .done(function(record) {
+            var id = new Date().getTime();
+            $('#record-'+type+'-'+patient_id).append('<tr><td id="'+id+'" data-rid="'+record.id+'">'+name+'</td></tr>');
+        })
+        .fail(function() {
+            alert("ERROR: could not add the task");
+        })
+}

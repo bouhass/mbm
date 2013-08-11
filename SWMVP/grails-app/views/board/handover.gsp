@@ -44,42 +44,26 @@
                             </tr>
                         </table>
                     </td>
-					<td>
-                        <ul>
-                            <g:each var="record" in="${p.records}">
-                                <g:if test="${record.type == 'HISTORY'}">
-                                    <li>${record.name}</li>
-                                </g:if>
-                            </g:each>
-                        </ul>
-					</td>
-					<td>
-						<ul>
-							<g:each var="record" in="${p.records}">
-                                <g:if test="${record.type == 'PROBLEM'}">
-								    <li>${record.name}</li>
-                                </g:if>
-							</g:each>
-						</ul>
-					</td>
-					<td>
-                        <ul>
-                            <g:each var="record" in="${p.records}">
-                                <g:if test="${record.type == 'ALERT'}">
-                                    <li>${record.name}</li>
-                                </g:if>
-                            </g:each>
-                        </ul>
-					</td>
-					<td>
-                        <ul>
-                            <g:each var="record" in="${p.records}">
-                                <g:if test="${record.type == 'PROGRESS'}">
-                                    <li>${record.name}</li>
-                                </g:if>
-                            </g:each>
-                        </ul>
-					</td>
+                    <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'ALERT', 'PROGRESS']">
+                        <td>
+                            <table id="record-${recordType}-${p.id}" class="inner-table">
+                                <tr>
+                                    <td>
+                                        <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input" />
+                                    </td>
+                                </tr>
+                                <g:each var="record" in="${p.records}">
+                                    <g:if test="${record.type == recordType}">
+                                        <tr>
+                                            <td>
+                                                ${record.name}
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                </g:each>
+                            </table>
+                        </td>
+                    </g:each>
 					<td>
 						<ul>
 							<g:each var="task" in="${p.tasks}">
@@ -92,8 +76,10 @@
 			</tbody>
 		</table>
 	</div>
-	
-	<script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
+
+    <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
+    <script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'smart-ward.js')}"></script>
 	
 	<script>
 		// data tables
@@ -109,6 +95,15 @@
 			$('#example').dataTable( {
 				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
 			} );
+
+            $('.add-record-input').each(function() {
+                $(this).keyup(function (e) {
+                    if (e.keyCode == 13) {
+                        addRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+                        $(this).val('');
+                    }
+                });
+            });
 		} );
 	</script>
 		
