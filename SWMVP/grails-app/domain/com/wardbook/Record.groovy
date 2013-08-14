@@ -10,5 +10,5 @@ class Record {
         type inList: ['HISTORY', 'PROBLEM', 'ALERT', 'PROGRESS']
     }
 	
-	String toString() { "${description}" }
+	String toString() { "${name}" }
 }
