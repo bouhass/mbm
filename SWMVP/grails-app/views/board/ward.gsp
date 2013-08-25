@@ -129,7 +129,7 @@
             $('.add-task-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
-                        addTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
+                        addNewTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
                         $(this).val('');
                     }
                 });
@@ -189,6 +189,21 @@
                     }
                 });
             });
+
+            window.setInterval(function() {
+                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
+                    $(patients).each(function(i, patient) {
+                        $(patient.tasks).each(function(j, task) {
+                            if ($('#task-'+task.category+'-'+patient.id+' td[data-tid="'+task.id+'"]').size() == 0) {
+                                addTask(patient.id, task);
+                            }
+                        })
+                    })
+                })
+                        .fail(function() {
+                            console.error('ERROR: could not patient data');
+                        })
+            }, 3000);
 
 		});
 	</script>

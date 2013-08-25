@@ -54,4 +54,9 @@ class PatientController {
         ]
         render statuses as JSON
     }
+
+    def jsonlist() {
+        JSON.use('deep')
+        render Patient.list() as JSON
+    }
 }
