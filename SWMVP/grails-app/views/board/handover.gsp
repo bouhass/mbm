@@ -1,15 +1,23 @@
 <g:applyLayout name="board">
 
 	<div class="page-body">
+        <div id="columns-selector" class="btn-group" data-toggle="buttons-checkbox">
+            <button type="button" class="btn btn-info active" value="HISTORY">HISTORY</button>
+            <button type="button" class="btn btn-info active" value="PROBLEM">PROBLEMS</button>
+            <button type="button" class="btn btn-info active" value="ALERT">ALERTS</button>
+            <button type="button" class="btn btn-info active" value="PROGRESS">PROGRESS</button>
+            <button type="button" class="btn btn-info active" value="JOBS">JOBS</button>
+        </div>
+
 		<table id="example" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
 					<th>PATIENT INFO</th>
-					<th>HISTORY</th>
-					<th>PROBLEMS</th>
-					<th>ALERTS</th>
-					<th>PROGRESS</th>
-                    <th>JOBS</th>
+					<th class="HISTORY">HISTORY</th>
+					<th class="PROBLEM">PROBLEMS</th>
+					<th class="ALERT">ALERTS</th>
+					<th class="PROGRESS">PROGRESS</th>
+                    <th class="JOBS">JOBS</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,7 +53,7 @@
                         </table>
                     </td>
                     <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'ALERT', 'PROGRESS']">
-                        <td>
+                        <td class="${recordType}">
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
                                     <td>
@@ -64,7 +72,7 @@
                             </table>
                         </td>
                     </g:each>
-					<td>
+					<td class="JOBS">
 						<ul>
 							<g:each var="task" in="${p.tasks}">
 								<li>${task.name}</li>
@@ -104,6 +112,17 @@
                     }
                 });
             });
+
+            $('#columns-selector button').on('click', function() {
+                if ($(this).hasClass('active')) {
+                    $('.'+$(this).attr('value')).hide();
+//                    $('#example tr *:nth-child('+$(this).attr('value')+')').hide();
+                }
+                else {
+                    $('.'+$(this).attr('value')).show();
+//                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
+                }
+            })
 		} );
 	</script>
 		
