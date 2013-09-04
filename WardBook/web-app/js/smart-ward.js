@@ -5,10 +5,39 @@ function taskStatusToImage(status) {
     else /* (status == 'PENDING') */ return WEB_APP_ROOT+'images/empty-square.png';
 }
 
+var updateTaskStatus = function() {
+    var self = $(this)
+    self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
+    var taskId = self.siblings().attr('data-tid');
+    var currentStatus = self.siblings().attr('data-status');
+    var newStatus = {
+        'PENDING': 'STARTED',
+        'STARTED': 'COMPLETED',
+        'COMPLETED': 'PENDING'
+    }[currentStatus]
+
+    $.post(WEB_APP_ROOT+'task/updateStatus', {
+        'id': taskId,
+        'status': newStatus
+    })
+        .done(function(task) {
+            self.children('img').attr('src', taskStatusToImage(task.status));
+            self.siblings().attr('data-status', task.status);
+        })
+        .fail(function() {
+            alert("ERROR: could not update the task status");
+        })
+}
+
 function addTask(patient_id, task) {
-    var id = new Date().getTime();
-    $('#task-'+task.category+'-'+patient_id).append('<tr><td id="'+id+'" data-type="task" data-tid="'+task.id+'" class="editable editable-click"></td></tr>');
-    $('#'+id).editable({
+    var taskNameId = 'task-name-id'+new Date().getTime();
+    var taskImageId = 'task-image'+new Date().getTime();
+    $('#task-'+task.category+'-'+patient_id).append('' +
+        '<tr>' +
+            '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
+            '<td id="'+taskNameId+'" data-type="task" data-tid="'+task.id+'" data-status="PENDING" class="editable editable-click">'+task.name+'</td>' +
+        '</tr>');
+    $('#'+taskNameId).editable({
         type: 'text',
         pk: task.id,
         url: WEB_APP_ROOT+'task/saveOrUpdate',
@@ -27,6 +56,7 @@ function addTask(patient_id, task) {
             }
         }
     });
+    $('#'+taskImageId).on('click', updateTaskStatus);
 }
 
 function addNewTask(name, patient_id, category) {

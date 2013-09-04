@@ -45,6 +45,7 @@
 					<td>
 						<table id="task-NURSE-${p.id}" class="inner-table">
 							<tr>
+                                <td></td>
                                 <td>
                                     <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input" />
                                 </td>
@@ -52,6 +53,9 @@
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
 									<tr>
+                                        <td class="update-task-status">
+                                            <img/>
+                                        </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
                                             data-name="${t.name}"
@@ -61,8 +65,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click task">
-                                            ${t.name}&nbsp;
-                                            <img style="float: right;" />
+                                            ${t.name}
                                         </td>
                                     </tr>
 								</g:if>
@@ -72,6 +75,7 @@
 					<td>
 						<table id="task-DOCTOR-${p.id}" class="inner-table">
 							<tr>
+                                <td></td>
                                 <td>
                                     <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input" />
                                 </td>
@@ -79,6 +83,9 @@
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
 									<tr>
+                                        <td class="update-task-status">
+                                            <img/>
+                                        </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
                                             data-name="${t.name}"
@@ -88,8 +95,7 @@
                                             data-category="${t.category}"
                                             data-pid="${p.id}"
                                             class="editable editable-click task">
-                                            ${t.name}&nbsp;
-                                            <img style="float: right;" />
+                                            ${t.name}
                                         </td>
                                     </tr>
 								</g:if>
@@ -137,8 +143,10 @@
 
             /* Init tasks status icons. */
             $('.task').each(function() {
-                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+                $(this).siblings().children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
             });
+
+            $('.update-task-status').on('click', updateTaskStatus);
 
             /* Init popover functionality. */
             $('.task').each(function() {

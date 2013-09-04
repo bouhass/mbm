@@ -22,8 +22,8 @@
                 $(element).empty();
                 return; 
             }
-            var html = $('<div>').text(value.name).html()+'&nbsp;'+'<img src="'+taskStatusToImage(value.status)+'" style="float: right;"/>';
-            $(element).html(html); 
+            $(element).siblings().children('img').attr('src', taskStatusToImage(value.status));
+            $(element).html(value.name);
         },
         
         /**
