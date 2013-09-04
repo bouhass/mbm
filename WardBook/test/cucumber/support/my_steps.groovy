@@ -11,14 +11,20 @@ When (~'I add "([^"]*)" as a (NURSE|DOCTOR) job to ([^"]*)\$') { jobName, catego
     page.addJob(jobName, category, patient)
 }
 
+Then (~'I should not see "([^"]*)" as a (NURSE|DOCTOR) job assigned to ([^"]*)\$') { jobName, category, patient ->
+    sleep 200 // time for the task to get deleted
+    assert page.getJob(jobName, category, patient) == null
+}
+
 Then (~'I should see "([^"]*)" as a (NURSE|DOCTOR) job assigned to ([^"]*) as ([^"]*)\$') { jobName, category, patient, status ->
-    def job = page.getJob(jobName, category, patient)
-    assert job.name == jobName
-    assert job.status.contains(statusToImage(status))
 }
 
 When (~'I click on the status of the "([^"]*)" (NURSE|DOCTOR) job assigned to ([^"]*)\$') { jobName, category, patient ->
     page.clickOnJobStatus(jobName, category, patient)
+}
+
+When (~'I click on delete ([^"]*) "([^"]*)" (NURSE|DOCTOR) job$') { patient, jobName, category ->
+    page.clickOnDeleteJob(jobName, category, patient)
 }
 
 def statusToImage(status) {

@@ -40,6 +40,12 @@ class JobListPage extends Page {
         found.siblings().find('img').click()
     }
 
+    def clickOnDeleteJob(jobName, category, patient) {
+        def jobTableId = getJobTableId(category, patient)
+        def found = $(jobTableId).find('td', 'data-type': 'task').find { it.text().trim() == jobName }
+        assert withConfirm(true) { found.siblings()[1].click() } == "Are you sure you want to delete this job? ($jobName)"
+    }
+
     def getJobTableId(category, patient) {
         def patientRow = $('tr', text: contains(patient))
         "#task-${category}-${patientRow.attr('id')}"

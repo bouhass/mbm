@@ -49,6 +49,7 @@
                                 <td>
                                     <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input" />
                                 </td>
+                                <td></td>
                             </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
@@ -67,6 +68,9 @@
                                             class="editable editable-click task">
                                             ${t.name}
                                         </td>
+                                        <td class="delete-task">
+                                            <i class="icon-remove" />
+                                        </td>
                                     </tr>
 								</g:if>
 							</g:each>
@@ -79,6 +83,7 @@
                                 <td>
                                     <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input" />
                                 </td>
+                                <td></td>
                             </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
@@ -96,6 +101,9 @@
                                             data-pid="${p.id}"
                                             class="editable editable-click task">
                                             ${t.name}
+                                        </td>
+                                        <td class="delete-task">
+                                            <i class="icon-remove" />
                                         </td>
                                     </tr>
 								</g:if>
@@ -147,6 +155,8 @@
             });
 
             $('.update-task-status').on('click', updateTaskStatus);
+
+            $('.delete-task').on('click', deleteTask);
 
             /* Init popover functionality. */
             $('.task').each(function() {
