@@ -64,9 +64,9 @@
 
 			<hr>
 
-			<footer>
-				<p>&copy; <g:meta name="app.name"/> 2013</p>
-			</footer>
+			%{--<footer>--}%
+				%{--<p>&copy; <g:meta name="app.name"/> 2013</p>--}%
+			%{--</footer>--}%
 		</div>
 
         <script>

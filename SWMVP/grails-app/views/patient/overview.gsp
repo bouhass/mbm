@@ -23,10 +23,16 @@
 							</g:link>
 						</li>
 						<li>
-							<a href="#" class="create" id="openBtn">
-								<i class="icon-plus"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</a>
+                            <a href="create" class="create">
+                                <i class="icon-plus"></i>
+                                <g:message code="default.create.label" args="[entityName]" />
+                            </a>
+
+							%{--<a href="#" class="create" id="openBtn">--}%
+								%{--<i class="icon-plus"></i>--}%
+								%{--<g:message code="default.create.label" args="[entityName]" />--}%
+							%{--</a>--}%
+
 							<%-- 
 							<g:link id="openBtn" class="create" action="add" data-toggle="modal" data-remote="add" data-target="#addPatientModal">
 								<i class="icon-plus"></i>

@@ -42,6 +42,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        test ("org.codehaus.geb:geb-junit4:0.7.2")
+        test ("org.seleniumhq.selenium:selenium-chrome-driver:2.35.0")
     }
 
     plugins {
@@ -62,5 +64,8 @@ grails.project.dependency.resolution = {
 		
 		runtime ":twitter-bootstrap:2.3.2"
 		runtime ":fields:1.3"
+
+        test ":cucumber:0.9.0"
+        test ":geb:0.9.1"
     }
 }

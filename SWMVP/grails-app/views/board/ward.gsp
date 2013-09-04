@@ -12,7 +12,7 @@
 			</thead>
 			<tbody>
 			<g:each var="p" in="${patients}">
-				<tr>
+				<tr id="${p.id}">
 					<td>
                         <table class="patient-info">
                             <tr>
