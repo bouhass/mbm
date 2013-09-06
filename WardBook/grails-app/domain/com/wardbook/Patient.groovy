@@ -1,5 +1,8 @@
 package com.wardbook
 
+import groovy.transform.EqualsAndHashCode
+
+@EqualsAndHashCode
 class Patient {
 	
 	String firstName

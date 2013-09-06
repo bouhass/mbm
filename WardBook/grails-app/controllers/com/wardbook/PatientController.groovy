@@ -46,13 +46,7 @@ class PatientController {
     }
 
     def statuses() {
-        def statuses = [
-                'Default (no concerns)': 'Default (no concerns)',
-                'New Admission': 'New Admission',
-                'Unwell': 'Unwell',
-                'For Home': 'For Home'
-        ]
-        render statuses as JSON
+        render Patient.constraints.status.inList.collectEntries { [it, it] } as JSON
     }
 
     def jsonlist() {

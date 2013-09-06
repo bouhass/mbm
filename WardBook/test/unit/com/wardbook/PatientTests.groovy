@@ -10,7 +10,8 @@ import grails.test.mixin.*
 @TestFor(Patient)
 class PatientTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testToString() {
+        def patient = new Patient(firstName: 'John', lastName: 'Smith', nhsNumber: '12345')
+        assert patient.toString() == 'John Smith'
     }
 }
