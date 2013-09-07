@@ -238,7 +238,14 @@
                                 addTask(patient.id, task);
                             }
                             else {
-                                // TODO : check for update
+                                // TODO : check update required
+                                var taskElement = $('tr#'+patient.id+' td[data-tid="'+task.id+'"]');
+                                taskElement.text(task.name);
+                                taskElement.attr('data-name', task.name);
+                                taskElement.attr('data-status', task.status);
+                                taskElement.attr('data-priority', task.priority);
+                                taskElement.attr('data-comment', task.comment);
+                                taskElement.siblings().children('img').attr('src', taskStatusToImage(task.status));
                             }
                         });
                     })
