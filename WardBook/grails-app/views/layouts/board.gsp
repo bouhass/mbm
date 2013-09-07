@@ -5,7 +5,7 @@
 		<title><g:layoutTitle/></title>
 		<g:layoutHead/>
 		<link rel="stylesheet" href="${resource(dir: 'bootstrap-editable/css', file: 'bootstrap-editable.css')}">
-		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'smart-ward-board.css')}">
+		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book-board.css')}">
 	</head>
 	<body>
 		<div class="second-level-nav navbar">

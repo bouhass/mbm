@@ -26,7 +26,7 @@
 		<g:layoutHead/>
 		<r:layoutResources/>
 		
-		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'smart-ward.css')}">
+		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book.css')}">
 	</head>
 
 	<body>

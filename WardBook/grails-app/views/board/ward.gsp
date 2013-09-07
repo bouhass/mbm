@@ -118,7 +118,7 @@
 	
 	<script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
 	<script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
-	<script src="${resource(dir: 'js', file: 'smart-ward.js')}"></script>
+	<script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
 	<script src="${resource(dir: 'js', file: 'task.js')}"></script>
 	
 	<script>
