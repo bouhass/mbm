@@ -2,10 +2,10 @@
 
 
 	<div class="page-body">
-		<table id="example" class="patients-table bordered-table zebra-striped">
+		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th width="40%">PATIENT INFO</th>
+					<th width="40%">DEMOGRAPHICS</th>
 					<th>NURSING JOBS</th>
 					<th>DOCTORS JOBS</th>
 				</tr>
@@ -117,28 +117,13 @@
 	</div>
 	
 	<script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
-	<script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
-	<script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
+	<script src="${resource(dir: 'js', file: 'ward-book-board.js')}"></script>
 	<script src="${resource(dir: 'js', file: 'task.js')}"></script>
 	
 	<script>
 		$.fn.editable.defaults.mode = 'popup';
-		
-		// data tables
-		/* Default class modification */
-		$.extend( $.fn.dataTableExt.oStdClasses, {
-			"sSortAsc": "header headerSortDown",
-			"sSortDesc": "header headerSortUp",
-			"sSortable": "header"
-		} );
-
 
 		$(document).ready(function() {
-
-            /* Table initialisation */
-			$('#example').dataTable( {
-				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
-			});
 
             $('.add-task-input').each(function() {
                 $(this).keyup(function (e) {

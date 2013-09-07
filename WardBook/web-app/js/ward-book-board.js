@@ -108,3 +108,13 @@ function addRecord(name, patient_id, type) {
             alert("ERROR: could not add the task");
         })
 }
+
+$('#search').keyup(function() {
+    var $rows = $('#patients-table > tbody > tr');
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+});

@@ -49,3 +49,10 @@
     color: #fff;
     background-color: #888;
 }
+
+.second-level-nav-item {
+    float: right;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+}

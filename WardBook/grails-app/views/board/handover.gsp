@@ -1,15 +1,7 @@
 <g:applyLayout name="board">
 
 	<div class="page-body">
-        <div id="columns-selector" class="btn-group" data-toggle="buttons-checkbox">
-            <button type="button" class="btn btn-info active" value="HISTORY">HISTORY</button>
-            <button type="button" class="btn btn-info active" value="PROBLEM">PROBLEMS</button>
-            <button type="button" class="btn btn-info active" value="ALERT">ALERTS</button>
-            <button type="button" class="btn btn-info active" value="PROGRESS">PROGRESS</button>
-            <button type="button" class="btn btn-info active" value="JOBS">JOBS</button>
-        </div>
-
-		<table id="example" class="patients-table bordered-table zebra-striped">
+		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
 					<th>PATIENT INFO</th>
@@ -86,24 +78,11 @@
 	</div>
 
     <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
-    <script src="${resource(dir: 'datatables/js', file: 'jquery.dataTables.js')}"></script>
-    <script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'ward-book-board.js')}"></script>
 	
 	<script>
-		// data tables
-		/* Default class modification */
-		$.extend( $.fn.dataTableExt.oStdClasses, {
-			"sSortAsc": "header headerSortDown",
-			"sSortDesc": "header headerSortUp",
-			"sSortable": "header"
-		} );
-
 		/* Table initialisation */
 		$(document).ready(function() {
-			$('#example').dataTable( {
-				"sDom": "<'row'<'span8'l><'span8'f>r>t<'row'<'span8'i><'span8'p>>"
-			} );
-
             $('.add-record-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
@@ -122,8 +101,8 @@
                     $('.'+$(this).attr('value')).show();
 //                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
                 }
-            })
-		} );
+            });
+		});
 	</script>
 		
 </g:applyLayout>
