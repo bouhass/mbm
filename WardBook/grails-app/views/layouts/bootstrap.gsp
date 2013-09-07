@@ -41,7 +41,7 @@
 					</a>
 					
 					<a class="brand" href="${createLink(uri: '/')}">
-						<g:img dir="images" file="sw-logo.png" width="15" height="15"/>
+						<g:img dir="images" file="mbm-logo.png" width="15" height="15"/>
                         <g:meta name="app.name"/>
 					</a>
 
