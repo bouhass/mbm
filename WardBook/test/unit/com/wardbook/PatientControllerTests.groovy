@@ -10,10 +10,11 @@ import grails.test.mixin.domain.DomainClassUnitTestMixin
 @TestFor(PatientController)
 @Mock(Patient)
 @TestMixin(DomainClassUnitTestMixin)
-@Mixin(Personas)
+//@Mixin(Personas)
 class PatientControllerTests {
 
     void setUp() {
+        PatientControllerTests.mixin Personas
         mockDomain(Patient, patient_list)
     }
 

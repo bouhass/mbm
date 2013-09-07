@@ -211,11 +211,36 @@
             window.setInterval(function() {
                 $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
                     $(patients).each(function(i, patient) {
+
+                        var remoteTasks = [];
                         $(patient.tasks).each(function(j, task) {
-                            if ($('#task-'+task.category+'-'+patient.id+' td[data-tid="'+task.id+'"]').size() == 0) {
-                                addTask(patient.id, task);
+                            remoteTasks.push(task.id.toString());
+                        });
+
+                        var localTasks = [];
+                        $('tr#'+patient.id+' td').each(function() {
+                            if ($(this).attr('data-tid') != undefined) {
+                                localTasks.push($(this).attr('data-tid'));
                             }
                         })
+
+                        // delete tasks if applies
+                        $(localTasks).each(function(k, taskId) {
+                            if ($.inArray(taskId, remoteTasks) == -1) {
+                                $('tr#'+patient.id+' td[data-tid="'+taskId+'"]').parent().remove();
+                            }
+                        });
+
+                        $(patient.tasks).each(function(j, task) {
+
+                            // add new tasks if applies
+                            if ($.inArray(task.id.toString(), localTasks) == -1) {
+                                addTask(patient.id, task);
+                            }
+                            else {
+                                // TODO : check for update
+                            }
+                        });
                     })
                 })
                         .fail(function() {
