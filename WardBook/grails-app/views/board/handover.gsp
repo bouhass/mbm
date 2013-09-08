@@ -19,27 +19,27 @@
                         <table class="patient-info">
                             <tr>
                                 <td>
-                                    ${p} - ${p.gender[0]}
+                                    ${p.location}
                                 </td>
                                 <td>
-                                    <b>LOC</b> ${p.location}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>DOB</b> <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
-                                (${new Date().year - p.dateOfBirth.year}y)
-                                </td>
-                                <td>
-                                    <b>NHS</b> ${p.nhsNumber}
+                                    ${p} [${p.gender[0]}]
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <b>STATUS</b> ${p.status}
+                                    ${p.consultant}
                                 </td>
                                 <td>
-                                    <b>CONS</b> ${p.consultant}
+                                    <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
+                                    [${new Date().year - p.dateOfBirth.year}y]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ${p.nhsNumber}
+                                </td>
+                                <td>
+                                    <a href="#" data-pid="${p.id}" data-status="${p.status}" class="patient-status">${p.status}</a>
                                 </td>
                             </tr>
                         </table>
@@ -65,12 +65,16 @@
                         </td>
                     </g:each>
 					<td class="JOBS">
-						<ul>
-							<g:each var="task" in="${p.tasks}">
-								<li>${task.name}</li>
-							</g:each>
-						</ul>
-					</td>
+                        <table class="inner-table">
+                            <g:each var="task" in="${p.tasks}">
+                                <tr>
+                                    <td>
+                                        ${task.name}
+                                    </td>
+                                </tr>
+                            </g:each>
+                        </table>
+                    </td>
 				</tr>
 			</g:each>
 			</tbody>

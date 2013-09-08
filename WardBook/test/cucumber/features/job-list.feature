@@ -1,4 +1,4 @@
-Feature: Job list
+Feature: Job list view
 
   Background:
     Given I open the job list page

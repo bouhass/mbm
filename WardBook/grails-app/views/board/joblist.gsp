@@ -5,7 +5,7 @@
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th width="40%">DEMOGRAPHICS</th>
+					<th>DEMOGRAPHICS</th>
 					<th>NURSING JOBS</th>
 					<th>DOCTORS JOBS</th>
 				</tr>
@@ -17,27 +17,27 @@
                         <table class="patient-info">
                             <tr>
                                 <td>
-                                    ${p} - ${p.gender[0]}
+                                    ${p.location}
                                 </td>
                                 <td>
-                                    <b>LOC</b> ${p.location}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <b>DOB</b> <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
-                                    (${new Date().year - p.dateOfBirth.year}y)
-                                </td>
-                                <td>
-                                    <b>NHS</b> ${p.nhsNumber}
+                                    ${p} [${p.gender[0]}]
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <b>STATUS</b> <a href="#" data-pid="${p.id}" data-status="${p.status}" class="patient-status">${p.status}</a>
+                                    ${p.consultant}
                                 </td>
                                 <td>
-                                    <b>CONS</b> ${p.consultant}
+                                    <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
+                                    [${new Date().year - p.dateOfBirth.year}y]
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    ${p.nhsNumber}
+                                </td>
+                                <td>
+                                    <a href="#" data-pid="${p.id}" data-status="${p.status}" class="patient-status">${p.status}</a>
                                 </td>
                             </tr>
                         </table>

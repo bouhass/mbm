@@ -11,7 +11,7 @@
 		<div class="second-level-nav navbar">
 			<div class="second-level-nav navbar-inner">
 				<ul class="nav">
-					<li <%= actionName == 'ward' ? ' class="active"' : '' %>><g:link controller="board" action="ward"> WARD </g:link></li>
+					<li <%= actionName == 'joblist' ? ' class="active"' : '' %>><g:link controller="board" action="joblist"> JOB LIST </g:link></li>
 					<li <%= actionName == 'handover' ? ' class="active"' : '' %>><g:link controller="board" action="handover"> HANDOVER </g:link></li>
 				</ul>
 

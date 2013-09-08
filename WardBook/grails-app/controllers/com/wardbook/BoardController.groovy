@@ -3,10 +3,10 @@ package com.wardbook
 class BoardController {
 
     def index() {
-		redirect(action:ward)
+		redirect(action:joblist)
 	}
 	
-	def ward = {
+	def joblist = {
 		[patients: Patient.list()]
 	}
 	

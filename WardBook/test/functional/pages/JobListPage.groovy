@@ -2,10 +2,11 @@ package pages
 
 import geb.Page
 import org.openqa.selenium.Keys
+import org.openqa.selenium.StaleElementReferenceException
 
 class JobListPage extends Page {
 
-    static url = "board/ward"
+    static url = "board/joblist"
 
     static at = {
         title ==~ /WardBook/
@@ -47,7 +48,12 @@ class JobListPage extends Page {
     }
 
     def getJobTableId(category, patient) {
-        def patientRow = $('tr', text: contains(patient))
-        "#task-${category}-${patientRow.attr('id')}"
+        try {
+            def patientRow = $('tr', text: contains(patient))
+            "#task-${category}-${patientRow.attr('id')}"
+        }
+        catch (StaleElementReferenceException e) {
+            getJobTableId(category, patient)
+        }
     }
 }
