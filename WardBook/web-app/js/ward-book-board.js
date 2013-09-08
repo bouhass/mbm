@@ -59,6 +59,7 @@ function addTask(patient_id, task) {
         '</tr>');
     $('#'+taskNameId).editable({
         type: 'text',
+        placement: 'left',
         pk: task.id,
         url: WEB_APP_ROOT+'task/saveOrUpdate',
         value: {

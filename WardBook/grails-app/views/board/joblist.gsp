@@ -147,6 +147,7 @@
             $('.task').each(function() {
                 $(this).editable({
                     type : 'text',
+                    placement: 'left',
                     pk : $(this).attr('data-tid'),
                     url : '${createLink(controller: 'task', action: 'saveOrUpdate')}',
                     value: {
