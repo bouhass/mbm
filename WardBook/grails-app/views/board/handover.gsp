@@ -14,7 +14,7 @@
 			</thead>
 			<tbody>
 			<g:each var="p" in="${patients}">
-				<tr>
+				<tr id="${p.id}">
                     <td>
                         <table class="patient-info">
                             <tr>
@@ -55,7 +55,7 @@
                                 <g:each var="record" in="${p.records}">
                                     <g:if test="${record.type == recordType}">
                                         <tr>
-                                            <td>
+                                            <td data-rid="${record.id}">
                                                 ${record.name}
                                             </td>
                                         </tr>
@@ -68,7 +68,7 @@
                         <table class="inner-table">
                             <g:each var="task" in="${p.tasks}">
                                 <tr>
-                                    <td>
+                                    <td data-tid="${task.id}">
                                         ${task.name}
                                     </td>
                                 </tr>
@@ -106,6 +106,81 @@
 //                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
                 }
             });
+
+            window.setInterval(function() {
+                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
+                    $(patients).each(function(i, patient) {
+
+                        var remoteTasks = [];
+                        $(patient.tasks).each(function(j, task) {
+                            remoteTasks.push(task.id.toString());
+                        });
+
+                        var remoteRecords = [];
+                        $(patient.records).each(function(j, record) {
+                            remoteRecords.push(record.id.toString());
+                        });
+
+                        var localTasks = [];
+                        $('tr#'+patient.id+' td').each(function() {
+                            if ($(this).attr('data-tid') != undefined) {
+                                localTasks.push($(this).attr('data-tid'));
+                            }
+                        })
+
+                        var localRecords = [];
+                        $('tr#'+patient.id+' td').each(function() {
+                            if ($(this).attr('data-rid') != undefined) {
+                                localRecords.push($(this).attr('data-rid'));
+                            }
+                        })
+
+                        // delete tasks if applies
+                        $(localTasks).each(function(k, taskId) {
+                            if ($.inArray(taskId, remoteTasks) == -1) {
+                                $('tr#'+patient.id+' td[data-tid="'+taskId+'"]').parent().remove();
+                            }
+                        });
+
+                        // delete records if applies
+                        $(localRecords).each(function(k, recordId) {
+                            if ($.inArray(recordId, remoteRecords) == -1) {
+                                $('tr#'+patient.id+' td[data-rid="'+recordId+'"]').parent().remove();
+                            }
+                        });
+
+
+                        $(patient.tasks).each(function(j, task) {
+
+                            // add new tasks if applies
+                            if ($.inArray(task.id.toString(), localTasks) == -1) {
+                                $('.JOBS tbody').append('<tr><td data-tid="'+task.id+'">'+task.name+'</td></tr>')
+                            }
+                            else {
+                                // TODO : check update required
+                                var taskElement = $('tr#'+patient.id+' td[data-tid="'+task.id+'"]');
+                                taskElement.text(task.name);
+                            }
+                        });
+
+                        $(patient.records).each(function(j, record) {
+
+                            // add new records if applies
+                            if ($.inArray(record.id.toString(), localRecords) == -1) {
+                                $('.'+record.type+' tbody').append('<tr><td data-rid="'+record.id+'">'+record.name+'</td></tr>')
+                            }
+                            else {
+                                // TODO : check update required
+                                var recordElement = $('tr#'+patient.id+' td[data-rid="'+record.id+'"]');
+                                recordElement.text(record.name);
+                            }
+                        });
+                    })
+                })
+                        .fail(function() {
+                            console.error('ERROR: could not patient data');
+                        })
+            }, 3000);
 		});
 	</script>
 		
