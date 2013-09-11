@@ -80,9 +80,6 @@
 			</tbody>
 		</table>
 	</div>
-
-    <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
-    <script src="${resource(dir: 'js', file: 'ward-book-board.js')}"></script>
 	
 	<script>
 		/* Table initialisation */

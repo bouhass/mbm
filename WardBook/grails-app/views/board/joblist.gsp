@@ -115,15 +115,11 @@
 			</tbody>
 		</table>
 	</div>
-	
-	<script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
-	<script src="${resource(dir: 'js', file: 'ward-book-board.js')}"></script>
-	<script src="${resource(dir: 'js', file: 'task.js')}"></script>
-	
-	<script>
-		$.fn.editable.defaults.mode = 'popup';
 
+	<script>
 		$(document).ready(function() {
+
+            $.fn.editable.defaults.mode = 'popup';
 
             $('.add-task-input').each(function() {
                 $(this).keyup(function (e) {
