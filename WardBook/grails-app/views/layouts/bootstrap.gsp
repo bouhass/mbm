@@ -30,34 +30,33 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container-fluid">
-					
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</a>
-					
-					<a class="brand" href="${createLink(uri: '/')}">
-						<g:img dir="images" file="mbm-logo.png" width="15" height="15"/>
-                        <g:meta name="app.name"/>
-					</a>
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="${createLink(uri: '/')}">
+                    <g:img dir="images" file="mbm-logo.png" width="23" height="23"/>
+                    <g:meta name="app.name"/>
+                </a>
+            </div>
 
-					<div class="first-level-nav nav-collapse">
-						<ul class="nav">							
-							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">HOME</a></li>
-							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-								<g:if test="${!['Dbdoc', 'Record'].contains(c.name)}">
-									<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name.toUpperCase()}</g:link></li>
-								</g:if>
-							</g:each>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="first-level-nav collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">HOME</a></li>
+                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                        <g:if test="${!['Dbdoc', 'Record'].contains(c.name)}">
+                            <li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.name.toUpperCase()}</g:link></li>
+                        </g:if>
+                    </g:each>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
 
 		<div class="container-fluid">
 			<g:layoutBody/>

@@ -62,7 +62,7 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
 		
-		runtime ":twitter-bootstrap:2.3.2"
+		runtime ":twitter-bootstrap:3.0.0"
 		runtime ":fields:1.3"
 
         test ":cucumber:0.9.0"

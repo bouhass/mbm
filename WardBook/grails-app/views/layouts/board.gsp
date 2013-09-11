@@ -8,21 +8,21 @@
 		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book-board.css')}">
 	</head>
 	<body>
-		<div class="second-level-nav navbar">
-			<div class="second-level-nav navbar-inner">
-				<ul class="nav">
-					<li <%= actionName == 'joblist' ? ' class="active"' : '' %>><g:link controller="board" action="joblist"> JOB LIST </g:link></li>
-					<li <%= actionName == 'handover' ? ' class="active"' : '' %>><g:link controller="board" action="handover"> HANDOVER </g:link></li>
-				</ul>
+        <div class="second-level-nav navbar">
+            <div class="second-level-nav navbar-inner">
+                <ul class="nav navbar-nav">
+                    <li <%= actionName == 'joblist' ? ' class="active"' : '' %>><g:link controller="board" action="joblist"> JOB LIST </g:link></li>
+                    <li <%= actionName == 'handover' ? ' class="active"' : '' %>><g:link controller="board" action="handover"> HANDOVER </g:link></li>
+                </ul>
 
-                <div class="second-level-nav-item input-prepend">
-                    <span class="add-on">
-                        <i class="icon-search"></i>
-                    </span>
-                    <input id="search" type="text" class="span3" placeholder="Search ...">
-                </div>
+            <div class="col-lg-2 input-group second-level-nav-item">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </span>
+                <input id="search" type="text" class="form-control" placeholder="Search ...">
+            </div>
 
-                <g:if test="${actionName == 'handover'}">
+            <g:if test="${actionName == 'handover'}">
                     <div id="columns-selector" class="second-level-nav-item btn-group" data-toggle="buttons-checkbox">
                         <button type="button" class="btn btn-info active" value="HISTORY">HISTORY</button>
                         <button type="button" class="btn btn-info active" value="PROBLEM">PROBLEMS</button>
@@ -32,7 +32,7 @@
                     </div>
                 </g:if>
             </div>
-		</div>
+        </div>
 
 		<g:layoutBody/>
 	</body>
