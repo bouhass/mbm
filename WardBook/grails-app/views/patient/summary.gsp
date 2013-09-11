@@ -16,13 +16,13 @@
 						<li class="nav-header">${entityName}</li>
 						<li>
 							<g:link class="list" action="overview">
-								<i class="icon-list"></i>
+								<span class="glyphicon glyphicon-list"></span>
 								<g:message code="default.list.label" args="[entityName]" />
 							</g:link>
 						</li>
 						<li>
 							<g:link class="create" action="create">
-								<i class="icon-plus"></i>
+								<span class="glyphicon glyphicon-plus"></span>
 								<g:message code="default.create.label" args="[entityName]" />
 							</g:link>
 						</li>
@@ -102,15 +102,15 @@
 					<g:hiddenField name="id" value="${patientInstance?.id}" />
 					<div class="form-actions">
 						<g:link class="btn btn-info" action="show" id="${patientInstance?.id}">
-							<i class="icon-user"></i>
+                            <span class="glyphicon glyphicon-user"></span>
 							<g:message code="patient.show.label" default="Full profile" />
 						</g:link>
 						<g:link class="btn btn-warning" action="edit" id="${patientInstance?.id}">
-							<i class="icon-pencil"></i>
+                            <span class="glyphicon glyphicon-pencil"></span>
 							<g:message code="default.button.edit.label" default="Edit" />
 						</g:link>
 						<button class="btn btn-danger" type="submit" name="_action_delete">
-							<i class="icon-trash icon-white"></i>
+                            <span class="glyphicon glyphicon-trash icon-white"></span>
 							<g:message code="default.button.delete.label" default="Delete" />
 						</button>
 					</div>

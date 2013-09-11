@@ -16,13 +16,13 @@
 						<li class="nav-header">\${entityName}</li>
 						<li class="active">
 							<g:link class="list" action="list">
-								<i class="icon-list icon-white"></i>
+                                <span class="glyphicon glyphicon-list icon-white"></span>
 								<g:message code="default.list.label" args="[entityName]" />
 							</g:link>
 						</li>
 						<li>
 							<g:link class="create" action="create">
-								<i class="icon-plus"></i>
+                                <span class="glyphicon glyphicon-plus"></span>
 								<g:message code="default.create.label" args="[entityName]" />
 							</g:link>
 						</li>

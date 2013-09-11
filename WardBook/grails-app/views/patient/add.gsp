@@ -14,13 +14,13 @@
 					<li class="nav-header">${entityName}</li>
 					<li>
 						<g:link class="list" action="overview">
-							<i class="icon-list"></i>
+							<span class="glyphicon glyphicon-list"></span>
 							<g:message code="default.list.label" args="[entityName]" />
 						</g:link>
 					</li>
 					<li class="active">
 						<g:link class="create" action="add">
-							<i class="icon-plus icon-white"></i>
+							<span class="glyphicon glyphicon-plus icon-white"></span>
 							<g:message code="default.create.label" args="[entityName]" />
 						</g:link>
 					</li>
@@ -55,7 +55,7 @@
 						<f:all bean="patientInstance"/>
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary">
-								<i class="icon-ok icon-white"></i>
+                                <span class="glyphicon glyphicon-ok icon-white"></span>
 								<g:message code="default.button.create.label" default="Create" />
 							</button>
 						</div>

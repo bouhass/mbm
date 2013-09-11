@@ -69,7 +69,7 @@
                                             ${t.name}
                                         </td>
                                         <td class="delete-task">
-                                            <i class="icon-remove" />
+                                            <span class="glyphicon glyphicon-remove"></span>
                                         </td>
                                     </tr>
 								</g:if>
@@ -103,7 +103,7 @@
                                             ${t.name}
                                         </td>
                                         <td class="delete-task">
-                                            <i class="icon-remove" />
+                                            <span class="glyphicon glyphicon-remove"></span>
                                         </td>
                                     </tr>
 								</g:if>
