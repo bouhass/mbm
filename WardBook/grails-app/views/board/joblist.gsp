@@ -47,15 +47,17 @@
 							<tr>
                                 <td></td>
                                 <td>
-                                    <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input" />
+                                    <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
+                                    &nbsp;
+                                    <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input mbm-input-blue" />
                                 </td>
                                 <td></td>
                             </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'NURSE'}">
 									<tr>
-                                        <td class="update-task-status">
-                                            <img/>
+                                        <td class="delete-task">
+                                            <span class="glyphicon glyphicon-remove"></span>
                                         </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
@@ -68,8 +70,8 @@
                                             class="editable editable-click task">
                                             ${t.name}
                                         </td>
-                                        <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                        <td class="update-task-status">
+                                            <img/>
                                         </td>
                                     </tr>
 								</g:if>
@@ -81,15 +83,17 @@
 							<tr>
                                 <td></td>
                                 <td>
-                                    <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input" />
+                                    <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
+                                    &nbsp;
+                                    <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input mbm-input-blue" />
                                 </td>
                                 <td></td>
                             </tr>
 							<g:each var="t" in="${p.tasks}">
 								<g:if test="${t.category == 'DOCTOR'}">
 									<tr>
-                                        <td class="update-task-status">
-                                            <img/>
+                                        <td class="delete-task">
+                                            <span class="glyphicon glyphicon-remove"></span>
                                         </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
@@ -102,8 +106,8 @@
                                             class="editable editable-click task">
                                             ${t.name}
                                         </td>
-                                        <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                        <td class="update-task-status">
+                                            <img/>
                                         </td>
                                     </tr>
 								</g:if>

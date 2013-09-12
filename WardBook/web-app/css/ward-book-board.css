@@ -14,10 +14,27 @@ th,td {
 	border: 1px solid;
 	padding: 8px;
     border-color: #bbb;
+    vertical-align: top;
 }
 
 .patient-info td {
     border: 0px;
+
+}
+
+.patient-info td:first-child {
+    border-right: 1px solid;
+    border-color: #bbb
+}
+
+.mbm-input-blue {
+    border: 0px;
+    border-bottom: 1px solid #3cf;
+    background: transparent;
+}
+
+.mbm-input-blue:focus {
+    outline: none;
 }
 
 .page-body .patients-table .inner-table {

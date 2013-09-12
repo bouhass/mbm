@@ -40,8 +40,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="${createLink(uri: '/')}">
-                    <g:img dir="images" file="mbm-logo.png" width="23" height="23"/>
-                    <g:meta name="app.name"/>
+                    <g:img dir="images" file="mbm-logo.png" width="40" height="40"/>
+                    %{--<g:meta name="app.name"/>--}%
                 </a>
             </div>
 

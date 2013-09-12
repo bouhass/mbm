@@ -22,8 +22,20 @@
     border-radius: 0px;
 }
 
+.navbar-brand {
+    padding: 6px 10px;
+    border-right: 1px solid #bbb;
+}
+
+.first-level-nav ul {
+    width: 90%;
+}
+
+.first-level-nav ul.nav>li {
+    width: 25%;
+}
+
 .navbar ul.nav>li {
-    width: 276px;
     text-align:center;
     font-size:1.8em;
 }
@@ -39,6 +51,14 @@
 
 .second-level-nav {
     background: #bbb;
+}
+
+.second-level-nav ul {
+    width: 45%;
+}
+
+.second-level-nav ul.nav>li {
+    width: 50%;
 }
 
 .second-level-nav ul.nav>li>a {

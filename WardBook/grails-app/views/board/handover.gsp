@@ -49,7 +49,9 @@
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
                                     <td>
-                                        <input type="text" placeholder="+ ADD NEW" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input" />
+                                        <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
+                                        &nbsp;
+                                        <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" />
                                     </td>
                                 </tr>
                                 <g:each var="record" in="${p.records}">

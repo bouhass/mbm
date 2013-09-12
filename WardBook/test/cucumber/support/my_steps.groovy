@@ -33,8 +33,8 @@ When (~'I click on delete ([^"]*) "([^"]*)" (NURSE|DOCTOR) job$') { patient, job
 
 def statusToImage(status) {
     switch (status) {
-        case 'PENDING': return 'empty-square.png'
-        case 'STARTED': return 'half-square.png'
-        case 'COMPLETED': return 'full-square.png'
+        case 'PENDING':     return 'check-square-empty.png'
+        case 'STARTED':     return 'check-square-half.png'
+        case 'COMPLETED':   return 'check-square-full.png'
     }
 }

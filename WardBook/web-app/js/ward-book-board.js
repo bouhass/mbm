@@ -1,15 +1,15 @@
 
 function taskStatusToImage(status) {
-    if      (status == 'STARTED')    return WEB_APP_ROOT+'images/half-square.png';
-    else if (status == 'COMPLETED')  return WEB_APP_ROOT+'images/full-square.png';
-    else /* (status == 'PENDING') */ return WEB_APP_ROOT+'images/empty-square.png';
+    if      (status == 'STARTED')    return WEB_APP_ROOT+'images/check-square-half.png';
+    else if (status == 'COMPLETED')  return WEB_APP_ROOT+'images/check-square-full.png';
+    else /* (status == 'PENDING') */ return WEB_APP_ROOT+'images/check-square-empty.png';
 }
 
 var updateTaskStatus = function() {
     var self = $(this)
     self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
-    var taskId = self.siblings().attr('data-tid');
-    var currentStatus = self.siblings().attr('data-status');
+    var taskId = $(self.siblings()[1]).attr('data-tid');
+    var currentStatus = $(self.siblings()[1]).attr('data-status');
     var newStatus = {
         'PENDING': 'STARTED',
         'STARTED': 'COMPLETED',
@@ -22,7 +22,7 @@ var updateTaskStatus = function() {
     })
         .done(function(task) {
             self.children('img').attr('src', taskStatusToImage(task.status));
-            self.siblings().attr('data-status', task.status);
+            $(self.siblings()[1]).attr('data-status', task.status);
         })
         .fail(function() {
             alert("ERROR: could not update the task status");
@@ -31,7 +31,7 @@ var updateTaskStatus = function() {
 
 var deleteTask = function() {
     var self = $(this);
-    var taskElement = $(self.siblings()[1]);
+    var taskElement = $(self.siblings()[0]);
     if (confirm('Are you sure you want to delete this job? ('+taskElement.attr('data-name')+')')) {
         self.children().removeClass('glyphicon-remove');
         self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');
@@ -53,9 +53,9 @@ function addTask(patient_id, task) {
     var taskDeleteId = 'task-delete'+new Date().getTime();
     $('#task-'+task.category+'-'+patient_id).append('' +
         '<tr>' +
-            '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
-            '<td id="'+taskNameId+'" data-type="task" data-tid="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" class="editable editable-click">'+task.name+'</td>' +
             '<td id="'+taskDeleteId+'" class="delete-task"><span class="glyphicon glyphicon-remove"></span></td>' +
+            '<td id="'+taskNameId+'" data-type="task" data-tid="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" class="editable editable-click">'+task.name+'</td>' +
+            '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>');
     $('#'+taskNameId).editable({
         type: 'text',
