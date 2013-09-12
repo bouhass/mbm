@@ -57,7 +57,7 @@
 								<g:if test="${t.category == 'NURSE'}">
 									<tr>
                                         <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                            <span class="glyphicon glyphicon-remove hidden"></span>
                                         </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
@@ -93,7 +93,7 @@
 								<g:if test="${t.category == 'DOCTOR'}">
 									<tr>
                                         <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove"></span>
+                                            <span class="glyphicon glyphicon-remove hidden"></span>
                                         </td>
                                         <td data-type="task"
                                             data-tid="${t.id}"
@@ -139,9 +139,12 @@
                 $(this).siblings().children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
             });
 
-            $('.update-task-status').on('click', updateTaskStatus);
+            $('.update-task-status').live('click', updateTaskStatus);
 
-            $('.delete-task').on('click', deleteTask);
+            $('.delete-task').live('click', deleteTask);
+
+            $('.inner-table tr').live('mouseover', function() { $(this).find('.delete-task span').removeClass('hidden') });
+            $('.inner-table tr').live('mouseout', function() { $(this).find('.delete-task span').addClass('hidden') });
 
             /* Init popover functionality. */
             $('.task').each(function() {

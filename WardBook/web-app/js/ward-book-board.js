@@ -53,7 +53,7 @@ function addTask(patient_id, task) {
     var taskDeleteId = 'task-delete'+new Date().getTime();
     $('#task-'+task.category+'-'+patient_id).append('' +
         '<tr>' +
-            '<td id="'+taskDeleteId+'" class="delete-task"><span class="glyphicon glyphicon-remove"></span></td>' +
+            '<td id="'+taskDeleteId+'" class="delete-task"><span class="glyphicon glyphicon-remove hidden"></span></td>' +
             '<td id="'+taskNameId+'" data-type="task" data-tid="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" class="editable editable-click">'+task.name+'</td>' +
             '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>');
@@ -77,8 +77,6 @@ function addTask(patient_id, task) {
             }
         }
     });
-    $('#'+taskImageId).on('click', updateTaskStatus);
-    $('#'+taskDeleteId).on('click', deleteTask);
 }
 
 function addNewTask(name, patient_id, category) {
