@@ -41,12 +41,17 @@ th,td {
 	width: 100%;
 }
 
+.inner-table tr {
+    line-height: 24px;
+}
+
 .inner-table td {
 	/* border: none; */
 	border-bottom: 0px solid;
 	border-top: none;
 	border-left: none;
 	border-right: none;
+    padding: 8px 0;
 }
 
 .inner-table td:first-child {

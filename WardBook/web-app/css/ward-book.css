@@ -15,6 +15,12 @@
     display: inline-block;
 }
 
+.editable-click,
+a.editable-click,
+a.editable-click:hover {
+    border-bottom: dashed 1px #bbb;
+}
+
 
 /* nav common */
 .navbar {

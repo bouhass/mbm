@@ -45,10 +45,10 @@
 					<td>
 						<table id="task-NURSE-${p.id}" class="inner-table">
 							<tr>
-                                <td></td>
                                 <td>
-                                    <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
-                                    &nbsp;
+                                    <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                </td>
+                                <td>
                                     <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input mbm-input-blue" />
                                 </td>
                                 <td></td>
@@ -57,18 +57,22 @@
 								<g:if test="${t.category == 'NURSE'}">
 									<tr>
                                         <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove hidden"></span>
+                                            <button type="button" class="btn btn-danger btn-xs hidden">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
                                         </td>
-                                        <td data-type="task"
-                                            data-tid="${t.id}"
-                                            data-name="${t.name}"
-                                            data-status="${t.status}"
-                                            data-priority="${t.priority}"
-                                            data-comment="${t.comment}"
-                                            data-category="${t.category}"
-                                            data-pid="${p.id}"
-                                            class="editable editable-click task">
-                                            ${t.name}
+                                        <td>
+                                            <div data-type="task"
+                                                 data-tid="${t.id}"
+                                                 data-name="${t.name}"
+                                                 data-status="${t.status}"
+                                                 data-priority="${t.priority}"
+                                                 data-comment="${t.comment}"
+                                                 data-category="${t.category}"
+                                                 data-pid="${p.id}"
+                                                 class="editable editable-click task">
+                                                ${t.name}
+                                            </div>
                                         </td>
                                         <td class="update-task-status">
                                             <img/>
@@ -93,18 +97,22 @@
 								<g:if test="${t.category == 'DOCTOR'}">
 									<tr>
                                         <td class="delete-task">
-                                            <span class="glyphicon glyphicon-remove hidden"></span>
+                                            <button type="button" class="btn btn-danger btn-xs hidden">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
                                         </td>
-                                        <td data-type="task"
-                                            data-tid="${t.id}"
-                                            data-name="${t.name}"
-                                            data-status="${t.status}"
-                                            data-priority="${t.priority}"
-                                            data-comment="${t.comment}"
-                                            data-category="${t.category}"
-                                            data-pid="${p.id}"
-                                            class="editable editable-click task">
-                                            ${t.name}
+                                        <td>
+                                            <div data-type="task"
+                                                 data-tid="${t.id}"
+                                                 data-name="${t.name}"
+                                                 data-status="${t.status}"
+                                                 data-priority="${t.priority}"
+                                                 data-comment="${t.comment}"
+                                                 data-category="${t.category}"
+                                                 data-pid="${p.id}"
+                                                 class="editable editable-click task">
+                                                ${t.name}
+                                            </div>
                                         </td>
                                         <td class="update-task-status">
                                             <img/>
@@ -136,15 +144,15 @@
 
             /* Init tasks status icons. */
             $('.task').each(function() {
-                $(this).siblings().children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+                $(this).parent().siblings().children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
             });
 
             $('.update-task-status').live('click', updateTaskStatus);
 
             $('.delete-task').live('click', deleteTask);
 
-            $('.inner-table tr').live('mouseover', function() { $(this).find('.delete-task span').removeClass('hidden') });
-            $('.inner-table tr').live('mouseout', function() { $(this).find('.delete-task span').addClass('hidden') });
+            $('.inner-table tr').live('mouseover', function() { $(this).find('.delete-task button').removeClass('hidden') });
+            $('.inner-table tr').live('mouseout', function() { $(this).find('.delete-task button').addClass('hidden') });
 
             /* Init popover functionality. */
             $('.task').each(function() {
@@ -207,7 +215,7 @@
                         });
 
                         var localTasks = [];
-                        $('tr#'+patient.id+' td').each(function() {
+                        $('tr#'+patient.id+' td div').each(function() {
                             if ($(this).attr('data-tid') != undefined) {
                                 localTasks.push($(this).attr('data-tid'));
                             }
@@ -216,7 +224,7 @@
                         // delete tasks if applies
                         $(localTasks).each(function(k, taskId) {
                             if ($.inArray(taskId, remoteTasks) == -1) {
-                                $('tr#'+patient.id+' td[data-tid="'+taskId+'"]').parent().remove();
+                                $('tr#'+patient.id+' td div[data-tid="'+taskId+'"]').parent().parent().remove();
                             }
                         });
 
@@ -228,7 +236,7 @@
                             }
                             else {
                                 // TODO : check update required
-                                var taskElement = $('tr#'+patient.id+' td[data-tid="'+task.id+'"]');
+                                var taskElement = $('tr#'+patient.id+' td div[data-tid="'+task.id+'"]');
                                 taskElement.text(task.name);
                                 taskElement.attr('data-name', task.name);
                                 taskElement.attr('data-status', task.status);
