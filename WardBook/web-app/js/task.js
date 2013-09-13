@@ -22,7 +22,7 @@
                 $(element).empty();
                 return; 
             }
-            $(element).siblings().children('img').attr('src', taskStatusToImage(value.status));
+            $(element).parent().siblings().children('img').attr('src', taskStatusToImage(value.status));
             $(element).html(value.name);
         },
         
@@ -132,39 +132,39 @@
     
     Task.defaults = $.extend({}, $.fn.editabletypes.abstractinput.defaults, {
         tpl:
-            '<div class="editable-task">' +
-                '<label>' +
-                    '<span>Name: </span>' +
-                    '<input type="text" name="name" class="input-medium">' +
-                '</label>' +
-            '</div>'+
-            '<div class="editable-task">' +
-                '<label>' +
-                    '<span>Status: </span>' +
-                    '<select name="status" class="input-medium">'+
-                        '<option value="PENDING">PENDING</option>'+
-                        '<option value="STARTED">STARTED</option>'+
-                        '<option value="COMPLETED">COMPLETED</option>'+
-                    '</select>' +
-                '</label>' +
-            '</div>' +
-            '<div class="editable-task">' +
-                '<label>' +
-                    '<span>Priority: </span>' +
-                    '<select name="priority" class="input-medium">'+
-                        '<option value="NORMAL">NORMAL</option>'+
-                        '<option value="HIGH">HIGH</option>'+
-                        '<option value="URGENT">URGENT</option>'+
-                    '</select>' +
-                '</label>' +
-            '</div>' +
-            '<div class="editable-task">' +
-                '<label>' +
-                    '<span>Comments: </span>' +
-                    '<br/>' +
-                    '<textarea name="comment" class="input-large"/>' +
-                '</label>' +
-            '</div>'+'',
+            '<div class="editable-task">\
+                <label>\
+                    <span>Name: </span>\
+                    <input type="text" name="name" class="form-control">\
+                </label>\
+            </div>\
+            <div class="editable-task">\
+                <label>\
+                    <span>Status: </span>\
+                    <select name="status" class="form-control">\
+                        <option value="PENDING">PENDING</option>\
+                        <option value="STARTED">STARTED</option>\
+                        <option value="COMPLETED">COMPLETED</option>\
+                    </select>\
+                </label>\
+            </div>\
+            <div class="editable-task">\
+                <label>\
+                    <span>Priority: </span>\
+                    <select name="priority" class="form-control">\
+                        <option value="NORMAL">NORMAL</option>\
+                        <option value="HIGH">HIGH</option>\
+                        <option value="URGENT">URGENT</option>\
+                    </select>\
+                </label>\
+            </div>\
+            <div class="editable-task">\
+                <label>\
+                    <span>Comments: </span>\
+                    <br/>\
+                    <textarea name="comment" class="form-control"/>\
+                </label>\
+            </div>',
              
         inputclass: ''
     });
