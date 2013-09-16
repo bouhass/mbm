@@ -19,7 +19,6 @@ th,td {
 
 .patient-info td {
     border: 0px;
-
 }
 
 .patient-info td:first-child {
@@ -42,7 +41,7 @@ th,td {
 }
 
 .inner-table tr {
-    line-height: 24px;
+    line-height: 21px;
 }
 
 .inner-table td {

@@ -6,7 +6,7 @@
 	</head>
 
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			<aside id="application-status" class="span3">
 				<div class="well sidebar-nav">
 					<h5>Another nav menu?</h5>

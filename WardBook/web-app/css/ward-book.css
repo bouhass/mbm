@@ -34,7 +34,7 @@ a.editable-click:hover {
 }
 
 .first-level-nav ul {
-    width: 90%;
+    width: 89%;
 }
 
 .first-level-nav ul.nav>li {
@@ -47,6 +47,10 @@ a.editable-click:hover {
 }
 
 /* first level nav */
+.first-level-nav > a {
+    font-size:1.8em;
+}
+
 .first-level-nav ul.nav>li {
     border-top: 3px solid #bbb;
 }
@@ -85,4 +89,13 @@ a.editable-click:hover {
     margin-top: 9px;
     margin-bottom: 0px;
     margin-left: 10px;
+}
+
+.third-level-nav {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.third-level-nav a {
+    margin-right: 5px;
 }

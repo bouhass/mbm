@@ -55,6 +55,12 @@
                         </g:if>
                     </g:each>
                 </ul>
+                <a class="btn">
+                    <span class="glyphicon glyphicon-bell"></span>
+                </a>
+                <a class="btn">
+                    <span class="glyphicon glyphicon-comment"></span>
+                </a>
             </div><!-- /.navbar-collapse -->
         </nav>
 

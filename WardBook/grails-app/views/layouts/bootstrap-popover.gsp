@@ -35,7 +35,7 @@
 		
 			<g:layoutBody/>
 
-			<hr>
+			%{--<hr>--}%
 
 		</div>
 

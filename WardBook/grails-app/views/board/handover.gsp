@@ -1,5 +1,24 @@
 <g:applyLayout name="board">
 
+    <div class="third-level-nav">
+        <div class="col-lg-9">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#"> Doctors </a></li>
+                <li><a href="#"> Nurse </a></li>
+                <li><a href="#"> Physio </a></li>
+                <li><a href="#"> + </a></li>
+            </ul>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-default">
+                <span class="glyphicon glyphicon-print"></span>
+            </a>
+            <a class="btn btn-default">
+                Edit view
+            </a>
+        </div>
+    </div>
+
 	<div class="page-body">
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
