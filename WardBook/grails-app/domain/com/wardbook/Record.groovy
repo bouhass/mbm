@@ -7,7 +7,18 @@ class Record {
     static belongsTo = [patient: Patient]
 
     static constraints = {
-        type inList: ['HISTORY', 'PROBLEM', 'ALERT', 'PROGRESS']
+        type inList: [
+                'ALERT',
+                'DIET',
+                'HISTORY',
+                'MOBILITY',
+                'NOTE',
+                'PLAN',
+                'PREMORBID',
+                'PROBLEM',
+                'PROGRESS',
+                'SOCIAL',
+        ]
     }
 	
 	String toString() { "${name}" }

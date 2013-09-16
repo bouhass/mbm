@@ -22,15 +22,15 @@
                 <input id="search" type="text" class="form-control" placeholder="Search ...">
             </div>
 
-            <g:if test="${actionName == 'handover'}">
-                    <div id="columns-selector" class="second-level-nav-item btn-group" data-toggle="buttons-checkbox">
-                        <button type="button" class="btn btn-info active" value="HISTORY">HISTORY</button>
-                        <button type="button" class="btn btn-info active" value="PROBLEM">PROBLEMS</button>
-                        <button type="button" class="btn btn-info active" value="ALERT">ALERTS</button>
-                        <button type="button" class="btn btn-info active" value="PROGRESS">PROGRESS</button>
-                        <button type="button" class="btn btn-info active" value="JOBS">JOBS</button>
-                    </div>
-                </g:if>
+            %{--<g:if test="${actionName == 'handover'}">--}%
+                    %{--<div id="columns-selector" class="second-level-nav-item btn-group" data-toggle="buttons-checkbox">--}%
+                        %{--<button type="button" class="btn btn-info active" value="HISTORY">HISTORY</button>--}%
+                        %{--<button type="button" class="btn btn-info active" value="PROBLEM">PROBLEMS</button>--}%
+                        %{--<button type="button" class="btn btn-info active" value="ALERT">ALERTS</button>--}%
+                        %{--<button type="button" class="btn btn-info active" value="PROGRESS">PROGRESS</button>--}%
+                        %{--<button type="button" class="btn btn-info active" value="JOBS">JOBS</button>--}%
+                    %{--</div>--}%
+                %{--</g:if>--}%
             </div>
         </div>
 

@@ -2,11 +2,12 @@
 
     <div class="third-level-nav">
         <div class="col-lg-9">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="#"> Doctors </a></li>
+            %{--<ul class="nav nav-tabs nav-justified">--}%
+            <ul id="view-selector" class="nav nav-tabs">
+                <li><a href="#"> Doctor </a></li>
                 <li><a href="#"> Nurse </a></li>
                 <li><a href="#"> Physio </a></li>
-                <li><a href="#"> + </a></li>
+                <li><a href="#"> <span class="glyphicon glyphicon-plus"></span> </a></li>
             </ul>
         </div>
         <div class="pull-right">
@@ -24,11 +25,15 @@
 			<thead>
 				<tr>
 					<th>DEMOGRAPHICS</th>
-					<th class="HISTORY">HISTORY</th>
-					<th class="PROBLEM">PROBLEMS</th>
-					<th class="ALERT">ALERTS</th>
+					<th class="HISTORY">PMH</th>
+					<th class="PROBLEM">PROBLEM LIST</th>
 					<th class="PROGRESS">PROGRESS</th>
-                    <th class="JOBS">JOBS</th>
+					<th class="PLAN">PLAN</th>
+					<th class="NOTE">NOTES</th>
+					<th class="DIET">DIET</th>
+					<th class="PREMORBID">PRE-MORBID STATUS</th>
+					<th class="MOBILITY">MOBILITY</th>
+					<th class="SOCIAL">SOCIAL</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -63,7 +68,7 @@
                             </tr>
                         </table>
                     </td>
-                    <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'ALERT', 'PROGRESS']">
+                    <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']">
                         <td class="${recordType}">
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
@@ -85,17 +90,6 @@
                             </table>
                         </td>
                     </g:each>
-					<td class="JOBS">
-                        <table class="inner-table">
-                            <g:each var="task" in="${p.tasks}">
-                                <tr>
-                                    <td data-tid="${task.id}">
-                                        ${task.name}
-                                    </td>
-                                </tr>
-                            </g:each>
-                        </table>
-                    </td>
 				</tr>
 			</g:each>
 			</tbody>
@@ -105,6 +99,31 @@
 	<script>
 		/* Table initialisation */
 		$(document).ready(function() {
+
+            var handoverViewsColumnsMapping = {
+                Doctor: ['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE'],
+                Nurse: ['HISTORY', 'PROBLEM', 'DIET', 'MOBILITY', 'SOCIAL'],
+                Physio: ['HISTORY', 'PROBLEM', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+            }
+
+            $(['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+                $('.'+columnToHide).hide();
+            });
+
+            $('#view-selector li').on('click', function() {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                $(['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+                    $('.'+columnToHide).hide();
+                });
+                $(handoverViewsColumnsMapping[$(this).text().trim()]).each(function(i, columnName) {
+                    $('.'+columnName).show();
+                });
+            });
+
+            // TODO : displayHandoverViewFor('Doctor')
+            $('#view-selector li:contains(Doctor)').click();
+
             $('.add-record-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
@@ -114,16 +133,16 @@
                 });
             });
 
-            $('#columns-selector button').on('click', function() {
-                if ($(this).hasClass('active')) {
-                    $('.'+$(this).attr('value')).hide();
-//                    $('#example tr *:nth-child('+$(this).attr('value')+')').hide();
-                }
-                else {
-                    $('.'+$(this).attr('value')).show();
-//                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
-                }
-            });
+//            $('#columns-selector button').on('click', function() {
+//                if ($(this).hasClass('active')) {
+//                    $('.'+$(this).attr('value')).hide();
+////                    $('#example tr *:nth-child('+$(this).attr('value')+')').hide();
+//                }
+//                else {
+//                    $('.'+$(this).attr('value')).show();
+////                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
+//                }
+//            });
 
             window.setInterval(function() {
                 $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {

@@ -19,7 +19,7 @@ class BootStrap {
         def josephLove = new Patient(
                 firstName: 'JOSEPH',
                 lastName: 'LOVE',
-                dateOfBirth: Date.parse("dd-MMM-yyyy", "15-Mar-1966"),
+                dateOfBirth: Date.parse("dd-MMM-yyyy", "07-Feb-1940"),
                 gender: 'MALE',
                 nhsNumber: '1837495756',
                 status: 'For Home',
@@ -31,11 +31,19 @@ class BootStrap {
         josephLove.addToTasks(new Task(name: 'Blood test', status: 'COMPLETED', category: 'NURSE'))
         josephLove.addToTasks(new Task(name: 'X-Ray', status: 'PENDING', category: 'DOCTOR'))
 
-        josephLove.addToRecords(new Record(name: 'Diabetes', type: 'HISTORY'))
-        josephLove.addToRecords(new Record(name: 'Heart Disease', type: 'HISTORY'))
-        josephLove.addToRecords(new Record(name: 'Chest septicemia', type: 'PROBLEM'))
-        josephLove.addToRecords(new Record(name: 'Allergic to penicilin', type: 'ALERT'))
-        josephLove.addToRecords(new Record(name: 'Post-cycle, chemio 1, day 11', type: 'PROGRESS'))
+        josephLove.addToRecords(new Record(name: 'THN', type: 'HISTORY'))
+        josephLove.addToRecords(new Record(name: 'T2DM', type: 'HISTORY'))
+        josephLove.addToRecords(new Record(name: 'CKD3', type: 'HISTORY'))
+
+        josephLove.addToRecords(new Record(name: 'CCF', type: 'PROBLEM'))
+        josephLove.addToRecords(new Record(name: 'Urosepsis', type: 'PROBLEM'))
+
+        josephLove.addToRecords(new Record(name: 'A/W: S.O.B', type: 'PROGRESS'))
+        josephLove.addToRecords(new Record(name: 'Echo: EF<30%', type: 'PROGRESS'))
+
+        josephLove.addToRecords(new Record(name: 'TTO', type: 'PLAN'))
+
+        josephLove.addToRecords(new Record(name: 'Previously bed bound', type: 'PREMORBID'))
 
         josephLove.save(failOnError: true)
 
@@ -54,9 +62,15 @@ class BootStrap {
 
         joshKnight.addToTasks(new Task(name: 'Antibiotics allergy', status: 'PENDING', category: 'NURSE'))
 
-        joshKnight.addToRecords(new Record(name: 'AF', type: 'HISTORY'))
-        joshKnight.addToRecords(new Record(name: 'UTI', type: 'PROBLEM'))
+        joshKnight.addToRecords(new Record(name: 'NG Tube', type: 'HISTORY'))
+        joshKnight.addToRecords(new Record(name: 'IV Fluids', type: 'HISTORY'))
 
+        joshKnight.addToRecords(new Record(name: 'CXR', type: 'PLAN'))
+
+        joshKnight.addToRecords(new Record(name: 'MOBILE WITH ZIMMER FRAME', type: 'MOBILITY'))
+
+        joshKnight.addToRecords(new Record(name: 'LIVES ALONE', type: 'SOCIAL'))
+        joshKnight.addToRecords(new Record(name: 'CARERS QDS', type: 'SOCIAL'))
 
         joshKnight.save(failOnError: true)
 
@@ -76,8 +90,15 @@ class BootStrap {
         anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'STARTED', category: 'DOCTOR'))
         anishLee.addToTasks(new Task(name: 'Feed', status: 'PENDING', category: 'NURSE'))
 
+        anishLee.addToRecords(new Record(name: 'IV Gentamicin', type: 'HISTORY'))
+
         anishLee.addToRecords(new Record(name: 'Appendicitus', type: 'PROBLEM'))
         anishLee.addToRecords(new Record(name: 'Does not eat', type: 'PROBLEM'))
+
+        anishLee.addToRecords(new Record(name: 'HOIST', type: 'MOBILITY'))
+        anishLee.addToRecords(new Record(name: 'HIGH FALL RISK', type: 'MOBILITY'))
+
+        anishLee.addToRecords(new Record(name: 'Thickened fluids', type: 'DIET'))
 
         anishLee.save(failOnError: true)
     }
