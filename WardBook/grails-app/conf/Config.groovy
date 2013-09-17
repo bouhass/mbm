@@ -66,6 +66,9 @@ environments {
 		grails.gsp.reload.enable = true
 		grails.resources.debug = true
     }
+    devAmazon {
+        grails.resources.processing.enabled = true
+    }
     production {
         grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
