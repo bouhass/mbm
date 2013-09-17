@@ -99,3 +99,17 @@ a.editable-click:hover {
 .third-level-nav a {
     margin-right: 5px;
 }
+
+.task-comment-notification {
+    top: 5px;
+    font-size: 1.6em;
+}
+
+.task-comment-number {
+    position: absolute;
+    top: 1px;
+    left: 7px;
+    color: white;
+    font-size: 0.6em;
+    font-weight: bold;
+}

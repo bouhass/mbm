@@ -41,7 +41,7 @@ th,td {
 }
 
 .inner-table tr {
-    line-height: 21px;
+    line-height: 33px;
 }
 
 .inner-table td {
@@ -50,7 +50,7 @@ th,td {
 	border-top: none;
 	border-left: none;
 	border-right: none;
-    padding: 8px 0;
+    padding: 0;
 }
 
 .inner-table td:first-child {
