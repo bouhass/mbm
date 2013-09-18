@@ -26,7 +26,7 @@ environments {
         dataSource {
             pooled = true
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://aa1o8m2ywbjlsi4.cof0xwuqd56q.eu-west-1.rds.amazonaws.com:3306/DEV_DB"
+            url = "jdbc:mysql://mbm-dev1.cof0xwuqd56q.eu-west-1.rds.amazonaws.com:3306/DEV_DB"
             driverClassName = "com.mysql.jdbc.Driver"
             dialect = org.hibernate.dialect.MySQL5InnoDBDialect
             username = "user"
