@@ -81,7 +81,7 @@
                                 <g:each var="record" in="${p.records}">
                                     <g:if test="${record.type == recordType}">
                                         <tr>
-                                            <td data-rid="${record.id}">
+                                            <td data-rid="${record.id}" class="record">
                                                 ${record.name}
                                             </td>
                                         </tr>
@@ -235,8 +235,24 @@
             $('.add-record-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
-                        addRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+                        addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
                         $(this).val('');
+                    }
+                });
+            });
+
+            $('.record').each(function() {
+                $(this).editable({
+                    mode: 'inline',
+                    type: 'text',
+                    pk : $(this).attr('data-rid'),
+                    url: WEB_APP_ROOT+'record/saveOrUpdate',
+                    showbuttons: false,
+                    params : function(params) {
+                        return {
+                            'id' : $(this).attr('data-rid'),
+                            'name' : params.value
+                        }
                     }
                 });
             });
