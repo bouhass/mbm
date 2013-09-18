@@ -17,7 +17,7 @@ var updateTaskStatus = function() {
         'COMPLETED': 'PENDING'
     }[currentStatus]
 
-    $.post(WEB_APP_ROOT+'task/updateStatus', {
+    $.post(WEB_APP_ROOT+'task/partialUpdate', {
         'id': taskId,
         'status': newStatus
     })
@@ -122,20 +122,31 @@ var patientTableSearch = function() {
     }).hide();
 }
 
+var updatePatientLocation = function() {
+    $(this).editable({
+        mode: 'inline',
+        type: 'text',
+        pk : $(this).attr('data-pid'),
+        url: WEB_APP_ROOT+'patient/partialUpdate',
+        value: $(this).attr('data-value'),
+        showbuttons: false,
+        params : function(params) {
+            return {
+                'id' : $(this).attr('data-pid'),
+                'location' : params.value
+            }
+        }
+    });
+}
+
 var updatePatientStatus = function() {
     $(this).editable({
         mode: 'inline',
         type: 'select',
         pk : $(this).attr('data-pid'),
-        url: WEB_APP_ROOT+'patient/updateStatus',
+        url: WEB_APP_ROOT+'patient/partialUpdate',
         value: $(this).attr('data-status'),
         source: WEB_APP_ROOT+'patient/statuses',
-//                    source: [
-//                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
-//                        {value: 'New Admission', text: 'New Admission'},
-//                        {value: 'Unwell', text: 'Unwell'},
-//                        {value: 'For Home', text: 'For Home'}
-//                    ],
         showbuttons: false,
         params : function(params) {
             return {
@@ -145,3 +156,4 @@ var updatePatientStatus = function() {
         }
     });
 }
+

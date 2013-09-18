@@ -55,13 +55,13 @@ class PatientControllerTests {
         assert model.patientInstance == new Patient(firstName: 'John', lastName: 'Smith')
     }
 
-    void testUpdateStatus() {
+    void testPartialUpdate() {
         params.id = josh_knight.id
         params.status = 'For Home'
 
         assert josh_knight.status == 'Default (no concerns)'
 
-        controller.updateStatus()
+        controller.partialUpdate()
 
         assert josh_knight.status == 'For Home'
         assert response.text == new JSON(josh_knight).toString()

@@ -25,14 +25,14 @@ class TaskController {
 		render taskInstance as JSON
 	}
 
-    def updateStatus() {
+    def partialUpdate() {
         def taskInstance = Task.get(params.id)
         if (!taskInstance) {
             flash.message = message(code: 'default.not.found.message', args: ['Task', params.id])
             return
         }
 
-        taskInstance.status = params.status
+        taskInstance.properties = params
         if (!taskInstance.save(flush: true)) {
 //            render view: 'create', model: [taskInstance: taskInstance]
             return

@@ -43,7 +43,7 @@
                         <table class="patient-info">
                             <tr>
                                 <td>
-                                    ${p.location}
+                                    <a href="#" data-pid="${p.id}" data-value="${p.location}" class="patient-location">${p.location}</a>
                                 </td>
                                 <td>
                                     ${p} [${p.gender[0]}]
@@ -63,7 +63,7 @@
                                     ${p.nhsNumber}
                                 </td>
                                 <td>
-                                    <a href="#" data-pid="${p.id}" data-status="${p.status}" class="patient-status">${p.status}</a>
+                                    <a href="#" data-pid="${p.id}" data-value="${p.status}" class="patient-status">${p.status}</a>
                                 </td>
                             </tr>
                         </table>
@@ -203,6 +203,7 @@
 		$(window).load(function() {
             $('#search').keyup(patientTableSearch);
 
+            $('.patient-location').each(updatePatientLocation);
             $('.patient-status').each(updatePatientStatus);
 
             var handoverViewsColumnsMapping = {

@@ -29,14 +29,14 @@ class PatientController {
 		[patientInstance: new Patient(params)]
 	}
 
-    def updateStatus() {
+    def partialUpdate() {
         def patientInstance = Patient.get(params.id)
         if (!patientInstance) {
             flash.message = message(code: 'default.not.found.message', args: ['Patient', params.id])
             return
         }
 
-        patientInstance.status = params.status
+        patientInstance.properties = params
         if (!patientInstance.save(flush: true)) {
 //            render view: 'create', model: [patientInstance: patientInstance]
             return
