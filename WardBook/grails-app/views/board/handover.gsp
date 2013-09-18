@@ -73,14 +73,20 @@
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
-                                        &nbsp;
+                                        <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                    </td>
+                                    <td>
                                         <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" />
                                     </td>
                                 </tr>
                                 <g:each var="record" in="${p.records}">
                                     <g:if test="${record.type == recordType}">
                                         <tr>
+                                            <td class="delete-record">
+                                                <button type="button" class="btn btn-danger btn-xs hidden">
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                </button>
+                                            </td>
                                             <td data-rid="${record.id}" class="record">
                                                 ${record.name}
                                             </td>
@@ -240,6 +246,11 @@
                     }
                 });
             });
+
+            $('.delete-record').live('click', deleteRecord);
+
+            $('.inner-table tr').live('mouseover', function() { $(this).find('.delete-record button').removeClass('hidden') });
+            $('.inner-table tr').live('mouseout', function() { $(this).find('.delete-record button').addClass('hidden') });
 
             $('.record').each(function() {
                 $(this).editable({

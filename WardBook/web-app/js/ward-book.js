@@ -51,6 +51,27 @@ var deleteTask = function() {
     }
 }
 
+var deleteRecord = function() {
+    var self = $(this);
+    var taskElement = self.siblings();
+    if (confirm('Are you sure you want to delete this record? ('+taskElement.text()+')')) {
+        self.children().removeClass('glyphicon');
+        self.children().removeClass('glyphicon-remove');
+        self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');
+        var recordId = taskElement.attr('data-rid');
+        $.get(WEB_APP_ROOT+'record/delete/'+recordId)
+            .done(function(record) {
+                self.parent().remove();
+            })
+            .fail(function() {
+                self.children('img').remove();
+                self.children().addClass('glyphicon');
+                self.children().addClass('glyphicon-remove');
+                alert("ERROR: could not delete task");
+            })
+    }
+}
+
 function addTask(patient_id, task) {
     var taskNameId = 'task-name-id'+new Date().getTime();
     var taskImageId = 'task-image'+new Date().getTime();
@@ -106,7 +127,11 @@ function addNewRecord(name, patient_id, type) {
         .done(function(record) {
             var id = new Date().getTime();
             var elId = '#record-'+type+'-'+patient_id;
-            $(elId).append('<tr><td id="'+id+'" data-rid="'+record.id+'" class="record">'+name+'</td></tr>');
+            $(elId).append('' +
+                '<tr>' +
+                    '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
+                    '<td id="'+id+'" data-rid="'+record.id+'" class="record">'+name+'</td>' +
+                '</tr>');
             $('[data-rid='+record.id+']').editable({
                 mode: 'inline',
                 type: 'text',
