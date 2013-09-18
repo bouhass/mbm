@@ -72,6 +72,10 @@
                                                  data-pid="${p.id}"
                                                  class="editable editable-click task">
                                                 ${t.name}
+                                                &nbsp;
+                                                <span class="glyphicon glyphicon-comment task-comment-notification">
+                                                    <p class="task-comment-number">1</p>
+                                                </span>
                                             </div>
                                         </td>
                                         <td class="update-task-status">
@@ -129,9 +133,11 @@
 	</div>
 
 	<script>
-		$(document).ready(function() {
+        $(window).load(function() {
 
             $.fn.editable.defaults.mode = 'popup';
+
+            $('#search').keyup(patientTableSearch);
 
             $('.add-task-input').each(function() {
                 $(this).keyup(function (e) {
@@ -181,29 +187,7 @@
                 });
             });
 
-            $('.patient-status').each(function() {
-                $(this).editable({
-                    mode: 'inline',
-                    type: 'select',
-                    pk : $(this).attr('data-pid'),
-                    url: '${createLink(controller: 'patient', action: 'updateStatus')}',
-                    value: $(this).attr('data-status'),
-                    source: '${createLink(controller: 'patient', action: 'statuses')}',
-//                    source: [
-//                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
-//                        {value: 'New Admission', text: 'New Admission'},
-//                        {value: 'Unwell', text: 'Unwell'},
-//                        {value: 'For Home', text: 'For Home'}
-//                    ],
-                    showbuttons: false,
-                    params : function(params) {
-                        return {
-                            'id' : $(this).attr('data-pid'),
-                            'status' : params.value
-                        }
-                    }
-                });
-            });
+            $('.patient-status').each(updatePatientStatus);
 
             window.setInterval(function() {
                 $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {

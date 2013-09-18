@@ -59,15 +59,13 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+grails.resources.processing.enabled = true
+
 environments {
     development {
         grails.logging.jul.usebridge = true
-		grails.resources.processing.enabled = true
 		grails.gsp.reload.enable = true
 		grails.resources.debug = true
-    }
-    devAmazon {
-        grails.resources.processing.enabled = true
     }
     production {
         grails.logging.jul.usebridge = false

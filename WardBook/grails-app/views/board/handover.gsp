@@ -7,14 +7,14 @@
                 <li><a href="#"> Doctor </a></li>
                 <li><a href="#"> Nurse </a></li>
                 <li><a href="#"> Physio </a></li>
-                <li><a href="#"> <span class="glyphicon glyphicon-plus"></span> </a></li>
+                <li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>
             </ul>
         </div>
         <div class="pull-right">
             <a class="btn btn-default">
                 <span class="glyphicon glyphicon-print"></span>
             </a>
-            <a class="btn btn-default">
+            <a data-toggle="modal" href="#customizeView" class="btn btn-default">
                 Edit view
             </a>
         </div>
@@ -94,11 +94,116 @@
 			</g:each>
 			</tbody>
 		</table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="customizeView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Customize your view</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span class="glyphicon glyphicon-search" style="color: #3cf"></span>
+                        &nbsp;
+                        <input type="text" placeholder="Search for column" class="mbm-input-blue" />
+                        <form role="form">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="PROBLEM"> PROBLEM LIST
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="PROGRESS"> PROGRESS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="PLAN"> PLAN
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="NOTE"> NOTES
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="DIET"> DIET
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="PREMORBID"> PRE-MORBID STATUS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="MOBILITY"> MOBILITY
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="SOCIAL"> SOCIAL
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> RESUS STATUS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> CONTINENCE
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> EWS
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> DATE OF ADMISSION
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> DISCHARGE PLAN
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> MRSA
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> PDD
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> DATE OF ARRIVAL
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Save <span class="glyphicon glyphicon-chevron-right"></span></button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Save as new <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 	</div>
 	
 	<script>
-		/* Table initialisation */
-		$(document).ready(function() {
+		$(window).load(function() {
+            $('#search').keyup(patientTableSearch);
+
+            $('.patient-status').each(updatePatientStatus);
 
             var handoverViewsColumnsMapping = {
                 Doctor: ['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE'],
@@ -110,19 +215,21 @@
                 $('.'+columnToHide).hide();
             });
 
-            $('#view-selector li').on('click', function() {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
+            $('#view-selector li a:not([data-toggle])').on('click', function() {
+                $(this).parent().siblings().removeClass('active');
+                $(this).parent().addClass('active');
                 $(['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                     $('.'+columnToHide).hide();
                 });
+                $('#customizeView input').attr('checked', false);
                 $(handoverViewsColumnsMapping[$(this).text().trim()]).each(function(i, columnName) {
                     $('.'+columnName).show();
+                    $('#customizeView input[value='+columnName+']').attr('checked', true);
                 });
             });
 
             // TODO : displayHandoverViewFor('Doctor')
-            $('#view-selector li:contains(Doctor)').click();
+            $('#view-selector li a:contains(Doctor)').click();
 
             $('.add-record-input').each(function() {
                 $(this).keyup(function (e) {
@@ -132,17 +239,6 @@
                     }
                 });
             });
-
-//            $('#columns-selector button').on('click', function() {
-//                if ($(this).hasClass('active')) {
-//                    $('.'+$(this).attr('value')).hide();
-////                    $('#example tr *:nth-child('+$(this).attr('value')+')').hide();
-//                }
-//                else {
-//                    $('.'+$(this).attr('value')).show();
-////                    $('#example tr *:nth-child('+$(this).attr('value')+')').show();
-//                }
-//            });
 
             window.setInterval(function() {
                 $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
@@ -218,7 +314,7 @@
                             console.error('ERROR: could not patient data');
                         })
             }, 3000);
-		});
+        });
 	</script>
 		
 </g:applyLayout>

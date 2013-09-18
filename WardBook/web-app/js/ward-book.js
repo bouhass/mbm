@@ -112,7 +112,7 @@ function addRecord(name, patient_id, type) {
         })
 }
 
-$('#search').keyup(function() {
+var patientTableSearch = function() {
     var $rows = $('#patients-table > tbody > tr');
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
@@ -120,4 +120,28 @@ $('#search').keyup(function() {
         var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
         return !~text.indexOf(val);
     }).hide();
-});
+}
+
+var updatePatientStatus = function() {
+    $(this).editable({
+        mode: 'inline',
+        type: 'select',
+        pk : $(this).attr('data-pid'),
+        url: WEB_APP_ROOT+'patient/updateStatus',
+        value: $(this).attr('data-status'),
+        source: WEB_APP_ROOT+'patient/statuses',
+//                    source: [
+//                        {value: 'Default (no concerns)', text: 'Default (no concerns)'},
+//                        {value: 'New Admission', text: 'New Admission'},
+//                        {value: 'Unwell', text: 'Unwell'},
+//                        {value: 'For Home', text: 'For Home'}
+//                    ],
+        showbuttons: false,
+        params : function(params) {
+            return {
+                'id' : $(this).attr('data-pid'),
+                'status' : params.value
+            }
+        }
+    });
+}
