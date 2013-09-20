@@ -113,3 +113,13 @@ a.editable-click:hover {
     font-size: 0.6em;
     font-weight: bold;
 }
+
+.tt-hint {
+    top: -1px !important;
+    left: -12px !important;
+    visibility: hidden;
+}
+
+.twitter-typeahead .tt-query {
+    border-radius: 0px!important;
+}

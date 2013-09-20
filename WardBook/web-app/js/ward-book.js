@@ -54,7 +54,7 @@ var deleteTask = function() {
 var deleteRecord = function() {
     var self = $(this);
     var taskElement = self.siblings();
-    if (confirm('Are you sure you want to delete this record? ('+taskElement.text()+')')) {
+    if (confirm('Are you sure you want to delete this record? ('+taskElement.text().trim()+')')) {
         self.children().removeClass('glyphicon');
         self.children().removeClass('glyphicon-remove');
         self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');

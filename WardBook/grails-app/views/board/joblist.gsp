@@ -72,10 +72,10 @@
                                                  data-pid="${p.id}"
                                                  class="editable editable-click task">
                                                 ${t.name}
-                                                &nbsp;
-                                                <span class="glyphicon glyphicon-comment task-comment-notification">
-                                                    <p class="task-comment-number">1</p>
-                                                </span>
+                                                %{--&nbsp;--}%
+                                                %{--<span class="glyphicon glyphicon-comment task-comment-notification">--}%
+                                                    %{--<p class="task-comment-number">1</p>--}%
+                                                %{--</span>--}%
                                             </div>
                                         </td>
                                         <td class="update-task-status">
@@ -89,10 +89,10 @@
 					<td>
 						<table id="task-DOCTOR-${p.id}" class="inner-table">
 							<tr>
-                                <td></td>
                                 <td>
-                                    <span class="glyphicon glyphicon-plus" style="color: #3cf"></span>
-                                    &nbsp;
+                                    <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                </td>
+                                <td>
                                     <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input mbm-input-blue" />
                                 </td>
                                 <td></td>
@@ -142,13 +142,19 @@
             $('.patient-location').each(updatePatientLocation);
             $('.patient-status').each(updatePatientStatus);
 
-            $('.add-task-input').each(function() {
+            $('input.add-task-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
                         addNewTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
                         $(this).val('');
                     }
                 });
+            });
+
+            $('input.add-task-input').typeahead({
+                name: 'task-names',
+                prefetch: WEB_APP_ROOT+'task/names',
+                remote: WEB_APP_ROOT+'task/names?q=%QUERY'
             });
 
             /* Init tasks status icons. */

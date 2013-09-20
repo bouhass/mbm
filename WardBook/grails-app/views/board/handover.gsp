@@ -238,13 +238,19 @@
             // TODO : displayHandoverViewFor('Doctor')
             $('#view-selector li a:contains(Doctor)').click();
 
-            $('.add-record-input').each(function() {
+            $('input.add-record-input').each(function() {
                 $(this).keyup(function (e) {
                     if (e.keyCode == 13) {
                         addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
                         $(this).val('');
                     }
                 });
+            });
+
+            $('input.add-record-input').typeahead({
+                name: 'record-names',
+                prefetch: WEB_APP_ROOT+'record/names',
+                remote: WEB_APP_ROOT+'record/names?q=%QUERY'
             });
 
             $('.delete-record').live('click', deleteRecord);

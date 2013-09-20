@@ -40,4 +40,17 @@ class TaskController {
 
         render taskInstance as JSON
     }
+
+    def names() {
+        def results = Task.createCriteria().list {
+            projections {
+                distinct('name')
+            }
+            if (params.q) {
+                like('name', "${params.q}%")
+                maxResults(5)
+            }
+        }
+        render results as JSON
+    }
 }

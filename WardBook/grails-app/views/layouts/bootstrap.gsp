@@ -17,6 +17,8 @@
 		<![endif]-->
 
 		<r:require modules="scaffolding"/>
+        <r:require modules="typeahead-js"/>
+        <r:require modules="typeahead-bootstrap-css"/>
 
 		<!-- Le fav and touch icons -->
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
@@ -25,7 +27,7 @@
 
 		<g:layoutHead/>
 		<r:layoutResources/>
-		
+
 		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book.css')}">
 	</head>
 

@@ -64,6 +64,7 @@ grails.project.dependency.resolution = {
 		
 		runtime ":twitter-bootstrap:3.0.0"
 		runtime ":fields:1.3"
+        compile ":twitter-typeahead:0.9.3.1"
 
         compile ":mysql-connectorj:5.1.22.1"
 

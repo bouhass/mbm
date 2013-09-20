@@ -22,4 +22,17 @@ class RecordController {
 
         render recordInstance as JSON
     }
+
+    def names() {
+        def results = Record.createCriteria().list {
+            projections {
+                distinct('name')
+            }
+            if (params.q) {
+                like('name', "${params.q}%")
+                maxResults(5)
+            }
+        }
+        render results as JSON
+    }
 }
