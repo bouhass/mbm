@@ -1,8 +1,17 @@
-<%=packageName ? "package ${packageName}\n\n" : ''%>import org.springframework.dao.DataIntegrityViolationException
+<%=packageName ? "package ${packageName}\n\n" : ''%>
+import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.JSON
 
 class ${className}Controller {
 
-    static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
+    static allowedMethods = [
+            create: ['GET', 'POST'],
+            edit: ['GET', 'POST'],
+            delete: 'POST',
+            saveOrUpdate: ['GET', 'POST'],
+            partialUpdate: ['GET', 'POST', 'PUT'],
+            names: 'GET'
+    ]
 
     def index() {
         redirect action: 'list', params: params
@@ -103,5 +112,49 @@ class ${className}Controller {
 			flash.message = message(code: 'default.not.deleted.message', args: [message(code: '${domainClass.propertyName}.label', default: '${className}'), params.id])
             redirect action: 'show', id: params.id
         }
+    }
+
+    def saveOrUpdate() {
+        def ${propertyName} = ${className}.get(params.id)
+        if (${propertyName})
+            ${propertyName}.properties = params
+        else
+            ${propertyName} = new ${className}(params)
+
+        if (!${propertyName}.save(flush: true)) {
+            render view: 'create', model: [${propertyName}: ${propertyName}]
+            return
+        }
+
+        render ${propertyName} as JSON
+    }
+
+    def partialUpdate() {
+        def ${propertyName} = ${className}.get(params.id)
+        if (!${propertyName}) {
+            flash.message = message(code: 'default.not.found.message', args: ["${className}", params.id])
+            return
+        }
+
+        ${propertyName}.properties = params
+        if (!${propertyName}.save(flush: true)) {
+//            render view: 'create', model: [${propertyName}: ${propertyName}]
+            return
+        }
+
+        render ${propertyName} as JSON
+    }
+
+    def names() {
+        def results = ${className}.createCriteria().list {
+            projections {
+                distinct('name')
+            }
+            if (params.q) {
+                like('name', "\${params.q}%")
+                maxResults(5)
+            }
+        }
+        render results as JSON
     }
 }
