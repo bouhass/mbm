@@ -9,6 +9,10 @@ class PatientController {
     def index() {
 		redirect action: 'mylist', params: params
 	}
+
+    def list() {
+        redirect action: 'overview', params: params
+    }
 	
 	def overview() {
 		params.max = Math.min(params.max ? params.int('max') : 10, 100)
@@ -16,13 +20,13 @@ class PatientController {
 	}
 	
 	def summary() {
-		def patientInstance = Patient.get(params.id)
-		if (!patientInstance) {
+		def patient = Patient.get(params.id)
+		if (!patient) {
 			flash.message = message(code: 'default.not.found.message', args: ['Patient', params.id])
 			return
 		}
 
-		[patientInstance: patientInstance]
+		[patient: patient]
 	}
 	
 	def add() {

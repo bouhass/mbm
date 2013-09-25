@@ -35,8 +35,6 @@
 		
 			<g:layoutBody/>
 
-			%{--<hr>--}%
-
 		</div>
 
 		<r:layoutResources/>

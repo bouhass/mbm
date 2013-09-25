@@ -10,7 +10,8 @@
         <div class="second-level-nav navbar">
             <div class="second-level-nav navbar-inner">
                 <ul class="nav navbar-nav">
-                    <li <%= actionName == 'mylist' ? ' class="active"' : '' %>><g:link controller="patient" action="mylist"> My Patients</g:link></li>
+                    <li <%= actionName == 'overview' ? ' class="active"' : '' %>><g:link controller="patient" action="overview"> Base Ward </g:link></li>
+                    <li <%= actionName == 'mylist' ? ' class="active"' : '' %>><g:link controller="patient" action="mylist"> My Patients </g:link></li>
                 </ul>
 
                 <div class="col-lg-2 input-group second-level-nav-item">

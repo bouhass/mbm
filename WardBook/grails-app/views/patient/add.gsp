@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 	<head>
-		<meta name="layout" content="bootstrap-popover">
+		<meta name="layout" content="bootstrap-plain">
 		<g:set var="entityName" value="${message(code: 'patient.label', default: 'Patient')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>

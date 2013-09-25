@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title><g:meta name="app.name"/></title>
-        <meta name="layout" content="bootstrap-popover"/>
+        <meta name="layout" content="bootstrap-plain"/>
 	</head>
 
 	<body>

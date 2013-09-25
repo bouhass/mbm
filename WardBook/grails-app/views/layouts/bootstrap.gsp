@@ -69,8 +69,6 @@
 		<div class="container-fluid">
 			<g:layoutBody/>
 
-			<hr>
-
 			%{--<footer>--}%
 				%{--<p>&copy; <g:meta name="app.name"/> 2013</p>--}%
 			%{--</footer>--}%
