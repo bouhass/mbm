@@ -46,7 +46,7 @@
 						<table id="task-NURSE-${p.id}" class="inner-table">
 							<tr>
                                 <td>
-                                    <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                    <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
                                 </td>
                                 <td>
                                     <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="NURSE" class="add-task-input mbm-input-blue" />
@@ -90,7 +90,7 @@
 						<table id="task-DOCTOR-${p.id}" class="inner-table">
 							<tr>
                                 <td>
-                                    <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                    <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
                                 </td>
                                 <td>
                                     <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-category="DOCTOR" class="add-task-input mbm-input-blue" />

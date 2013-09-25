@@ -73,7 +73,7 @@
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-plus" style="color: #3cf; padding:4px 0 0 6px"></span>
+                                        <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
                                     </td>
                                     <td>
                                         <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" />

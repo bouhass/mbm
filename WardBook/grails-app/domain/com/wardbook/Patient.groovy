@@ -15,7 +15,7 @@ class Patient {
 	String consultant
 	String speciality
 	static hasMany = [tasks: Task, records: Record]
-//    static belongsTo = [ward: Ward]
+    static belongsTo = [ward: Ward]
 
     static constraints = {
 		firstName nullable:false

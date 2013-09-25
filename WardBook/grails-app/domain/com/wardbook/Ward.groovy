@@ -3,8 +3,11 @@ package com.wardbook
 class Ward {
 
     String name
-//    static hasMany = [patients: Patient]
+    String speciality
+    static hasMany = [patients: Patient]
 
     static constraints = {
     }
+
+    String toString() { "${name} - ${speciality}" }
 }

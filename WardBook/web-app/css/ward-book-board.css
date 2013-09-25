@@ -26,16 +26,6 @@ th,td {
     border-color: #bbb
 }
 
-.mbm-input-blue {
-    border: 0px;
-    border-bottom: 1px solid #3cf;
-    background: transparent;
-}
-
-.mbm-input-blue:focus {
-    outline: none;
-}
-
 .page-body .patients-table .inner-table {
 	width: 100%;
 }

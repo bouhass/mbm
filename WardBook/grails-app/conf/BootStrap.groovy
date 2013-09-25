@@ -3,10 +3,19 @@ import java.util.Date;
 import com.wardbook.Patient
 import com.wardbook.Record
 import com.wardbook.Task
+import com.wardbook.Ward
 
 class BootStrap {
 
     def init = { servletContext ->
+        if (Ward.list().size() == 0) {
+            def victoriaWard = new Ward(name: 'Victoria ward', speciality: 'Respiratory')
+            victoriaWard.save(failOnError: true)
+
+            def yorkWard = new Ward(name: 'York ward', speciality: 'Cardiology')
+            yorkWard.save(failOnError: true)
+        }
+
         if (Patient.list().size() == 0) {
             initPatientList()
         }
@@ -84,7 +93,7 @@ class BootStrap {
                 status: 'For Home',
                 location: 'B3B7',
                 consultant: 'Dr Teo',
-                speciality: 'Cardiology'
+                speciality: 'Respiratory'
         )
 
         anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'STARTED', category: 'DOCTOR'))
