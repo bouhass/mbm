@@ -9,6 +9,14 @@
             </g:if>
 
             <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Name</th>
+                        <th>Consultant</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
                 <tbody>
                 <g:each in="${patients}" var="entry">
                     <tr>
@@ -27,9 +35,9 @@
                 </tbody>
             </table>
 
-            <div class="pagination">
-                <bootstrap:paginate total="${patientInstanceTotal}"/>
-            </div>
+            %{--<div class="pagination">--}%
+                %{--<bootstrap:paginate total="${patientInstanceTotal}"/>--}%
+            %{--</div>--}%
         </div>
 
         <div class="col-md-4">

@@ -40,10 +40,10 @@
         <g:form>
             <g:hiddenField name="id" value="${patient?.id}"/>
             <div class="form-actions">
-                <g:link class="btn btn-info" action="show" id="${patient?.id}">
+                <a href="javascript:;" onclick="top.window.location = '${createLink(controller: 'patient', action: 'profile', id: patient.id)}'" class="btn btn-info">
                     <span class="glyphicon glyphicon-user"></span>
                     <g:message code="patient.show.label" default="Full profile"/>
-                </g:link>
+                </a>
                 <g:link class="btn btn-warning" action="edit" id="${patient?.id}">
                     <span class="glyphicon glyphicon-pencil"></span>
                     <g:message code="default.button.edit.label" default="Edit"/>

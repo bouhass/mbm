@@ -20,7 +20,9 @@
                                     <a href="#" data-pid="${p.id}" data-value="${p.location}" class="patient-location">${p.location}</a>
                                 </td>
                                 <td>
-                                    ${p} [${p.gender[0]}]
+                                    <g:link controller="patient" action="profile" id="${p.id}">
+                                        ${p} [${p.gender[0]}]
+                                    </g:link>
                                 </td>
                             </tr>
                             <tr>

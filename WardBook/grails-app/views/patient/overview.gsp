@@ -28,6 +28,16 @@
 
             <div>
                 <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Location</th>
+                            <th>Name</th>
+                            <th>Consultant</th>
+                            <th>Status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
                     <g:each in="${patientInstanceList}" var="patient">
                         <tr>
@@ -44,9 +54,9 @@
                     </tbody>
                 </table>
 
-                <div class="pagination">
-                    <bootstrap:paginate total="${patientInstanceTotal}"/>
-                </div>
+                %{--<div class="pagination">--}%
+                    %{--<bootstrap:paginate total="${patientInstanceTotal}"/>--}%
+                %{--</div>--}%
             </div>
         </div>
 
