@@ -93,3 +93,22 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.wardbook.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.wardbook.UserRole'
+grails.plugins.springsecurity.authority.className = 'com.wardbook.Role'
+grails.plugins.springsecurity.rejectIfNoRule = true
+grails.plugins.springsecurity.securityConfigType = grails.plugins.springsecurity.SecurityConfigType.InterceptUrlMap
+grails.plugins.springsecurity.interceptUrlMap = [
+        '/js/**'        : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/css/**'       : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/images/**'    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/plugins/**'   : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login/**'     : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/logout/**'    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/user/**'      : ['ROLE_ADMIN'],
+        '/**'           : ['IS_AUTHENTICATED_FULLY']
+]
+
+grails.plugins.springsecurity.ui.encodePassword = false

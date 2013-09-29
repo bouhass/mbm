@@ -68,6 +68,13 @@ grails.project.dependency.resolution = {
 
         compile ":mysql-connectorj:5.1.22.1"
 
+        compile ':spring-security-core:1.2.7.3'
+        compile ":spring-security-ui:0.2"
+        compile ":mail:1.0.1"
+//      jquery (1.4.4+)
+        compile ":jquery-ui:1.8.24"
+        compile ":famfamfam:1.0.1"
+
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
         test ":code-coverage:1.2.6"
