@@ -11,6 +11,8 @@ class User {
     boolean accountLocked
     boolean passwordExpired
 
+    String name
+
     static constraints = {
         username blank: false, unique: true
         password blank: false
@@ -36,5 +38,11 @@ class User {
 
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
+    }
+
+    static def consultants() {
+        def role = Role.findByAuthority('ROLE_CONSULTANT')
+        def userRoles = UserRole.findAllByRole(role)
+        userRoles*.user
     }
 }

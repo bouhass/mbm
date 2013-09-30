@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.Patient; com.wardbook.Ward" %>
+<%@ page import="com.wardbook.User; com.wardbook.Patient; com.wardbook.Ward" %>
 <g:applyLayout name="patient">
 
     <div>
@@ -63,8 +63,9 @@
                             <div class="col-lg-9">
                                 <select name="consultant" class="form-control">
                                     <option value="" ${params.consultant == '' ? 'selected' : ''}>All - No filter</option>
-                                    <option value="Dr Teo" ${params.consultant == 'Dr Teo' ? 'selected' : ''}>Dr Teo</option>
-                                    <option value="Dr Marcontonio" ${params.consultant == 'Dr Marcontonio' ? 'selected' : ''}>Dr Marcontonio</option>
+                                    <g:each in="${User.consultants()}" var="consultant">
+                                        <option value="${consultant.name}" ${params.consultant == consultant.name ? 'selected' : ''}>${consultant.name}</option>
+                                    </g:each>
                                 </select>
                             </div>
                         </div>

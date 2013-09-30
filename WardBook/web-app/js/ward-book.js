@@ -178,6 +178,24 @@ var updatePatientLocation = function() {
     });
 }
 
+var updatePatientConsultant = function() {
+    $(this).editable({
+        mode: 'inline',
+        type: 'select',
+        pk : $(this).attr('data-pid'),
+        url: WEB_APP_ROOT+'patient/partialUpdate',
+        value: $(this).attr('data-consultant'),
+        source: WEB_APP_ROOT+'helpers/consultants',
+        showbuttons: false,
+        params : function(params) {
+            return {
+                'id' : $(this).attr('data-pid'),
+                'consultant' : params.value
+            }
+        }
+    });
+}
+
 var updatePatientStatus = function() {
     $(this).editable({
         mode: 'inline',
