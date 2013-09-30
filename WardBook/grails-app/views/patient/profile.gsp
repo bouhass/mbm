@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']"/>
+                            <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE', popoverPlacement: 'top']"/>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                         </div>
 
                         <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']"/>
+                            <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR', popoverPlacement: 'top']"/>
                         </div>
                     </div>
                 </div>

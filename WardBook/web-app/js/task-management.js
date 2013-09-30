@@ -28,10 +28,9 @@ $(window).load(function() {
 
     /* Init popover functionality. */
     $('.task').each(function() {
-        var placement = ($(this).attr('data-category') == 'NURSE') ? 'right' : 'left';
         $(this).editable({
             type : 'text',
-            placement: 'top',
+            placement: $(this).attr('data-popover-placement'),
             pk : $(this).attr('data-tid'),
             url : WEB_APP_ROOT+'task/saveOrUpdate',
             value: {

@@ -16,10 +16,10 @@
                         <g:render template="patientInfo" model="[patient: patient]" />
 					</td>
 					<td>
-						<g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']" />
+						<g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE', popoverPlacement: 'left']" />
 					</td>
 					<td>
-                        <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']" />
+                        <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR', popoverPlacement: 'left']" />
 					</td>
 				</tr>
 			</g:each>

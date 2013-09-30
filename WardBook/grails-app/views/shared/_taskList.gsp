@@ -25,6 +25,7 @@
                          data-comment="${t.comment}"
                          data-category="${t.category}"
                          data-pid="${patient.id}"
+                         data-popover-placement="${popoverPlacement}"
                          class="editable editable-click task">
                         ${t.name}
                         %{--&nbsp;--}%
