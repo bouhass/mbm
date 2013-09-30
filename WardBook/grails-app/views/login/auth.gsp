@@ -44,7 +44,7 @@
         <div class='login_message'>${flash.message}</div>
     </g:if>
 
-    <form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
+    <form action='${postUrl}' method='POST' id='loginForm'>
 
         <div class="form-group">
             <input type="email" class="form-control" name="j_username" id="username" placeholder="Type your NHS.NET email address" />

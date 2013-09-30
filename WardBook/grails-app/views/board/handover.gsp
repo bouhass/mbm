@@ -40,35 +40,7 @@
 			<g:each var="p" in="${patients}">
 				<tr id="${p.id}">
                     <td>
-                        <table class="patient-info">
-                            <tr>
-                                <td>
-                                    <a href="#" data-pid="${p.id}" data-value="${p.location}" class="patient-location">${p.location}</a>
-                                </td>
-                                <td>
-                                    <g:link controller="patient" action="profile" id="${p.id}">
-                                        ${p} [${p.gender[0]}]
-                                    </g:link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    ${p.consultant}
-                                </td>
-                                <td>
-                                    <g:formatDate format="dd-MM-yyyy" date="${p.dateOfBirth}"/>
-                                    [${new Date().year - p.dateOfBirth.year}y]
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    ${p.nhsNumber}
-                                </td>
-                                <td>
-                                    <a href="#" data-pid="${p.id}" data-value="${p.status}" class="patient-status">${p.status}</a>
-                                </td>
-                            </tr>
-                        </table>
+                        <g:render template="patientInfo" model="[patient: p]" />
                     </td>
                     <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']">
                         <td class="${recordType}">
@@ -206,13 +178,11 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 	</div>
-	
+
+    <script src="${resource(dir: 'js', file: 'board-patient-management.js')}"></script>
+
 	<script>
 		$(window).load(function() {
-            $('#search').keyup(patientTableSearch);
-
-            $('.patient-location').each(updatePatientLocation);
-            $('.patient-status').each(updatePatientStatus);
 
             var handoverViewsColumnsMapping = {
                 Doctor: ['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE'],

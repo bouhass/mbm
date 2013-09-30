@@ -1,24 +1,46 @@
 
-.popover {
-	max-width: 100%;
-	width: 49%;
-	max-height: 80%;
-}
-
-/*.editable-task {*/
-    /*display: block;*/
-    /*margin-bottom: 5px;*/
-/*}*/
-
-/*.editable-task label {*/
-    /*width: 70px;*/
-    /*display: inline-block;*/
-/*}*/
-
 .editable-click,
 a.editable-click,
 a.editable-click:hover {
     border-bottom: dashed 1px #bbb;
+}
+
+.first-level-nav > a {
+    font-size:1.8em;
+}
+
+.first-level-nav ul {
+    width: 89%;
+}
+
+.first-level-nav ul.nav>li {
+    width: 25%;
+    border-top: 3px solid #bbb;
+}
+
+.first-level-nav ul.nav>li.active {
+    border-top: 3px solid #333;
+}
+
+.inner-table {
+    width: 100%;
+}
+
+.inner-table tr {
+    line-height: 33px;
+}
+
+.inner-table td {
+    /* border: none; */
+    border-bottom: 0px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+}
+
+.inner-table td:first-child {
+    width: 30px;
 }
 
 .mbm-icon-blue {
@@ -42,35 +64,20 @@ a.editable-click:hover {
     border-radius: 0px;
 }
 
-.navbar-brand {
-    padding: 6px 10px;
-    border-right: 1px solid #bbb;
-}
-
-.first-level-nav ul {
-    width: 89%;
-}
-
-.first-level-nav ul.nav>li {
-    width: 25%;
-}
-
 .navbar ul.nav>li {
     text-align:center;
     font-size:1.8em;
 }
 
-/* first level nav */
-.first-level-nav > a {
-    font-size:1.8em;
+.navbar-brand {
+    padding: 6px 10px;
+    border-right: 1px solid #bbb;
 }
 
-.first-level-nav ul.nav>li {
-    border-top: 3px solid #bbb;
-}
-
-.first-level-nav ul.nav>li.active {
-    border-top: 3px solid #333;
+.popover {
+    max-width: 100%;
+    width: 49%;
+    max-height: 80%;
 }
 
 .second-level-nav {
@@ -105,15 +112,6 @@ a.editable-click:hover {
     margin-left: 10px;
 }
 
-.third-level-nav {
-    margin-top: 10px;
-    margin-right: 10px;
-}
-
-.third-level-nav a {
-    margin-right: 5px;
-}
-
 .task-comment-notification {
     top: 5px;
     font-size: 1.6em;
@@ -126,6 +124,19 @@ a.editable-click:hover {
     color: white;
     font-size: 0.6em;
     font-weight: bold;
+}
+
+.task-panel {
+    min-height: 400px;
+}
+
+.third-level-nav {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.third-level-nav a {
+    margin-right: 5px;
 }
 
 .tt-hint {
