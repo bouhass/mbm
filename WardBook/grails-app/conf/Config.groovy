@@ -112,3 +112,6 @@ grails.plugins.springsecurity.interceptUrlMap = [
 ]
 
 grails.plugins.springsecurity.ui.encodePassword = false
+
+// Commentable
+grails.commentable.poster.evaluator = { com.wardbook.User.findByUsername(principal.username) }

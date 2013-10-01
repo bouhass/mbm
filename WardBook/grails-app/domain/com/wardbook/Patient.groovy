@@ -1,9 +1,10 @@
 package com.wardbook
 
 import groovy.transform.EqualsAndHashCode
+import org.grails.comments.Commentable
 
 @EqualsAndHashCode
-class Patient {
+class Patient implements Commentable {
 	
 	String firstName
 	String lastName

@@ -75,6 +75,8 @@ grails.project.dependency.resolution = {
         compile ":jquery-ui:1.8.24"
         compile ":famfamfam:1.0.1"
 
+        compile ":commentable:0.8.1"
+
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
         test ":code-coverage:1.2.6"

@@ -159,19 +159,7 @@
             </div>
 
             <div class="panel-body">
-                Today
-                <div>
-                    Patient will have outpatient ECHO on 07/07/13
-                </div>
-
-                <div>
-                    Wife is aware of appointment
-                </div>
-            </div>
-
-            <div class="panel-footer">
-                <textarea name="comment" class="form-control" placeholder="Write your comment"></textarea>
-                <a class="btn btn-default">Send</a>
+                <g:render template="/shared/comments" model="[commentable: patient]"/>
             </div>
         </div>
     </div>

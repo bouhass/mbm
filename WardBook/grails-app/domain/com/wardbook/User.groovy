@@ -40,6 +40,8 @@ class User {
         password = springSecurityService.encodePassword(password)
     }
 
+    String toString() { "${name}" }
+
     static def consultants() {
         def role = Role.findByAuthority('ROLE_CONSULTANT')
         def userRoles = UserRole.findAllByRole(role)
