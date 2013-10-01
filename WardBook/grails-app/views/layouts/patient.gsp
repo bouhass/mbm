@@ -7,14 +7,14 @@
 		<link rel="stylesheet" href="${resource(dir: 'bootstrap-editable/css', file: 'bootstrap-editable.css')}">
 	</head>
 	<body>
-        <div class="second-level-nav navbar">
-            <div class="second-level-nav navbar-inner">
-                <ul class="nav navbar-nav">
-                    <li <%= actionName == 'overview' ? ' class="active"' : '' %>><g:link controller="patient" action="overview"> Base Ward </g:link></li>
-                    <li <%= actionName == 'mylist' ? ' class="active"' : '' %>><g:link controller="patient" action="mylist"> My Patients </g:link></li>
-                </ul>
-            </div>
-        </div>
+        %{--<div class="second-level-nav navbar">--}%
+            %{--<div class="second-level-nav navbar-inner">--}%
+                %{--<ul class="nav navbar-nav">--}%
+                    %{--<li <%= actionName == 'overview' ? ' class="active"' : '' %>><g:link controller="patient" action="overview"> Base Ward </g:link></li>--}%
+                    %{--<li <%= actionName == 'mylist' ? ' class="active"' : '' %>><g:link controller="patient" action="mylist"> My Patients </g:link></li>--}%
+                %{--</ul>--}%
+            %{--</div>--}%
+        %{--</div>--}%
 
 		<g:layoutBody/>
 	</body>

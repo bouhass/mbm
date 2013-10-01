@@ -7,7 +7,7 @@
 
 <body>
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -17,19 +17,15 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="${createLink(uri: '/')}">
-            <g:img dir="images" file="mbm-logo.png" width="40" height="40"/>
+            <g:img dir="images" file="mbm-logo.png" width="20" height="20"/>
             %{--<g:meta name="app.name"/>--}%
         </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="first-level-nav collapse navbar-collapse navbar-ex1-collapse">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li>
-                <a>
-                    LOG IN
-                </a>
-            </li>
+            <li><a>Login</a></li>
         </ul>
     </div>
 </nav>
@@ -65,7 +61,10 @@
         %{--<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>--}%
         %{--</p>--}%
 
-        <button type="submit" class="btn btn-default pull-right">Log in ></button>
+        <button type="submit" class="btn btn-default pull-right">
+            <span class="glyphicon glyphicon-log-in"></span>
+            Login
+        </button>
 
     </form>
 </div>

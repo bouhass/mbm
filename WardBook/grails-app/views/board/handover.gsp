@@ -24,9 +24,9 @@
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th>DEMOGRAPHICS</th>
-					<th class="HISTORY">PMH</th>
+					<th>PATIENT DETAILS</th>
 					<th class="PROBLEM">PROBLEM LIST</th>
+					<th class="HISTORY">PMH</th>
 					<th class="PROGRESS">PROGRESS</th>
 					<th class="PLAN">PLAN</th>
 					<th class="NOTE">NOTES</th>
@@ -42,7 +42,7 @@
                     <td>
                         <g:render template="patientInfo" model="[patient: p]" />
                     </td>
-                    <g:each var="recordType" in="['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']">
+                    <g:each var="recordType" in="['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']">
                         <td class="${recordType}">
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
@@ -185,19 +185,19 @@
 		$(window).load(function() {
 
             var handoverViewsColumnsMapping = {
-                Doctor: ['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE'],
-                Nurse: ['HISTORY', 'PROBLEM', 'DIET', 'MOBILITY', 'SOCIAL'],
-                Physio: ['HISTORY', 'PROBLEM', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+                Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
+                Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
+                Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
             }
 
-            $(['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                 $('.'+columnToHide).hide();
             });
 
             $('#view-selector li a:not([data-toggle])').on('click', function() {
                 $(this).parent().siblings().removeClass('active');
                 $(this).parent().addClass('active');
-                $(['HISTORY', 'PROBLEM', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+                $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                     $('.'+columnToHide).hide();
                 });
                 $('#customizeView input').attr('checked', false);

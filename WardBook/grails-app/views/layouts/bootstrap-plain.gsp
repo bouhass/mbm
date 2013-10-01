@@ -29,7 +29,7 @@
 		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book.css')}">
 	</head>
 
-	<body>
+	<body style="padding-top: 0px">
 
 		<div class="container-fluid">
 		

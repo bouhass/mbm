@@ -1,4 +1,6 @@
 
+body { padding-top: 70px; }
+
 .editable-click,
 a.editable-click,
 a.editable-click:hover {
@@ -59,20 +61,20 @@ a.editable-click:hover {
 }
 
 /* nav common */
-.navbar {
-    margin-bottom: 0px;
-    border-radius: 0px;
-}
+/*.navbar {*/
+    /*margin-bottom: 0px;*/
+    /*border-radius: 0px;*/
+/*}*/
 
-.navbar ul.nav>li {
-    text-align:center;
-    font-size:1.8em;
-}
+/*.navbar ul.nav>li {*/
+    /*text-align:center;*/
+    /*font-size:1.8em;*/
+/*}*/
 
-.navbar-brand {
-    padding: 6px 10px;
-    border-right: 1px solid #bbb;
-}
+/*.navbar-brand {*/
+    /*padding: 6px 10px;*/
+    /*border-right: 1px solid #bbb;*/
+/*}*/
 
 .popover {
     max-width: 100%;

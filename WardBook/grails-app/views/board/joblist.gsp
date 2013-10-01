@@ -4,7 +4,7 @@
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th>DEMOGRAPHICS</th>
+					<th>PATIENT DETAILS</th>
 					<th>NURSING JOBS</th>
 					<th>DOCTORS JOBS</th>
 				</tr>
