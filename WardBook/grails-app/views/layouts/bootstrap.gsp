@@ -57,7 +57,7 @@
                     [controller: 'board', action: 'handover', title: 'Patient info'],
                     [controller: 'patient', action: 'overview', title: 'Base ward'],
                     [controller: 'patient', action: 'mylist', title: 'My patients'],
-                    [controller: 'task', action: 'list', title: 'My tasks']
+                    [controller: 'task', action: 'mylist', title: 'My tasks']
             ]
         %>
         <ul class="nav navbar-nav">

@@ -3,7 +3,7 @@
 
     <div>
 
-        <div class="col-md-8">
+        <div class="col-md-7">
             <g:if test="${flash.message}">
                 <bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
             </g:if>
@@ -40,7 +40,7 @@
             %{--</div>--}%
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="panel panel-info">
                 <div class="panel-heading">
                     Filter patients to add to list

@@ -2,7 +2,7 @@
 
     <div>
 
-        <div class="col-md-6">
+        <div class="col-md-7">
             <div class="well">
                 <ul class="nav nav-list">
                     <li>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="height: 100%">
+        <div class="col-md-5" style="height: 100%">
             <iframe src="" style="
             border: 0px;
             width: 100%;
