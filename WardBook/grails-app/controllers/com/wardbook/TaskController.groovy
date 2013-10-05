@@ -26,4 +26,14 @@ class TaskController {
 
         [task: task]
     }
+
+    def partialEdit() {
+        def task = Task.get(params.id)
+        if (!task) {
+            flash.message = message(code: 'default.not.found.message', args: ['Task', params.id])
+            return
+        }
+
+        [task: task]
+    }
 }

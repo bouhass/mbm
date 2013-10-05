@@ -183,7 +183,38 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
             return ret;
         },
         success: function(response, newValue) {
-            bean.attr('data-'+field, newValue);
+            $(bean).attr('data-'+field, newValue);
+        }
+    });
+}
+
+function updateBeanDateTimeField(element, beanType) {
+    $(element).editable({
+        mode: 'inline',
+        format: "YYYY-MM-DD HH:mm",
+        viewformat: "D MMM, YYYY, HH:mm",
+        template: "D MMM YYYY  HH:mm",
+        validate: function(v) {
+//                if(v && v.getDate() == 10) return 'Day cant be 10!';
+        },
+        combodate: {
+            minYear: (new Date()).getFullYear(),
+            maxYear: 2050,
+            yearDescending: false,
+            minuteStep: 5
+        },
+        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        params : function(params) {
+            var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/)
+            return {
+                'id' : $(element).attr('data-'+beanType+'-id'),
+                'timeDue' : 'date.struct',
+                'timeDue_day' : parsedDate[3],
+                'timeDue_month' : parsedDate[2],
+                'timeDue_year' : parsedDate[1],
+                'timeDue_hour' : parsedDate[4],
+                'timeDue_minute' : parsedDate[5]
+            }
         }
     });
 }

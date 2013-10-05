@@ -40,7 +40,7 @@
                     </div>
                 </td>
                 <td class="edit-task">
-                    <a data-toggle="modal" href="#" onclick="openTaskEditModal(${task.id})" class="btn btn-warning btn-xs" style="position: relative; left: 45%;">
+                    <a data-toggle="modal" href="${createLink(controller: 'task', action: 'partialEdit', id: task.id)}" data-target="#task-edit-modal" class="btn btn-warning btn-xs" style="position: relative; left: 45%;">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                 </td>
