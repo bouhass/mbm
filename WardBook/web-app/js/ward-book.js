@@ -9,7 +9,7 @@ var updateTaskStatus = function() {
     var self = $(this)
     self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
     var taskElement = $(self.siblings()[1]).children('div');
-    var taskId = taskElement.attr('data-tid');
+    var taskId = taskElement.attr('data-task-id');
     var currentStatus = taskElement.attr('data-status');
     var newStatus = {
         'PENDING': 'STARTED',
@@ -37,7 +37,7 @@ var deleteTask = function() {
         self.children().removeClass('glyphicon');
         self.children().removeClass('glyphicon-remove');
         self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');
-        var taskId = taskElement.attr('data-tid');
+        var taskId = taskElement.attr('data-task-id');
         $.get(WEB_APP_ROOT+'task/delete/'+taskId)
             .done(function(task) {
                 self.parent().remove();
@@ -76,32 +76,38 @@ function addTask(patient_id, task) {
     var taskNameId = 'task-name-id'+new Date().getTime();
     var taskImageId = 'task-image'+new Date().getTime();
     var taskDeleteId = 'task-delete'+new Date().getTime();
-    $('#task-'+task.category+'-'+patient_id).append('' +
+    var taskElement = '' +
         '<tr>' +
             '<td id="'+taskDeleteId+'" class="delete-task"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-            '<td><div id="'+taskNameId+'" data-type="task" data-tid="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" class="editable editable-click">'+task.name+'</div></td>' +
+            '<td><div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click">'+task.name+'</div></td>' +
+            '<td class="edit-task">' +
+                '<a data-toggle="modal" href="#" onclick="openTaskEditModal(\''+task.id+'\')" class="btn btn-warning btn-xs" style="position: relative; left: 45%;">' +
+                    '<span class="glyphicon glyphicon-edit"></span>' +
+                '</a>' +
+            '</td>' +
             '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
-        '</tr>');
-    $('#'+taskNameId).editable({
-        type: 'text',
-        placement: 'left',
-        pk: task.id,
-        url: WEB_APP_ROOT+'task/saveOrUpdate',
-        value: {
-            name: task.name
-        },
-        params: function(params) {
-            return {
-                'id': $(this).attr('data-tid'),
-                'name': params.value.name,
-                'status': params.value.status,
-                'priority': params.value.priority,
-                'comment': params.value.comment,
-                'category': task.category,
-                'patient.id': patient_id
-            }
-        }
-    });
+        '</tr>';
+    $('#task-'+task.category+'-'+patient_id+' tbody').append(taskElement);
+//    $('#'+taskNameId).editable({
+//        type: 'text',
+//        placement: 'left',
+//        pk: task.id,
+//        url: WEB_APP_ROOT+'task/saveOrUpdate',
+//        value: {
+//            name: task.name
+//        },
+//        params: function(params) {
+//            return {
+//                'id': $(this).attr('data-task-id'),
+//                'name': params.value.name,
+//                'status': params.value.status,
+//                'priority': params.value.priority,
+//                'comment': params.value.comment,
+//                'category': task.category,
+//                'patient.id': patient_id
+//            }
+//        }
+//    });
 }
 
 function addNewTask(name, patient_id, category) {
@@ -161,56 +167,23 @@ var patientTableSearch = function() {
     }).hide();
 }
 
-var updatePatientLocation = function() {
-    $(this).editable({
+function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source) {
+    $(element).editable({
         mode: 'inline',
-        type: 'text',
-        pk : $(this).attr('data-pid'),
-        url: WEB_APP_ROOT+'patient/partialUpdate',
-        value: $(this).attr('data-value'),
+        type: fieldType,
+        pk : beanId,
+        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        value: fieldValue,
+        source: source,
         showbuttons: false,
-        params : function(params) {
-            return {
-                'id' : $(this).attr('data-pid'),
-                'location' : params.value
-            }
+        params: function(params) {
+            var ret = {};
+            ret['id'] = beanId;
+            ret[field] = params.value;
+            return ret;
+        },
+        success: function(response, newValue) {
+            bean.attr('data-'+field, newValue);
         }
     });
 }
-
-var updatePatientConsultant = function() {
-    $(this).editable({
-        mode: 'inline',
-        type: 'select',
-        pk : $(this).attr('data-pid'),
-        url: WEB_APP_ROOT+'patient/partialUpdate',
-        value: $(this).attr('data-consultant'),
-        source: WEB_APP_ROOT+'helpers/consultants',
-        showbuttons: false,
-        params : function(params) {
-            return {
-                'id' : $(this).attr('data-pid'),
-                'consultant' : params.value
-            }
-        }
-    });
-}
-
-var updatePatientStatus = function() {
-    $(this).editable({
-        mode: 'inline',
-        type: 'select',
-        pk : $(this).attr('data-pid'),
-        url: WEB_APP_ROOT+'patient/partialUpdate',
-        value: $(this).attr('data-status'),
-        source: WEB_APP_ROOT+'patient/statuses',
-        showbuttons: false,
-        params : function(params) {
-            return {
-                'id' : $(this).attr('data-pid'),
-                'status' : params.value
-            }
-        }
-    });
-}
-

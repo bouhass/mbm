@@ -43,15 +43,15 @@
 
                         var localTasks = [];
                         $('tr#'+patient.id+' td div').each(function() {
-                            if ($(this).attr('data-tid') != undefined) {
-                                localTasks.push($(this).attr('data-tid'));
+                            if ($(this).attr('data-task-id') != undefined) {
+                                localTasks.push($(this).attr('data-task-id'));
                             }
                         })
 
                         // delete tasks if applies
                         $(localTasks).each(function(k, taskId) {
                             if ($.inArray(taskId, remoteTasks) == -1) {
-                                $('tr#'+patient.id+' td div[data-tid="'+taskId+'"]').parent().parent().remove();
+                                $('tr#'+patient.id+' td div[data-task-id="'+taskId+'"]').parent().parent().remove();
                             }
                         });
 
@@ -63,7 +63,7 @@
                             }
                             else {
                                 // TODO : check update required
-                                var taskElement = $('tr#'+patient.id+' td div[data-tid="'+task.id+'"]');
+                                var taskElement = $('tr#'+patient.id+' td div[data-task-id="'+task.id+'"]');
                                 taskElement.text(task.name);
                                 taskElement.attr('data-name', task.name);
                                 taskElement.attr('data-status', task.status);

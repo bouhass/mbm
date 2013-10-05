@@ -3,6 +3,10 @@ body {
     padding-top: 70px;
 }
 
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+    margin-right: 0px;
+}
+
 dl {
     width:100%;
     overflow:hidden;
@@ -10,12 +14,12 @@ dl {
 
 dt {
     float:left;
-    width:50%; /* adjust the width; make sure the total of both is 100% */
+    width:30%; /* adjust the width; make sure the total of both is 100% */
 }
 
 dd {
     float:left;
-    width:50%; /* adjust the width; make sure the total of both is 100% */
+    width:70%; /* adjust the width; make sure the total of both is 100% */
 }
 
 .editable-click,
@@ -132,7 +136,7 @@ a.editable-click:hover {
 }
 
 .task-comment-notification {
-    top: 5px;
+    top: 8px;
     font-size: 1.6em;
 }
 

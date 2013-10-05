@@ -2,7 +2,7 @@ package com.wardbook
 
 import org.grails.comments.Commentable
 
-class Task /*implements Commentable*/ {
+class Task implements Commentable {
 
     transient springSecurityService
 	
@@ -11,7 +11,6 @@ class Task /*implements Commentable*/ {
 	String category = 'NURSE'
     String priority = 'NORMAL'
     Date timeDue
-    String comment
 	static belongsTo = [patient: Patient, creator: User, assignee: User]
 
     static constraints = {
@@ -19,7 +18,6 @@ class Task /*implements Commentable*/ {
 		category inList: ['NURSE', 'DOCTOR']
         priority inList: ['NORMAL', 'HIGH', 'URGENT']
         timeDue nullable: true
-        comment nullable: true
         creator nullable: true, editable: false, display: false // as editable false doesn't work with selects
         assignee nullable: true
     }

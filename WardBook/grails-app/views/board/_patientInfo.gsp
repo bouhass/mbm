@@ -1,7 +1,7 @@
 <table class="patient-info">
     <tr>
         <td>
-            <a href="#" data-pid="${patient.id}" data-value="${patient.location}" class="patient-location">${patient.location}</a>
+            <a href="#" data-id="${patient.id}" data-value="${patient.location}" class="patient-location">${patient.location}</a>
         </td>
         <td>
             <g:link controller="patient" action="profile" id="${patient.id}">
@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td>
-            <a href="#" data-pid="${patient.id}" data-value="${patient.consultant}" class="patient-consultant">${patient.consultant}</a>
+            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant">${patient.consultant}</a>
         </td>
         <td>
             <g:formatDate format="dd-MM-yyyy" date="${patient.dateOfBirth}"/>
@@ -23,7 +23,7 @@
             ${patient.nhsNumber}
         </td>
         <td>
-            <a href="#" data-pid="${patient.id}" data-value="${patient.status}" class="patient-status">${patient.status}</a>
+            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status">${patient.status}</a>
         </td>
     </tr>
 </table>

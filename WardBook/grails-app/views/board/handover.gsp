@@ -262,8 +262,8 @@
 
                         var localTasks = [];
                         $('tr#'+patient.id+' td').each(function() {
-                            if ($(this).attr('data-tid') != undefined) {
-                                localTasks.push($(this).attr('data-tid'));
+                            if ($(this).attr('data-task-id') != undefined) {
+                                localTasks.push($(this).attr('data-task-id'));
                             }
                         })
 
@@ -277,7 +277,7 @@
                         // delete tasks if applies
                         $(localTasks).each(function(k, taskId) {
                             if ($.inArray(taskId, remoteTasks) == -1) {
-                                $('tr#'+patient.id+' td[data-tid="'+taskId+'"]').parent().remove();
+                                $('tr#'+patient.id+' td[data-task-id="'+taskId+'"]').parent().remove();
                             }
                         });
 
@@ -293,11 +293,11 @@
 
                             // add new tasks if applies
                             if ($.inArray(task.id.toString(), localTasks) == -1) {
-                                $('.JOBS tbody').append('<tr><td data-tid="'+task.id+'">'+task.name+'</td></tr>')
+                                $('.JOBS tbody').append('<tr><td data-task-id="'+task.id+'">'+task.name+'</td></tr>')
                             }
                             else {
                                 // TODO : check update required
-                                var taskElement = $('tr#'+patient.id+' td[data-tid="'+task.id+'"]');
+                                var taskElement = $('tr#'+patient.id+' td[data-task-id="'+task.id+'"]');
                                 taskElement.text(task.name);
                             }
                         });

@@ -1,10 +1,10 @@
 <div id="comment${comment.id}" class="comment">
 
-	%{--<div class='permalink'>--}%
-		%{--<a href="#comment_${comment.id}" name="comment_${comment.id}">--}%
-			%{--<g:message code="comment.link.text" default="link"></g:message>--}%
-		%{--</a>--}%
-	%{--</div>--}%
+	<div class='permalink'>
+		<a href="#comment_${comment.id}" name="comment_${comment.id}">
+			<g:message code="comment.link.text" default="link"></g:message>
+		</a>
+	</div>
 
 	<plugin:isAvailable name="avatar">
 		<div class="avatar">
