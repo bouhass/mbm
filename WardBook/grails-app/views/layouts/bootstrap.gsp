@@ -133,7 +133,7 @@
 <r:layoutResources/>
 
 <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
-<script src="${resource(dir: 'moment', file: 'moment.min.js')}"></script>
+<script src="${resource(dir: 'js', file: 'moment.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
 <script src="${resource(dir: 'js', file: 'task.js')}"></script>
 
