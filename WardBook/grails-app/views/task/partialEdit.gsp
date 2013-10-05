@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <dl>
                     <dt>Assign to</dt>
-                    <dd><a href="#" data-id="${task.id}" data-value="${task.assignee.id}" class="task-assignee">${task.assignee}</a></dd>
+                    <dd><a href="#" data-id="${task.id}" data-value="${task.assignee?.id}" class="task-assignee">${task.assignee ?: ''}</a></dd>
                 </dl>
                 <dl>
                     <dt>Priority</dt>

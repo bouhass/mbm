@@ -1,45 +1,45 @@
 
-function openTaskEditModal(taskId) {
-    var taskElement = $('[data-task-id='+taskId+']');
-    var timeDue = (taskElement.attr('data-time-due') == undefined ? '' : taskElement.attr('data-time-due'));
-
-    var modal = $('\
-                <div class="modal" id="task-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
-                    <div class="modal-dialog">\
-                        <div class="modal-content">\
-                            <div class="modal-header">\
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
-                                <h4 class="modal-title">'+taskElement.attr('data-name')+'</h4>\
-                            </div>\
-                            <div class="modal-body">\
-                                <dl>\
-                                    <dt>Assign to</dt>\
-                                    <dd><a href="#" class="task-assignee">'+taskElement.attr('data-assignee')+'</a></dd>\
-                                </dl>\
-                                <dl>\
-                                    <dt>Priority</dt>\
-                                    <dd><a href="#" class="task-priority">'+taskElement.attr('data-priority')+'</a></dd>\
-                                </dl>\
-                                <dl>\
-                                    <dt>Time due</dt>\
-                                    <dd><a href="#" data-type="combodate" data-pk="'+taskId+'" data-task-id="'+taskId+'" data-value="'+timeDue+'" class="task-time-due"></a></dd>\
-                                </dl>\
-                            <div>\
-                                TODO : comments\
-                            </div>\
-                        </div>\
-                        <div class="modal-footer">\
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>');
-
-    updateBeanField(modal.find('.task-assignee'), taskElement, 'task', taskId, 'assignee.id', 'select', taskElement.attr('data-priority'), WEB_APP_ROOT+'helpers/users');
-    updateBeanField(modal.find('.task-priority'), taskElement, 'task', taskId, 'priority', 'select', taskElement.attr('data-priority'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
-    updateTaskTimeDue(modal.find('.task-time-due'));
-    modal.modal('show');
-}
+//function openTaskEditModal(taskId) {
+//    var taskElement = $('[data-task-id='+taskId+']');
+//    var timeDue = (taskElement.attr('data-time-due') == undefined ? '' : taskElement.attr('data-time-due'));
+//
+//    var modal = $('\
+//                <div class="modal" id="task-edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">\
+//                    <div class="modal-dialog">\
+//                        <div class="modal-content">\
+//                            <div class="modal-header">\
+//                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+//                                <h4 class="modal-title">'+taskElement.attr('data-name')+'</h4>\
+//                            </div>\
+//                            <div class="modal-body">\
+//                                <dl>\
+//                                    <dt>Assign to</dt>\
+//                                    <dd><a href="#" class="task-assignee">'+taskElement.attr('data-assignee')+'</a></dd>\
+//                                </dl>\
+//                                <dl>\
+//                                    <dt>Priority</dt>\
+//                                    <dd><a href="#" class="task-priority">'+taskElement.attr('data-priority')+'</a></dd>\
+//                                </dl>\
+//                                <dl>\
+//                                    <dt>Time due</dt>\
+//                                    <dd><a href="#" data-type="combodate" data-pk="'+taskId+'" data-task-id="'+taskId+'" data-value="'+timeDue+'" class="task-time-due"></a></dd>\
+//                                </dl>\
+//                            <div>\
+//                                TODO : comments\
+//                            </div>\
+//                        </div>\
+//                        <div class="modal-footer">\
+//                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+//                        </div>\
+//                    </div>\
+//                </div>\
+//            </div>');
+//
+//    updateBeanField(modal.find('.task-assignee'), taskElement, 'task', taskId, 'assignee.id', 'select', taskElement.attr('data-priority'), WEB_APP_ROOT+'helpers/users');
+//    updateBeanField(modal.find('.task-priority'), taskElement, 'task', taskId, 'priority', 'select', taskElement.attr('data-priority'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
+//    updateTaskTimeDue(modal.find('.task-time-due'));
+//    modal.modal('show');
+//}
 
 $(window).load(function() {
     $('input.add-task-input').each(function() {
