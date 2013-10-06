@@ -34,22 +34,26 @@
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
 
 	<script>
+        var modalLoadingDiv = '' +
+                '<div class="modal-dialog">' +
+                '<div class="modal-content">' +
+                '<div class="modal-body">' +
+                '<img src="${resource(dir: 'images', file: 'spinner.gif')}" class="text-centered"/>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+
         $('#task-edit-modal').on('shown.bs.modal', function () {
-            $('.task-assignee').each(function() {
-                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'assignee.id', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'helpers/users');
-            });
-
-            $('.task-priority').each(function() {
-                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
-            });
-
-            updateBeanDateTimeField($('.task-time-due'), 'task');
         });
 
         $('#task-edit-modal').on('hidden.bs.modal', function () {
+            $(this).html(modalLoadingDiv);
         });
 
         $(window).load(function() {
+
+            $('#task-edit-modal').html(modalLoadingDiv);
+
 //            window.setInterval(function() {
 //                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
 //                    $(patients).each(function(i, patient) {

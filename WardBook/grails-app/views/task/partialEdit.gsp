@@ -32,4 +32,18 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 
+    <script>
+        $(document).ready(function() {
+            $('.task-assignee').each(function() {
+                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'assignee.id', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'helpers/users');
+            });
+
+            $('.task-priority').each(function() {
+                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
+            });
+
+            updateBeanDateTimeField($('.task-time-due'), 'task');
+        });
+    </script>
+
 </g:applyLayout>
