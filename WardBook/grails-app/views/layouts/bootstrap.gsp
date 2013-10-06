@@ -69,6 +69,9 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a id="clock"></a>
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select ward <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -128,6 +131,13 @@
 
 <script>
     WEB_APP_ROOT = '${createLink(uri: '/')}'
+
+    $(window).load(function() {
+        $('#clock').text(moment().format('Do MMM HH:mm'));
+        setInterval(function() {
+            $('#clock').text(moment().format('Do MMM HH:mm'));
+        }, 1000);
+    });
 </script>
 
 <r:layoutResources/>
