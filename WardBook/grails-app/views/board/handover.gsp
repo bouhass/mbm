@@ -49,8 +49,8 @@
                                     <td>
                                         <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
                                     </td>
-                                    <td>
-                                        <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" />
+                                    <td colspan="2">
+                                        <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" maxlength="60" />
                                     </td>
                                 </tr>
                                 <g:each var="record" in="${p.records}">
@@ -61,8 +61,13 @@
                                                     <span class="glyphicon glyphicon-remove"></span>
                                                 </button>
                                             </td>
-                                            <td data-rid="${record.id}" class="record">
+                                            <td data-rid="${record.id}" data-name="${record.name}" class="record">
                                                 ${record.name}
+                                            </td>
+                                            <td class="record-date">
+                                                <g:if test="${record.type in ['PROGRESS', 'PLAN']}">
+                                                    <g:formatDate format="dd MMM" date="${record.editedDate}"/>
+                                                </g:if>
                                             </td>
                                         </tr>
                                     </g:if>
@@ -246,80 +251,80 @@
                 });
             });
 
-            window.setInterval(function() {
-                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
-                    $(patients).each(function(i, patient) {
-
-                        var remoteTasks = [];
-                        $(patient.tasks).each(function(j, task) {
-                            remoteTasks.push(task.id.toString());
-                        });
-
-                        var remoteRecords = [];
-                        $(patient.records).each(function(j, record) {
-                            remoteRecords.push(record.id.toString());
-                        });
-
-                        var localTasks = [];
-                        $('tr#'+patient.id+' td').each(function() {
-                            if ($(this).attr('data-task-id') != undefined) {
-                                localTasks.push($(this).attr('data-task-id'));
-                            }
-                        })
-
-                        var localRecords = [];
-                        $('tr#'+patient.id+' td').each(function() {
-                            if ($(this).attr('data-rid') != undefined) {
-                                localRecords.push($(this).attr('data-rid'));
-                            }
-                        })
-
-                        // delete tasks if applies
-                        $(localTasks).each(function(k, taskId) {
-                            if ($.inArray(taskId, remoteTasks) == -1) {
-                                $('tr#'+patient.id+' td[data-task-id="'+taskId+'"]').parent().remove();
-                            }
-                        });
-
-                        // delete records if applies
-                        $(localRecords).each(function(k, recordId) {
-                            if ($.inArray(recordId, remoteRecords) == -1) {
-                                $('tr#'+patient.id+' td[data-rid="'+recordId+'"]').parent().remove();
-                            }
-                        });
-
-
-                        $(patient.tasks).each(function(j, task) {
-
-                            // add new tasks if applies
-                            if ($.inArray(task.id.toString(), localTasks) == -1) {
-                                $('.JOBS tbody').append('<tr><td data-task-id="'+task.id+'">'+task.name+'</td></tr>')
-                            }
-                            else {
-                                // TODO : check update required
-                                var taskElement = $('tr#'+patient.id+' td[data-task-id="'+task.id+'"]');
-                                taskElement.text(task.name);
-                            }
-                        });
-
-                        $(patient.records).each(function(j, record) {
-
-                            // add new records if applies
-                            if ($.inArray(record.id.toString(), localRecords) == -1) {
-                                $('.'+record.type+' tbody').append('<tr><td data-rid="'+record.id+'">'+record.name+'</td></tr>')
-                            }
-                            else {
-                                // TODO : check update required
-                                var recordElement = $('tr#'+patient.id+' td[data-rid="'+record.id+'"]');
-                                recordElement.text(record.name);
-                            }
-                        });
-                    })
-                })
-                        .fail(function() {
-                            console.error('ERROR: could not patient data');
-                        })
-            }, 3000);
+//            window.setInterval(function() {
+//                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
+//                    $(patients).each(function(i, patient) {
+//
+//                        var remoteTasks = [];
+//                        $(patient.tasks).each(function(j, task) {
+//                            remoteTasks.push(task.id.toString());
+//                        });
+//
+//                        var remoteRecords = [];
+//                        $(patient.records).each(function(j, record) {
+//                            remoteRecords.push(record.id.toString());
+//                        });
+//
+//                        var localTasks = [];
+//                        $('tr#'+patient.id+' td').each(function() {
+//                            if ($(this).attr('data-task-id') != undefined) {
+//                                localTasks.push($(this).attr('data-task-id'));
+//                            }
+//                        })
+//
+//                        var localRecords = [];
+//                        $('tr#'+patient.id+' td').each(function() {
+//                            if ($(this).attr('data-rid') != undefined) {
+//                                localRecords.push($(this).attr('data-rid'));
+//                            }
+//                        })
+//
+//                        // delete tasks if applies
+//                        $(localTasks).each(function(k, taskId) {
+//                            if ($.inArray(taskId, remoteTasks) == -1) {
+//                                $('tr#'+patient.id+' td[data-task-id="'+taskId+'"]').parent().remove();
+//                            }
+//                        });
+//
+//                        // delete records if applies
+//                        $(localRecords).each(function(k, recordId) {
+//                            if ($.inArray(recordId, remoteRecords) == -1) {
+//                                $('tr#'+patient.id+' td[data-rid="'+recordId+'"]').parent().remove();
+//                            }
+//                        });
+//
+//
+//                        $(patient.tasks).each(function(j, task) {
+//
+//                            // add new tasks if applies
+//                            if ($.inArray(task.id.toString(), localTasks) == -1) {
+//                                $('.JOBS tbody').append('<tr><td data-task-id="'+task.id+'">'+task.name+'</td></tr>')
+//                            }
+//                            else {
+//                                // TODO : check update required
+//                                var taskElement = $('tr#'+patient.id+' td[data-task-id="'+task.id+'"]');
+//                                taskElement.text(task.name);
+//                            }
+//                        });
+//
+//                        $(patient.records).each(function(j, record) {
+//
+//                            // add new records if applies
+//                            if ($.inArray(record.id.toString(), localRecords) == -1) {
+//                                $('.'+record.type+' tbody').append('<tr><td data-rid="'+record.id+'">'+record.name+'</td></tr>')
+//                            }
+//                            else {
+//                                // TODO : check update required
+//                                var recordElement = $('tr#'+patient.id+' td[data-rid="'+record.id+'"]');
+//                                recordElement.text(record.name);
+//                            }
+//                        });
+//                    })
+//                })
+//                        .fail(function() {
+//                            console.error('ERROR: could not patient data');
+//                        })
+//            }, 3000);
         });
 	</script>
 		

@@ -23,7 +23,7 @@
             <dd>UNASSIGNED</dd>
 
             <dt>Created by</dt>
-            <dd>${task.creator}</dd>
+            <dd>${task.createdBy}</dd>
 
             <dt>Assigned to</dt>
             <dd>${task.assignee ?: 'NOT ASSIGNED'}</dd>

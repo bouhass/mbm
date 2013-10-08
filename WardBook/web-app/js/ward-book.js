@@ -54,7 +54,7 @@ var deleteTask = function() {
 var deleteRecord = function() {
     var self = $(this);
     var taskElement = self.siblings();
-    if (confirm('Are you sure you want to delete this record? ('+taskElement.text().trim()+')')) {
+    if (confirm('Are you sure you want to delete this record? ('+taskElement.attr('data-name')+')')) {
         self.children().removeClass('glyphicon');
         self.children().removeClass('glyphicon-remove');
         self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');
@@ -136,7 +136,7 @@ function addNewRecord(name, patient_id, type) {
             $(elId).append('' +
                 '<tr>' +
                     '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-                    '<td id="'+id+'" data-rid="'+record.id+'" class="record">'+name+'</td>' +
+                    '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+name+'" class="record">'+name+'</td>' +
                 '</tr>');
             $('[data-rid='+record.id+']').editable({
                 mode: 'inline',

@@ -2,6 +2,7 @@ package com.wardbook
 
 import org.grails.comments.Commentable
 
+@gorm.AuditStamp
 class Task implements Commentable {
 
     transient springSecurityService
@@ -11,21 +12,18 @@ class Task implements Commentable {
 	String category = 'NURSE'
     String priority = 'NORMAL'
     Date timeDue
-	static belongsTo = [patient: Patient, creator: User, assignee: User]
+	static belongsTo = [patient: Patient, assignee: User]
 
     static constraints = {
 		status inList: ['PENDING', 'STARTED', 'COMPLETED']
 		category inList: ['NURSE', 'DOCTOR']
         priority inList: ['NORMAL', 'HIGH', 'URGENT']
         timeDue nullable: true
-        creator nullable: true, editable: false, display: false // as editable false doesn't work with selects
         assignee nullable: true
     }
 
     def beforeInsert() {
-        def currentUser = springSecurityService.currentUser
-        creator = currentUser
-        assignee = currentUser
+        assignee = springSecurityService.currentUser
     }
 
 	String toString() { "${name}" }

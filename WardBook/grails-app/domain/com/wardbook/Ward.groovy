@@ -1,5 +1,6 @@
 package com.wardbook
 
+@gorm.AuditStamp
 class Ward {
 
     String name

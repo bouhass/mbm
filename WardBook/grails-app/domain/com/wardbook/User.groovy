@@ -1,5 +1,6 @@
 package com.wardbook
 
+@gorm.AuditStamp
 class User {
 
     transient springSecurityService
@@ -14,7 +15,7 @@ class User {
     // added fields
     String name
     static hasMany = [createdTasks: Task, assignedTasks: Task]
-    static mappedBy = [createdTasks: 'creator', assignedTasks: 'assignee']
+    static mappedBy = [assignedTasks: 'assignee']
 
     static constraints = {
         username blank: false, unique: true

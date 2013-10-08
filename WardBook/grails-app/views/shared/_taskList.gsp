@@ -5,7 +5,7 @@
             <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
         </td>
         <td>
-            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" data-category="${category}" class="add-task-input mbm-input-blue" />
+            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" data-category="${category}" class="add-task-input mbm-input-blue" maxlength="60" />
         </td>
         <td></td>
         <td></td>

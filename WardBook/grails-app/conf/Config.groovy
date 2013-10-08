@@ -101,17 +101,29 @@ grails.plugins.springsecurity.authority.className = 'com.wardbook.Role'
 grails.plugins.springsecurity.rejectIfNoRule = true
 grails.plugins.springsecurity.securityConfigType = grails.plugins.springsecurity.SecurityConfigType.InterceptUrlMap
 grails.plugins.springsecurity.interceptUrlMap = [
-        '/js/**'        : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/css/**'       : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/images/**'    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/plugins/**'   : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/login/**'     : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/logout/**'    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-        '/user/**'      : ['ROLE_ADMIN'],
-        '/**'           : ['IS_AUTHENTICATED_FULLY']
+        '/js/**'                    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/css/**'                   : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/images/**'                : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/plugins/**'               : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/bootstrap-editable/**'    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/login/**'                 : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/logout/**'                : ['IS_AUTHENTICATED_ANONYMOUSLY'],
+        '/user/**'                  : ['ROLE_ADMIN'],
+        '/**'                       : ['IS_AUTHENTICATED_FULLY']
 ]
 
 grails.plugins.springsecurity.ui.encodePassword = false
 
 // Commentable
 grails.commentable.poster.evaluator = { com.wardbook.User.findByUsername(principal.username) }
+
+grails {
+    plugin {
+        audittrail {
+            createdBy.field = "createdBy"
+            editedBy.field = "editedBy"
+            createdDate.field = "createdDate"
+            editedDate.field = "editedDate"
+        }
+    }
+}

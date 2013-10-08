@@ -4,6 +4,7 @@ import groovy.transform.EqualsAndHashCode
 import org.grails.comments.Commentable
 
 @EqualsAndHashCode
+@gorm.AuditStamp
 class Patient implements Commentable {
 	
 	String firstName

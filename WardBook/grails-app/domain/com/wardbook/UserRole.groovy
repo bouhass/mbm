@@ -2,6 +2,7 @@ package com.wardbook
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 
+@gorm.AuditStamp
 class UserRole implements Serializable {
 
     User user

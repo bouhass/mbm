@@ -1,5 +1,6 @@
 package com.wardbook
 
+@gorm.AuditStamp
 class Role {
 
     String authority

@@ -103,6 +103,11 @@ a.editable-click:hover {
     max-height: 80%;
 }
 
+.record-date {
+    color: grey;
+    float: right !important;
+}
+
 .second-level-nav {
     background: #bbb;
 }

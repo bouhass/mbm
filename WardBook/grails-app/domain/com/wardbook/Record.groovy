@@ -1,5 +1,6 @@
 package com.wardbook
 
+@gorm.AuditStamp
 class Record {
 	
 	String name
