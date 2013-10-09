@@ -16,10 +16,12 @@ class User {
     String name
     static hasMany = [createdTasks: Task, assignedTasks: Task]
     static mappedBy = [assignedTasks: 'assignee']
+    static belongsTo = [ward: Ward]
 
     static constraints = {
         username blank: false, unique: true
         password blank: false
+        ward nullable: true
     }
 
     static mapping = {

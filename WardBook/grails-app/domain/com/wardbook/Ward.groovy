@@ -5,7 +5,7 @@ class Ward {
 
     String name
     String speciality
-    static hasMany = [patients: Patient]
+    static hasMany = [patients: Patient, users: User]
 
     static constraints = {
     }

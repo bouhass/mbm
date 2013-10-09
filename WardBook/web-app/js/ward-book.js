@@ -167,7 +167,7 @@ var patientTableSearch = function() {
     }).hide();
 }
 
-function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source) {
+function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, afterSuccess) {
     $(element).editable({
         mode: 'inline',
         type: fieldType,
@@ -183,6 +183,9 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
             return ret;
         },
         success: function(response, newValue) {
+            if (afterSuccess != undefined) {
+                afterSuccess(response, newValue);
+            }
             $(bean).attr('data-'+field, newValue);
         }
     });

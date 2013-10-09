@@ -24,10 +24,17 @@ class Patient implements Commentable {
 		firstName nullable:false
 		lastName nullable:false
 		gender inList: ['MALE', 'FEMALE']
-		status inList: ['Default (no concerns)', 'New Admission', 'Unwell', 'For Home']
+		status inList: [
+                'Default (no concerns)',
+                'New Admission',
+                'Unwell (To Be Aware)',
+                'Unwell (For Night Review)',
+                'Unwell (Urgent Review)',
+                'For Home'
+        ]
 		location nullable:true
 		nhsNumber nullable:true
     }
-	
+
 	String toString() { "${firstName} ${lastName}" }
 }

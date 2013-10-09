@@ -10,7 +10,19 @@ $(window).load(function() {
     });
 
     $('.patient-status').each(function() {
-        updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'status', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'patient/statuses')
+        updateBeanField(this,
+            this,
+            'patient',
+            $(this).attr('data-id'),
+            'status',
+            'select',
+            $(this).attr('data-value'),
+            WEB_APP_ROOT+'patient/statuses',
+            function(response, newValue) {
+                if (newValue == 'Unwell (Urgent Review)') {
+                    alert('FOR ACUTELY UNWELL PATIENT A VERBAL HANDOVER MUST BE DONE, CLICK YES TO CONFIRM YOU HAVE DONE SO');
+                }
+            });
     });
 
     $('.patient-handover').live('click', function() {
@@ -20,10 +32,9 @@ $(window).load(function() {
         })
             .done(function(patient) {
                 // remove loading image
-                console.log('done updating the patient : '+patient.handover)
             })
             .fail(function() {
-                alert("ERROR: could not update the patient status");
+                alert("ERROR: could not update the patient");
             })
     });
 });
