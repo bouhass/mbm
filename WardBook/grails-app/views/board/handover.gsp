@@ -11,6 +11,9 @@
             </ul>
         </div>
         <div class="pull-right">
+            <a id="handover" class="btn btn-default">
+                Handover
+            </a>
             <a class="btn btn-default">
                 <span class="glyphicon glyphicon-print"></span>
             </a>
@@ -66,7 +69,7 @@
                                             </td>
                                             <td class="record-date">
                                                 <g:if test="${record.type in ['PROGRESS', 'PLAN']}">
-                                                    <g:formatDate format="dd MMM" date="${record.editedDate}"/>
+                                                    <g:formatDate format="dd/MMM" date="${record.editedDate}"/>
                                                 </g:if>
                                             </td>
                                         </tr>
@@ -214,6 +217,20 @@
 
             // TODO : displayHandoverViewFor('Doctor')
             $('#view-selector li a:contains(Doctor)').click();
+
+            $('#handover').on('click', function() {
+                var $rows = $('#patients-table > tbody > tr');
+                if ($(this).hasClass('active')) {
+                    $rows.show();
+                    $(this).removeClass('active');
+                }
+                else {
+                    $rows.hide().filter(function() {
+                        return $(this).find('input[type="checkbox"]').is(':checked');
+                    }).show();
+                    $(this).addClass('active');
+                }
+            });
 
             $('input.add-record-input').each(function() {
                 $(this).keyup(function (e) {

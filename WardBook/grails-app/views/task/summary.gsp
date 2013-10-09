@@ -73,7 +73,7 @@
             </div>
 
             <div class="panel-body">
-                %{--<g:render template="/shared/comments" model="[commentable: task]"/>--}%
+                <g:render template="/shared/comments" model="[commentable: task]"/>
             </div>
         </div>
 
