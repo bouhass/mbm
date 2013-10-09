@@ -109,7 +109,7 @@ grails.plugins.springsecurity.interceptUrlMap = [
         '/login/**'                 : ['IS_AUTHENTICATED_ANONYMOUSLY'],
         '/logout/**'                : ['IS_AUTHENTICATED_ANONYMOUSLY'],
         '/user/**'                  : ['ROLE_ADMIN'],
-        '/**'                       : ['IS_AUTHENTICATED_ANONYMOUSLY']
+        '/**'                       : ['IS_AUTHENTICATED_FULLY']
 ]
 
 grails.plugins.springsecurity.ui.encodePassword = false
