@@ -112,6 +112,9 @@ grails.plugins.springsecurity.interceptUrlMap = [
         '/**'                       : ['IS_AUTHENTICATED_FULLY']
 ]
 
+grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/wardselect'
+grails.plugins.springsecurity.successHandler.alwaysUseDefault = true
+
 grails.plugins.springsecurity.ui.encodePassword = false
 
 // Commentable

@@ -7,6 +7,14 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     margin-right: 0px;
 }
 
+.box-middle {
+    position: absolute;
+    top: 20%;
+    padding: 50px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
 dl {
     width:100%;
     overflow:hidden;

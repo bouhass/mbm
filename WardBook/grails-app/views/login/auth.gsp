@@ -30,7 +30,7 @@
     </div>
 </nav>
 
-<div class="col-md-4 col-md-offset-4" style="position: absolute; top: 20%; padding: 50px; border: 1px solid #aaa;">
+<div class="col-md-4 col-md-offset-4 box-middle">
 
     <g:img dir="images" file="login_avatar.png" style="margin-left: auto; margin-right: auto; display: block" />
 

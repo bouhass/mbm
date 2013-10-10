@@ -221,3 +221,15 @@ function updateBeanDateTimeField(element, beanType) {
         }
     });
 }
+
+function switchWard(wardId) {
+    $.post(WEB_APP_ROOT+'helpers/switchWard', {
+        'ward.id': wardId
+    })
+        .done(function(user) {
+            location.reload();
+        })
+        .fail(function() {
+            alert("ERROR: could not switch ward");
+        })
+}

@@ -3,8 +3,6 @@ package com.wardbook
 class TaskController {
 
     static scaffold = true
-
-    def springSecurityService
 	
     def index() {
 		redirect action: 'mylist'
@@ -12,7 +10,7 @@ class TaskController {
 
     def mylist() {
         def tasks = Task.createCriteria().list {
-            eq('assignee.id', springSecurityService.principal.id)
+            eq('assignee.id', request.user.id)
         }
         [tasks: tasks]
     }

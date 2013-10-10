@@ -4,8 +4,6 @@ import grails.converters.JSON
 
 class HelpersController {
 
-    def springSecurityService
-
     def consultants() {
         render User.consultants()*.name as JSON
     }
@@ -15,10 +13,14 @@ class HelpersController {
         render users as JSON
     }
 
+    def wards() {
+        def wards = Ward.list().collectEntries { [it.id, it.name] }
+        render wards as JSON
+    }
+
     def switchWard() {
-        def currentUser = springSecurityService.currentUser
-        currentUser.ward = Ward.get(params.'ward.id')
-        if (!currentUser.save(flush: true)) {
+        request.user.ward = Ward.get(params.'ward.id')
+        if (!request.user.save(flush: true)) {
             render(status: 500, text: 'Failed to update ward')
         }
         else {
