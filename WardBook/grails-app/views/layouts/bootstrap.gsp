@@ -92,13 +92,23 @@
                 </a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><sec:loggedInUserInfo field="username"/> <b
-                        class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <sec:loggedInUserInfo field="username"/><b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a></li>
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
+                    </li>
+                    <sec:ifAllGranted roles="ROLE_ADMIN">
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <a href="${createLink(controller: 'user')}"><span class="glyphicon glyphicon-cog"></span> Admin </a>
+                        </li>
+                    </sec:ifAllGranted>
                     <li role="presentation" class="divider"></li>
-                    <li><a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout
-                    </a></li>
+                    <li>
+                        <a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+                    </li>
                 </ul>
             </li>
         </ul>
