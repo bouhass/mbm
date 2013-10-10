@@ -1,5 +1,13 @@
 <g:applyLayout name="board">
 
+    <div class="third-level-nav">
+        <div class="pull-right">
+            <a id="handover" class="btn btn-default" style="margin-bottom: 8px">
+                Handover
+            </a>
+        </div>
+    </div>
+
 	<div class="page-body">
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
@@ -53,6 +61,20 @@
         $(window).load(function() {
 
             $('#task-edit-modal').html(modalLoadingDiv);
+
+            $('#handover').on('click', function() {
+                var $rows = $('#patients-table > tbody > tr');
+                if ($(this).hasClass('active')) {
+                    $rows.show();
+                    $(this).removeClass('active');
+                }
+                else {
+                    $rows.hide().filter(function() {
+                        return $(this).find('input[type="checkbox"]').is(':checked');
+                    }).show();
+                    $(this).addClass('active');
+                }
+            });
 
 //            window.setInterval(function() {
 //                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {

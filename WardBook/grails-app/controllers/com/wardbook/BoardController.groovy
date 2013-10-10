@@ -2,15 +2,26 @@ package com.wardbook
 
 class BoardController {
 
+    def springSecurityService
+
     def index() {
-		redirect(action:joblist)
+		redirect(action:handover)
 	}
 	
 	def joblist = {
-		[patients: Patient.list()]
+        [patients: wardPatients()]
 	}
 	
 	def handover = {
-		[patients: Patient.list()]
+		[patients: wardPatients()]
 	}
+
+    private def wardPatients() {
+        def currentUser = springSecurityService.currentUser
+        Patient.createCriteria().list {
+            if (currentUser.ward) {
+                eq('ward.id', currentUser.ward.id)
+            }
+        }
+    }
 }

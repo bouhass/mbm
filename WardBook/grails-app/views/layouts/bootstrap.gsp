@@ -1,4 +1,5 @@
-<%@ page import="com.wardbook.Ward; org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes" %>
+<%@ page import="com.wardbook.User; com.wardbook.Ward; org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes" %>
+<g:set var="currentUser" value="${User.findByUsername(sec.loggedInUserInfo(field:'username'))}"/>
 <!doctype html>
 <html lang="en">
 <head>
@@ -73,10 +74,11 @@
                 <a id="clock"></a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Select ward <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${currentUser.ward ?: 'All wards'}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                    <li><a href="#" onclick="switchWard('')">All wards</a></li>
                     <g:each in="${Ward.list()}" var="ward">
-                        <li><a href="#">${ward}</a></li>
+                        <li><a href="#" onclick="switchWard(${ward.id})">${ward}</a></li>
                     </g:each>
                 </ul>
             </li>
@@ -131,6 +133,18 @@
 
 <script>
     WEB_APP_ROOT = '${createLink(uri: '/')}'
+
+    function switchWard(wardId) {
+        $.post(WEB_APP_ROOT+'helpers/switchWard', {
+            'ward.id': wardId
+        })
+                .done(function(user) {
+                    location.reload();
+                })
+                .fail(function() {
+                    alert("ERROR: could not switch ward");
+                })
+    }
 
     $(window).load(function() {
         $('#clock').text(moment().format('Do MMM HH:mm'));
