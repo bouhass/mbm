@@ -1,0 +1,2 @@
+Git requires a file at least to be able to commit a directory. And this directory is needed when using the grails
+migration plugin.
