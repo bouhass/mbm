@@ -43,6 +43,27 @@ environments {
             }
         }
     }
+    demoAmazon {
+        dataSource {
+            pooled = true
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:mysql://mbm-dev1.cof0xwuqd56q.eu-west-1.rds.amazonaws.com:3306/DEMO_DB"
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+            username = "user"
+            password = "password"
+            properties {
+                maxActive = -1
+                minEvictableIdleTimeMillis=1800000
+                timeBetweenEvictionRunsMillis=1800000
+                numTestsPerEvictionRun=3
+                testOnBorrow=true
+                testWhileIdle=true
+                testOnReturn=true
+                validationQuery="SELECT 1"
+            }
+        }
+    }
     test {
         dataSource {
             dbCreate = "update"
