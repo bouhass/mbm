@@ -11,6 +11,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="format-detection" content="telephone=no">
+
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -73,11 +75,11 @@
                 <a id="clock"></a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${request.user.ward ?: 'All wards'}<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${request.user.ward?.name ?: 'All wards'}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="#" onclick="switchWard('')">All wards</a></li>
                     <g:each in="${Ward.list()}" var="ward">
-                        <li><a href="#" onclick="switchWard(${ward.id})">${ward}</a></li>
+                        <li><a href="#" onclick="switchWard(${ward.id})">${ward.name}</a></li>
                     </g:each>
                 </ul>
             </li>
@@ -93,9 +95,15 @@
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <sec:loggedInUserInfo field="username"/><b class="caret"></b>
+                    <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                    <li>
+                        <a>
+                            <sec:loggedInUserInfo field="username"/>
+                        </a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
                     <li>
                         <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
                     </li>

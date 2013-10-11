@@ -1,7 +1,7 @@
 <g:applyLayout name="board">
 
     <div class="third-level-nav">
-        <div class="col-lg-9">
+        <div class="col-md-9">
             %{--<ul class="nav nav-tabs nav-justified">--}%
             <ul id="view-selector" class="nav nav-tabs">
                 <li><a href="#"> Doctor </a></li>

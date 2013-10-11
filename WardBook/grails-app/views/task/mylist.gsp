@@ -30,7 +30,9 @@
                         <td></td>
                         <td class="task-status" data-status="${task.status}"><img /></td>
                         <td>
-                            <a href="javascript:;" onclick="$('iframe').attr('src', '${createLink(action: 'summary', id: task.id)}')">Show &raquo;</a>
+                            <a href="javascript:;" onclick="$('iframe').attr('src', '${createLink(action: 'summary', id: task.id)}')" class="btn btn-default btn-xs">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
                         </td>
                     </tr>
                 </g:each>

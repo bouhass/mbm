@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-md-1">
-                <a href="${createLink(controller: 'patient', action: 'overview')}" type="button"
+                <a href="${createLink(controller: 'board')}" type="button"
                    class="btn btn-default">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
@@ -40,7 +40,7 @@
 
                 <div class="col-md-3">
                     <dl>
-                        <dt>Consultant</dt>
+                        <dt>CONS</dt>
                         <dd>${patient.consultant}</dd>
 
                         <dt>NHS</dt>

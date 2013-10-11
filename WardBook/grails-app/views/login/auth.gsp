@@ -43,11 +43,11 @@
     <form action='${postUrl}' method='POST' id='loginForm'>
 
         <div class="form-group">
-            <input type="email" class="form-control" name="j_username" id="username" placeholder="Type your NHS.NET email address" />
+            <input type="email" class="form-control" name="j_username" id="username" placeholder="NHS.NET email address" />
         </div>
 
         <div class="form-group">
-            <input type="password" class="form-control" name="j_password" id="password" placeholder="Type your password" />
+            <input type="password" class="form-control" name="j_password" id="password" placeholder="Password" />
         </div>
 
         <div class="checkbox">

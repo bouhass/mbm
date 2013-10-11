@@ -83,6 +83,7 @@ a.editable-click:hover {
     border: 0px;
     border-bottom: 1px solid #3cf;
     background: transparent;
+    border-radius: 0px;
 }
 
 .mbm-input-blue:focus {
