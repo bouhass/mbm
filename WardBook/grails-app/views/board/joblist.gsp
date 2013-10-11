@@ -19,7 +19,7 @@
 			</thead>
 			<tbody>
 			<g:each var="patient" in="${patients}">
-				<tr id="${patient.id}">
+				<tr id="${patient.id}" ${patient.status.contains('Unwell') ? 'class="patient-unwell"' : ''}>
 					<td>
                         <g:render template="patientInfo" model="[patient: patient]" />
 					</td>

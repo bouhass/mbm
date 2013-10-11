@@ -34,11 +34,8 @@
         <div id="Overview" class="view">
 
             <div class="row col-md-12">
-                <div class="col-md-3 text-center">
-                    <img src="${resource(dir: 'images', file: 'patient-profile_icon.png')}"/>
-                </div>
-
                 <div class="col-md-3">
+                    <h4>Patient details</h4>
                     <dl>
                         <dt>CONS</dt>
                         <dd>${patient.consultant}</dd>
@@ -54,30 +51,40 @@
                     </dl>
                 </div>
 
+                <div class="col-md-3">
+                    <h4>
+                        <span class="glyphicon glyphicon-warning-sign" style="color:red;"></span>
+                        Alerts
+                    </h4>
+                    <ul>
+                        <li>Recent C.diff</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Problem list</h4>
+                    <ul>
+                        <g:each in="${patient.records}" var="record">
+                            <g:if test="${record.type == 'PROBLEM'}">
+                                <li>${record}</li>
+                            </g:if>
+                        </g:each>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h4>Allergies</h4>
+                    <ul>
+                        <li>Penicilin - Rash</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row col-md-12">
                 <div class="col-md-6">
+                    <h4>Length of stay</h4>
+
                     <div class="row">
-                        <div class="col-md-6">
-                            <h4>Problem list</h4>
-                            <ul>
-                                <g:each in="${patient.records}" var="record">
-                                    <g:if test="${record.type == 'PROBLEM'}">
-                                        <li>${record}</li>
-                                    </g:if>
-                                </g:each>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h4>Allergies</h4>
-                            <ul>
-                                <li>Penicilin - Rash</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="row col-md-12">
-                        <h4>Length of stay</h4>
-
                         <div class="col-md-10">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" style="width: 60%">
@@ -97,21 +104,34 @@
                         <div class="col-md-2">
                             days
                         </div>
-
-                        <div class="row col-md-12">
-                            <span class="label label-info">Patient</span>
-                            <span class="label label-primary">Hospital avg</span>
-                            <span class="label label-danger">National avg</span>
-                        </div>
                     </div>
+
+                    <div class="row col-md-12">
+                        <span class="label label-info">Patient</span>
+                        <span class="label label-primary">Hospital avg</span>
+                        <span class="label label-danger">National avg</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h4>Additional info</h4>
+                    <dl>
+                        <dt>PDD</dt>
+                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() + (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate> - [day 7]</dd>
+
+                        <dt>Medically fit</dt>
+                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() - (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate></dd>
+                    </dl>
                 </div>
             </div>
 
             <div class="row col-md-12">
-                <a class="btn btn-warning">Assign to</a>
-                <a class="btn btn-warning">Move to ward</a>
-                <a class="btn btn-danger">Dismiss</a>
-                <hr/>
+                <div class="pull-right">
+                    <a class="btn btn-warning">Assign to</a>
+                    <a class="btn btn-warning">Move to ward</a>
+                    <a class="btn btn-danger">Dismiss</a>
+                    <hr/>
+                </div>
             </div>
 
             <div class="row col-md-12">

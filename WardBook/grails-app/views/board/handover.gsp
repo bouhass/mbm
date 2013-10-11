@@ -32,7 +32,7 @@
 					<th class="HISTORY">PMH</th>
 					<th class="PROGRESS">PROGRESS</th>
 					<th class="PLAN">PLAN</th>
-					<th class="NOTE">NOTES</th>
+					<th class="NOTE">ANGIO/ECHO/TROP</th>
 					<th class="DIET">DIET</th>
 					<th class="PREMORBID">PRE-MORBID STATUS</th>
 					<th class="MOBILITY">MOBILITY</th>
@@ -41,7 +41,7 @@
 			</thead>
 			<tbody>
 			<g:each var="p" in="${patients}">
-				<tr id="${p.id}">
+				<tr id="${p.id}" ${p.status.contains('Unwell') ? 'class="patient-unwell"' : ''}>
                     <td>
                         <g:render template="patientInfo" model="[patient: p]" />
                     </td>
@@ -192,10 +192,20 @@
 	<script>
 		$(window).load(function() {
 
-            var handoverViewsColumnsMapping = {
-                Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
-                Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
-                Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+            var handoverViewsColumnsMapping;
+            if ($(window).width() > 1024) {
+                handoverViewsColumnsMapping = {
+                    Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
+                    Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
+                    Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+                }
+            }
+            else {
+                handoverViewsColumnsMapping = {
+                    Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN'],
+                    Nurse: ['PROBLEM', 'HISTORY', 'MOBILITY', 'SOCIAL'],
+                    Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY']
+                }
             }
 
             $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {

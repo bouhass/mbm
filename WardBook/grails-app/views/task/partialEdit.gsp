@@ -39,7 +39,7 @@
             });
 
             $('.task-priority').each(function() {
-                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
+                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", URGENT: "URGENT" });
             });
 
             updateBeanDateTimeField($('.task-time-due'), 'task');

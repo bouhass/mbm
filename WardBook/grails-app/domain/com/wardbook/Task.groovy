@@ -17,7 +17,7 @@ class Task implements Commentable {
     static constraints = {
 		status inList: ['PENDING', 'STARTED', 'COMPLETED']
 		category inList: ['NURSE', 'DOCTOR']
-        priority inList: ['NORMAL', 'HIGH', 'URGENT']
+        priority inList: ['NORMAL', 'URGENT']
         timeDue nullable: true
         assignee nullable: true
     }

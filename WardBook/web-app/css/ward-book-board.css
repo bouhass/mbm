@@ -10,6 +10,10 @@
 	margin-right: auto;
 }
 
+.patient-unwell > td {
+    background: #fff3f8 !important;
+}
+
 th,td {
 	border: 1px solid;
 	padding: 8px;

@@ -153,7 +153,6 @@
                     <span>Priority: </span>\
                     <select name="priority" class="form-control">\
                         <option value="NORMAL">NORMAL</option>\
-                        <option value="HIGH">HIGH</option>\
                         <option value="URGENT">URGENT</option>\
                     </select>\
                 </label>\

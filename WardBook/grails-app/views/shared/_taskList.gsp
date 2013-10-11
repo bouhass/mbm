@@ -37,6 +37,9 @@
                                 <p class="task-comment-number">${task.comments.size}</p>
                             </span>
                         </g:if>
+                        <g:if test="${task.priority == 'URGENT'}">
+                            <span class="glyphicon glyphicon-fire" style="color: orangered;"></span>
+                        </g:if>
                     </div>
                 </td>
                 <td class="edit-task">

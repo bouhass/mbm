@@ -36,7 +36,7 @@
 //            </div>');
 //
 //    updateBeanField(modal.find('.task-assignee'), taskElement, 'task', taskId, 'assignee.id', 'select', taskElement.attr('data-priority'), WEB_APP_ROOT+'helpers/users');
-//    updateBeanField(modal.find('.task-priority'), taskElement, 'task', taskId, 'priority', 'select', taskElement.attr('data-priority'), { NORMAL: "NORMAL", HIGH: "HIGH", URGENT: "URGENT" });
+//    updateBeanField(modal.find('.task-priority'), taskElement, 'task', taskId, 'priority', 'select', taskElement.attr('data-priority'), { NORMAL: "NORMAL", URGENT: "URGENT" });
 //    updateTaskTimeDue(modal.find('.task-time-due'));
 //    modal.modal('show');
 //}

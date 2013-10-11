@@ -10,15 +10,23 @@ $(window).load(function() {
     });
 
     $('.patient-status').each(function() {
+        var patientId = $(this).attr('data-id');
         updateBeanField(this,
             this,
             'patient',
-            $(this).attr('data-id'),
+            patientId,
             'status',
             'select',
             $(this).attr('data-value'),
             WEB_APP_ROOT+'patient/statuses',
             function(response, newValue) {
+                if (newValue.indexOf("Unwell") != -1) {
+                    $('tr[id='+patientId+']').addClass('patient-unwell');
+                }
+                else {
+                    $('tr[id='+patientId+']').removeClass('patient-unwell');
+                }
+
                 if (newValue == 'Unwell (Urgent Review)') {
                     alert('FOR ACUTELY UNWELL PATIENT A VERBAL HANDOVER MUST BE DONE, CLICK YES TO CONFIRM YOU HAVE DONE SO');
                 }
