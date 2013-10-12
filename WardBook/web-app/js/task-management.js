@@ -42,6 +42,26 @@
 //}
 
 $(window).load(function() {
+    var modalLoadingDiv = '' +
+        '<div class="modal-dialog">' +
+        '<div class="modal-content">' +
+        '<div class="modal-body">' +
+        '<img src="'+WEB_APP_ROOT+'images/spinner.gif" class="text-centered"/>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+    $('body').append('<div id="task-edit-modal" class="modal fade" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+        modalLoadingDiv +
+        '</div>');
+
+    $('#task-edit-modal').on('shown.bs.modal', function () {
+    });
+
+    $('#task-edit-modal').on('hidden.bs.modal', function () {
+        $(this).html(modalLoadingDiv);
+    });
+
     $('input.add-task-input').each(function() {
         $(this).keyup(function (e) {
             if (e.keyCode == 13) {
