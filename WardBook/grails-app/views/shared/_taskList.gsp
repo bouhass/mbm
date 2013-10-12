@@ -8,7 +8,6 @@
             <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" data-category="${category}" class="add-task-input mbm-input-blue" maxlength="60" />
         </td>
         <td></td>
-        <td></td>
     </tr>
     <g:each var="task" in="${patient.tasks}">
         <g:if test="${task.category == category}">
@@ -30,22 +29,18 @@
                          data-pid="${patient.id}"
                          data-popover-placement="${popoverPlacement}"
                          class="editable editable-click task">
-                        ${task.name}
-                        &nbsp;
-                        <g:if test="${task.comments.size > 0}">
-                            <span class="glyphicon glyphicon-comment task-comment-notification">
-                                <p class="task-comment-number">${task.comments.size}</p>
-                            </span>
-                        </g:if>
+                        <a data-toggle="modal" href="${createLink(controller: 'task', action: 'partialEdit', id: task.id)}" data-target="#task-edit-modal">
+                            ${task.name}
+                            <g:if test="${task.comments.size > 0}">
+                                <span class="glyphicon glyphicon-comment task-comment-notification">
+                                    <p class="task-comment-number">${task.comments.size}</p>
+                                </span>
+                            </g:if>
+                        </a>
                         <g:if test="${task.priority == 'URGENT'}">
                             <span class="glyphicon glyphicon-fire" style="color: orangered;"></span>
                         </g:if>
                     </div>
-                </td>
-                <td class="edit-task">
-                    <a data-toggle="modal" href="${createLink(controller: 'task', action: 'partialEdit', id: task.id)}" data-target="#task-edit-modal" class="btn btn-warning btn-xs" style="position: relative; left: 45%;">
-                        <span class="glyphicon glyphicon-edit"></span>
-                    </a>
                 </td>
                 <td class="update-task-status">
                     <img/>

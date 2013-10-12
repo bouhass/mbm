@@ -157,6 +157,12 @@
             $('#clock').text(moment().format('Do MMM HH:mm'));
         }, 1000);
     });
+
+    $(document).ajaxError(function(e, xhr, settings, exception) {
+        if(xhr.status==401) {
+            window.location.reload();
+        }
+    });
 </script>
 
 <r:layoutResources/>

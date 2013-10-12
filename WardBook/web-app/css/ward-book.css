@@ -149,6 +149,10 @@ a.editable-click:hover {
     margin-left: 10px;
 }
 
+.task a {
+    color: #333;
+}
+
 .task-comment-notification {
     top: 8px;
     font-size: 1.6em;

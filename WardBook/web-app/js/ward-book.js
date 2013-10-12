@@ -79,11 +79,10 @@ function addTask(patient_id, task) {
     var taskElement = '' +
         '<tr>' +
             '<td id="'+taskDeleteId+'" class="delete-task"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-            '<td><div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click">'+task.name+'</div></td>' +
-            '<td class="edit-task">' +
-                '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal" class="btn btn-warning btn-xs" style="position: relative; left: 45%;">' +
-                    '<span class="glyphicon glyphicon-edit"></span>' +
-                '</a>' +
+            '<td>' +
+                '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
+                    '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+task.name+'</a>' +
+                '</div>' +
             '</td>' +
             '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>';
