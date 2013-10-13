@@ -27,6 +27,10 @@
 				<td><g:message code='user.username.label' default='Username'/>:</td>
 				<td colspan='3'><g:textField name='username' size='50' maxlength='255' autocomplete='off' value='${username}'/></td>
 			</tr>
+            <tr>
+                <td><g:message code='user.phoneNumber.label' default='Phone number'/>:</td>
+                <td colspan='3'><g:textField name='phoneNumber' size='50' maxlength='255' autocomplete='off' value='${phoneNumber}'/></td>
+            </tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td><g:message code='spring.security.ui.search.true'/></td>
@@ -79,6 +83,7 @@ def queryParams = [name: name, username: username, enabled: enabled, accountExpi
 		<tr>
 			<g:sortableColumn property="name" title="${message(code: 'user.name.label', default: 'Name')}" params="${queryParams}"/>
 			<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" params="${queryParams}"/>
+			<g:sortableColumn property="phoneNumber" title="${message(code: 'user.phoneNumber.label', default: 'Phone number')}" params="${queryParams}"/>
 			<g:sortableColumn property="enabled" title="${message(code: 'user.enabled.label', default: 'Enabled')}" params="${queryParams}"/>
 			<g:sortableColumn property="accountExpired" title="${message(code: 'user.accountExpired.label', default: 'Account Expired')}" params="${queryParams}"/>
 			<g:sortableColumn property="accountLocked" title="${message(code: 'user.accountLocked.label', default: 'Account Locked')}" params="${queryParams}"/>
@@ -91,6 +96,7 @@ def queryParams = [name: name, username: username, enabled: enabled, accountExpi
 		<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 			<td><g:link action="edit" id="${user.id}">${fieldValue(bean: user, field: "name")}</g:link></td>
 			<td><g:link action="edit" id="${user.id}">${fieldValue(bean: user, field: "username")}</g:link></td>
+			<td>${fieldValue(bean: user, field: "phoneNumber")}</td>
 			<td><g:formatBoolean boolean="${user.enabled}"/></td>
 			<td><g:formatBoolean boolean="${user.accountExpired}"/></td>
 			<td><g:formatBoolean boolean="${user.accountLocked}"/></td>
