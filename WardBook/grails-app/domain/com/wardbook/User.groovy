@@ -1,9 +1,13 @@
 package com.wardbook
 
+import java.util.concurrent.TimeUnit
+
 @gorm.AuditStamp
 class User {
 
     transient springSecurityService
+
+    static transients = ['online']
 
     String username
     String password
@@ -14,6 +18,8 @@ class User {
 
     // added fields
     String name
+    String phoneNumber
+    Date lastSeenAt
     static hasMany = [createdTasks: Task, assignedTasks: Task]
     static mappedBy = [assignedTasks: 'assignee']
     static belongsTo = [ward: Ward]
@@ -21,6 +27,8 @@ class User {
     static constraints = {
         username blank: false, unique: true
         password blank: false
+        phoneNumber nullable: true
+        lastSeenAt nullable: true
         ward nullable: true
     }
 
@@ -47,6 +55,10 @@ class User {
     }
 
     String toString() { "${name}" }
+
+    boolean isOnline() {
+        return lastSeenAt && lastSeenAt.after(new Date(System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(1)))
+    }
 
     static def consultants() {
         def role = Role.findByAuthority('ROLE_CONSULTANT')

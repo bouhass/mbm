@@ -189,3 +189,11 @@ a.editable-click:hover {
 .twitter-typeahead .tt-query {
     border-radius: 0px!important;
 }
+
+.user-status-offline {
+    color: grey;
+}
+
+.user-status-online {
+    color: #0c0;
+}

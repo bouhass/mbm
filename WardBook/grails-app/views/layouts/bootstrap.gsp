@@ -59,7 +59,8 @@
                     [controller: 'board', action: 'joblist', title: 'Job list'],
 //                    [controller: 'patient', action: 'overview', title: 'Base ward'],
 //                    [controller: 'patient', action: 'mylist', title: 'My patients'],
-                    [controller: 'task', action: 'mylist', title: 'My tasks']
+                    [controller: 'task', action: 'mylist', title: 'My tasks'],
+                    [controller: 'staff', action: 'list', title: 'Staff'],
             ]
         %>
         <ul class="nav navbar-nav">
@@ -83,16 +84,16 @@
                     </g:each>
                 </ul>
             </li>
-            <li>
-                <a class="btn">
-                    <span class="glyphicon glyphicon-bell"></span>
-                </a>
-            </li>
-            <li>
-                <a class="btn">
-                    <span class="glyphicon glyphicon-comment"></span>
-                </a>
-            </li>
+            %{--<li>--}%
+                %{--<a class="btn">--}%
+                    %{--<span class="glyphicon glyphicon-bell"></span>--}%
+                %{--</a>--}%
+            %{--</li>--}%
+            %{--<li>--}%
+                %{--<a class="btn">--}%
+                    %{--<span class="glyphicon glyphicon-comment"></span>--}%
+                %{--</a>--}%
+            %{--</li>--}%
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span><b class="caret"></b>

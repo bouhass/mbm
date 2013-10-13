@@ -8,6 +8,7 @@ class SecurityFilters {
         allURIs(uri: '/**') {
             before = {
                 request.user = springSecurityService.currentUser
+                request.user?.lastSeenAt = new Date()
             }
         }
     }
