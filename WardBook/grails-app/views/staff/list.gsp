@@ -30,7 +30,7 @@
                         <td>${user.grade}</td>
                         <td>${user.phoneNumber}</td>
                         <td>${user.ward?.name}</td>
-                        <td>${user.ward?.speciality}</td>
+                        <td>${user.speciality}</td>
                     </tr>
                 </g:each>
                 </tbody>

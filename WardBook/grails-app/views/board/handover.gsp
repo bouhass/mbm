@@ -27,11 +27,11 @@
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
 			<thead>
 				<tr>
-					<th>PATIENT DETAILS</th>
-					<th class="PROBLEM">PROBLEM LIST</th>
-					<th class="HISTORY">PMH</th>
-					<th class="PROGRESS">PROGRESS</th>
-					<th class="PLAN">PLAN</th>
+					<th>PATIENT DETAILS - [I]</th>
+					<th class="PROBLEM">PROBLEM LIST - [S]</th>
+					<th class="HISTORY">PMH - [B]</th>
+					<th class="PROGRESS">PROGRESS - [A]</th>
+					<th class="PLAN">PLAN - [R]</th>
 					<th class="NOTE">ANGIO/ECHO/TROP</th>
 					<th class="DIET">DIET</th>
 					<th class="PREMORBID">PRE-MORBID STATUS</th>

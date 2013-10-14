@@ -22,6 +22,7 @@ class User {
     Date lastSeenAt
     String grade
     Boolean onCall
+    String speciality
     static hasMany = [createdTasks: Task, assignedTasks: Task]
     static mappedBy = [assignedTasks: 'assignee']
     static belongsTo = [ward: Ward]
@@ -33,6 +34,7 @@ class User {
         lastSeenAt nullable: true
         grade nullable: true
         onCall nullable: true
+        speciality nullable: true
         ward nullable: true
     }
 
