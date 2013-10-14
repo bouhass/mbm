@@ -232,3 +232,15 @@ function switchWard(wardId) {
             alert("ERROR: could not switch ward");
         })
 }
+
+function userOnCall(onCall) {
+    $.post(WEB_APP_ROOT+'helpers/setOnCallStatus', {
+        'onCall': onCall
+    })
+        .done(function(user) {
+            location.reload();
+        })
+        .fail(function() {
+            alert("ERROR: could not update status");
+        })
+}

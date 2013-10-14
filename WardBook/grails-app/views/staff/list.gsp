@@ -13,23 +13,24 @@
                 <tr>
                     <th>Status</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Ward</th>
-                    <th>Last seen</th>
+                    <th>Grade</th>
                     <th>Contact</th>
+                    <th>Ward</th>
+                    <th>Speciality</th>
                 </tr>
                 </thead>
                 <tbody>
                 <g:each in="${users}" var="user">
                     <tr>
                         <td>
-                            <span class="glyphicon glyphicon-user user-status-${ user.online ? 'online' : 'offline'}"></span>
+                            <span class="glyphicon glyphicon-user user-status-${user.status}"></span>
+                            ${user.status.capitalize()}
                         </td>
                         <td>${user.name}</td>
-                        <td>${user.username}</td>
-                        <td>${user.ward}</td>
-                        <td><g:formatDate format="dd-MM-yyyy HH:mm" date="${user.lastSeenAt}"/></td>
+                        <td>${user.grade}</td>
                         <td>${user.phoneNumber}</td>
+                        <td>${user.ward?.name}</td>
+                        <td>${user.ward?.speciality}</td>
                     </tr>
                 </g:each>
                 </tbody>

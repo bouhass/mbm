@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="${createLink(uri: '/')}">
-            <g:img dir="images" file="mbm-logo.png" width="20" height="20"/>
+            <g:img dir="images" file="mbm-logo.png" width="45" height="45"/>
             %{--<g:meta name="app.name"/>--}%
         </a>
     </div>
@@ -107,6 +107,15 @@
                     <li role="presentation" class="divider"></li>
                     <li>
                         <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
+                    </li>
+                    <li role="presentation" class="divider"></li>
+                    <li>
+                        <g:if test="${request.user.onCall}">
+                            <a href="#" onclick="userOnCall(false)"><span class="glyphicon glyphicon-minus"></span> Leave On Call</a>
+                        </g:if>
+                        <g:if test="${!request.user.onCall}">
+                            <a href="#" onclick="userOnCall(true)"><span class="glyphicon glyphicon-earphone"></span> On Call</a>
+                        </g:if>
                     </li>
                     <sec:ifAllGranted roles="ROLE_ADMIN">
                         <li role="presentation" class="divider"></li>

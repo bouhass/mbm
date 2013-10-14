@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="${createLink(uri: '/')}">
-            <g:img dir="images" file="mbm-logo.png" width="20" height="20"/>
+            <g:img dir="images" file="mbm-logo.png" width="45" height="45"/>
             %{--<g:meta name="app.name"/>--}%
         </a>
     </div>

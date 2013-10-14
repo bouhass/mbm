@@ -101,10 +101,10 @@ a.editable-click:hover {
     /*font-size:1.8em;*/
 /*}*/
 
-/*.navbar-brand {*/
-    /*padding: 6px 10px;*/
-    /*border-right: 1px solid #bbb;*/
-/*}*/
+.navbar-brand {
+    padding: 0;
+    border: 3px solid white;
+}
 
 .popover {
     max-width: 100%;
@@ -196,6 +196,10 @@ a.editable-click:hover {
 
 .user-status-offline {
     color: grey;
+}
+
+.user-status-on-call {
+    color: red;
 }
 
 .user-status-online {

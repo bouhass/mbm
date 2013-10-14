@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit
 class Task implements Commentable {
 
     transient springSecurityService
+
+    static transients = ['active']
 	
 	String name
 	String status = 'PENDING'
@@ -30,7 +32,7 @@ class Task implements Commentable {
 
 	String toString() { "${name}" }
 
-    def isActive() {
+    boolean isActive() {
         (status != 'COMPLETED') || (createdDate > new Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)))
     }
 }

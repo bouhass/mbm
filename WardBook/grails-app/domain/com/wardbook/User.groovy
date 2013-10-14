@@ -7,7 +7,7 @@ class User {
 
     transient springSecurityService
 
-    static transients = ['online']
+    static transients = ['online', 'status']
 
     String username
     String password
@@ -20,6 +20,8 @@ class User {
     String name
     String phoneNumber
     Date lastSeenAt
+    String grade
+    Boolean onCall
     static hasMany = [createdTasks: Task, assignedTasks: Task]
     static mappedBy = [assignedTasks: 'assignee']
     static belongsTo = [ward: Ward]
@@ -29,6 +31,8 @@ class User {
         password blank: false
         phoneNumber nullable: true
         lastSeenAt nullable: true
+        grade nullable: true
+        onCall nullable: true
         ward nullable: true
     }
 
@@ -58,6 +62,20 @@ class User {
 
     boolean isOnline() {
         return lastSeenAt && lastSeenAt.after(new Date(System.currentTimeMillis() - TimeUnit.MINUTES.toMillis(1)))
+    }
+
+    String getStatus() {
+        if (isOnline()) {
+            if (onCall) {
+                 'on-call'
+            }
+            else {
+                'online'
+            }
+        }
+        else {
+            'offline'
+        }
     }
 
     static def consultants() {

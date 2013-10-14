@@ -15,7 +15,7 @@
             <div class="col-md-9">
                 <ul id="view-selector" class="nav nav-tabs">
                     <li class="active"><a href="javascript:;">Overview</a></li>
-                    <li><a href="javascript:;">History</a></li>
+                    <li><a href="javascript:;">Task history</a></li>
                 </ul>
             </div>
 
@@ -129,7 +129,7 @@
                 <div class="pull-right">
                     <a class="btn btn-warning">Assign to</a>
                     <a class="btn btn-warning">Move to ward</a>
-                    <a class="btn btn-danger">Dismiss</a>
+                    <a class="btn btn-danger">Discharge</a>
                     <hr/>
                 </div>
             </div>
@@ -162,7 +162,7 @@
 
         </div>
 
-        <div id="History" class="view" style="display: none;">
+        <div id="Task_history" class="view" style="display: none;">
             <g:render template="/shared/patientHistory" model="[patient: patient]"/>
         </div>
 
@@ -194,7 +194,7 @@
                 $('.view').hide();
 
                 $(this).addClass('active');
-                $('#' + $(this).text()).show();
+                $('#' + $(this).text().replace(' ', '_')).show();
             });
 
             $('#calendar').datepicker({

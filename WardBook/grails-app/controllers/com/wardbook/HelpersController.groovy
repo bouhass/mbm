@@ -27,4 +27,14 @@ class HelpersController {
             render(status: 201, text: 'Successfully updated ward')
         }
     }
+
+    def setOnCallStatus() {
+        request.user.onCall = Boolean.valueOf(params.onCall)
+        if (!request.user.save(flush: true)) {
+            render(status: 500, text: 'Failed to update on call status')
+        }
+        else {
+            render(status: 201, text: 'Successfully updated on call status')
+        }
+    }
 }
