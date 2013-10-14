@@ -2,6 +2,8 @@ package com.wardbook
 
 import org.grails.comments.Commentable
 
+import java.util.concurrent.TimeUnit
+
 @gorm.AuditStamp
 class Task implements Commentable {
 
@@ -27,4 +29,8 @@ class Task implements Commentable {
     }
 
 	String toString() { "${name}" }
+
+    def isActive() {
+        (status != 'COMPLETED') || (createdDate > new Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1)))
+    }
 }

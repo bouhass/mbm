@@ -10,7 +10,7 @@
         <td></td>
     </tr>
     <g:each var="task" in="${patient.tasks}">
-        <g:if test="${task.category == category}">
+        <g:if test="${(task.category == category) && (task.isActive())}">
             <tr>
                 <td class="delete-task">
                     <button type="button" class="btn btn-danger btn-xs hidden">

@@ -17,23 +17,17 @@
                         <th>Time due</th>
                         <th>Comments</th>
                         <th>Status</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                 <g:each in="${tasks}" var="task">
-                    <tr>
+                    <tr onclick="showTaskSummary(this, ${task.id})">
                         <td>${task.patient.location}</td>
                         <td>${task.patient}</td>
                         <td>${task.name}</td>
                         <td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>
-                        <td></td>
+                        <td>${task.comments.size}</td>
                         <td class="task-status" data-status="${task.status}"><img /></td>
-                        <td>
-                            <a href="javascript:;" onclick="$('iframe').attr('src', '${createLink(action: 'summary', id: task.id)}')" class="btn btn-default btn-xs">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </td>
                     </tr>
                 </g:each>
                 </tbody>
@@ -46,12 +40,19 @@
             width: 100%;
             height: 100%;
             max-height: 100%;
-            "></iframe>
+            ">
+            </iframe>
         </div>
 
     </div>
 
     <script>
+        function showTaskSummary(element, taskId) {
+            $('iframe').attr('src', WEB_APP_ROOT+'task/summary/'+taskId);
+            $('tr').removeClass('selected-row');
+            $(element).addClass('selected-row')
+        }
+
         $(window).load(function() {
             $('.task-status').each(function() {
                 $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));

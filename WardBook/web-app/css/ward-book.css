@@ -149,6 +149,10 @@ a.editable-click:hover {
     margin-left: 10px;
 }
 
+.selected-row td {
+    background-color: #def6ff !important;
+}
+
 .task a {
     color: #333;
 }
