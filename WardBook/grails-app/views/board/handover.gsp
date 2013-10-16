@@ -351,7 +351,7 @@
                         .fail(function() {
                             console.error('ERROR: could not patient data');
                         })
-            }, 3000);
+            }, 10000);
         });
 	</script>
 		
