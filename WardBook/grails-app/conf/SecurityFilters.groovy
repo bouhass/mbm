@@ -9,7 +9,7 @@ class SecurityFilters {
             before = {
                 request.user = springSecurityService.currentUser
                 request.user?.lastSeenAt = new Date()
-                request.user?.save()
+                request.user?.save(flush: true)
             }
         }
     }
