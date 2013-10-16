@@ -54,13 +54,13 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <%
             def navItems = [
-                    [controller: 'dashboard', action: 'index', title: 'Dashboard'],
                     [controller: 'board', action: 'handover', title: 'Patient list'],
                     [controller: 'board', action: 'joblist', title: 'Job list'],
 //                    [controller: 'patient', action: 'overview', title: 'Base ward'],
 //                    [controller: 'patient', action: 'mylist', title: 'My patients'],
                     [controller: 'task', action: 'mylist', title: 'My tasks'],
                     [controller: 'staff', action: 'list', title: 'Staff'],
+                    [controller: 'dashboard', action: 'index', title: '<span class="glyphicon glyphicon-stats"></span>']
             ]
         %>
         <ul class="nav navbar-nav">
