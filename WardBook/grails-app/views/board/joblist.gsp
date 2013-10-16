@@ -55,52 +55,52 @@
                 }
             });
 
-//            window.setInterval(function() {
-//                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
-//                    $(patients).each(function(i, patient) {
-//
-//                        var remoteTasks = [];
-//                        $(patient.tasks).each(function(j, task) {
-//                            remoteTasks.push(task.id.toString());
-//                        });
-//
-//                        var localTasks = [];
-//                        $('tr#'+patient.id+' td div').each(function() {
-//                            if ($(this).attr('data-task-id') != undefined) {
-//                                localTasks.push($(this).attr('data-task-id'));
-//                            }
-//                        })
-//
-//                        // delete tasks if applies
-//                        $(localTasks).each(function(k, taskId) {
-//                            if ($.inArray(taskId, remoteTasks) == -1) {
-//                                $('tr#'+patient.id+' td div[data-task-id="'+taskId+'"]').parent().parent().remove();
-//                            }
-//                        });
-//
-//                        $(patient.tasks).each(function(j, task) {
-//
-//                            // add new tasks if applies
-//                            if ($.inArray(task.id.toString(), localTasks) == -1) {
-//                                addTask(patient.id, task);
-//                            }
-//                            else {
-//                                // TODO : check update required
-//                                var taskElement = $('tr#'+patient.id+' td div[data-task-id="'+task.id+'"]');
-//                                taskElement.text(task.name);
-//                                taskElement.attr('data-name', task.name);
-//                                taskElement.attr('data-status', task.status);
-//                                taskElement.attr('data-priority', task.priority);
-//                                taskElement.attr('data-comment', task.comment);
-//                                taskElement.siblings().children('img').attr('src', taskStatusToImage(task.status));
-//                            }
-//                        });
-//                    })
-//                })
-//                        .fail(function() {
-//                            console.error('ERROR: could not patient data');
-//                        })
-//            }, 3000);
+            window.setInterval(function() {
+                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
+                    $(patients).each(function(i, patient) {
+
+                        var remoteTasks = [];
+                        $(patient.tasks).each(function(j, task) {
+                            remoteTasks.push(task.id.toString());
+                        });
+
+                        var localTasks = [];
+                        $('tr#'+patient.id+' td div').each(function() {
+                            if ($(this).attr('data-task-id') != undefined) {
+                                localTasks.push($(this).attr('data-task-id'));
+                            }
+                        })
+
+                        // delete tasks if applies
+                        $(localTasks).each(function(k, taskId) {
+                            if ($.inArray(taskId, remoteTasks) == -1) {
+                                $('tr#'+patient.id+' td div[data-task-id="'+taskId+'"]').parent().parent().remove();
+                            }
+                        });
+
+                        $(patient.tasks).each(function(j, task) {
+
+                            // add new tasks if applies
+                            if ($.inArray(task.id.toString(), localTasks) == -1) {
+                                addTask(patient.id, task);
+                            }
+                            else {
+                                // TODO : check update required
+                                var taskElement = $('tr#'+patient.id+' td div[data-task-id="'+task.id+'"]');
+                                taskElement.text(task.name);
+                                taskElement.attr('data-name', task.name);
+                                taskElement.attr('data-status', task.status);
+                                taskElement.attr('data-priority', task.priority);
+                                taskElement.attr('data-comment', task.comment);
+                                taskElement.parent().siblings().children('img').attr('src', taskStatusToImage(task.status));
+                            }
+                        });
+                    })
+                })
+                        .fail(function() {
+                            console.error('ERROR: could not patient data');
+                        })
+            }, 3000);
 
 		});
 	</script>

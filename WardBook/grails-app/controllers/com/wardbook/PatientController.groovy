@@ -66,6 +66,11 @@ class PatientController {
 
     def jsonlist() {
         JSON.use('deep')
-        render Patient.list() as JSON
+        def patientList = Patient.createCriteria().list {
+            if (request.user.ward) {
+                eq('ward.id', request.user.ward.id)
+            }
+        }
+        render patientList as JSON
     }
 }

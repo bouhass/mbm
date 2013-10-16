@@ -123,6 +123,29 @@ function addNewTask(name, patient_id, category) {
         })
 }
 
+function addRecord(patient_id, record) {
+    var id = new Date().getTime();
+    var elId = '#record-'+record.type+'-'+patient_id;
+    $(elId).append('' +
+        '<tr>' +
+        '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
+        '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" class="record">'+record.name+'</td>' +
+        '</tr>');
+    $('[data-rid='+record.id+']').editable({
+        mode: 'inline',
+        type: 'text',
+        pk : record.id,
+        url: WEB_APP_ROOT+'record/saveOrUpdate',
+        showbuttons: false,
+        params : function(params) {
+            return {
+                'id' : record.id,
+                'name' : params.value
+            }
+        }
+    });
+}
+
 function addNewRecord(name, patient_id, type) {
     $.post(WEB_APP_ROOT+'record/saveOrUpdate', {
         'name': name,
@@ -130,26 +153,7 @@ function addNewRecord(name, patient_id, type) {
         'patient.id': patient_id
     })
         .done(function(record) {
-            var id = new Date().getTime();
-            var elId = '#record-'+type+'-'+patient_id;
-            $(elId).append('' +
-                '<tr>' +
-                    '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-                    '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+name+'" class="record">'+name+'</td>' +
-                '</tr>');
-            $('[data-rid='+record.id+']').editable({
-                mode: 'inline',
-                type: 'text',
-                pk : record.id,
-                url: WEB_APP_ROOT+'record/saveOrUpdate',
-                showbuttons: false,
-                params : function(params) {
-                    return {
-                        'id' : record.id,
-                        'name' : params.value
-                    }
-                }
-            });
+            addRecord(patient_id, record);
         })
         .fail(function() {
             alert("ERROR: could not add the task");
