@@ -71,12 +71,12 @@ $(window).load(function() {
         });
     });
 
-    $('input.add-task-input').typeahead({
-        name: 'task-names',
-//        prefetch: WEB_APP_ROOT+'task/names',
-        prefetch: WEB_APP_ROOT+'data/common-tasks.json',
-        remote: WEB_APP_ROOT+'task/names?q=%QUERY'
-    });
+//    $('input.add-task-input').typeahead({
+//        name: 'task-names',
+////        prefetch: WEB_APP_ROOT+'task/names',
+//        prefetch: WEB_APP_ROOT+'data/common-tasks.json',
+//        remote: WEB_APP_ROOT+'task/names?q=%QUERY'
+//    });
 
     /* Init tasks status icons. */
     $('.task').each(function() {

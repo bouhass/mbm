@@ -251,11 +251,11 @@
                 });
             });
 
-            $('input.add-record-input').typeahead({
-                name: 'record-names',
-                prefetch: WEB_APP_ROOT+'record/names',
-                remote: WEB_APP_ROOT+'record/names?q=%QUERY'
-            });
+//            $('input.add-record-input').typeahead({
+//                name: 'record-names',
+//                prefetch: WEB_APP_ROOT+'record/names',
+//                remote: WEB_APP_ROOT+'record/names?q=%QUERY'
+//            });
 
             $('.delete-record').live('click', deleteRecord);
 

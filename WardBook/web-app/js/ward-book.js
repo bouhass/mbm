@@ -26,7 +26,8 @@ var updateTaskStatus = function() {
             taskElement.attr('data-status', task.status);
         })
         .fail(function() {
-            alert("ERROR: could not update the task status");
+//            alert("ERROR: could not update the task status");
+            console.error("ERROR: could not update the task status");
         })
 }
 
@@ -46,7 +47,8 @@ var deleteTask = function() {
                 self.children('img').remove();
                 self.children().addClass('glyphicon');
                 self.children().addClass('glyphicon-remove');
-                alert("ERROR: could not delete task");
+//                alert("ERROR: could not delete task");
+                console.log("ERROR: could not delete task");
             })
     }
 }
@@ -67,7 +69,8 @@ var deleteRecord = function() {
                 self.children('img').remove();
                 self.children().addClass('glyphicon');
                 self.children().addClass('glyphicon-remove');
-                alert("ERROR: could not delete task");
+//                alert("ERROR: could not delete task");
+                console.log("ERROR: could not delete task");
             })
     }
 }
@@ -119,7 +122,8 @@ function addNewTask(name, patient_id, category) {
             addTask(patient_id, task);
         })
         .fail(function() {
-            alert("ERROR: could not add the task");
+//            alert("ERROR: could not add the task");
+            console.log("ERROR: could not add the task");
         })
 }
 
@@ -156,7 +160,8 @@ function addNewRecord(name, patient_id, type) {
             addRecord(patient_id, record);
         })
         .fail(function() {
-            alert("ERROR: could not add the task");
+//            alert("ERROR: could not add the task");
+            console.log("ERROR: could not add the task");
         })
 }
 
@@ -233,7 +238,8 @@ function switchWard(wardId) {
             location.reload();
         })
         .fail(function() {
-            alert("ERROR: could not switch ward");
+//            alert("ERROR: could not switch ward");
+            console.log("ERROR: could not switch ward");
         })
 }
 
@@ -245,6 +251,7 @@ function userOnCall(onCall) {
             location.reload();
         })
         .fail(function() {
-            alert("ERROR: could not update status");
+//            alert("ERROR: could not update status");
+            console.log("ERROR: could not update status");
         })
 }

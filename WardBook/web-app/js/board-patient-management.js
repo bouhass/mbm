@@ -42,7 +42,8 @@ $(window).load(function() {
                 // remove loading image
             })
             .fail(function() {
-                alert("ERROR: could not update the patient");
+//                alert("ERROR: could not update the patient");
+                console.log("ERROR: could not update the patient");
             })
     });
 });
