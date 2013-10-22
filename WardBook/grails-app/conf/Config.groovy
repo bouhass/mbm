@@ -115,6 +115,8 @@ grails.plugins.springsecurity.interceptUrlMap = [
 grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/wardselect'
 grails.plugins.springsecurity.successHandler.alwaysUseDefault = true
 
+grails.plugins.springsecurity.rememberMe.alwaysRemember=true
+
 grails.plugins.springsecurity.ui.encodePassword = false
 
 // Commentable

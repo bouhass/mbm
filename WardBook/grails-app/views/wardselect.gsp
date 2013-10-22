@@ -1,7 +1,7 @@
 <%@ page import="com.wardbook.Ward" %>
 <g:applyLayout name="board">
 
-    <div class="col-md-4 col-md-offset-4 box-middle">
+    <div class="col-md-4 col-sm-offset-4 box-middle">
         <div class="row">
             <h4>Select your ward</h4>
         </div>

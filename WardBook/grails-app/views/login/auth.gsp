@@ -30,11 +30,7 @@
     </div>
 </nav>
 
-<div class="col-md-4 col-md-offset-4 box-middle">
-
-    <g:img dir="images" file="login_avatar.png" style="margin-left: auto; margin-right: auto; display: block" />
-
-    <br>
+<div class="col-md-4 col-sm-offset-4 box-middle">
 
     <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>
@@ -55,19 +51,10 @@
         %{--<label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>--}%
         %{--</p>--}%
 
-        <button type="submit" class="btn btn-default pull-right">
-            <span class="glyphicon glyphicon-log-in"></span>
+        <button type="submit" class="btn btn-primary btn-block btn-lg pull-right">
             Login
+            &nbsp;
+            <span class="glyphicon glyphicon-log-in"></span>
         </button>
 
     </form>
-</div>
-
-<script type='text/javascript'>
-    (function() {
-        document.forms['loginForm'].elements['j_username'].focus();
-    })();
-</script>
-
-</body>
-</html>
