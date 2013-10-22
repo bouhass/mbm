@@ -21,7 +21,7 @@
 
     <div class="row text-center">
         <div class="col-md-4">
-            <h4>Number of MRI booked</h4>
+            <h4>Number of MRIs booked</h4>
             <canvas id="mriChart" width="350" height="250"></canvas>
         </div>
 

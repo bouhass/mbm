@@ -113,6 +113,11 @@ function addTask(patient_id, task) {
 }
 
 function addNewTask(name, patient_id, category) {
+    if (name.length == 0) {
+        console.error("ERROR: attempting to add a task with no name");
+        return;
+    }
+
     $.post(WEB_APP_ROOT+'task/saveOrUpdate', {
         'name': name,
         'category': category,
@@ -151,6 +156,11 @@ function addRecord(patient_id, record) {
 }
 
 function addNewRecord(name, patient_id, type) {
+    if (name.length == 0) {
+        console.error("ERROR: attempting to add a record with no name");
+        return;
+    }
+
     $.post(WEB_APP_ROOT+'record/saveOrUpdate', {
         'name': name,
         'type': type,

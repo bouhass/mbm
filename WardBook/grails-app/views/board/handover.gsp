@@ -242,20 +242,23 @@
                 }
             });
 
-            $('input.add-record-input').each(function() {
-                $(this).keyup(function (e) {
-                    if (e.keyCode == 13) {
-                        addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
-                        $(this).val('');
-                    }
-                });
+            $('input.add-record-input').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+                    $(this).typeahead('setQuery', '');
+                }
             });
 
-//            $('input.add-record-input').typeahead({
-//                name: 'record-names',
-//                prefetch: WEB_APP_ROOT+'record/names',
-//                remote: WEB_APP_ROOT+'record/names?q=%QUERY'
-//            });
+            $('input.add-record-input').on('typeahead:selected', function() {
+                addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+                $(this).typeahead('setQuery', '');
+            });
+
+            $('input.add-record-input').typeahead({
+                name: 'record-names',
+                prefetch: WEB_APP_ROOT+'record/names',
+                remote: WEB_APP_ROOT+'record/names?q=%QUERY'
+            });
 
             $('.delete-record').live('click', deleteRecord);
 
