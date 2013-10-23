@@ -26,14 +26,14 @@
             </div>
 
             <div class="pull-right">
-                <a id="handover" class="btn btn-default">
-                    Handover
+                <a data-toggle="modal" href="#customizeView" class="btn btn-default">
+                    Edit view
                 </a>
                 <a class="btn btn-default">
                     <span class="glyphicon glyphicon-print"></span>
                 </a>
-                <a data-toggle="modal" href="#customizeView" class="btn btn-default">
-                    Edit view
+                <a id="handover" class="btn btn-default">
+                    Handover
                 </a>
             </div>
 
@@ -207,23 +207,50 @@
     <script src="${resource(dir: 'js', file: 'board-patient-management.js')}"></script>
 
 	<script>
-		$(window).load(function() {
-
+        function displaySelectedView() {
             var handoverViewsColumnsMapping;
-            if ($(window).width() > 1024) {
-                handoverViewsColumnsMapping = {
-                    Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
-                    Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
-                    Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
-                }
+            switch (window.orientation) {
+                case 0:
+                case 180:
+                    handoverViewsColumnsMapping = {
+                        Doctor: ['PROBLEM', 'HISTORY'],
+                        Nurse: ['PROBLEM', 'HISTORY'],
+                        Physio: ['PROBLEM', 'HISTORY']
+                    };
+                    break;
+                default:
+                    if ($(window).width() > 1024) {
+                        handoverViewsColumnsMapping = {
+                            Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
+                            Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
+                            Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+                        }
+                    }
+                    else {
+                        handoverViewsColumnsMapping = {
+                            Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN'],
+                            Nurse: ['PROBLEM', 'HISTORY', 'MOBILITY', 'SOCIAL'],
+                            Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY']
+                        }
+                    }
+                    break;
             }
-            else {
-                handoverViewsColumnsMapping = {
-                    Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN'],
-                    Nurse: ['PROBLEM', 'HISTORY', 'MOBILITY', 'SOCIAL'],
-                    Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY']
-                }
-            }
+
+            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+                $('.'+columnToHide).hide();
+            });
+            $('#customizeView input').attr('checked', false);
+
+            var selectedView = $('#view-selector li[class=active]').text().trim();
+            $(handoverViewsColumnsMapping[selectedView]).each(function(i, columnName) {
+                $('.'+columnName).show();
+                $('#customizeView input[value='+columnName+']').attr('checked', true);
+            });
+        }
+
+        window.addEventListener('orientationchange', displaySelectedView);
+
+		$(window).load(function() {
 
             $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                 $('.'+columnToHide).hide();
@@ -232,17 +259,9 @@
             $('#view-selector li a:not([data-toggle])').on('click', function() {
                 $(this).parent().siblings().removeClass('active');
                 $(this).parent().addClass('active');
-                $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
-                    $('.'+columnToHide).hide();
-                });
-                $('#customizeView input').attr('checked', false);
-                $(handoverViewsColumnsMapping[$(this).text().trim()]).each(function(i, columnName) {
-                    $('.'+columnName).show();
-                    $('#customizeView input[value='+columnName+']').attr('checked', true);
-                });
+                displaySelectedView();
             });
 
-            // TODO : displayHandoverViewFor('Doctor')
             $('#view-selector li a:contains(Doctor)').click();
 
             $('#handover').on('click', function() {
