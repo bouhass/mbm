@@ -3,7 +3,7 @@
 
     <div>
 
-        <div class="col-md-7">
+        <div class="col-sm-12 col-md-7">
             <g:if test="${flash.message}">
                 <bootstrap:alert class="alert-info">${flash.message}</bootstrap:alert>
             </g:if>
@@ -34,7 +34,7 @@
             </table>
         </div>
 
-        <div class="col-md-5" style="height: 100%">
+        <div class="col-sm-12 col-md-5" style="height: 100%">
             <iframe src="" style="
             border: 0px;
             width: 100%;

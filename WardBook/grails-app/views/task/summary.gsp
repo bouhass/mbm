@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.Task" %>
+<%@ page import="com.wardbook.User; com.wardbook.Task" %>
 <!doctype html>
 <html>
 <head>
@@ -23,7 +23,7 @@
             <dd>UNASSIGNED</dd>
 
             <dt>Created by</dt>
-            <dd>${task.createdBy}</dd>
+            <dd>${User.get(task.createdBy)}</dd>
 
             <dt>Assigned to</dt>
             <dd>${task.assignee ?: 'NOT ASSIGNED'}</dd>

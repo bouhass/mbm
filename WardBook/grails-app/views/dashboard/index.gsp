@@ -1,32 +1,29 @@
 <g:applyLayout name="board">
 
-    <div class="row text-center">
+    <div class="text-center">
 
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <h4>Current ward activity</h4>
             <canvas id="tasksTimeChart" width="350" height="250"></canvas>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <h4>Workload per ward</h4>
             <canvas id="workloadChart" width="350" height="250"></canvas>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <h4>Out of hours tasks</h4>
             <canvas id="tasksTypeChart" width="350" height="250"></canvas>
         </div>
 
-    </div>
-
-    <div class="row text-center">
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <h4>Number of MRIs booked</h4>
             <canvas id="mriChart" width="350" height="250"></canvas>
         </div>
 
-        <div class="col-md-4">
-            %{--<h4>Wards</h4>--}%
+        <div class="col-sm-6 col-md-4">
+            <h4>Wards</h4>
             <div class="row"><span class="label label-default">Lind ward</span></div>
             <div class="row"><span class="label label-danger">Paul wood ward</span></div>
             <div class="row"><span class="label label-info">Princess Alexandra ward</span></div>
@@ -35,7 +32,7 @@
             <div class="row"><span class="label label-warning">York ward</span></div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-sm-6 col-md-4">
             <h4>Length of stay</h4>
             <canvas id="lengthOfStay" width="350" height="250"></canvas>
         </div>

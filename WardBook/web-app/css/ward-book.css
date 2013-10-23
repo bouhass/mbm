@@ -177,11 +177,11 @@ a.editable-click:hover {
 
 .third-level-nav {
     margin-top: 10px;
-    margin-right: 10px;
+    /*margin-right: 10px;*/
 }
 
 .third-level-nav a {
-    margin-right: 5px;
+    /*margin-right: 5px;*/
 }
 
 .tt-hint {

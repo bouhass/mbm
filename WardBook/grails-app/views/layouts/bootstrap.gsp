@@ -131,22 +131,6 @@
             </li>
         </ul>
 
-        <div class="col-sm-2 col-md-2 pull-right">
-            <form class="navbar-form" role="search">
-                <g:if test="${controllerName == 'board'}">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search" id="search">
-
-                        <div class="input-group-btn">
-                            <button class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    </div>
-                </g:if>
-            </form>
-        </div>
-
     </div><!-- /.navbar-collapse -->
 </nav>
 

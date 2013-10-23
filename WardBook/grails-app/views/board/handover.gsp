@@ -1,7 +1,7 @@
 <g:applyLayout name="board">
 
     <div class="third-level-nav">
-        <div class="col-md-9">
+        <div class="col-sm-5 col-md-5">
             %{--<ul class="nav nav-tabs nav-justified">--}%
             <ul id="view-selector" class="nav nav-tabs">
                 <li><a href="#"> Doctor </a></li>
@@ -10,16 +10,33 @@
                 <li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>
             </ul>
         </div>
-        <div class="pull-right">
-            <a id="handover" class="btn btn-default">
-                Handover
-            </a>
-            <a class="btn btn-default">
-                <span class="glyphicon glyphicon-print"></span>
-            </a>
-            <a data-toggle="modal" href="#customizeView" class="btn btn-default">
-                Edit view
-            </a>
+
+        <div class="col-sm-7 col-md-7">
+
+            <div class="pull-right col-sm-4 col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+
+                    <div class="input-group-btn">
+                        <button class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pull-right">
+                <a id="handover" class="btn btn-default">
+                    Handover
+                </a>
+                <a class="btn btn-default">
+                    <span class="glyphicon glyphicon-print"></span>
+                </a>
+                <a data-toggle="modal" href="#customizeView" class="btn btn-default">
+                    Edit view
+                </a>
+            </div>
+
         </div>
     </div>
 

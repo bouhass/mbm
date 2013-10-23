@@ -1,6 +1,18 @@
 <g:applyLayout name="board">
 
     <div class="third-level-nav">
+        <div class="pull-right col-sm-4 col-md-4">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="search" id="search">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="pull-right">
             <a id="handover" class="btn btn-default" style="margin-bottom: 8px">
                 Handover
