@@ -1,6 +1,10 @@
 
+/* the combination of the 2 following allows to keep the padding top when rotating */
 body {
     padding-top: 70px;
+}
+@media screen and (max-width: 768px) {
+    body { padding-top: 50px; }
 }
 
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
