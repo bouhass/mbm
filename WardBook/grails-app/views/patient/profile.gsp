@@ -1,25 +1,25 @@
 <g:applyLayout name="patient">
 
-    <div class="col-md-9">
+    <div class="col-sm-12 col-md-9">
 
         <div class="row"></div>
 
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-sm-1 col-md-1">
                 <a href="${createLink(controller: 'board')}" type="button"
                    class="btn btn-default">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-sm-9 col-md-9">
                 <ul id="view-selector" class="nav nav-tabs">
                     <li class="active"><a href="javascript:;">Overview</a></li>
                     <li><a href="javascript:;">Task history</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-sm-2 col-md-2">
                 <a class="btn btn-warning">Edit</a>
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div id="Overview" class="view">
 
             <div class="row col-md-12">
-                <div class="col-md-3">
+                <div class="col-sm-3 col-md-3">
                     <h4>Patient details</h4>
                     <dl>
                         <dt>CONS</dt>
@@ -51,7 +51,7 @@
                     </dl>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-sm-3 col-md-3">
                     <h4>
                         <span class="glyphicon glyphicon-warning-sign" style="color:red;"></span>
                         Alerts
@@ -61,7 +61,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-sm-3 col-md-3">
                     <h4>Problem list</h4>
                     <ul>
                         <g:each in="${patient.records}" var="record">
@@ -72,7 +72,7 @@
                     </ul>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-sm-3 col-md-3">
                     <h4>Allergies</h4>
                     <ul>
                         <li>Penicilin - Rash</li>
@@ -80,8 +80,8 @@
                 </div>
             </div>
 
-            <div class="row col-md-12">
-                <div class="col-md-6">
+            <div class="row col-sm-12 col-md-12">
+                <div class="col-sm-6 col-md-6">
                     <h4>Length of stay</h4>
 
                     <div class="row">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-sm-6 col-md-6">
                     <h4>Additional info</h4>
                     <dl>
                         <dt>PDD</dt>
@@ -130,12 +130,13 @@
                     <a class="btn btn-warning">Assign to</a>
                     <a class="btn btn-warning">Move to ward</a>
                     <a class="btn btn-danger">Discharge</a>
-                    <hr/>
                 </div>
             </div>
 
+            <hr/>
+
             <div class="row col-md-12">
-                <div class="col-md-6">
+                <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
                             Nursing jobs
@@ -147,7 +148,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
                             Doctor jobs
@@ -166,20 +167,24 @@
             <g:render template="/shared/patientHistory" model="[patient: patient]"/>
         </div>
 
+        <hr/>
+
     </div>
 
     <div class="col-md-3">
-        <div>
+        <div class="col-sm-4 col-md-12">
             <div id="calendar" data-date-format="dd-mm-yyyy" class="text-center"></div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Comments
-            </div>
+        <div class="col-sm-8 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Comments
+                </div>
 
-            <div class="panel-body">
-                <g:render template="/shared/comments" model="[commentable: patient]"/>
+                <div class="panel-body">
+                    <g:render template="/shared/comments" model="[commentable: patient]"/>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,12 @@
 <head>
     <title><g:meta name="app.name"/></title>
     <meta name="layout" content="bootstrap-plain"/>
+    <style>
+    .login_message {
+        color: red;
+        margin-bottom: 10px;
+    }
+    </style>
 </head>
 
 <body>
@@ -30,7 +36,7 @@
     </div>
 </nav>
 
-<div class="col-md-4 col-sm-offset-4 box-middle">
+<div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4 box-middle">
 
     <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>
@@ -58,3 +64,13 @@
         </button>
 
     </form>
+</div>
+
+<script type='text/javascript'>
+    (function() {
+        document.forms['loginForm'].elements['j_username'].focus();
+    })();
+</script>
+
+</body>
+</html>
