@@ -248,7 +248,8 @@
             });
         }
 
-        window.addEventListener('orientationchange', displaySelectedView);
+//        window.addEventListener('orientationchange', displaySelectedView);
+        window.addEventListener('orientationchange', function() { location.reload() });
 
 		$(window).load(function() {
 
