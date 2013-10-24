@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta name="format-detection" content="telephone=no">
 
@@ -35,7 +35,8 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+%{--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">--}%
+<nav class="navbar navbar-inverse" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
