@@ -1,5 +1,15 @@
 <g:applyLayout name="board">
 
+    <style type="text/css" media="print">
+    nav,
+    input,
+    button,
+    .third-level-nav,
+    #customizeView {
+        display: none;
+    }
+    </style>
+
     <div class="third-level-nav">
         <div class="col-sm-5 col-md-5">
             %{--<ul class="nav nav-tabs nav-justified">--}%
@@ -29,7 +39,7 @@
                 <a data-toggle="modal" href="#customizeView" class="btn btn-default">
                     Edit view
                 </a>
-                <a class="btn btn-default">
+                <a class="btn btn-default" onclick="window.print()">
                     <span class="glyphicon glyphicon-print"></span>
                 </a>
                 <a id="handover" class="btn btn-default">
@@ -248,8 +258,10 @@
             });
         }
 
-//        window.addEventListener('orientationchange', displaySelectedView);
-        window.addEventListener('orientationchange', function() { location.reload() });
+        window.addEventListener('orientationchange', function() {
+            document.activeElement.blur();
+            setTimeout(displaySelectedView, 100);
+        });
 
 		$(window).load(function() {
 

@@ -4,7 +4,7 @@ body {
     padding-top: 70px;
 }
 @media screen and (max-width: 768px) {
-    body { padding-top: 50px; }
+    body { padding-top: 70px; }
 }
 
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {

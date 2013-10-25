@@ -31,7 +31,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li><a>Login</a></li>
+            <li><a>WardBook</a></li>
         </ul>
     </div>
 </nav>
