@@ -260,7 +260,7 @@
 
         window.addEventListener('orientationchange', function() {
             document.activeElement.blur();
-            setTimeout(displaySelectedView, 100);
+            setTimeout(displaySelectedView, 300);
         });
 
 		$(window).load(function() {
