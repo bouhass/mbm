@@ -10,7 +10,8 @@ import grails.test.mixin.*
 @TestFor(RecordController)
 class RecordControllerTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testIndex() {
+
     }
+
 }

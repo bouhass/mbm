@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(HelpersController)
 class HelpersControllerTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testIndex() {
+
     }
+
 }

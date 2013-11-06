@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-sm-1 col-md-1">
-                <a href="${createLink(controller: 'board')}" type="button"
+                <a href="${createLink(controller: 'patient')}" type="button"
                    class="btn btn-default">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>

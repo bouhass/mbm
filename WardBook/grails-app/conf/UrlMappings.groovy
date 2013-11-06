@@ -7,7 +7,7 @@ class UrlMappings {
 			}
 		}
 
-		"/"(controller: 'board', action: 'handover')
+		"/"(controller: 'patient', action: 'handover')
 		"/wardselect"(view:'/wardselect')
 		"500"(view:'/error')
 	}

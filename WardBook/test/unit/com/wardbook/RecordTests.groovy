@@ -10,7 +10,8 @@ import grails.test.mixin.*
 @TestFor(Record)
 class RecordTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testToString() {
+        def record = new Record(name: 'record name', type: 'record type')
+        assert record.toString() == 'record name'
     }
 }

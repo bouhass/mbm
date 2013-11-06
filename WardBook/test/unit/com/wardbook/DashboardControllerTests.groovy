@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(DashboardController)
 class DashboardControllerTests {
 
-    void testSomething() {
-        fail "Implement me"
+    void testIndex() {
+
     }
+
 }

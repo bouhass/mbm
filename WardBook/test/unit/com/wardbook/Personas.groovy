@@ -8,6 +8,9 @@ package com.wardbook
  */
 class Personas {
 
+    def victoria_ward = new Ward(name: 'Victoria ward', speciality: 'Respiratory')
+    def york_ward = new Ward(name: 'York ward', speciality: 'Cardiology')
+
     def joseph_love = new Patient(
             firstName: 'JOSEPH',
             lastName: 'LOVE',
@@ -17,7 +20,8 @@ class Personas {
             status: 'For Home',
             location: 'B1B1',
             consultant: 'Dr Teo',
-            speciality: 'Cardiology'
+            speciality: 'Cardiology',
+            ward: victoria_ward
     )
 
 //    {
@@ -41,6 +45,7 @@ class Personas {
                 location: 'B2B4',
                 consultant: 'Dr Teo',
                 speciality: 'Cardiology',
+                ward: victoria_ward
         )
 
 //        joshKnight.addToTasks(new Task(name: 'Antibiotics allergy', status: 'PENDING', category: 'NURSE'))
@@ -57,7 +62,8 @@ class Personas {
                 status: 'For Home',
                 location: 'B3B7',
                 consultant: 'Dr Teo',
-                speciality: 'Cardiology'
+                speciality: 'Cardiology',
+                ward: victoria_ward
         )
 
 //        anishLee.addToTasks(new Task(name: 'Blood pressure', status: 'STARTED', category: 'DOCTOR'))
@@ -66,6 +72,7 @@ class Personas {
 //        anishLee.addToRecords(new Record(name: 'Appendicitus', type: 'PROBLEM'))
 //        anishLee.addToRecords(new Record(name: 'Does not eat', type: 'PROBLEM'))
 
+    def ward_list = [york_ward, victoria_ward]
     def patient_list = [joseph_love, josh_knight, anish_lee]
 
 }

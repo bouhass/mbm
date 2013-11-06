@@ -7,27 +7,16 @@ class PatientController {
     static scaffold = true
 
     def index() {
-		redirect action: 'mylist', params: params
-	}
-
-    def list() {
-        redirect action: 'overview', params: params
+        redirect(action:handover)
     }
-	
-	def overview() {
-//		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-		[patientInstanceList: Patient.list(params), patientInstanceTotal: Patient.count()]
-	}
-	
-	def summary() {
-		def patient = Patient.get(params.id)
-		if (!patient) {
-			flash.message = message(code: 'default.not.found.message', args: ['Patient', params.id])
-			return
-		}
 
-		[patient: patient]
-	}
+    def handover = {
+        [patients: wardPatients()]
+    }
+
+    def joblist = {
+        [patients: wardPatients()]
+    }
 
     def profile() {
         def patient = Patient.get(params.id)
@@ -38,26 +27,9 @@ class PatientController {
 
         [patient: patient]
     }
-	
+
 	def add() {
 		[patientInstance: new Patient(params)]
-	}
-
-    def mylist() {
-        def patientList = Patient.createCriteria().list {
-            if (params.ward) {
-                eq('ward.id', "${params.ward}".toLong())
-            }
-            if (params.consultant) {
-                eq('consultant', "${params.consultant}")
-            }
-            if (params.status) {
-                eq('status', "${params.status}")
-            }
-//            maxResults(Math.min(params.max ? params.int('max') : 10, 100))
-        }
-
-        [patients: patientList.groupBy { it.ward }, patientInstanceTotal: Patient.count()]
     }
 
     def statuses() {
@@ -66,11 +38,14 @@ class PatientController {
 
     def jsonlist() {
         JSON.use('deep')
-        def patientList = Patient.createCriteria().list {
+        render wardPatients() as JSON
+    }
+
+    private def wardPatients() {
+        Patient.createCriteria().list {
             if (request.user.ward) {
-                eq('ward.id', request.user.ward.id)
+                eq('ward', request.user.ward)
             }
         }
-        render patientList as JSON
     }
 }

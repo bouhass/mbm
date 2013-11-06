@@ -11,7 +11,8 @@ import org.junit.*
 @TestFor(Ward)
 class WardTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testToString() {
+        def ward = new Ward(name: 'paul wood', speciality: 'cardiology')
+        assert ward.toString() == 'paul wood - cardiology'
     }
 }

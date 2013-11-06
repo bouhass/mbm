@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            <g:link controller="board" class="btn btn-default">View patients ></g:link>
+            <g:link controller="patient" class="btn btn-default">View patients ></g:link>
         </div>
     </div>
 

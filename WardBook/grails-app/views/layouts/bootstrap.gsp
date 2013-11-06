@@ -54,10 +54,8 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <%
             def navItems = [
-                    [controller: 'board', action: 'handover', title: 'Patient list'],
-                    [controller: 'board', action: 'joblist', title: 'Job list'],
-//                    [controller: 'patient', action: 'overview', title: 'Base ward'],
-//                    [controller: 'patient', action: 'mylist', title: 'My patients'],
+                    [controller: 'patient', action: 'handover', title: 'Patient list'],
+                    [controller: 'patient', action: 'joblist', title: 'Job list'],
                     [controller: 'task', action: 'mylist', title: 'My tasks'],
                     [controller: 'staff', action: 'list', title: 'Staff'],
                     [controller: 'dashboard', action: 'index', title: '<span class="glyphicon glyphicon-stats"></span>']
@@ -84,16 +82,6 @@
                     </g:each>
                 </ul>
             </li>
-            %{--<li>--}%
-                %{--<a class="btn">--}%
-                    %{--<span class="glyphicon glyphicon-bell"></span>--}%
-                %{--</a>--}%
-            %{--</li>--}%
-            %{--<li>--}%
-                %{--<a class="btn">--}%
-                    %{--<span class="glyphicon glyphicon-comment"></span>--}%
-                %{--</a>--}%
-            %{--</li>--}%
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
@@ -135,11 +123,9 @@
 </nav>
 
 <div class="container-fluid">
+
     <g:layoutBody/>
 
-    %{--<footer>--}%
-    %{--<p>&copy; <g:meta name="app.name"/> 2013</p>--}%
-    %{--</footer>--}%
 </div>
 
 <script>
