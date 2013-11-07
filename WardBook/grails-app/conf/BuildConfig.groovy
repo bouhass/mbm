@@ -84,3 +84,7 @@ grails.project.dependency.resolution = {
         test ":code-coverage:1.2.6"
     }
 }
+
+coverage {
+    xml = true
+}
