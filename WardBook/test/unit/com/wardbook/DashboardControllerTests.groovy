@@ -1,18 +1,18 @@
-//package com.wardbook
-//
-//
-//
-//import grails.test.mixin.*
-//import org.junit.*
-//
-///**
-// * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
-// */
-//@TestFor(DashboardController)
-//class DashboardControllerTests {
-//
-//    void testIndex() {
-//
-//    }
-//
-//}
+package com.wardbook
+
+
+
+import grails.test.mixin.*
+import org.junit.*
+
+/**
+* See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
+*/
+@TestFor(DashboardController)
+class DashboardControllerTests {
+
+    void testIndex() {
+
+    }
+
+}
