@@ -11,6 +11,7 @@ class StaffControllerTests {
     void testIndex() {
         controller.index()
         assert response.redirectedUrl == '/staff/list'
+        fail 'something'
     }
 
 //    void testList() {
