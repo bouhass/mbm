@@ -2,21 +2,23 @@ package com.wardbook
 
 import grails.converters.JSON
 import grails.test.mixin.*
-import grails.test.mixin.domain.DomainClassUnitTestMixin
+import org.junit.Before
 
 /**
 * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
 */
 @TestFor(PatientController)
-@Mock(Patient)
-@TestMixin(DomainClassUnitTestMixin)
-//@Mixin(Personas)
+@Mock([Patient, Ward])
 class PatientControllerTests {
 
+    @Before
     void setUp() {
-        PatientControllerTests.mixin Personas
-        mockDomain(Patient, patient_list)
-        mockDomain(Ward, ward_list)
+        this.class.mixin Personas
+
+        ward_list*.save(flush: true)
+        patient_list*.save(flush: true)
+
+        request.setAttribute('user', [ward: null])
     }
 
     void testIndex() {
@@ -29,7 +31,7 @@ class PatientControllerTests {
 //
 //        assert model.patients == patient_list
 //    }
-//
+
 //    void testJobList() {
 //        def model = controller.joblist()
 //

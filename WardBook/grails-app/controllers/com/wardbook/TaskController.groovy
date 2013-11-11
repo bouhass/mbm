@@ -10,7 +10,7 @@ class TaskController {
 
     def mylist() {
         def tasks = Task.createCriteria().list {
-            eq('assignee.id', request.user.id)
+            eq('assignee', request.user)
         }
         [tasks: tasks]
     }
