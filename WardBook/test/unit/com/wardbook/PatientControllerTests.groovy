@@ -18,7 +18,7 @@ class PatientControllerTests {
         ward_list*.save(flush: true)
         patient_list*.save(flush: true)
 
-        request.setAttribute('user', [ward: null])
+//        request.setAttribute('user', [ward: null])
     }
 
     void testIndex() {

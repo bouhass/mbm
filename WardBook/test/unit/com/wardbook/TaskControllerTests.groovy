@@ -33,7 +33,7 @@ class TaskControllerTests {
         tasks*.springSecurityService = [currentUser: user]
         tasks*.save(flush: true)
 
-        request.setAttribute('user', user)
+//        request.setAttribute('user', user)
     }
 
     void testIndex() {
