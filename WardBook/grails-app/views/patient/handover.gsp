@@ -59,11 +59,10 @@
 					<th class="HISTORY">PMH - [B]</th>
 					<th class="PROGRESS">PROGRESS - [A]</th>
 					<th class="PLAN">PLAN - [R]</th>
-					<th class="NOTE">ANGIO/ECHO/TROP</th>
-					<th class="DIET">DIET</th>
 					<th class="PREMORBID">PRE-MORBID STATUS</th>
 					<th class="MOBILITY">MOBILITY</th>
 					<th class="SOCIAL">SOCIAL</th>
+                    <th class="WEIGHT">WEIGHT</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,7 +71,7 @@
                     <td>
                         <g:render template="patientInfo" model="[patient: p]" />
                     </td>
-                    <g:each var="recordType" in="['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']">
+                    <g:each var="recordType" in="['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'PREMORBID', 'MOBILITY', 'SOCIAL', 'WEIGHT']">
                         <td class="${recordType}">
                             <table id="record-${recordType}-${p.id}" class="inner-table">
                                 <tr>
@@ -95,7 +94,7 @@
                                                 ${record.name}
                                             </td>
                                             <td class="record-date">
-                                                <g:if test="${record.type in ['PROGRESS', 'PLAN']}">
+                                                <g:if test="${record.type in ['PROGRESS', 'PLAN', 'WEIGHT']}">
                                                     <g:formatDate format="dd/MMM" date="${record.editedDate}"/>
                                                 </g:if>
                                             </td>
@@ -136,6 +135,11 @@
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" value="PLAN"> PLAN
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="WEIGHT"> WEIGHT
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -231,22 +235,22 @@
                 default:
                     if ($(window).width() > 1024) {
                         handoverViewsColumnsMapping = {
-                            Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE'],
-                            Nurse: ['PROBLEM', 'HISTORY', 'DIET', 'MOBILITY', 'SOCIAL'],
-                            Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY', 'SOCIAL']
+                            Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'WEIGHT'],
+                            Nurse: ['PROBLEM', 'HISTORY', 'MOBILITY', 'SOCIAL', 'WEIGHT'],
+                            Physio: ['PROBLEM', 'HISTORY', 'MOBILITY', 'PREMORBID', 'WEIGHT']
                         }
                     }
                     else {
                         handoverViewsColumnsMapping = {
                             Doctor: ['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN'],
                             Nurse: ['PROBLEM', 'HISTORY', 'MOBILITY', 'SOCIAL'],
-                            Physio: ['PROBLEM', 'HISTORY', 'PREMORBID', 'MOBILITY']
+                            Physio: ['PROBLEM', 'HISTORY', 'MOBILITY', 'PREMORBID']
                         }
                     }
                     break;
             }
 
-            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'WEIGHT', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                 $('.'+columnToHide).hide();
             });
             $('#customizeView input').attr('checked', false);
@@ -265,7 +269,7 @@
 
 		$(window).load(function() {
 
-            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'NOTE', 'DIET', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
+            $(['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'WEIGHT', 'PREMORBID', 'MOBILITY', 'SOCIAL']).each(function(j, columnToHide) {
                 $('.'+columnToHide).hide();
             });
 

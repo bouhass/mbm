@@ -82,6 +82,20 @@
 
             <div class="row col-sm-12 col-md-12">
                 <div class="col-sm-6 col-md-6">
+                    <h4>Weight</h4>
+                    <canvas id="weightChart" width="400" height="200"></canvas>
+                </div>
+
+                <div class="col-sm-6 col-md-6">
+                    <h4>Additional info</h4>
+                    <dl>
+                        <dt>PDD</dt>
+                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() + (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate> - [day 7]</dd>
+
+                        <dt>Medically fit</dt>
+                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() - (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate></dd>
+                    </dl>
+
                     <h4>Length of stay</h4>
 
                     <div class="row">
@@ -111,17 +125,6 @@
                         <span class="label label-primary">Hospital avg</span>
                         <span class="label label-danger">National avg</span>
                     </div>
-                </div>
-
-                <div class="col-sm-6 col-md-6">
-                    <h4>Additional info</h4>
-                    <dl>
-                        <dt>PDD</dt>
-                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() + (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate> - [day 7]</dd>
-
-                        <dt>Medically fit</dt>
-                        <dd><g:formatDate date="${new Date(System.currentTimeMillis() - (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate></dd>
-                    </dl>
                 </div>
             </div>
 
@@ -190,8 +193,23 @@
     </div>
 
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'Chart.min.js')}"></script>
 
     <script>
+        <% def weightRecords = patient.records.findAll { it.type == 'WEIGHT' }.sort { it.createdDate } %>
+        var weightData = {
+            labels : ${ weightRecords.collect { "'${it.createdDate.format('dd/MMM')}'" } },
+            datasets : [
+                {
+                    fillColor : "rgba(151,187,205,0.5)",
+                    strokeColor : "rgba(151,187,205,1)",
+                    pointColor : "rgba(151,187,205,1)",
+                    pointStrokeColor : "#fff",
+                    data : ${ weightRecords*.name }
+                }
+            ]
+        }
+
         $(window).load(function () {
 
             $('#view-selector li').on('click', function () {
@@ -205,6 +223,8 @@
             $('#calendar').datepicker({
                 todayBtn: 'linked'
             });
+
+            new Chart($("#weightChart").get(0).getContext("2d")).Line(weightData, {});
         });
     </script>
 

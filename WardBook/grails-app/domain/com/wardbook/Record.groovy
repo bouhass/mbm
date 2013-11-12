@@ -19,6 +19,7 @@ class Record {
                 'PROBLEM',
                 'PROGRESS',
                 'SOCIAL',
+                'WEIGHT'
         ]
     }
 	
