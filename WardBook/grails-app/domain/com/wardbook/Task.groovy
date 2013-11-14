@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 @gorm.AuditStamp
 class Task implements Commentable {
 
-    static auditable = [ignore:['editedDate']]
+    static auditable = [ignore:['editedBy', 'editedDate']]
 
     static transients = ['active']
 
