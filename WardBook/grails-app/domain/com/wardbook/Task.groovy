@@ -7,10 +7,12 @@ import java.util.concurrent.TimeUnit
 @gorm.AuditStamp
 class Task implements Commentable {
 
-    transient springSecurityService
+    static auditable = [ignore:['editedDate']]
 
     static transients = ['active']
-	
+
+    transient springSecurityService
+
 	String name
 	String status = 'PENDING'
 	String category = 'NURSE'

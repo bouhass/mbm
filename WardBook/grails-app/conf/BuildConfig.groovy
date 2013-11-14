@@ -78,6 +78,7 @@ grails.project.dependency.resolution = {
         compile ":commentable:0.8.1"
 
         compile ":audit-trail:2.0.3"
+        compile ":audit-logging:0.5.5.2"
 
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
