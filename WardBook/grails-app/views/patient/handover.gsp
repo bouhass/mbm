@@ -1,15 +1,5 @@
 <g:applyLayout name="board">
 
-    <style type="text/css" media="print">
-    nav,
-    input,
-    button,
-    .third-level-nav,
-    #customizeView {
-        display: none;
-    }
-    </style>
-
     <div class="third-level-nav">
         <div class="col-sm-5 col-md-5">
             %{--<ul class="nav nav-tabs nav-justified">--}%
@@ -36,9 +26,9 @@
             </div>
 
             <div class="pull-right">
-                <a href="#" class="btn btn-primary">
+                <g:link controller="patient" action="add" class="btn btn-primary">
                     Add patient
-                </a>
+                </g:link>
                 %{--<a data-toggle="modal" href="#customizeView" class="btn btn-default">--}%
                     %{--Edit view--}%
                 %{--</a>--}%

@@ -6,6 +6,15 @@
 		<g:layoutHead/>
 		<link rel="stylesheet" href="${resource(dir: 'bootstrap-editable/css', file: 'bootstrap-editable.css')}">
 		<link rel="stylesheet" href="${resource(dir: 'css',  file: 'ward-book-board.css')}">
+        <style type="text/css" media="print">
+        nav,
+        input,
+        button,
+        .third-level-nav,
+        #customizeView {
+            display: none;
+        }
+        </style>
 	</head>
 	<body>
 		<g:layoutBody/>

@@ -17,8 +17,14 @@
                 </div>
             </div>
 
-            <div class="pull-right">
-                <a id="handover" class="btn btn-primary" style="margin-bottom: 8px">
+            <div class="pull-right" style="margin-bottom: 8px">
+                <g:link controller="patient" action="add" class="btn btn-primary">
+                    Add patient
+                </g:link>
+                <a class="btn btn-primary" onclick="window.print()">
+                    <span class="glyphicon glyphicon-print"></span>
+                </a>
+                <a id="handover" class="btn btn-primary">
                     Handover
                 </a>
             </div>

@@ -35,6 +35,8 @@ class Patient implements Commentable {
         ]
 		location nullable:true
 		nhsNumber nullable:true
+        consultant nullable:true
+        speciality nullable:true
     }
 
 	String toString() { "${firstName} ${lastName}" }

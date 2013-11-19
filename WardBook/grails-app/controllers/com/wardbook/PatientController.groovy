@@ -29,7 +29,28 @@ class PatientController {
     }
 
 	def add() {
-		[patientInstance: new Patient(params)]
+        switch (request.method) {
+            case 'GET':
+                [patientInstance: new Patient(params)]
+                break
+            case 'POST':
+                def patientInstance = Patient.findByFirstNameAndLastNameAndDateOfBirth(params.firstName, params.lastName, params.dateOfBirth)
+                if (patientInstance) {
+                    flash.message = message(code: 'patient.add.alreadyExist', args: [patientInstance.id])
+                    render view: 'add', model: [patientInstance: patientInstance]
+                    return
+                }
+
+                patientInstance = new Patient(params)
+                if (!patientInstance.save(flush: true)) {
+                    render view: 'add', model: [patientInstance: patientInstance]
+                    return
+                }
+
+                flash.message = message(code: 'default.created.message', args: ['Patient', patientInstance.id])
+                redirect action: 'handover'
+                break
+        }
     }
 
     def statuses() {
@@ -46,6 +67,7 @@ class PatientController {
             if (request.user.ward) {
                 eq('ward', request.user.ward)
             }
+            ne('status', 'Discharged')
         }
     }
 }
