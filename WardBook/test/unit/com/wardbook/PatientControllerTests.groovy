@@ -57,6 +57,7 @@ class PatientControllerTests {
     void testAdd() {
         params.firstName = 'John'
         params.lastName = 'Smith'
+        request.method = 'GET'
 
         def model = controller.add()
 
