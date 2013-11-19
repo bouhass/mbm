@@ -10,7 +10,7 @@
                     <input type="text" class="form-control" placeholder="Search" name="search" id="search">
 
                     <div class="input-group-btn">
-                        <button class="btn btn-default">
+                        <button class="btn btn-primary">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </div>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="pull-right">
-                <a id="handover" class="btn btn-default" style="margin-bottom: 8px">
+                <a id="handover" class="btn btn-primary" style="margin-bottom: 8px">
                     Handover
                 </a>
             </div>
@@ -52,7 +52,7 @@
 		</table>
 	</div>
 
-    <script src="${resource(dir: 'js', file: 'board-patient-management.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'board-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
 
 	<script>

@@ -72,7 +72,8 @@ class PatientControllerTests {
                 'Unwell (To Be Aware)': 'Unwell (To Be Aware)',
                 'Unwell (For Night Review)': 'Unwell (For Night Review)',
                 'Unwell (Urgent Review)': 'Unwell (Urgent Review)',
-                'For Home': 'For Home'
+                'For Home': 'For Home',
+                'Discharged': 'Discharged'
         ]
     }
 

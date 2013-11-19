@@ -30,7 +30,8 @@ class Patient implements Commentable {
                 'Unwell (To Be Aware)',
                 'Unwell (For Night Review)',
                 'Unwell (Urgent Review)',
-                'For Home'
+                'For Home',
+                'Discharged'
         ]
 		location nullable:true
 		nhsNumber nullable:true

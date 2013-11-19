@@ -30,6 +30,8 @@
         <td>
             Handover <input type="checkbox" data-id="${patient.id}" ${patient.handover ? 'checked' : ''} class="patient-handover">
         </td>
-        <td></td>
+        <td>
+            <a href="#" data-id="${patient.id}" data-value="${patient.ward?.id}" class="patient-ward">${patient.ward?.name}</a>
+        </td>
     </tr>
 </table>

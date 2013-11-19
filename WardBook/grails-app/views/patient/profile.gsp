@@ -5,22 +5,11 @@
         <div class="row"></div>
 
         <div class="row">
-            <div class="col-sm-1 col-md-1">
-                <a href="${createLink(controller: 'patient')}" type="button"
-                   class="btn btn-default">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-            </div>
-
-            <div class="col-sm-9 col-md-9">
+            <div class="col-sm-11 col-md-12">
                 <ul id="view-selector" class="nav nav-tabs">
                     <li class="active"><a href="javascript:;">Overview</a></li>
                     <li><a href="javascript:;">Task history</a></li>
                 </ul>
-            </div>
-
-            <div class="col-sm-2 col-md-2">
-                <a class="btn btn-warning">Edit</a>
             </div>
         </div>
 
@@ -34,24 +23,12 @@
         <div id="Overview" class="view">
 
             <div class="row col-md-12">
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-6 col-md-6">
                     <h4>Patient details</h4>
-                    <dl>
-                        <dt>CONS</dt>
-                        <dd>${patient.consultant}</dd>
-
-                        <dt>NHS</dt>
-                        <dd>${patient.nhsNumber}</dd>
-
-                        <dt>DOB</dt>
-                        <dd><g:formatDate format="dd-MM-yyyy" date="${patient?.dateOfBirth}"/></dd>
-
-                        <dt>Status</dt>
-                        <dd>${patient.status}</dd>
-                    </dl>
+                    <g:render template="patientInfo" model="[patient: patient]" />
                 </div>
 
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-2 col-md-2">
                     <h4>
                         <span class="glyphicon glyphicon-warning-sign" style="color:red;"></span>
                         Alerts
@@ -61,7 +38,7 @@
                     </ul>
                 </div>
 
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-2 col-md-2">
                     <h4>Problem list</h4>
                     <ul>
                         <g:each in="${patient.records}" var="record">
@@ -72,7 +49,7 @@
                     </ul>
                 </div>
 
-                <div class="col-sm-3 col-md-3">
+                <div class="col-sm-2 col-md-2">
                     <h4>Allergies</h4>
                     <ul>
                         <li>Penicilin - Rash</li>
@@ -83,7 +60,7 @@
             <div class="row col-sm-12 col-md-12">
                 <div class="col-sm-6 col-md-6">
                     <h4>Weight</h4>
-                    <canvas id="weightChart" width="400" height="200"></canvas>
+                    <canvas id="weightChart" width="320" height="200"></canvas>
                 </div>
 
                 <div class="col-sm-6 col-md-6">
@@ -125,14 +102,6 @@
                         <span class="label label-primary">Hospital avg</span>
                         <span class="label label-danger">National avg</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="row col-md-12">
-                <div class="pull-right">
-                    <a class="btn btn-warning">Assign to</a>
-                    <a class="btn btn-warning">Move to ward</a>
-                    <a class="btn btn-danger">Discharge</a>
                 </div>
             </div>
 
@@ -192,6 +161,7 @@
         </div>
     </div>
 
+    <script src="${resource(dir: 'js', file: 'board-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'Chart.min.js')}"></script>
 

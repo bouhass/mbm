@@ -185,7 +185,7 @@ var patientTableSearch = function() {
     }).hide();
 }
 
-function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, afterSuccess) {
+function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {
     $(element).editable({
         mode: 'inline',
         type: fieldType,
@@ -199,6 +199,11 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
             ret['id'] = beanId;
             ret[field] = params.value;
             return ret;
+        },
+        validate: function(value) {
+            if (validate != undefined) {
+                return validate(value);
+            }
         },
         success: function(response, newValue) {
             if (afterSuccess != undefined) {

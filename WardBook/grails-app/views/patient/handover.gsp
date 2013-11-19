@@ -17,7 +17,7 @@
                 <li><a href="#"> Doctor </a></li>
                 <li><a href="#"> Nurse </a></li>
                 <li><a href="#"> Physio </a></li>
-                <li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>
+                %{--<li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>--}%
             </ul>
         </div>
 
@@ -28,7 +28,7 @@
                     <input type="text" class="form-control" placeholder="Search" name="search" id="search">
 
                     <div class="input-group-btn">
-                        <button class="btn btn-default">
+                        <button class="btn btn-primary">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </div>
@@ -36,13 +36,16 @@
             </div>
 
             <div class="pull-right">
-                <a data-toggle="modal" href="#customizeView" class="btn btn-default">
-                    Edit view
+                <a href="#" class="btn btn-primary">
+                    Add patient
                 </a>
-                <a class="btn btn-default" onclick="window.print()">
+                %{--<a data-toggle="modal" href="#customizeView" class="btn btn-default">--}%
+                    %{--Edit view--}%
+                %{--</a>--}%
+                <a class="btn btn-primary" onclick="window.print()">
                     <span class="glyphicon glyphicon-print"></span>
                 </a>
-                <a id="handover" class="btn btn-default">
+                <a id="handover" class="btn btn-primary">
                     Handover
                 </a>
             </div>
@@ -218,7 +221,7 @@
         </div><!-- /.modal -->
 	</div>
 
-    <script src="${resource(dir: 'js', file: 'board-patient-management.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'board-management.js')}"></script>
 
 	<script>
         function displaySelectedView() {
