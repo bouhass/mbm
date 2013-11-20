@@ -211,7 +211,7 @@
         </div><!-- /.modal -->
 	</div>
 
-    <script src="${resource(dir: 'js', file: 'board-management.js')}"></script>
+    <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
 
 	<script>
         function displaySelectedView() {

@@ -14,11 +14,10 @@ class Patient implements Commentable {
 	String nhsNumber
 	String status = 'Default (no concerns)'
 	String location
-	String consultant
 	String speciality
     Boolean handover = false
 	static hasMany = [tasks: Task, records: Record]
-    static belongsTo = [ward: Ward]
+    static belongsTo = [ward: Ward, consultant: User]
 
     static constraints = {
 		firstName nullable:false

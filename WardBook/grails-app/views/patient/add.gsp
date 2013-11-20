@@ -21,19 +21,40 @@
         </g:hasErrors>
 
         <g:form action="add" method="post">
-            <f:field bean="patientInstance" property="firstName" required="true" />
-            <f:field bean="patientInstance" property="lastName" required="true" />
-            <f:field bean="patientInstance" property="dateOfBirth" required="true"  />
-            <f:field bean="patientInstance" property="gender" required="true"  />
-            <f:field bean="patientInstance" property="nhsNumber" required="true"  />
-            <f:field bean="patientInstance" property="ward" required="true"  />
-            <hr/>
-            <div class="control-group">
-                <button type="submit" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-ok icon-white"></span>
-                    Add
-                </button>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <f:field bean="patientInstance" property="firstName" required="true" />
+                    <f:field bean="patientInstance" property="lastName" required="true" />
+                    <f:field bean="patientInstance" property="dateOfBirth" required="true"  />
+                    <f:field bean="patientInstance" property="gender" required="true"  />
+                    <f:field bean="patientInstance" property="nhsNumber" required="true"  />
+                    <f:field bean="patientInstance" property="ward" required="true"  />
+                </div>
+
+                <div class="col-sm-6 col-md-6">
+                    <h4>Optional details</h4>
+                    <f:field bean="patientInstance" property="status" />
+                    <f:field bean="patientInstance" property="location" />
+                    <f:field bean="patientInstance" property="consultant" />
+                    <f:field bean="patientInstance" property="speciality" />
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                <hr/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-ok icon-white"></span>
+                        Add
+                    </button>
+                </div>
+            </div>
+
         </g:form>
 
     </div>

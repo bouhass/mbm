@@ -5,7 +5,8 @@ import grails.converters.JSON
 class HelpersController {
 
     def consultants() {
-        render User.consultants()*.name as JSON
+        def consultants = User.consultants().collectEntries { [it.id, it.name] }
+        render consultants as JSON
     }
 
     def users() {
