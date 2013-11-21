@@ -25,7 +25,12 @@
                 <div class="col-sm-6 col-md-6">
                     <f:field bean="patientInstance" property="firstName" required="true" />
                     <f:field bean="patientInstance" property="lastName" required="true" />
-                    <f:field bean="patientInstance" property="dateOfBirth" required="true"  />
+                    <div class="control-group">
+                        <label class="control-label" for="dateOfBirth">Date Of Birth</label>
+                        <div class="controls">
+                            <g:datePicker name="dateOfBirth" id="dateOfBirth" relativeYears="${-100..0}" precision="day" />
+                        </div>
+                    </div>
                     <f:field bean="patientInstance" property="gender" required="true"  />
                     <f:field bean="patientInstance" property="nhsNumber" required="true"  />
                     <f:field bean="patientInstance" property="ward" required="true"  />

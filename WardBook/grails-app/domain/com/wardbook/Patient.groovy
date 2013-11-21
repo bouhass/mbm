@@ -22,6 +22,7 @@ class Patient implements Commentable {
     static constraints = {
 		firstName nullable:false
 		lastName nullable:false
+        dateOfBirth max:new Date()
 		gender inList: ['MALE', 'FEMALE']
 		status inList: [
                 'Default (no concerns)',
