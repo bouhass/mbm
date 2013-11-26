@@ -1,6 +1,7 @@
 package com.wardbook
 
 import grails.converters.JSON
+import groovy.sql.Sql
 
 class PatientController {
 
@@ -11,7 +12,7 @@ class PatientController {
     }
 
     def handover = {
-        [patients: wardPatients()]
+        [patients: wardPatients(), referralLists: referralListNames()]
     }
 
     def joblist = {
@@ -25,13 +26,13 @@ class PatientController {
             return
         }
 
-        [patient: patient]
+        [patient: patient, referralLists: referralListNames()]
     }
 
 	def add() {
         switch (request.method) {
             case 'GET':
-                [patientInstance: new Patient(params)]
+                [patientInstance: new Patient(params), referralLists: referralListNames()]
                 break
             case 'POST':
                 def patientInstance = Patient.findByFirstNameAndLastNameAndDateOfBirth(params.firstName, params.lastName, params.dateOfBirth)
@@ -63,11 +64,23 @@ class PatientController {
     }
 
     private def wardPatients() {
-        Patient.createCriteria().list {
+        def patients = Patient.createCriteria().list {
             if (request.user.ward) {
                 eq('ward', request.user.ward)
             }
             ne('status', 'Discharged')
         }
+        /* At the moment there is no way of using criterias with a list of primitives (String, Enum).
+        Alternatives are: 1) HQL, 2) Wrapper class for the primitive type, 3) the following: */
+        if (params.referralList) {
+            patients = patients.findAll { it.referralLists.contains(params.referralList) }
+        }
+        return patients
+    }
+
+    private def referralListNames() {
+        def sql = new Sql(applicationContext.dataSource)
+        def results = sql.rows("select distinct referral_lists_string from patient_referral_lists")
+        return results.collect { it['referral_lists_string'] }
     }
 }

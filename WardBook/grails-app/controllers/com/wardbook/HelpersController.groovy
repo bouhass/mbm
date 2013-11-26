@@ -19,6 +19,22 @@ class HelpersController {
         render wards as JSON
     }
 
+    def referralLists() {
+        switch (request.method) {
+            case 'GET':
+                break
+            case 'POST':
+                def patient = Patient.get(params.pk)
+                patient.referralLists.clear()
+                def newReferralLists = params['value[]']
+                if (newReferralLists) {
+                    if (!newReferralLists.class.isArray()) newReferralLists = [newReferralLists]
+                    newReferralLists.each { patient.addToReferralLists(it) }
+                }
+                render(status: 201)
+        }
+    }
+
     def switchWard() {
         request.user.ward = Ward.get(params.'ward.id')
         if (!request.user.save(flush: true)) {

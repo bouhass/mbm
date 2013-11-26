@@ -26,6 +26,8 @@
             </div>
 
             <div class="pull-right">
+                <g:select id="referralLists" name="referralLists" from="${referralLists}" value="${params.referralList}"
+                          noSelection="${ params.referralList ? ['':'- Display all -'] : ['':'- Select list -']}" />
                 <g:link controller="patient" action="add" class="btn btn-primary">
                     Add patient
                 </g:link>
@@ -325,6 +327,15 @@
                         }
                     }
                 });
+            });
+
+            $('#referralLists').on('change', function(e) {
+                if (this.value) {
+                    window.location.search = '?referralList=' + this.value;
+                }
+                else {
+                    window.location.search = '';
+                }
             });
 
 //            window.setInterval(function() {

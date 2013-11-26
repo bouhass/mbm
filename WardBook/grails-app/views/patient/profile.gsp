@@ -1,4 +1,5 @@
 <g:applyLayout name="patient">
+    <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
 
     <div class="col-sm-12 col-md-9">
 
@@ -26,6 +27,8 @@
                 <div class="col-sm-6 col-md-6">
                     <h4>Patient details</h4>
                     <g:render template="patientInfo" model="[patient: patient]" />
+                    <h4>Referral lists</h4>
+                    <a href="#" id="referralLists" data-type="select2">${patient.referralLists?.join(', ')}</a>
                 </div>
 
                 <div class="col-sm-2 col-md-2">
@@ -164,6 +167,7 @@
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'Chart.min.js')}"></script>
+    <script src="${resource(dir: 'select2/js', file: 'select2.js')}"></script>
 
     <script>
         <% def weightRecords = patient.records.findAll { it.type == 'WEIGHT' }.sort { it.createdDate } %>
@@ -195,6 +199,20 @@
             });
 
             new Chart($("#weightChart").get(0).getContext("2d")).Line(weightData, {});
+
+            $('#referralLists').editable({
+                title: 'Select referral lists',
+                type: 'select2',
+                url: WEB_APP_ROOT+"helpers/referralLists",
+                pk: ${patient.id},
+                onblur: 'submit',
+                select2: {
+                    placeholder: 'Select referral lists',
+                    tokenSeparators: [",", " "],
+                    tags: ${ referralLists.collect { "'${it}'" } }
+                },
+                tpl: '<input type="hidden" style="min-width: 100px">'
+            });
         });
     </script>
 

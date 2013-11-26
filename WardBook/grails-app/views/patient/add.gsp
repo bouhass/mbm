@@ -42,6 +42,12 @@
                     <f:field bean="patientInstance" property="location" />
                     <f:field bean="patientInstance" property="consultant" />
                     <f:field bean="patientInstance" property="speciality" />
+                    <div class="control-group">
+                        <label class="control-label" for="referralLists">Referral lists</label>
+                        <div class="controls">
+                            <g:select from="${referralLists.plus(0, [''])}" name="referralLists" id="referralLists" />
+                        </div>
+                    </div>
                 </div>
             </div>
 

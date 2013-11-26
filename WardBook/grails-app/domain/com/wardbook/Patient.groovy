@@ -16,7 +16,7 @@ class Patient implements Commentable {
 	String location
 	String speciality
     Boolean handover = false
-	static hasMany = [tasks: Task, records: Record]
+	static hasMany = [tasks: Task, records: Record, referralLists: String]
     static belongsTo = [ward: Ward, consultant: User]
 
     static constraints = {
