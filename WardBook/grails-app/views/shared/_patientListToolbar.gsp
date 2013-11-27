@@ -1,3 +1,4 @@
+<%@ page import="com.wardbook.ReferralList" %>
 <div class="toolbar">
     <div class="col-sm-3 col-md-3">
     </div>
@@ -16,8 +17,9 @@
         </div>
 
         <div class="pull-right" style="margin-bottom: 8px">
-            <g:select id="referralLists" name="referralLists" from="${referralLists}" value="${params.referralList}"
-                      noSelection="${ params.referralList ? ['':'- Display all -'] : ['':'- Select list -']}" />
+            <g:select id="referralLists" name="referralLists" from="${ReferralList.list()}" value="${params.referralList}"
+                      noSelection="${ params.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
+                      optionKey="id" optionValue="name"/>
             <g:link controller="patient" action="add" class="btn btn-primary">
                 Add patient
             </g:link>

@@ -25,12 +25,17 @@ class HelpersController {
                 break
             case 'POST':
                 def patient = Patient.get(params.pk)
-                patient.referralLists.clear()
+
+                def tmp = []
+                tmp.addAll(patient.referralLists)
+                tmp.each { it.removeFromPatients(patient) }
+
                 def newReferralLists = params['value[]']
                 if (newReferralLists) {
                     if (!newReferralLists.class.isArray()) newReferralLists = [newReferralLists]
-                    newReferralLists.each { patient.addToReferralLists(it) }
+                    newReferralLists.each { patient.addToReferralLists(ReferralList.findByName(it)) }
                 }
+
                 render(status: 201)
         }
     }

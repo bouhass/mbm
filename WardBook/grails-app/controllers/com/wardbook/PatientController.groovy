@@ -12,11 +12,11 @@ class PatientController {
     }
 
     def handover = {
-        [patients: wardPatients(), referralLists: referralListNames()]
+        [patients: wardPatients()]
     }
 
     def joblist = {
-        [patients: wardPatients(), referralLists: referralListNames()]
+        [patients: wardPatients()]
     }
 
     def profile() {
@@ -26,13 +26,13 @@ class PatientController {
             return
         }
 
-        [patient: patient, referralLists: referralListNames()]
+        [patient: patient]
     }
 
 	def add() {
         switch (request.method) {
             case 'GET':
-                [patientInstance: new Patient(params), referralLists: referralListNames()]
+                [patientInstance: new Patient(params)]
                 break
             case 'POST':
                 def patientInstance = Patient.findByFirstNameAndLastNameAndDateOfBirth(params.firstName, params.lastName, params.dateOfBirth)
@@ -68,19 +68,13 @@ class PatientController {
             if (request.user.ward) {
                 eq('ward', request.user.ward)
             }
+            if (params.referralList) {
+                referralLists {
+                    eq 'id', params.referralList.toLong()
+                }
+            }
             ne('status', 'Discharged')
         }
-        /* At the moment there is no way of using criterias with a list of primitives (String, Enum).
-        Alternatives are: 1) HQL, 2) Wrapper class for the primitive type, 3) the following: */
-        if (params.referralList) {
-            patients = patients.findAll { it.referralLists.contains(params.referralList) }
-        }
         return patients
-    }
-
-    private def referralListNames() {
-        def sql = new Sql(applicationContext.dataSource)
-        def results = sql.rows("select distinct referral_lists_string from patient_referral_lists")
-        return results.collect { it['referral_lists_string'] }
     }
 }

@@ -1,3 +1,4 @@
+<%@ page import="com.wardbook.ReferralList" %>
 <g:applyLayout name="patient">
     <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
 
@@ -209,7 +210,7 @@
                 select2: {
                     placeholder: 'Select referral lists',
                     tokenSeparators: [",", " "],
-                    tags: ${ referralLists.collect { "'${it}'" } }
+                    tags: ${ ReferralList.list().collect { "'${it}'" } }
                 },
                 tpl: '<input type="hidden" style="min-width: 100px">'
             });
