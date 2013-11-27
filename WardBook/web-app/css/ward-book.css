@@ -179,13 +179,8 @@ a.editable-click:hover {
     min-height: 400px;
 }
 
-.third-level-nav {
+.toolbar {
     margin-top: 10px;
-    /*margin-right: 10px;*/
-}
-
-.third-level-nav a {
-    /*margin-right: 5px;*/
 }
 
 .tt-hint {

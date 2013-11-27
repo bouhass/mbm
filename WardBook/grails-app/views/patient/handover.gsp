@@ -1,6 +1,8 @@
 <g:applyLayout name="board">
 
-    <div class="third-level-nav">
+    <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
+
+    <div class="toolbar">
         <div class="col-sm-5 col-md-5">
             %{--<ul class="nav nav-tabs nav-justified">--}%
             <ul id="view-selector" class="nav nav-tabs">
@@ -9,39 +11,6 @@
                 <li><a href="#"> Physio </a></li>
                 %{--<li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>--}%
             </ul>
-        </div>
-
-        <div class="col-sm-7 col-md-7">
-
-            <div class="pull-right col-sm-4 col-md-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
-
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pull-right">
-                <g:select id="referralLists" name="referralLists" from="${referralLists}" value="${params.referralList}"
-                          noSelection="${ params.referralList ? ['':'- Display all -'] : ['':'- Select list -']}" />
-                <g:link controller="patient" action="add" class="btn btn-primary">
-                    Add patient
-                </g:link>
-                %{--<a data-toggle="modal" href="#customizeView" class="btn btn-default">--}%
-                    %{--Edit view--}%
-                %{--</a>--}%
-                <a class="btn btn-primary" onclick="window.print()">
-                    <span class="glyphicon glyphicon-print"></span>
-                </a>
-                <a id="handover" class="btn btn-primary">
-                    Handover
-                </a>
-            </div>
-
         </div>
     </div>
 
@@ -327,15 +296,6 @@
                         }
                     }
                 });
-            });
-
-            $('#referralLists').on('change', function(e) {
-                if (this.value) {
-                    window.location.search = '?referralList=' + this.value;
-                }
-                else {
-                    window.location.search = '';
-                }
             });
 
 //            window.setInterval(function() {

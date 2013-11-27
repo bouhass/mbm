@@ -10,7 +10,7 @@
         nav,
         input,
         button,
-        .third-level-nav,
+        .toolbar,
         #customizeView {
             display: none;
         }
@@ -18,11 +18,5 @@
 	</head>
 	<body>
 		<g:layoutBody/>
-
-        <script>
-        $(window).load(function() {
-            $('#search').keyup(patientTableSearch);
-        });
-        </script>
 	</body>
 </html>

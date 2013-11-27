@@ -16,7 +16,7 @@ class PatientController {
     }
 
     def joblist = {
-        [patients: wardPatients()]
+        [patients: wardPatients(), referralLists: referralListNames()]
     }
 
     def profile() {

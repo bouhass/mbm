@@ -1,35 +1,6 @@
 <g:applyLayout name="board">
 
-    <div class="third-level-nav">
-        <div class="col-sm-5 col-md-5">
-        </div>
-
-        <div class="col-sm-7 col-md-7">
-            <div class="pull-right col-sm-4 col-md-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="search" id="search">
-
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pull-right" style="margin-bottom: 8px">
-                <g:link controller="patient" action="add" class="btn btn-primary">
-                    Add patient
-                </g:link>
-                <a class="btn btn-primary" onclick="window.print()">
-                    <span class="glyphicon glyphicon-print"></span>
-                </a>
-                <a id="handover" class="btn btn-primary">
-                    Handover
-                </a>
-            </div>
-        </div>
-    </div>
+    <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
 
 	<div class="page-body">
 		<table id="patients-table" class="patients-table bordered-table zebra-striped">
