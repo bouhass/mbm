@@ -1,8 +1,8 @@
 <div class="toolbar">
-    <div class="col-sm-5 col-md-5">
+    <div class="col-sm-3 col-md-3">
     </div>
 
-    <div class="col-sm-7 col-md-7">
+    <div class="col-sm-9 col-md-9">
         <div class="pull-right col-sm-4 col-md-4">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" name="search" id="search">
