@@ -27,11 +27,13 @@ class Patient implements Commentable {
         dateOfBirth max:new Date()
 		gender inList: ['MALE', 'FEMALE']
 		status inList: [
+                'To come in',
                 'Default (no concerns)',
                 'New Admission',
                 'Unwell (To Be Aware)',
                 'Unwell (For Night Review)',
                 'Unwell (Urgent Review)',
+                '?Home Today',
                 'For Home',
                 'Discharged'
         ]

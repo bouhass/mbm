@@ -28,7 +28,10 @@
                 <div class="col-sm-6 col-md-6">
                     <h4>Patient details</h4>
                     <g:render template="patientInfo" model="[patient: patient]" />
-                    <h4>Referral lists</h4>
+                    <h4>
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        Add to list(s)...
+                    </h4>
                     <a href="#" id="referralLists" data-type="select2">${patient.referralLists?.join(', ')}</a>
                 </div>
 
@@ -202,13 +205,13 @@
             new Chart($("#weightChart").get(0).getContext("2d")).Line(weightData, {});
 
             $('#referralLists').editable({
-                title: 'Select referral lists',
+                title: 'Select list(s)',
                 type: 'select2',
                 url: WEB_APP_ROOT+"helpers/referralLists",
                 pk: ${patient.id},
                 onblur: 'submit',
                 select2: {
-                    placeholder: 'Select referral lists',
+                    placeholder: 'Select list(s)',
                     tokenSeparators: [",", " "],
                     tags: ${ ReferralList.list().collect { "'${it}'" } }
                 },
