@@ -41,12 +41,24 @@ class HelpersController {
     }
 
     def switchWard() {
-        request.user.ward = Ward.get(params.'ward.id')
+        request.user.referralList = null
+            request.user.ward = Ward.get(params.'ward.id')
         if (!request.user.save(flush: true)) {
             render(status: 500, text: 'Failed to update ward')
         }
         else {
             render(status: 201, text: 'Successfully updated ward')
+        }
+    }
+
+    def switchList() {
+        request.user.ward = null
+        request.user.referralList = ReferralList.get(params.'list.id')
+        if (!request.user.save(flush: true)) {
+            render(status: 500, text: 'Failed to update list')
+        }
+        else {
+            render(status: 201, text: 'Successfully updated list')
         }
     }
 

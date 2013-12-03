@@ -1,4 +1,3 @@
-<%@ page import="com.wardbook.User; com.wardbook.Ward; org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -72,15 +71,6 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a id="clock"></a>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${request.user.ward?.name ?: 'All wards'}<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="switchWard('')">All wards</a></li>
-                    <g:each in="${Ward.list()}" var="ward">
-                        <li><a href="#" onclick="switchWard(${ward.id})">${ward.name}</a></li>
-                    </g:each>
-                </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -1,7 +1,6 @@
 package com.wardbook
 
 import grails.converters.JSON
-import groovy.sql.Sql
 
 class PatientController {
 
@@ -68,9 +67,9 @@ class PatientController {
             if (request.user.ward) {
                 eq('ward', request.user.ward)
             }
-            if (params.referralList) {
+            if (request.user.referralList) {
                 referralLists {
-                    eq 'id', params.referralList.toLong()
+                    eq 'id', request.user.referralList.id
                 }
             }
             ne('status', 'Discharged')

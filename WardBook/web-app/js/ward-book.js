@@ -258,6 +258,19 @@ function switchWard(wardId) {
         })
 }
 
+function switchList(listId) {
+    $.post(WEB_APP_ROOT+'helpers/switchList', {
+        'list.id': listId
+    })
+        .done(function(user) {
+            location.reload();
+        })
+        .fail(function() {
+//            alert("ERROR: could not switch list");
+            console.log("ERROR: could not switch list");
+        })
+}
+
 function userOnCall(onCall) {
     $.post(WEB_APP_ROOT+'helpers/setOnCallStatus', {
         'onCall': onCall

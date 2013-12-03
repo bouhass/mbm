@@ -25,7 +25,7 @@ class User {
     String speciality
     static hasMany = [createdTasks: Task, assignedTasks: Task, patients: Patient]
     static mappedBy = [assignedTasks: 'assignee']
-    static belongsTo = [ward: Ward]
+    static belongsTo = [ward: Ward, referralList: ReferralList]
 
     static constraints = {
         username blank: false, unique: true
@@ -36,6 +36,7 @@ class User {
         onCall nullable: true
         speciality nullable: true
         ward nullable: true
+        referralList nullable: true
     }
 
     static mapping = {
