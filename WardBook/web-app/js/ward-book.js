@@ -90,26 +90,6 @@ function addTask(patient_id, task) {
             '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>';
     $('#task-'+task.category+'-'+patient_id+' tbody').append(taskElement);
-//    $('#'+taskNameId).editable({
-//        type: 'text',
-//        placement: 'left',
-//        pk: task.id,
-//        url: WEB_APP_ROOT+'task/saveOrUpdate',
-//        value: {
-//            name: task.name
-//        },
-//        params: function(params) {
-//            return {
-//                'id': $(this).attr('data-task-id'),
-//                'name': params.value.name,
-//                'status': params.value.status,
-//                'priority': params.value.priority,
-//                'comment': params.value.comment,
-//                'category': task.category,
-//                'patient.id': patient_id
-//            }
-//        }
-//    });
 }
 
 function addNewTask(name, patient_id, category) {

@@ -246,20 +246,6 @@
 
             $('#view-selector li a:contains(Doctor)').click();
 
-            $('#handover').on('click', function() {
-                var $rows = $('#patients-table > tbody > tr');
-                if ($(this).hasClass('active')) {
-                    $rows.show();
-                    $(this).removeClass('active');
-                }
-                else {
-                    $rows.hide().filter(function() {
-                        return $(this).find('input[type="checkbox"]').is(':checked');
-                    }).show();
-                    $(this).addClass('active');
-                }
-            });
-
             $('input.add-record-input').keyup(function (e) {
                 if (e.keyCode == 13) {
                     addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));

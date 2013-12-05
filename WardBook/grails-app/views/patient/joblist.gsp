@@ -31,25 +31,5 @@
 
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
-
-	<script>
-        $(window).load(function() {
-
-            $('#handover').on('click', function() {
-                var $rows = $('#patients-table > tbody > tr');
-                if ($(this).hasClass('active')) {
-                    $rows.show();
-                    $(this).removeClass('active');
-                }
-                else {
-                    $rows.hide().filter(function() {
-                        return $(this).find('input[type="checkbox"]').is(':checked');
-                    }).show();
-                    $(this).addClass('active');
-                }
-            });
-
-		});
-	</script>
 		
 </g:applyLayout>

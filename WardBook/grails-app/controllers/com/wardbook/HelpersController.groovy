@@ -4,6 +4,8 @@ import grails.converters.JSON
 
 class HelpersController {
 
+    def springSecurityService
+
     def consultants() {
         def consultants = User.consultants().collectEntries { [it.id, it.name] }
         render consultants as JSON
@@ -69,6 +71,19 @@ class HelpersController {
         }
         else {
             render(status: 201, text: 'Successfully updated on call status')
+        }
+    }
+
+    def signOff() {
+        def encodedPassword = springSecurityService.encodePassword(params.password)
+        def user2 = User.get(params.user2)
+        def encodedPassword2 = springSecurityService.encodePassword(params.password2)
+
+        if (request.user.password == encodedPassword && user2.password == encodedPassword2) {
+            render(status: 201)
+        }
+        else {
+            render(status: 500)
         }
     }
 }
