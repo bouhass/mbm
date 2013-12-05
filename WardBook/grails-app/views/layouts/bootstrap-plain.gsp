@@ -33,7 +33,7 @@
 
 <body style="padding-top: 0px">
 
-<div class="container-fluid">
+<div class="container">
 
     <g:layoutBody/>
 

@@ -34,6 +34,8 @@
 
 <body>
 
+<div class="container">
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -112,9 +114,7 @@
     </div><!-- /.navbar-collapse -->
 </nav>
 
-<div class="container-fluid">
-
-    <g:layoutBody/>
+<g:layoutBody/>
 
 </div>
 
@@ -140,7 +140,6 @@
 <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
 <script src="${resource(dir: 'js', file: 'moment.min.js')}"></script>
 <script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
-<script src="${resource(dir: 'js', file: 'task.js')}"></script>
 
 </body>
 </html>

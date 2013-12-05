@@ -10,9 +10,8 @@
         nav,
         input,
         button,
-        .toolbar,
-        #customizeView {
-            display: none;
+        .hidden-print { /* TODO : this is a hack as bootstrap hidden-print is not working */
+            display: none !important;
         }
         </style>
 	</head>

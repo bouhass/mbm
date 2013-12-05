@@ -2,8 +2,8 @@
 
     <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
 
-    <div class="toolbar">
-        <div class="col-sm-5 col-md-5">
+    <div class="row hidden-print">
+        <div class="hidden-sm col-md-12">
             %{--<ul class="nav nav-tabs nav-justified">--}%
             <ul id="view-selector" class="nav nav-tabs">
                 <li><a href="#"> Doctor </a></li>
@@ -15,7 +15,7 @@
     </div>
 
 	<div class="page-body">
-		<table id="patients-table" class="patients-table bordered-table zebra-striped">
+		<table id="patients-table" class="patients-table table-striped table-hover">
 			<thead>
 				<tr>
 					<th>PATIENT DETAILS - [I]</th>
@@ -74,7 +74,7 @@
 		</table>
 
         <!-- Modal -->
-        <div class="modal fade" id="customizeView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade hidden-print" id="customizeView" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -86,6 +86,7 @@
                         &nbsp;
                         <input type="text" placeholder="Search for column" class="mbm-input-blue" />
                         <form role="form">
+                            <!-- TODO : replace with Record type inList enum -->
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" value="PROBLEM"> PROBLEM LIST
@@ -297,81 +298,6 @@
                     }
                 });
             });
-
-//            window.setInterval(function() {
-//                $.get(WEB_APP_ROOT+'patient/jsonlist', function(patients) {
-//                    $(patients).each(function(i, patient) {
-//
-//                        var remoteTasks = [];
-//                        $(patient.tasks).each(function(j, task) {
-//                            remoteTasks.push(task.id.toString());
-//                        });
-//
-//                        var remoteRecords = [];
-//                        $(patient.records).each(function(j, record) {
-//                            remoteRecords.push(record.id.toString());
-//                        });
-//
-//                        var localTasks = [];
-//                        $('tr#'+patient.id+' td').each(function() {
-//                            if ($(this).attr('data-task-id') != undefined) {
-//                                localTasks.push($(this).attr('data-task-id'));
-//                            }
-//                        })
-//
-//                        var localRecords = [];
-//                        $('tr#'+patient.id+' td').each(function() {
-//                            if ($(this).attr('data-rid') != undefined) {
-//                                localRecords.push($(this).attr('data-rid'));
-//                            }
-//                        })
-//
-//                        // delete tasks if applies
-//                        $(localTasks).each(function(k, taskId) {
-//                            if ($.inArray(taskId, remoteTasks) == -1) {
-//                                $('tr#'+patient.id+' td[data-task-id="'+taskId+'"]').parent().remove();
-//                            }
-//                        });
-//
-//                        // delete records if applies
-//                        $(localRecords).each(function(k, recordId) {
-//                            if ($.inArray(recordId, remoteRecords) == -1) {
-//                                $('tr#'+patient.id+' td[data-rid="'+recordId+'"]').parent().remove();
-//                            }
-//                        });
-//
-//
-//                        $(patient.tasks).each(function(j, task) {
-//
-//                            // add new tasks if applies
-//                            if ($.inArray(task.id.toString(), localTasks) == -1) {
-//                                $('.JOBS tbody').append('<tr><td data-task-id="'+task.id+'">'+task.name+'</td></tr>')
-//                            }
-//                            else {
-//                                // TODO : check update required
-//                                var taskElement = $('tr#'+patient.id+' td[data-task-id="'+task.id+'"]');
-//                                taskElement.text(task.name);
-//                            }
-//                        });
-//
-//                        $(patient.records).each(function(j, record) {
-//
-//                            // add new records if applies
-//                            if ($.inArray(record.id.toString(), localRecords) == -1) {
-//                                addRecord(patient.id, record);
-//                            }
-//                            else {
-//                                // TODO : check update required
-//                                var recordElement = $('tr#'+patient.id+' td[data-rid="'+record.id+'"]');
-//                                recordElement.text(record.name);
-//                            }
-//                        });
-//                    })
-//                })
-//                        .fail(function() {
-//                            console.error('ERROR: could not patient data');
-//                        })
-//            }, 10000);
         });
 	</script>
 		

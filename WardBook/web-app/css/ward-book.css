@@ -1,4 +1,17 @@
 
+.container {
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+}
+
+.row {
+    margin-top: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
 /* the combination of the 2 following allows to keep the padding top when rotating */
 body {
     padding-top: 70px;
@@ -94,17 +107,6 @@ a.editable-click:hover {
     outline: none;
 }
 
-/* nav common */
-/*.navbar {*/
-    /*margin-bottom: 0px;*/
-    /*border-radius: 0px;*/
-/*}*/
-
-/*.navbar ul.nav>li {*/
-    /*text-align:center;*/
-    /*font-size:1.8em;*/
-/*}*/
-
 .navbar-brand {
     padding: 0;
     border: 3px solid white;
@@ -177,10 +179,6 @@ a.editable-click:hover {
 
 .task-panel {
     min-height: 400px;
-}
-
-.toolbar {
-    margin-top: 10px;
 }
 
 .tt-hint {

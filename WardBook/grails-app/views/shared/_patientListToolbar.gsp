@@ -1,7 +1,25 @@
 <%@ page import="com.wardbook.Ward; com.wardbook.ReferralList" %>
-<div class="toolbar">
+<div class="row hidden-print">
+
+    <div class="col-sm-3 col-md-3">
+        <g:select id="wards" name="wards" class="form-control"
+                  from="${Ward.list()}" value="${request.user.ward?.id}"
+                  noSelection="${ request.user.ward ? ['':'- Display all -'] : ['':'- Select ward -']}"
+                  optionKey="id" optionValue="name"/>
+    </div>
+
+    <div class="col-sm-3 col-md-3">
+        <g:select id="referralLists" name="referralLists" class="form-control"
+                  from="${ReferralList.list()}" value="${request.user.referralList?.id}"
+                  noSelection="${ request.user.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
+                  optionKey="id" optionValue="name"/>
+    </div>
+
+</div>
+
+<div class="row hidden-print">
     <div class="col-sm-12 col-md-12">
-        <div class="pull-right col-sm-2 col-md-3">
+        <div class="pull-right col-sm-3 col-md-3">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" name="search" id="search">
 
@@ -14,12 +32,6 @@
         </div>
 
         <div class="pull-right" style="margin-bottom: 8px">
-            <g:select id="wards" name="wards" from="${Ward.list()}" value="${request.user.ward?.id}"
-                      noSelection="${ request.user.ward ? ['':'- Display all -'] : ['':'- Select ward -']}"
-                      optionKey="id" optionValue="name"/>
-            <g:select id="referralLists" name="referralLists" from="${ReferralList.list()}" value="${request.user.referralList?.id}"
-                      noSelection="${ request.user.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
-                      optionKey="id" optionValue="name"/>
             <g:link controller="patient" action="add" class="btn btn-primary">
                 Add patient
             </g:link>
@@ -31,6 +43,9 @@
             </a>
             <a id="handover" class="btn btn-primary">
                 Handover
+            </a>
+            <a id="signoff" class="btn btn-primary disabled">
+                Sign off
             </a>
 
         </div>
