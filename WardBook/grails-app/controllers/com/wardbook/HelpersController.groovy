@@ -75,15 +75,18 @@ class HelpersController {
     }
 
     def signOff() {
+        def user1 = request.user
         def encodedPassword = springSecurityService.encodePassword(params.password)
         def user2 = User.get(params.user2)
         def encodedPassword2 = springSecurityService.encodePassword(params.password2)
 
-        if (request.user.password == encodedPassword && user2.password == encodedPassword2) {
-            render(status: 201)
+        if (user1.password == encodedPassword && user2.password == encodedPassword2) {
+            if (new Handover(from: user1, to: user2).save(flush: true)) {
+                render(status: 201)
+                return
+            }
         }
-        else {
-            render(status: 500)
-        }
+
+        render(status: 500)
     }
 }

@@ -1,5 +1,9 @@
 <%@ page import="com.wardbook.User; com.wardbook.Ward; com.wardbook.ReferralList" %>
 
+<head>
+    <title>${request.user.ward ? request.user.ward : request.user.referralList}</title>
+</head>
+
 <div class="row hidden-print">
     <div class="col-sm-2 col-md-2">
         <g:select id="wards" name="wards" class="form-control"

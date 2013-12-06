@@ -23,8 +23,8 @@ class User {
     String grade
     Boolean onCall
     String speciality
-    static hasMany = [createdTasks: Task, assignedTasks: Task, patients: Patient]
-    static mappedBy = [assignedTasks: 'assignee']
+    static hasMany = [createdTasks: Task, assignedTasks: Task, patients: Patient, givenHandovers: Handover, receivedHandovers: Handover]
+    static mappedBy = [assignedTasks: 'assignee', givenHandovers: 'from', receivedHandovers: 'to']
     static belongsTo = [ward: Ward, referralList: ReferralList]
 
     static constraints = {
