@@ -86,7 +86,7 @@ grails.project.dependency.resolution = {
 
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
-        test ":code-coverage:1.2.6"
+        test ":code-coverage:1.2.7"
     }
 }
 
