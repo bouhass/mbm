@@ -1,4 +1,4 @@
-import static grails.async.Promises.*
+import com.wardbook.User
 
 class SecurityFilters {
 
@@ -7,10 +7,9 @@ class SecurityFilters {
     def filters = {
         allURIs(uri: '/**') {
             before = {
-                if (springSecurityService.currentUser) {
-                    request.user = springSecurityService.currentUser
+                if (springSecurityService.isLoggedIn()) {
+                    request.user = User.get(springSecurityService.principal.id)
                     request.user.lastSeenAt = new Date()
-                    request.user.async.save(flush: true)
                 }
             }
         }

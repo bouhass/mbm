@@ -1,5 +1,5 @@
 <%@ page import="com.wardbook.User" %>
-<g:applyLayout name="bootstrap-plain">
+<g:applyLayout name="bootstrap">
 
     <div class="modal-dialog">
         <div class="modal-content">
