@@ -2,7 +2,7 @@
 <html>
 <head>
     <title><g:meta name="app.name"/></title>
-    <meta name="layout" content="bootstrap-plain"/>
+    <meta name="layout" content="bootstrap"/>
     <style>
     .login_message {
         color: red;
@@ -14,29 +14,12 @@
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="${createLink(uri: '/')}">
-            <g:img dir="images" file="mbm-logo.png" width="45" height="45"/>
-            %{--<g:meta name="app.name"/>--}%
-        </a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-            <li><a>WardBook</a></li>
-        </ul>
+    <div style="color: white; text-align: center;">
+        <h3>WardBook</h3>
     </div>
 </nav>
 
-<div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4 box-middle">
+<div class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle">
 
     <g:if test='${flash.message}'>
         <div class='login_message'>${flash.message}</div>

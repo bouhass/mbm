@@ -1,5 +1,5 @@
 <%@ page import="com.wardbook.User;" %>
-<g:applyLayout name="bootstrap">
+<g:applyLayout name="bootstrap-navbar">
 
     <div>
 

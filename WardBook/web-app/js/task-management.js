@@ -1,7 +1,7 @@
 
 $(window).load(function() {
     var modalLoadingDiv = '' +
-        '<div class="modal-dialog">' +
+        '<div class="modal-dialog hidden-print">' +
         '<div class="modal-content">' +
         '<div class="modal-body">' +
         '<img src="'+WEB_APP_ROOT+'images/spinner.gif" class="text-centered"/>' +

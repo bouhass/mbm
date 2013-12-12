@@ -1,4 +1,4 @@
-<g:applyLayout name="board">
+<g:applyLayout name="bootstrap-navbar">
 
     <div class="text-center">
 

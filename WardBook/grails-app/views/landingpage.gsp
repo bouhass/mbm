@@ -1,7 +1,7 @@
 <%@ page import="com.wardbook.ReferralList; com.wardbook.Ward" %>
-<g:applyLayout name="board">
+<g:applyLayout name="bootstrap-navbar">
 
-    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4 box-middle">
+    <div class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle">
         <div class="row">
             <h4>Select a ward</h4>
         </div>

@@ -32,10 +32,10 @@ $(window).load(function() {
             },
             function(response, newValue) {
                 if (newValue.indexOf("Unwell") != -1) {
-                    $('tr[id='+patientId+']').addClass('patient-unwell');
+                    $('tr[id='+patientId+']').addClass('danger');
                 }
                 else {
-                    $('tr[id='+patientId+']').removeClass('patient-unwell');
+                    $('tr[id='+patientId+']').removeClass('danger');
                 }
             });
     });

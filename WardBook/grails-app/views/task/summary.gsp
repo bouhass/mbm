@@ -2,7 +2,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="bootstrap-plain">
+    <meta name="layout" content="bootstrap">
 </head>
 
 <body>

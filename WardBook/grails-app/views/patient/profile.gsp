@@ -1,5 +1,5 @@
 <%@ page import="com.wardbook.ReferralList" %>
-<g:applyLayout name="patient">
+<g:applyLayout name="bootstrap-navbar">
     <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
 
     <div class="col-sm-12 col-md-9">

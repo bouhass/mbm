@@ -3,6 +3,7 @@
     margin: 0px;
     padding: 0px;
     max-width: 100%;
+    width: 100%;
 }
 
 .row {
@@ -12,10 +13,7 @@
     margin-left: 0px;
 }
 
-/* the combination of the 2 following allows to keep the padding top when rotating */
-body {
-    padding-top: 70px;
-}
+/* allows to keep the padding top when rotating */
 @media screen and (max-width: 768px) {
     body { padding-top: 70px; }
 }
@@ -26,10 +24,14 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 
 .box-middle {
     position: absolute;
-    top: 15%;
+    top: 20%;
     padding: 50px;
     border: 1px solid #aaa;
     border-radius: 4px;
+}
+
+.danger > td {
+    background: #ffdddd !important;
 }
 
 dl {
@@ -112,6 +114,19 @@ a.editable-click:hover {
     border: 3px solid white;
 }
 
+.patient-info {
+    width: 100%;
+}
+
+.patient-info td {
+    width: 50%;
+}
+
+.patient-info td:first-child {
+    border-right: 1px solid;
+    border-color: #bbb
+}
+
 .popover {
     max-width: 100%;
     width: 49%;
@@ -181,6 +196,10 @@ a.editable-click:hover {
     min-height: 400px;
 }
 
+th, td {
+    padding: 8px;
+}
+
 .tt-hint {
     top: -1px !important;
     left: -12px !important;
@@ -201,4 +220,8 @@ a.editable-click:hover {
 
 .user-status-online {
     color: #0c0;
+}
+
+#view-selector {
+    border-bottom: 0px;
 }

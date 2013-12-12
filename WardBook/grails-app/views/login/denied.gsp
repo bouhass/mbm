@@ -1,5 +1,5 @@
 <head>
-<meta name='layout' content='bootstrap' />
+<meta name='layout' content='bootstrap-navbar' />
 <title><g:message code="springSecurity.denied.title" /></title>
 </head>
 

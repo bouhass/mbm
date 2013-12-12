@@ -1,5 +1,5 @@
 <%@ page import="com.wardbook.ReferralList" %>
-<g:applyLayout name="bootstrap">
+<g:applyLayout name="bootstrap-navbar">
 
     <div class="col-md-12">
 

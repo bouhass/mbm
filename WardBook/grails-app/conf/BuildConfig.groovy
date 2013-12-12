@@ -65,8 +65,8 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.3.2"
 
         compile ':cache:1.0.1'
-		
-		runtime ":twitter-bootstrap:3.0.0"
+
+        compile ":twitter-bootstrap:3.0.3"
 		runtime ":fields:1.3"
         compile ":twitter-typeahead:0.9.3.1"
 
@@ -83,6 +83,8 @@ grails.project.dependency.resolution = {
 
         compile ":audit-trail:2.0.3"
         compile ":audit-logging:0.5.5.2"
+
+        compile ":spring-mobile:0.5.1"
 
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
