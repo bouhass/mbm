@@ -1,38 +1,62 @@
-<%@ page import="com.wardbook.ReferralList; com.wardbook.Ward" %>
-<g:applyLayout name="bootstrap-navbar">
 
-    <div class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle">
-        <div class="row">
-            <h4>Select a ward</h4>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <select onchange="switchWard($(this).find('option:selected').attr('value'))" class="form-control">
-                    <option value="">All wards</option>
-                    <g:each in="${Ward.list()}" var="ward">
-                        <option value="${ward.id}" ${ward.id == request.user.ward?.id ? 'selected' : ''}>${ward}</option>
-                    </g:each>
-                </select>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <title>Snap.js</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="stylesheet" type="text/css" href="http://jakiestfu.github.io/Snap.js/snap.css" />
+    <link rel="stylesheet" type="text/css" href="http://jakiestfu.github.io/Snap.js/demo/assets/demo.css" />
+</head>
+<body>
+<div class="snap-drawers">
+    <div class="snap-drawer snap-drawer-left">
+        <div>
+            <h3>Snap.js</h3>
+            <div class="demo-social">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-text="Snap.js - A Library for creating beautiful mobile shelfs in Javascript" data-url="http://jakiestfu.github.com/Snap.js/" data-count="none" data-via="jakiestfu">Tweet</a>
+                <a href="https://twitter.com/jakiestfu" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @jakiestfu</a>
+                <iframe src="http://ghbtns.com/github-btn.html?user=jakiestfu&amp;repo=Snap.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="120" height="20"></iframe>
             </div>
-        </div>
-
-        <div class="row">
-            <h4>Or select a list</h4>
-        </div>
-        <div class="row">
-            <div class="form-group">
-                <select onchange="switchList($(this).find('option:selected').attr('value'))" class="form-control">
-                    <option value="">All lists</option>
-                    <g:each in="${ReferralList.list()}" var="referralList">
-                        <option value="${referralList.id}" ${referralList.id == request.user.referralList?.id ? 'selected' : ''}>${referralList}</option>
-                    </g:each>
-                </select>
+            <h4>Demos</h4>
+            <ul>
+                <li><a href="default.html">Default</a></li>
+                <li><a href="noDrag.html">No Drag</a></li>
+                <li><a href="dragElement.html">Drag Element</a></li>
+                <li><a href="rightDisabled.html">Right Disabled</a></li>
+                <li><a href="hyperextend.html">Hyperextension Disabled</a></li>
+                <li><a href="skinnyThreshold.html">Skinny Threshold</a></li>
+                <li><a href="toggles.html">Toggles</a></li>
+                <li><a href="classNames.html">Class Names</a></li>
+                <li><a href="expand.html">Expanding</a></li>
+                <li><a href="settings.html">Settings</a></li>
+                <li><a href="ratchet/template.html">Ratchet</a></li>
+            </ul>
+            <div>
+                <p>The Default demo shows basic Snap.js functionality</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non erat ac leo ultrices blandit sed vel risus. Pellentesque facilisis blandit auctor. Maecenas vestibulum vulputate tincidunt. Mauris nec quam libero. Fusce eget ligula non leo varius condimentum quis ac elit. Donec id urna ut neque semper ultrices. Proin ut suscipit felis. Nullam neque felis, ullamcorper scelerisque volutpat vel, vehicula vehicula neque. Aenean scelerisque elit ac erat sagittis ullamcorper.</p>
             </div>
-        </div>
-
-        <div class="row">
-            <g:link controller="patient" class="btn btn-default">View patients ></g:link>
         </div>
     </div>
+    <div class="snap-drawer snap-drawer-right"></div>
+</div>
 
-</g:applyLayout>
+<div id="content" class="snap-content">
+    <div id="toolbar">
+        <a href="#" id="open-left"></a>
+        <h1>Default</h1>
+    </div>
+</div>
+<script type="text/javascript" src="http://jakiestfu.github.io/Snap.js/snap.js"></script>
+<script type="text/javascript">
+    var snapper = new Snap({
+        element: document.getElementById('content')
+    });
+
+</script>                                                                                                                                    jdf;aksl'dsfaf30wrEKFP[DL;SZ
+<script type="text/javascript" src="http://jakiestfu.github.io/Snap.js/demo/assets/demo.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</body>
+</html>

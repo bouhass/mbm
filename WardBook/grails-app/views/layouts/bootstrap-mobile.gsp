@@ -5,26 +5,26 @@
     <g:layoutHead/>
     <style>
     body {
-        padding-top: 51px !important
+        padding-top: 50px !important
     }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <ul>
+        <ul class="nav navbar-nav">
             <li>
                 <a>
-                    <div class="pull-left">
+                    %{--<div class="pull-left">--}%
                         <span class="glyphicon glyphicon-list" />
-                    </div>
+                    %{--</div>--}%
                 </a>
             </li>
             <li>
                 <a>
-                    <div class="pull-right">
+                    %{--<div class="pull-right">--}%
                         <span class="glyphicon glyphicon-search" />
-                    </div>
+                    %{--</div>--}%
                 </a>
             </li>
         </ul>
