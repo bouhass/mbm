@@ -1,12 +1,5 @@
 <%@ page import="com.wardbook.User; com.wardbook.Task" %>
-<!doctype html>
-<html>
-<head>
-    <meta name="layout" content="bootstrap">
-</head>
-
-<body>
-<div class="container">
+<g:applyLayout name="bootstrap">
     <div class="row">
 
         <div class="page-header">
@@ -78,15 +71,13 @@
         </div>
 
     </div>
-</div>
 
-<script>
-    $(window).load(function() {
-        $('.task-status').each(function() {
-            $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+    <script>
+        $(window).load(function() {
+            $('.task-status').each(function() {
+                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+            });
         });
-    });
-</script>
+    </script>
 
-</body>
-</html>
+</g:applyLayout>

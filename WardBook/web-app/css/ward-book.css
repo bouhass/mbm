@@ -13,11 +13,6 @@
     margin-left: 0px;
 }
 
-/* allows to keep the padding top when rotating */
-@media screen and (max-width: 768px) {
-    body { padding-top: 70px; }
-}
-
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
     margin-right: 0px;
 }
@@ -220,8 +215,4 @@ th, td {
 
 .user-status-online {
     color: #0c0;
-}
-
-#view-selector {
-    border-bottom: 0px;
 }

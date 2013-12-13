@@ -4,7 +4,7 @@
 
     <div class="row hidden-print">
         <div class="hidden-sm col-md-12">
-            <ul id="view-selector" class="nav nav-tabs">
+            <ul id="view-selector" class="nav nav-tabs" style="border-bottom: 0px;">
                 <li><a href="#"> Doctor </a></li>
                 <li><a href="#"> Nurse </a></li>
                 <li><a href="#"> Physio </a></li>
