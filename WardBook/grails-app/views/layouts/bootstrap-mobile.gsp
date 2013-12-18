@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'ward-book-mobile.css')}">
         <style>
-        .toto {
+        .menu-button {
             color: white;
             font-size: 1.5em;
             padding: 4px;
@@ -44,6 +44,9 @@
     <div class="row-offcanvas row-offcanvas-left">
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-left" role="navigation">
             <div class="list-group">
+                <g:link controller="patient" class="btn btn-default list-group-item">
+                    Patient list
+                </g:link>
                 <a href="#" class="list-group-item">
                     <g:select name="a" from="${Ward.list()}" class="form-control" />
                 </a>
@@ -61,7 +64,7 @@
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-right" role="navigation">
             <div class="list-group">
                 <a href="#" class="list-group-item active">
-                    <input />
+                    <input  class="form-control" placeholder="Type a patient name"/>
                 </a>
                 <a href="#" class="list-group-item">No results</a>
             </div>
@@ -70,12 +73,12 @@
 
     <div class="row-offcanvas row-offcanvas-middle">
         <div class="navbar navbar-inverse" role="navigation">
-            <button type="button" class="btn btn-xs toto" data-toggle="offcanvas-left">
-                <span class="glyphicon glyphicon-list"></span>
+            <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-left">
+                <span class="glyphicon glyphicon-align-justify"></span>
             </button>
 
             <div class="pull-right">
-                <button type="button" class="btn btn-primary btn-xs toto" data-toggle="offcanvas-right">
+                <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-right">
                     <span class="glyphicon glyphicon-search" />
                 </button>
             </div>

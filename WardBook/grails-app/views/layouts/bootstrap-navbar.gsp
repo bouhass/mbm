@@ -35,69 +35,58 @@
                 ]
             %>
 
-            <div class="hidden-sm hidden-md hidden-lg">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <g:select name="toto" from="${[1, 2, 3]}" style="width: 100%;" />
+            <ul class="nav navbar-nav">
+                <g:each in="${navItems}" var="navItem">
+                    <li<%=((controllerName == navItem.controller) && (actionName == navItem.action)) ? ' class="active"' : ''%>>
+                        <g:link controller="${navItem.controller}" action="${navItem.action}">${navItem.title}</g:link>
                     </li>
-                </ul>
-            </div>
+                </g:each>
+            </ul>
 
-            <div class="hidden-xs">
-                <ul class="nav navbar-nav">
-                    <g:each in="${navItems}" var="navItem">
-                        <li<%=((controllerName == navItem.controller) && (actionName == navItem.action)) ? ' class="active"' : ''%>>
-                            <g:link controller="${navItem.controller}" action="${navItem.action}">${navItem.title}</g:link>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a id="clock"></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a>
+                                <sec:loggedInUserInfo field="username"/>
+                            </a>
                         </li>
-                    </g:each>
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a id="clock"></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span><b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a>
-                                    <sec:loggedInUserInfo field="username"/>
-                                </a>
-                            </li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <g:if test="${request.user.onCall}">
+                                <a href="#" onclick="userOnCall(false)"><span class="glyphicon glyphicon-minus"></span> Leave On Call</a>
+                            </g:if>
+                            <g:if test="${!request.user.onCall}">
+                                <a href="#" onclick="userOnCall(true)"><span class="glyphicon glyphicon-earphone"></span> On Call</a>
+                            </g:if>
+                        </li>
+                        <sec:ifAllGranted roles="ROLE_ADMIN">
                             <li role="presentation" class="divider"></li>
                             <li>
-                                <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
+                                <a href="${createLink(controller: 'user')}"><span class="glyphicon glyphicon-cog"></span> Admin </a>
                             </li>
-                            <li role="presentation" class="divider"></li>
-                            <li>
-                                <g:if test="${request.user.onCall}">
-                                    <a href="#" onclick="userOnCall(false)"><span class="glyphicon glyphicon-minus"></span> Leave On Call</a>
-                                </g:if>
-                                <g:if test="${!request.user.onCall}">
-                                    <a href="#" onclick="userOnCall(true)"><span class="glyphicon glyphicon-earphone"></span> On Call</a>
-                                </g:if>
-                            </li>
-                            <sec:ifAllGranted roles="ROLE_ADMIN">
-                                <li role="presentation" class="divider"></li>
-                                <li>
-                                    <a href="${createLink(controller: 'user')}"><span class="glyphicon glyphicon-cog"></span> Admin </a>
-                                </li>
-                            </sec:ifAllGranted>
-                            <li role="presentation" class="divider"></li>
-                            <li>
-                                <a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                        </sec:ifAllGranted>
+                        <li role="presentation" class="divider"></li>
+                        <li>
+                            <a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
 
         </div><!-- /.navbar-collapse -->
     </nav>
 
-    <script src="${resource(dir: 'js', file: 'moment.min.js')}"></script>
     <script>
         $(window).load(function() {
             $('#clock').text(moment().format('Do MMM HH:mm'));

@@ -2,18 +2,18 @@
 
     <div class="list-group">
         <g:each in="${com.wardbook.Patient.list()}" var="patient">
-            <a href="#" class="list-group-item">
+            <g:link controller="patient" action="profile" id="${patient.id}" class="list-group-item">
                 ${patient}
                 <div class="pull-right">
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </div>
-            </a>
+            </g:link>
         </g:each>
     </div>
 
     <script>
         $(window).load(function() {
-            $('[data-toggle=offcanvas-left]').click();
+//            $('[data-toggle=offcanvas-left]').click();
         });
     </script>
 

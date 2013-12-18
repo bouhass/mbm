@@ -6,6 +6,10 @@ body {
     /*padding-top: 70px;*/
 }
 
+.navbar {
+    margin-bottom: 0px;
+}
+
 /*
  * Off Canvas
  * --------------------------------------------------
