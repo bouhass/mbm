@@ -34,6 +34,7 @@
                         [controller: 'dashboard', action: 'index', title: '<span class="glyphicon glyphicon-stats"></span>']
                 ]
             %>
+
             <ul class="nav navbar-nav">
                 <g:each in="${navItems}" var="navItem">
                     <li<%=((controllerName == navItem.controller) && (actionName == navItem.action)) ? ' class="active"' : ''%>>
@@ -86,7 +87,6 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 
-    <script src="${resource(dir: 'js', file: 'moment.min.js')}"></script>
     <script>
         $(window).load(function() {
             $('#clock').text(moment().format('Do MMM HH:mm'));

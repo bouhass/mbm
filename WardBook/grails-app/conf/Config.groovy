@@ -114,7 +114,7 @@ grails.plugins.springsecurity.interceptUrlMap = [
         '/**'                       : ['IS_AUTHENTICATED_FULLY']
 ]
 
-grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/landingpage'
+grails.plugins.springsecurity.successHandler.defaultTargetUrl = '/home/index'
 grails.plugins.springsecurity.successHandler.alwaysUseDefault = true
 
 grails.plugins.springsecurity.ui.encodePassword = false

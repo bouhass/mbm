@@ -32,6 +32,10 @@ class TaskController {
             return
         }
 
-        [task: task]
+        def view = 'partialEdit'
+        if (isMobile()) {
+            view = 'm/partialEdit'
+        }
+        render(view: view, model: [task: task])
     }
 }

@@ -29,7 +29,11 @@ class PatientController {
             return
         }
 
-        [patient: patient]
+        def view = 'profile'
+        if (isMobile()) {
+            view = 'm/profile'
+        }
+        render(view: view, model: [patient: patient])
     }
 
 	def add() {
