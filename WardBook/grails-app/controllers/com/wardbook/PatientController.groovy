@@ -71,7 +71,6 @@ class PatientController {
     }
 
     def search() {
-        sleep 2000
         def patients = Patient.createCriteria().list {
             if (params.q) {
                 def tokens = params.q.split(' ')
