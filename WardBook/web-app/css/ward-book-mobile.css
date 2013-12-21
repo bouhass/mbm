@@ -45,4 +45,28 @@ body {
         top: 0;
         width: 75%; /* 6 columns */
     }
+
+    .menu-button {
+        color: white;
+        font-size: 1.5em;
+        padding: 4px;
+        margin: 4px;
+    }
+
+    .row-offcanvas .list-group-item {
+        border-radius: 0px;
+    }
+
+    .sidebar-offcanvas,
+    .col-xs-12 {
+        padding: 0px;
+    }
+
+    .row-offcanvas-middle.left-open {
+        left: 75% !important;
+    }
+
+    .row-offcanvas-middle.right-open {
+        right: 75% !important;
+    }
 }

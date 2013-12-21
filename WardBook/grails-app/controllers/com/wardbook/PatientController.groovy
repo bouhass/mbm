@@ -70,6 +70,23 @@ class PatientController {
         render wardPatients() as JSON
     }
 
+    def search() {
+        sleep 2000
+        def patients = Patient.createCriteria().list {
+            if (params.q) {
+                def tokens = params.q.split(' ')
+                or {
+                    for (token in tokens) {
+                        like('firstName', "${token}%")
+                        like('lastName', "${token}%")
+                    }
+                }
+            }
+            maxResults(5)
+        }
+        render patients as JSON
+    }
+
     private def wardPatients() {
         def patients = Patient.createCriteria().list {
             if (request.user.ward) {

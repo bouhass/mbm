@@ -2,43 +2,6 @@
 <g:applyLayout name="bootstrap">
     <head>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'ward-book-mobile.css')}">
-        <style>
-        .menu-button {
-            color: white;
-            font-size: 1.5em;
-            padding: 4px;
-            margin: 4px;
-        }
-
-        .row-offcanvas {
-            /*margin-top: -20px;*/
-        }
-
-        .row-offcanvas .list-group-item {
-            border-radius: 0px;
-        }
-
-        .row-offcanvas-left {
-            /*margin-left: 15px;*/
-        }
-
-        .row-offcanvas-right {
-            /*margin-right: 14px;*/
-        }
-
-        .sidebar-offcanvas,
-        .col-xs-12 {
-            padding: 0px;
-        }
-
-        .row-offcanvas-middle.left-open {
-            left: 75% !important;
-        }
-
-        .row-offcanvas-middle.right-open {
-            right: 75% !important;
-        }
-        </style>
     </head>
 
     <div class="row-offcanvas row-offcanvas-left">
@@ -64,9 +27,10 @@
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-right" role="navigation">
             <div class="list-group">
                 <a href="#" class="list-group-item active">
-                    <input  class="form-control" placeholder="Type a patient name"/>
+                    <input id="search" class="form-control" placeholder="Type a patient name"/>
                 </a>
-                <a href="#" class="list-group-item">No results</a>
+                <div id="search-results">
+                </div>
             </div>
         </div>
     </div>
@@ -101,6 +65,34 @@
             $('[data-toggle=offcanvas-right]').click(function() {
                 $('.row-offcanvas-right').toggleClass('active');
                 $('.row-offcanvas-middle').toggleClass('right-open');
+                $('#search').focus();
+            });
+
+            $('#search').keyup(function() {
+                $('#search-results').empty();
+                var query = $(this).val();
+                if (query.length > 2) {
+                    $('#search-results').append('<a href="#" class="list-group-item"><img src="'+WEB_APP_ROOT+'images/spinner.gif" /></a>');
+                    $.get(WEB_APP_ROOT+'patient/search?q='+query)
+                            .always(function() {
+                                $('#search-results').empty();
+                            })
+                            .done(function(patients) {
+                                if ($(patients).size() > 0) {
+                                    $(patients).each(function(i, patient) {
+                                        $('#search-results').append(
+                                                '<a href="'+WEB_APP_ROOT+'patient/profile/'+patient.id+'" class="list-group-item">'+patient.firstName+' '+patient.lastName+'</a>'
+                                        );
+                                    });
+                                }
+                                else {
+                                    $('#search-results').append('<a href="#" class="list-group-item">No results found</a>');
+                                }
+                            })
+                            .fail(function() {
+                                $('#search-results').append('<a href="#" class="list-group-item">Error, please retry</a>');
+                            })
+                }
             });
         });
     </script>
