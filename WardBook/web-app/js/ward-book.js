@@ -263,3 +263,11 @@ function userOnCall(onCall) {
             console.log("ERROR: could not update status");
         })
 }
+
+var switchView = function () {
+    $(this).siblings().removeClass('active');
+    $('.view').hide();
+
+    $(this).addClass('active');
+    $('#' + $(this).text().replace(' ', '_')).show();
+}

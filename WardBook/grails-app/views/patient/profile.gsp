@@ -190,13 +190,7 @@
 
         $(window).load(function () {
 
-            $('#view-selector li').on('click', function () {
-                $(this).siblings().removeClass('active');
-                $('.view').hide();
-
-                $(this).addClass('active');
-                $('#' + $(this).text().replace(' ', '_')).show();
-            });
+            $('#view-selector li').on('click', switchView);
 
             $('#calendar').datepicker({
                 todayBtn: 'linked'
