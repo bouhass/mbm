@@ -1,7 +1,9 @@
 <g:applyLayout name="bootstrap-mobile">
 
     <div class="col-sm-12">
-        <h4>${patient}</h4>
+        <h4>
+            ${patient} ${patient.location ? "- ${patient.location}" : ''} ${patient.consultant ? "- ${patient.consultant}" : ''}
+        </h4>
 
         <ul id="view-selector" class="nav nav-tabs">
             <li class="active"><a href="javascript:;">Tasks</a></li>
