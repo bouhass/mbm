@@ -29,7 +29,9 @@ class Task implements Commentable {
     }
 
     def beforeInsert() {
-        assignee = springSecurityService.currentUser
+        if (this.assignee == null) {
+            assignee = springSecurityService.currentUser
+        }
     }
 
 	String toString() { "${name}" }

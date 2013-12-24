@@ -37,6 +37,10 @@
         </g:each>
     </div>
 
+    <div class="col-sm-12">
+        <g:link controller="task" action="add" params="['patient.id': patient.id]" class="btn btn-primary form-control">Add task</g:link>
+    </div>
+
     <script>
         $(window).load(function() {
             $('#view-selector li').on('click', switchView);

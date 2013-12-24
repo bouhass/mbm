@@ -38,4 +38,23 @@ class TaskController {
         }
         render(view: view, model: [task: task])
     }
+
+    def add() {
+        def view = 'm/add'
+        switch (request.method) {
+            case 'GET':
+                render(view: view, model: [task: new Task(params)])
+                break
+            case 'POST':
+                def task = new Task(params)
+                if (!task.save(flush: true)) {
+                    render view: view, model: [task: task]
+                    return
+                }
+
+                flash.message = message(code: 'default.created.message', args: ['Task', task.id])
+                redirect controller: 'patient', action: 'profile', id: task.patient.id
+                break
+        }
+    }
 }
