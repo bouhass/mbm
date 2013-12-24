@@ -10,11 +10,17 @@
                 <g:link controller="patient" class="btn btn-default list-group-item">
                     Patient list
                 </g:link>
-                <a href="#" class="list-group-item">
-                    <g:select name="a" from="${Ward.list()}" class="form-control" />
+                <a href="javascript:;" class="list-group-item">
+                    <g:select id="wards" name="wards" class="form-control"
+                              from="${Ward.list()}" value="${request.user.ward?.id}"
+                              noSelection="${ request.user.ward ? ['':'- Display all -'] : ['':'- Select ward -']}"
+                              optionKey="id" optionValue="name"/>
                 </a>
-                <a href="#" class="list-group-item">
-                    <g:select name="b" from="${ReferralList.list()}" class="form-control" />
+                <a href="javascript:;" class="list-group-item">
+                    <g:select id="referralLists" name="referralLists" class="form-control"
+                              from="${ReferralList.list()}" value="${request.user.referralList?.id}"
+                              noSelection="${ request.user.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
+                              optionKey="id" optionValue="name"/>
                 </a>
                 <g:link uri="/logout" class="btn btn-default list-group-item">
                     <span class="glyphicon glyphicon-log-out"></span> Logout
@@ -66,6 +72,14 @@
                 $('.row-offcanvas-right').toggleClass('active');
                 $('.row-offcanvas-middle').toggleClass('right-open');
                 $('#search').focus();
+            });
+
+            $('#wards').on('change', function(e) {
+                switchWard(this.value);
+            });
+
+            $('#referralLists').on('change', function(e) {
+                switchList(this.value);
             });
 
             $('#search').keyup(function() {
