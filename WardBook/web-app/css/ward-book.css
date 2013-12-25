@@ -25,6 +25,10 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     border-radius: 4px;
 }
 
+.danger {
+    background: #ffdddd !important;
+}
+
 .danger > td {
     background: #ffdddd !important;
 }

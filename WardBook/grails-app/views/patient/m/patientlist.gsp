@@ -18,15 +18,15 @@
         </g:if>
 
         <div id="Name" class="view">
-            <g:render template="m/patientList" model="[patients: patients.sort { it.lastName }]" />
+            <g:render template="m/patientList" model="[patients: patients.sort { it.lastName }, view: 'name']" />
         </div>
 
         <div id="Loc" class="view" style="display: none">
-            <g:render template="m/patientList" model="[patients: patients.sort { it.location }]" />
+            <g:render template="m/patientList" model="[patients: patients.sort { it.location }, view: 'loc']" />
         </div>
 
         <div id="Doc" class="view" style="display: none">
-            <g:render template="m/patientList" model="[patients: patients.sort { it.consultant?.name }]" />
+            <g:render template="m/patientList" model="[patients: patients.sort { it.consultant?.name }, view: 'doc']" />
         </div>
     </div>
 
