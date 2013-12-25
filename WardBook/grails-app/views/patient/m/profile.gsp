@@ -1,8 +1,13 @@
 <g:applyLayout name="bootstrap-mobile">
 
+    <g:set var="navTitle" value="${patient}" scope="request" />
+
     <div class="col-sm-12">
         <h4>
-            ${patient} ${patient.location ? "- ${patient.location}" : ''} ${patient.consultant ? "- ${patient.consultant}" : ''}
+            ${patient.location ? "${patient.location}" : ''} -
+            ${patient.consultant ? "${patient.consultant}" : ''} -
+            ${new Date().year - patient.dateOfBirth.year}y -
+            ${patient.gender[0]}
         </h4>
 
         <ul id="view-selector" class="nav nav-tabs">

@@ -1,5 +1,7 @@
 <g:applyLayout name="bootstrap-mobile">
 
+    <g:set var="navTitle" value="${task.patient}" scope="request" />
+
     <div class="col-sm-12">
 
         <div class="page-header">

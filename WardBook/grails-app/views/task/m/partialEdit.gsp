@@ -1,8 +1,9 @@
-<%@ page import="com.wardbook.User" %>
 <g:applyLayout name="bootstrap-mobile">
 
+    <g:set var="navTitle" value="${task.patient}" scope="request" />
+
     <div class="col-sm-12">
-        <h4>${task.patient} - ${task.name}</h4>
+        <h4>${task.name}</h4>
 
         <hr/>
 

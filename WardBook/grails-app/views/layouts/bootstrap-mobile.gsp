@@ -43,15 +43,22 @@
 
     <div class="row-offcanvas row-offcanvas-middle">
         <div class="navbar navbar-inverse" role="navigation">
-            <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-left">
-                <span class="glyphicon glyphicon-align-justify"></span>
-            </button>
+            <div class="pull-left">
+                <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-left">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+            </div>
 
             <div class="pull-right">
                 <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-right">
                     <span class="glyphicon glyphicon-search" />
                 </button>
             </div>
+
+            <g:if test="${navTitle}">
+                <h4>${navTitle}</h4>
+            </g:if>
+
         </div><!-- /.navbar -->
 
         <div class="col-xs-12">
