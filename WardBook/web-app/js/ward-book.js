@@ -8,7 +8,7 @@ function taskStatusToImage(status) {
 var updateTaskStatus = function() {
     var self = $(this)
     self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
-    var taskElement = $(self.siblings()[1]).children('div');
+    var taskElement = $('[data-task-id="'+self.attr('data-target-task-id')+'"]');
     var taskId = taskElement.attr('data-task-id');
     var currentStatus = taskElement.attr('data-status');
     var newStatus = {
@@ -87,7 +87,7 @@ function addTask(patient_id, task) {
                     '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+task.name+'</a>' +
                 '</div>' +
             '</td>' +
-            '<td id="'+taskImageId+'" class="update-task-status"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
+            '<td id="'+taskImageId+'" class="update-task-status" data-target-task-id="'+task.id+'"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>';
     $('#task-'+task.category+'-'+patient_id+' tbody').append(taskElement);
 }

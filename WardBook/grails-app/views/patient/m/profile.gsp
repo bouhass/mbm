@@ -19,12 +19,21 @@
     <div id="Tasks" class="view list-group">
         <g:each in="${patient.tasks}" var="task">
             <g:if test="${task.isActive()}">
-                <g:link controller="task" action="partialEdit" id="${task.id}" class="list-group-item">
-                    ${task}
-                    <div class="pull-right">
-                        <span class="glyphicon glyphicon-chevron-right"></span>
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-1 update-task-status" data-target-task-id="${task.id}">
+                            <img />
+                        </div>
+                        <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-status="${task.status}">
+                            <div class="col-xs-9">
+                                <span>${task}</span>
+                            </div>
+                            <div class="pull-right">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </div>
+                        </g:link>
                     </div>
-                </g:link>
+                </div>
             </g:if>
         </g:each>
     </div>
@@ -49,6 +58,15 @@
     <script>
         $(window).load(function() {
             $('#view-selector li').on('click', switchView);
+
+            /* Init tasks status icons. */
+            $('.task').each(function() {
+                var taskId = $(this).attr('data-task-id');
+                var taskStatusImage = $('[data-target-task-id="'+taskId+'"]').children('img');
+                taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-status')));
+            });
+
+            $('.update-task-status').live('click', updateTaskStatus);
         });
     </script>
 

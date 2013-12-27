@@ -41,7 +41,9 @@ $(window).load(function() {
 
     /* Init tasks status icons. */
     $('.task').each(function() {
-        $(this).parent().siblings().children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+        var taskId = $(this).attr('data-task-id');
+        var taskStatusImage = $('[data-target-task-id="'+taskId+'"]').children('img');
+        taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-status')));
     });
 
     $('.update-task-status').live('click', updateTaskStatus);
