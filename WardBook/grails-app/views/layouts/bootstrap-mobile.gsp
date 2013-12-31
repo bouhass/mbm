@@ -78,7 +78,12 @@
             $('[data-toggle=offcanvas-right]').click(function() {
                 $('.row-offcanvas-right').toggleClass('active');
                 $('.row-offcanvas-middle').toggleClass('right-open');
-                $('#search').focus();
+                if ($('.row-offcanvas-right').hasClass('active')) {
+                    $('#search').focus();
+                }
+                else {
+                    $('#search').blur();
+                }
             });
 
             $('#wards').on('change', function(e) {
