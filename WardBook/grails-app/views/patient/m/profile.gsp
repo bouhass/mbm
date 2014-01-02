@@ -17,25 +17,30 @@
     </div>
 
     <div id="Tasks" class="view list-group">
-        <g:each in="${patient.tasks}" var="task">
-            <g:if test="${task.isActive()}">
-                <div class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-1 update-task-status" data-target-task-id="${task.id}">
-                            <img />
+        <div class="list-group-item">
+            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue form-control" maxlength="60" />
+        </div>
+        <div id="task-list">
+            <g:each in="${patient.tasks}" var="task">
+                <g:if test="${task.isActive()}">
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-1 update-task-status" data-target-task-id="${task.id}">
+                                <img />
+                            </div>
+                            <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-status="${task.status}">
+                                <div class="col-xs-9">
+                                    <span>${task}</span>
+                                </div>
+                                <div class="pull-right">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </div>
+                            </g:link>
                         </div>
-                        <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-status="${task.status}">
-                            <div class="col-xs-9">
-                                <span>${task}</span>
-                            </div>
-                            <div class="pull-right">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </div>
-                        </g:link>
                     </div>
-                </div>
-            </g:if>
-        </g:each>
+                </g:if>
+            </g:each>
+        </div>
     </div>
 
     <div id="Archive" class="view list-group" style="display: none">
@@ -51,10 +56,6 @@
         </g:each>
     </div>
 
-    <div class="col-sm-12">
-        <g:link controller="task" action="add" params="['patient.id': patient.id]" class="btn btn-primary form-control">Add task</g:link>
-    </div>
-
     <script>
         $(window).load(function() {
             $('#view-selector li').on('click', switchView);
@@ -67,6 +68,43 @@
             });
 
             $('.update-task-status').live('click', updateTaskStatus);
+
+            var addNewTaskMobile = function(patient_id, task) {
+                $("#task-list").prepend('\
+                <div class="list-group-item">\
+                    <div class="row">\
+                        <div class="col-xs-1 update-task-status" data-target-task-id="'+task.id+'">\
+                            <img src="'+taskStatusToImage(task.status)+'"/>\
+                        </div>\
+                        <a href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" class="task" data-task-id="'+task.id+'" data-status="'+task.status+'">\
+                            <div class="col-xs-9">\
+                                <span>'+task.name+'</span>\
+                            </div>\
+                            <div class="pull-right">\
+                                <span class="glyphicon glyphicon-chevron-right"></span>\
+                            </div>\
+                        </a>\
+                    </div>\
+                </div>');
+            }
+
+            $('input.add-task-input').keyup(function (e) {
+                if (e.keyCode == 13) {
+                    addNewTask($(this).val(), $(this).attr('data-patient_id'), 'DOCTOR', addNewTaskMobile);
+                    $(this).typeahead('setQuery', '');
+                }
+            });
+
+            $('input.add-task-input').on('typeahead:selected', function() {
+                addNewTask($(this).val(), $(this).attr('data-patient_id'), 'DOCTOR', addNewTaskMobile);
+                $(this).typeahead('setQuery', '');
+            });
+
+            $('input.add-task-input').typeahead({
+                name: 'task-names',
+                prefetch: WEB_APP_ROOT+'data/common-tasks.json',
+                remote: WEB_APP_ROOT+'task/names?q=%QUERY'
+            });
         });
     </script>
 

@@ -92,7 +92,7 @@ function addTask(patient_id, task) {
     $('#task-'+task.category+'-'+patient_id+' tbody').append(taskElement);
 }
 
-function addNewTask(name, patient_id, category) {
+function addNewTask(name, patient_id, category, afterSuccess) {
     if (name.length == 0) {
         console.error("ERROR: attempting to add a task with no name");
         return;
@@ -104,7 +104,12 @@ function addNewTask(name, patient_id, category) {
         'patient.id': patient_id
     })
         .done(function(task) {
-            addTask(patient_id, task);
+            if (afterSuccess == undefined) {
+                addTask(patient_id, task);
+            }
+            else {
+                afterSuccess(patient_id, task);
+            }
         })
         .fail(function() {
 //            alert("ERROR: could not add the task");
