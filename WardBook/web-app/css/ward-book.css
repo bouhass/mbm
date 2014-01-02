@@ -126,12 +126,6 @@ a.editable-click:hover {
     border-color: #bbb
 }
 
-.popover {
-    max-width: 100%;
-    width: 49%;
-    max-height: 80%;
-}
-
 .record-date {
     color: grey;
     float: right !important;

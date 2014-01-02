@@ -6,8 +6,8 @@
         <thead>
             <tr>
                 <th>PATIENT DETAILS</th>
-                <th>NURSING JOBS</th>
                 <th>DOCTORS JOBS</th>
+                <th>NURSING JOBS</th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +17,10 @@
                     <g:render template="patientInfo" model="[patient: patient]" />
                 </td>
                 <td>
-                    <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE', popoverPlacement: 'left']" />
+                    <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']" />
                 </td>
                 <td>
-                    <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR', popoverPlacement: 'left']" />
+                    <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']" />
                 </td>
             </tr>
         </g:each>

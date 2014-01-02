@@ -118,11 +118,11 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
-                            Nursing jobs
+                            Doctor jobs
                         </div>
 
                         <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE', popoverPlacement: 'top']"/>
+                            <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']"/>
                         </div>
                     </div>
                 </div>
@@ -130,11 +130,11 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
-                            Doctor jobs
+                            Nursing jobs
                         </div>
 
                         <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR', popoverPlacement: 'top']"/>
+                            <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']"/>
                         </div>
                     </div>
                 </div>

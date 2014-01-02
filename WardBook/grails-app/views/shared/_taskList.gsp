@@ -27,7 +27,6 @@
                          data-assignee="${task.assignee}"
                          data-time-due="${task.timeDue ?: ''}"
                          data-pid="${patient.id}"
-                         data-popover-placement="${popoverPlacement}"
                          class="editable editable-click task">
                         <a data-toggle="modal" href="${createLink(controller: 'task', action: 'partialEdit', id: task.id)}" data-target="#task-edit-modal">
                             ${task.name}
