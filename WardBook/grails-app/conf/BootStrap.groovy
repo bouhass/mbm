@@ -1,3 +1,7 @@
+import com.wardbook.Role
+import com.wardbook.User
+import com.wardbook.UserRole
+
 import java.util.Date;
 
 import com.wardbook.Patient
@@ -8,17 +12,27 @@ import com.wardbook.Ward
 class BootStrap {
 
     def init = { servletContext ->
-        if (Ward.list().size() == 0) {
-            def victoriaWard = new Ward(name: 'Victoria ward', speciality: 'Respiratory')
-            victoriaWard.save(failOnError: true)
+//        if (User.list().size() == 0) {
+//            def admin_user = new User(username: 'admin@mbm.com', password: 'password')
+//            admin_user.save()
+//
+//            def admin_role = new Role(authority: 'ROLE_ADMIN')
+//            admin_role.save()
+//
+//            new UserRole(user: admin_user, role: admin_role).save()
+//        }
 
-            def yorkWard = new Ward(name: 'York ward', speciality: 'Cardiology')
-            yorkWard.save(failOnError: true)
-        }
-
-        if (Patient.list().size() == 0) {
-            initPatientList()
-        }
+//        if (Ward.list().size() == 0) {
+//            def victoriaWard = new Ward(name: 'Victoria ward', speciality: 'Respiratory')
+//            victoriaWard.save(failOnError: true)
+//
+//            def yorkWard = new Ward(name: 'York ward', speciality: 'Cardiology')
+//            yorkWard.save(failOnError: true)
+//        }
+//
+//        if (Patient.list().size() == 0) {
+//            initPatientList()
+//        }
     }
     def destroy = {
     }
