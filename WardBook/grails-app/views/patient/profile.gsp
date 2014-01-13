@@ -130,7 +130,7 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
-                            Nursing jobs
+                            MDT jobs
                         </div>
 
                         <div class="panel-body">

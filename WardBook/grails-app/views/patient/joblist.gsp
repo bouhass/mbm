@@ -7,7 +7,7 @@
             <tr>
                 <th>PATIENT DETAILS</th>
                 <th>DOCTORS JOBS</th>
-                <th>NURSING JOBS</th>
+                <th>MDT JOBS</th>
             </tr>
         </thead>
         <tbody>
