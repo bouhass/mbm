@@ -1,3 +1,4 @@
+<%@ page import="com.wardbook.User" %>
 <g:applyLayout name="bootstrap-mobile">
 
     <g:set var="navTitle" value="${patient}" scope="request" />
@@ -30,7 +31,7 @@
                             </div>
                             <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-status="${task.status}">
                                 <div class="col-xs-9">
-                                    <span>${task}</span>
+                                    ${task} - <span class="task-creator">${User.get(task.createdBy)}</span>
                                 </div>
                                 <div class="pull-right">
                                     <span class="glyphicon glyphicon-chevron-right"></span>
