@@ -41,7 +41,9 @@
 
 <script>
     WEB_APP_ROOT = '${createLink(uri: '/')}';
+    <sec:ifLoggedIn>
     CURRENT_USER_NAME = '${request.user.name}';
+    </sec:ifLoggedIn>
 
     $(document).ajaxError(function(e, xhr, settings, exception) {
         if(xhr.status==401) {
