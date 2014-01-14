@@ -29,7 +29,7 @@
                          data-pid="${patient.id}"
                          class="editable editable-click task">
                         <a data-toggle="modal" href="${createLink(controller: 'task', action: 'partialEdit', id: task.id)}" data-target="#task-edit-modal">
-                            ${task.name}
+                            ${task.name}<span class="task-creator"> - ${User.get(task.createdBy)}</span>
                             <g:if test="${task.comments.size > 0}">
                                 <span class="glyphicon glyphicon-comment task-comment-notification">
                                     <p class="task-comment-number">${task.comments.size}</p>

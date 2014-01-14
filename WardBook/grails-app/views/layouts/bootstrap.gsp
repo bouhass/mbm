@@ -40,7 +40,8 @@
 </div>
 
 <script>
-    WEB_APP_ROOT = '${createLink(uri: '/')}'
+    WEB_APP_ROOT = '${createLink(uri: '/')}';
+    CURRENT_USER_NAME = '${request.user.name}';
 
     $(document).ajaxError(function(e, xhr, settings, exception) {
         if(xhr.status==401) {

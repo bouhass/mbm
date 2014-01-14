@@ -84,7 +84,10 @@ function addTask(patient_id, task) {
             '<td id="'+taskDeleteId+'" class="delete-task"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
             '<td>' +
                 '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
-                    '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+task.name+'</a>' +
+                    '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+
+                        task.name+
+                        '<span class="task-creator"> - '+CURRENT_USER_NAME+'</span>'+
+                    '</a>' +
                 '</div>' +
             '</td>' +
             '<td id="'+taskImageId+'" class="update-task-status" data-target-task-id="'+task.id+'"><img src="'+taskStatusToImage(task.status)+'"/></td>' +

@@ -185,6 +185,11 @@ a.editable-click:hover {
     font-weight: bold;
 }
 
+.task-creator {
+    color: grey;
+    font-style: italic;
+}
+
 .task-panel {
     min-height: 400px;
 }
