@@ -25,6 +25,11 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     border-radius: 4px;
 }
 
+.commentDetails {
+    color: grey;
+    font-style: italic;
+}
+
 .danger {
     background: #ffdddd !important;
 }

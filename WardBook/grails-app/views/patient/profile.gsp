@@ -157,10 +157,6 @@
 
         <div class="col-sm-8 col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    Comments
-                </div>
-
                 <div class="panel-body">
                     <g:render template="/shared/comments" model="[commentable: patient]"/>
                 </div>
