@@ -9,7 +9,7 @@ class SecurityFilters {
             before = {
                 if (springSecurityService.isLoggedIn()) {
                     request.user = User.get(springSecurityService.principal.id)
-                    request.user.lastSeenAt = new Date()
+                    springSecurityService.currentUser.lastSeenAt = new Date()
                 }
             }
         }
