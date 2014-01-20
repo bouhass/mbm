@@ -192,7 +192,15 @@
                 todayBtn: 'linked'
             });
 
-            new Chart($("#weightChart").get(0).getContext("2d")).Line(weightData, {});
+            new Chart($("#weightChart").get(0).getContext("2d")).Line(
+                    weightData,
+                    {
+                        scaleOverride : true,
+                        scaleSteps : 10,
+                        scaleStepWidth : 10,
+                        scaleStartValue : 0
+                    }
+            );
 
             $('#referralLists').editable({
                 title: 'Select list(s)',
