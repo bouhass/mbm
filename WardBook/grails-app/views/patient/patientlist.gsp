@@ -34,9 +34,10 @@
                     <g:render template="patientInfo" model="[patient: p]" />
                 </td>
                 <g:each var="recordType" in="['PROBLEM', 'HISTORY', 'PROGRESS', 'PLAN', 'PREMORBID', 'MOBILITY', 'SOCIAL', 'WEIGHT']">
+                    <% def records = p.records.sort { it.createdDate }.reverse() %>
                     <td class="${recordType}">
                         <table id="record-${recordType}-${p.id}" class="inner-table">
-                            <tr>
+                            <tr class="input-tr">
                                 <td>
                                     <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
                                 </td>
@@ -44,7 +45,7 @@
                                     <input type="text" placeholder="Type to add" data-patient_id="${p.id}" data-type="${recordType}" class="add-record-input mbm-input-blue" maxlength="60" />
                                 </td>
                             </tr>
-                            <g:each var="record" in="${p.records}">
+                            <g:each var="record" in="${records}">
                                 <g:if test="${record.type == recordType}">
                                     <tr>
                                         <td class="delete-record">

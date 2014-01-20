@@ -92,7 +92,7 @@ function addTask(patient_id, task) {
             '</td>' +
             '<td id="'+taskImageId+'" class="update-task-status" data-target-task-id="'+task.id+'"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>';
-    $('#task-'+task.category+'-'+patient_id+' tbody').append(taskElement);
+    $(taskElement).insertAfter($('#task-'+task.category+'-'+patient_id+' tbody .input-tr'));
 }
 
 function addNewTask(name, patient_id, category, afterSuccess) {
@@ -122,12 +122,15 @@ function addNewTask(name, patient_id, category, afterSuccess) {
 
 function addRecord(patient_id, record) {
     var id = new Date().getTime();
-    var elId = '#record-'+record.type+'-'+patient_id;
-    $(elId).append('' +
+
+    var recordElement = '' +
         '<tr>' +
-        '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-        '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" class="record">'+record.name+'</td>' +
-        '</tr>');
+          '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
+          '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" class="record">'+record.name+'</td>' +
+        '</tr>';
+
+    $(recordElement).insertAfter('#record-'+record.type+'-'+patient_id+' .input-tr');
+
     $('[data-rid='+record.id+']').editable({
         mode: 'inline',
         type: 'text',

@@ -1,6 +1,6 @@
 <%@ page import="com.wardbook.User" %>
 <table id="task-${category}-${patient.id}" class="inner-table">
-    <tr>
+    <tr class="input-tr">
         <td>
             <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
         </td>
@@ -9,7 +9,7 @@
         </td>
         <td></td>
     </tr>
-    <g:each var="task" in="${patient.tasks}">
+    <g:each var="task" in="${patient.tasks.sort { it.createdDate }.reverse()}">
         <g:if test="${(task.category == category) && (task.isActive())}">
             <tr>
                 <td class="delete-task">
