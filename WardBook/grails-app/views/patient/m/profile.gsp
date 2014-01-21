@@ -11,15 +11,15 @@
             ${patient.gender[0]}
         </h4>
 
-        <ul id="view-selector" class="nav nav-tabs">
-            <li class="active"><a href="javascript:;">Tasks</a></li>
-            <li><a href="javascript:;">Archive</a></li>
+        <ul id="view-selector" class="nav nav-tabs task-view">
+            <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-th-list"></span>Tasks</a></li>
+            <li><a href="javascript:;"><span class="glyphicon glyphicon-folder-open"></span>Archive</a></li>
         </ul>
     </div>
 
     <div id="Tasks" class="view list-group">
-        <div class="list-group-item">
-            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue form-control" maxlength="60" />
+        <div class="list-group-item add-task">
+            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue form-control" maxlength="60" /> <span class="glyphicon glyphicon-pencil"></span>
         </div>
         <div id="task-list">
             <g:each in="${patient.tasks}" var="task">

@@ -11,9 +11,10 @@ body {
 }
 
 .navbar {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     text-align: center;
     color: white;
+    min-height: 42px;
 }
 
 .list-chevron-right {
@@ -21,6 +22,164 @@ body {
     top: 35%;
     right: 15px;
 }
+
+.row-offcanvas {
+    border:none !important;
+}
+
+.s-header {
+    height:24px;
+    line-height: 24px;
+    padding: 5px 15px;
+}
+.s-title {
+    font-size: .9em;
+    text-transform: uppercase;
+}
+/*
+* Nav style
+* --------------------------------------------------
+* patient list
+*/
+
+.navbar{
+    min-height: 44px;
+    height: 44px;
+}
+
+.navbar-inverse{
+    background-color: #3ab3f0;
+    border-color: #3ab3f0;
+}
+
+.navbar>h4{
+    margin-top: 6px;
+    margin-bottom: 4px;
+}
+
+
+.navbar>p{
+    margin: 0 0 2px;
+    font-size: .85em;
+}
+a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus {
+    background-color: #3ab3f0;
+    border-color: #3ab3f0;
+}
+
+.row {
+    margin-top: 0;
+}
+.col-xs-1, .col-sm-11, .col-sm-12, .col-md-12{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.nav>li>a {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+.nav-tabs>li {
+    width: 33.33333%;
+    font-size: 16px;
+    background-color: #191a1b;
+}
+
+.nav-tabs>li.active>a{
+    color:#3ab3f0;
+}
+
+
+.nav-tabs>li>a {
+    border-radius: 0;
+}
+
+/*
+* Task View
+* ---------------------------------------------------
+*
+*/
+
+.task-view>li {
+    width: 50%;
+}
+
+.task-view li a span.glyphicon{
+    margin-right: 6px;
+}
+
+a.task{
+    color:#555555;
+}
+
+.add-task {
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%
+}
+
+.add-task .twitter-typeahead {
+    width: 91%;
+}
+
+.add-task .glyphicon{
+    color: #3ab3f0;
+    margin-left: 6px;
+}
+
+
+
+
+
+/*
+* BTNs styles
+* ---------------------------------------------------
+*/
+
+.btn-nav{
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    line-height: 1;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.btn-nav:hover {
+    color:#FFFFFF;
+}
+.btn-nav:active {
+    color: #1775A4
+}
+
+.btn-xs{
+    line-height: 1;
+}
+
+.btn:focus {
+    outline: none;
+
+}
+
+.form-control {
+    box-shadow: none;
+
+}
+.form-control:focus{
+    box-shadow: none;
+}
+
+
 
 /*
  * Off Canvas
@@ -36,26 +195,26 @@ body {
 
     .row-offcanvas-right
   .sidebar-offcanvas {
-        right: -75%; /* 6 columns */
+        right: -81%; /* 6 columns */
     }
 
     .row-offcanvas-left
   .sidebar-offcanvas {
-        left: -75%; /* 6 columns */
+        left: -81%; /* 6 columns */
     }
 
     .row-offcanvas-right.active {
-        right: 75%; /* 6 columns */
+        right: 81%; /* 6 columns */
     }
 
     .row-offcanvas-left.active {
-        left: 75%; /* 6 columns */
+        left: 81%; /* 6 columns */
     }
 
     .sidebar-offcanvas {
         position: absolute;
         top: 0;
-        width: 75%; /* 6 columns */
+        width: 81%; /* 6 columns */
     }
 
     .menu-button {
@@ -66,24 +225,29 @@ body {
     }
 
     .row-offcanvas .list-group-item {
-        border-radius: 0px;
+        border-radius: 0;
     }
 
     .sidebar-offcanvas,
     .col-xs-12 {
-        padding: 0px;
+        padding: 0;
     }
 
     .row-offcanvas-middle {
         height: 100%;
         border: 1px solid #ccc;
+        background-color: #FFFFFF;
     }
 
     .row-offcanvas-middle.left-open {
-        left: 75% !important;
+        left: 81% !important;
     }
 
     .row-offcanvas-middle.right-open {
-        right: 75% !important;
+        right: 81% !important;
     }
+
 }
+
+
+

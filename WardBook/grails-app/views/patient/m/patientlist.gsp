@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-sm-11 col-md-12">
             <ul id="view-selector" class="nav nav-tabs">
-                <li class="active"><a href="javascript:;">Name</a></li>
-                <li><a href="javascript:;">Loc</a></li>
-                <li><a href="javascript:;">Doc</a></li>
+                <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-user"></span>Name</a></li>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-map-marker"></span>Loc</a></li>
+                <li><a href="javascript:;"><span class="glyphicon glyphicon-star-empty"></span>Doc</a></li>
             </ul>
         </div>
     </div>

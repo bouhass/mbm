@@ -6,22 +6,37 @@
 
     <div class="row-offcanvas row-offcanvas-left">
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-left" role="navigation">
-            <div class="list-group">
-                <g:link controller="patient" class="btn btn-default list-group-item">
-                    Patient list
-                </g:link>
-                <a href="javascript:;" class="list-group-item">
-                    <g:select id="wards" name="wards" class="form-control"
-                              from="${Ward.list()}" value="${request.user.ward?.id}"
-                              noSelection="${ request.user.ward ? ['':'- Display all -'] : ['':'- Select ward -']}"
-                              optionKey="id" optionValue="name"/>
-                </a>
-                <a href="javascript:;" class="list-group-item">
-                    <g:select id="referralLists" name="referralLists" class="form-control"
-                              from="${ReferralList.list()}" value="${request.user.referralList?.id}"
-                              noSelection="${ request.user.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
-                              optionKey="id" optionValue="name"/>
-                </a>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Edit Patient list</h3>
+                </div>
+
+                <div class="panel-heading s-header">
+                    <h5 class="panel-title s-title">Select Ward</h5>
+                </div>
+
+                <div class="panel-body">
+                    <a href="javascript:;">
+                        <g:select id="wards" name="wards" class="form-control"
+                                  from="${Ward.list()}" value="${request.user.ward?.id}"
+                                  noSelection="${request.user.ward ? ['': '- Display all -'] : ['': '- All Ward -']}"
+                                  optionKey="id" optionValue="name"/>
+                    </a>
+                </div>
+
+                <div class="panel-heading s-header">
+                    <h5 class="panel-title s-title">Select List</h5>
+                </div>
+
+                <div class="panel-body">
+                    <a href="javascript:;">
+                        <g:select id="referralLists" name="referralLists" class="form-control"
+                                  from="${ReferralList.list()}" value="${request.user.referralList?.id}"
+                                  noSelection="${request.user.referralList ? ['': '- Display all -'] : ['': '- Default List -']}"
+                                  optionKey="id" optionValue="name"/>
+                    </a>
+                </div>
+
                 <g:link uri="/logout" class="btn btn-default list-group-item">
                     <span class="glyphicon glyphicon-log-out"></span> Logout
                 </g:link>
@@ -44,15 +59,15 @@
     <div class="row-offcanvas row-offcanvas-middle">
         <div class="navbar navbar-inverse" role="navigation">
             <div class="pull-left">
-                <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-left">
+                <a class="btn-nav menu-button" data-toggle="offcanvas-left">
                     <span class="glyphicon glyphicon-align-justify"></span>
-                </button>
+                </a>
             </div>
 
             <div class="pull-right">
-                <button type="button" class="btn btn-primary btn-xs menu-button" data-toggle="offcanvas-right">
+                <a class="btn-nav menu-button" data-toggle="offcanvas-right">
                     <span class="glyphicon glyphicon-search" />
-                </button>
+                </a>
             </div>
 
             <g:if test="${navTitle}">
