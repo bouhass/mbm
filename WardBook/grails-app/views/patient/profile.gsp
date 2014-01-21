@@ -170,7 +170,10 @@
     <script src="${resource(dir: 'select2/js', file: 'select2.js')}"></script>
 
     <script>
-        <% def weightRecords = patient.records.findAll { it.type == 'WEIGHT' }.sort { it.createdDate } %>
+        <%
+            def weightRecords = patient.records.findAll { it.type == 'WEIGHT' }.sort { it.createdDate }
+            def weights = weightRecords.collect { Double.valueOf(it.name) }
+        %>
         var weightData = {
             labels : ${ weightRecords.collect { "'${it.createdDate.format('dd/MMM')}'" } },
             datasets : [
@@ -179,7 +182,7 @@
                     strokeColor : "rgba(151,187,205,1)",
                     pointColor : "rgba(151,187,205,1)",
                     pointStrokeColor : "#fff",
-                    data : ${ weightRecords*.name }
+                    data : ${ weights }
                 }
             ]
         }
@@ -197,7 +200,7 @@
                     {
                         scaleOverride : true,
                         scaleSteps : 10,
-                        scaleStepWidth : 10,
+                        scaleStepWidth : ${ Math.ceil(weights.max() / 10.0)},
                         scaleStartValue : 0
                     }
             );
