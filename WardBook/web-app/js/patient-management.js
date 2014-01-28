@@ -69,4 +69,43 @@ $(window).load(function() {
                 location.reload();
             });
     });
+
+    $('input.add-record-input').keyup(function (e) {
+        if (e.keyCode == 13) {
+            addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+            $(this).typeahead('setQuery', '');
+        }
+    });
+
+    $('input.add-record-input').on('typeahead:selected', function() {
+        addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+        $(this).typeahead('setQuery', '');
+    });
+
+    $('input.add-record-input').typeahead({
+        name: 'record-names',
+        prefetch: WEB_APP_ROOT+'record/names',
+        remote: WEB_APP_ROOT+'record/names?q=%QUERY'
+    });
+
+    $('.delete-record').live('click', deleteRecord);
+
+    $('.inner-table tr').live('mouseover', function() { $(this).find('.delete-record button').removeClass('hidden') });
+    $('.inner-table tr').live('mouseout', function() { $(this).find('.delete-record button').addClass('hidden') });
+
+    $('.record').each(function() {
+        $(this).editable({
+            mode: 'inline',
+            type: 'text',
+            pk : $(this).attr('data-rid'),
+            url: WEB_APP_ROOT+'record/saveOrUpdate',
+            showbuttons: false,
+            params : function(params) {
+                return {
+                    'id' : $(this).attr('data-rid'),
+                    'name' : params.value
+                }
+            }
+        });
+    });
 });

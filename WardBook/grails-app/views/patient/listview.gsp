@@ -1,4 +1,4 @@
-<g:applyLayout name="bootstrap-grid-layout">
+<g:applyLayout name="bootstrap-navbar">
 
     <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
 
