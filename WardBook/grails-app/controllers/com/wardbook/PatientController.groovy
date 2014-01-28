@@ -7,15 +7,19 @@ class PatientController {
     static scaffold = true
 
     def index() {
-        redirect(action:patientlist)
+        redirect(action:listview)
     }
 
-    def patientlist = {
-        def view = 'patientlist'
+    def listview = {
+        def view = 'listview'
         if (isMobile()) {
-            view = 'm/patientlist'
+            view = 'm/listview'
         }
         render(view: view, model: [patients: wardPatients()])
+    }
+
+    def gridview = {
+        render(view: 'gridview', model: [patients: wardPatients()])
     }
 
     def joblist = {
@@ -56,7 +60,7 @@ class PatientController {
                 }
 
                 flash.message = message(code: 'default.created.message', args: ['Patient', patientInstance.id])
-                redirect action: 'patientlist'
+                redirect action: 'listview'
                 break
         }
     }

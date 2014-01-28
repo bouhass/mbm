@@ -1,16 +1,16 @@
 <%@ page import="com.wardbook.User" %>
-<table id="task-${category}-${patient.id}" class="inner-table">
+<table id="task-${patient.id}" class="inner-table">
     <tr class="input-tr">
         <td>
             <span class="glyphicon glyphicon-plus mbm-icon-blue"></span>
         </td>
         <td>
-            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" data-category="${category}" class="add-task-input mbm-input-blue" maxlength="60" />
+            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue" maxlength="60" />
         </td>
         <td></td>
     </tr>
     <g:each var="task" in="${patient.tasks.sort { it.createdDate }.reverse()}">
-        <g:if test="${(task.category == category) && (task.isActive())}">
+        <g:if test="${task.isActive()}">
             <tr>
                 <td class="delete-task">
                     <button type="button" class="btn btn-danger btn-xs hidden">
@@ -23,7 +23,6 @@
                          data-name="${task.name}"
                          data-status="${task.status}"
                          data-priority="${task.priority}"
-                         data-category="${task.category}"
                          data-assignee="${task.assignee}"
                          data-time-due="${task.timeDue ?: ''}"
                          data-pid="${patient.id}"

@@ -23,7 +23,7 @@ class PatientControllerTests {
 
     void testIndex() {
         controller.index()
-        assert response.redirectedUrl == '/patient/patientlist'
+        assert response.redirectedUrl == '/patient/listview'
     }
 
 //    void testPatientList() {

@@ -22,13 +22,13 @@ $(window).load(function() {
 
     $('input.add-task-input').keyup(function (e) {
         if (e.keyCode == 13) {
-            addNewTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
+            addNewTask($(this).val(), $(this).attr('data-patient_id'));
             $(this).typeahead('setQuery', '');
         }
     });
 
     $('input.add-task-input').on('typeahead:selected', function() {
-        addNewTask($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-category'));
+        addNewTask($(this).val(), $(this).attr('data-patient_id'));
         $(this).typeahead('setQuery', '');
     });
 

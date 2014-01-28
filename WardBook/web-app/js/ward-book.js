@@ -1,8 +1,8 @@
 
 function taskStatusToImage(status) {
-    if      (status == 'STARTED')    return WEB_APP_ROOT+'images/check-square-half.png';
-    else if (status == 'COMPLETED')  return WEB_APP_ROOT+'images/check-square-full.png';
-    else /* (status == 'PENDING') */ return WEB_APP_ROOT+'images/check-square-empty.png';
+    if      (status == 'STARTED')    return WEB_APP_ROOT+'images/check-square-STARTED.png';
+    else if (status == 'COMPLETED')  return WEB_APP_ROOT+'images/check-square-COMPLETED.png';
+    else /* (status == 'PENDING') */ return WEB_APP_ROOT+'images/check-square-PENDING.png';
 }
 
 var updateTaskStatus = function() {
@@ -92,10 +92,10 @@ function addTask(patient_id, task) {
             '</td>' +
             '<td id="'+taskImageId+'" class="update-task-status" data-target-task-id="'+task.id+'"><img src="'+taskStatusToImage(task.status)+'"/></td>' +
         '</tr>';
-    $(taskElement).insertAfter($('#task-'+task.category+'-'+patient_id+' tbody .input-tr'));
+    $(taskElement).insertAfter($('#task-'+patient_id+' tbody .input-tr'));
 }
 
-function addNewTask(name, patient_id, category, afterSuccess) {
+function addNewTask(name, patient_id, afterSuccess) {
     if (name.length == 0) {
         console.error("ERROR: attempting to add a task with no name");
         return;
@@ -103,7 +103,6 @@ function addNewTask(name, patient_id, category, afterSuccess) {
 
     $.post(WEB_APP_ROOT+'task/saveOrUpdate', {
         'name': name,
-        'category': category,
         'patient.id': patient_id
     })
         .done(function(task) {

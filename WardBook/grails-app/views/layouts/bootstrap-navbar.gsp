@@ -25,22 +25,35 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <%
-                def navItems = [
-                        [controller: 'patient', action: 'patientlist', title: 'Patient list'],
-                        [controller: 'patient', action: 'joblist', title: 'Job list'],
-                        [controller: 'task', action: 'mylist', title: 'My tasks'],
-                        [controller: 'staff', action: 'list', title: 'Staff'],
-                        [controller: 'dashboard', action: 'index', title: '<span class="glyphicon glyphicon-stats"></span>']
-                ]
-            %>
-
             <ul class="nav navbar-nav">
-                <g:each in="${navItems}" var="navItem">
-                    <li<%=((controllerName == navItem.controller) && (actionName == navItem.action)) ? ' class="active"' : ''%>>
-                        <g:link controller="${navItem.controller}" action="${navItem.action}">${navItem.title}</g:link>
-                    </li>
-                </g:each>
+                <li class="dropdown" class="${controllerName == 'patient' ? 'active' : ''}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patient list<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <g:link controller="patient" action="listview">Default</g:link>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <g:link controller="patient" action="gridview">Grid</g:link>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <g:link controller="patient" action="joblist">Job list grid</g:link>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="${controllerName == 'task' ? 'active' : ''}">
+                    <g:link controller="task" action="mylist">My tasks</g:link>
+                </li>
+
+                <li class="${controllerName == 'staff' ? 'active' : ''}">
+                    <g:link controller="staff" action="list">Staff</g:link>
+                </li>
+
+                <li class="${controllerName == 'dashboard' ? 'active' : ''}">
+                    <g:link controller="dashboard" action="index"><span class="glyphicon glyphicon-stats"></span></g:link>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

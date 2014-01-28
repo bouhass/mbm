@@ -118,23 +118,11 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default task-panel">
                         <div class="panel-heading">
-                            Doctor jobs
+                            Jobs
                         </div>
 
                         <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-6">
-                    <div class="panel panel-default task-panel">
-                        <div class="panel-heading">
-                            MDT jobs
-                        </div>
-
-                        <div class="panel-body">
-                            <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']"/>
+                            <g:render template="/shared/taskList" model="[patient: patient]"/>
                         </div>
                     </div>
                 </div>
@@ -172,7 +160,7 @@
     <script>
         <%
             def weightRecords = patient.records.findAll { it.type == 'WEIGHT' }.sort { it.createdDate }
-            def weights = weightRecords.collect { Double.valueOf(it.name) }
+            def weights = weightRecords?.collect { Double.valueOf(it.name) }
         %>
         var weightData = {
             labels : ${ weightRecords.collect { "'${it.createdDate.format('dd/MMM')}'" } },
@@ -195,6 +183,7 @@
                 todayBtn: 'linked'
             });
 
+            <g:if test="${weights}">
             new Chart($("#weightChart").get(0).getContext("2d")).Line(
                     weightData,
                     {
@@ -204,6 +193,7 @@
                         scaleStartValue : 0
                     }
             );
+            </g:if>
 
             $('#referralLists').editable({
                 title: 'Select list(s)',

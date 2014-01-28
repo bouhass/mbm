@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 @TestFor(Task)
 class TaskTests {
 
-    def task = new Task(name: 'task name', category: 'task type')
+    def task = new Task(name: 'task name')
     def two_days_ago = new Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(2))
 
     @Before

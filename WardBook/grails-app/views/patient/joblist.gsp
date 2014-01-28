@@ -1,4 +1,4 @@
-<g:applyLayout name="bootstrap-patient-list">
+<g:applyLayout name="bootstrap-grid-layout">
 
     <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
 
@@ -6,8 +6,7 @@
         <thead>
             <tr>
                 <th>PATIENT DETAILS</th>
-                <th>DOCTORS JOBS</th>
-                <th>MDT JOBS</th>
+                <th>JOBS</th>
             </tr>
         </thead>
         <tbody>
@@ -17,10 +16,7 @@
                     <g:render template="patientInfo" model="[patient: patient]" />
                 </td>
                 <td>
-                    <g:render template="/shared/taskList" model="[patient: patient, category: 'DOCTOR']" />
-                </td>
-                <td>
-                    <g:render template="/shared/taskList" model="[patient: patient, category: 'NURSE']" />
+                    <g:render template="/shared/taskList" model="[patient: patient]" />
                 </td>
             </tr>
         </g:each>
