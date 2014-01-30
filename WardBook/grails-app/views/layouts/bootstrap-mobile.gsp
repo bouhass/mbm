@@ -8,7 +8,7 @@
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-left" role="navigation">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title text-center">Edit Patient list</h3>
+                    <h3 class="panel-title text-center">WardBook</h3>
                 </div>
 
                 <div class="panel-heading s-header">

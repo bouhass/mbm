@@ -36,10 +36,6 @@
                         <li>
                             <g:link controller="patient" action="gridview">Grid</g:link>
                         </li>
-                        <li class="divider"></li>
-                        <li>
-                            <g:link controller="patient" action="joblist">Job list grid</g:link>
-                        </li>
                     </ul>
                 </li>
 

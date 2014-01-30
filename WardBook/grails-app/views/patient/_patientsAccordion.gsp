@@ -7,11 +7,11 @@
                         LOC
                     </div>
 
-                    <div class="col-sm-5 col-md-5">
+                    <div class="col-sm-4 col-md-4">
                         Patient
                     </div>
 
-                    <div class="col-sm-5 col-md-5">
+                    <div class="col-sm-4 col-md-4">
                         Tasks
                     </div>
                 </div>
@@ -27,21 +27,22 @@
                             ${patient.location}
                         </div>
 
-                        <div class="col-sm-5 col-md-5">
+                        <div class="col-sm-4 col-md-4">
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender[0]}
                         </div>
 
-                        <div class="col-sm-5 col-md-5">
+                        <div class="col-sm-3 col-md-3">
                             <%
-                                def taskCountByStatus = patient.tasks.countBy { it.status }
-                                def nbUrgentTasks = patient.tasks.count { it.priority == 'URGENT' }
+                                def activeTasks = patient.tasks.findAll { it.isActive() }
+                                def taskCountByStatus = activeTasks.countBy { it.status }
+                                def nbUrgentTasks = activeTasks.count { it.priority == 'URGENT' }
                             %>
 
                             <g:each in="['PENDING', 'STARTED', 'COMPLETED']" var="status">
                                 <g:if test="${taskCountByStatus["${status}"]}">
                                     ${taskCountByStatus["${status}"]} <g:img dir="images" file="check-square-${status}.png" />
+                                    &nbsp;
                                 </g:if>
-                                &nbsp;
                             </g:each>
 
                             <g:if test="${nbUrgentTasks}">
@@ -79,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-6 col-md-6">
                         <div class="col-sm-6 col-md-6">
                             <h4>PMH</h4>
                             <g:render template="/shared/recordList" model="[patient: patient, recordType: 'HISTORY']" />
@@ -91,7 +92,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-4 col-md-4">
                         <h4>Tasks</h4>
                         <g:render template="/shared/taskList" model="[patient: patient]" />
                     </div>
