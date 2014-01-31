@@ -3,6 +3,10 @@
         <div class="panel-heading">
             <h4 class="panel-title">
                 <div class="panel-title row">
+                    <div class="pull-left">
+                        <span class="glyphicon glyphicon-flag"></span>
+                    </div>
+
                     <div class="col-sm-1 col-md-1">
                         LOC
                     </div>
@@ -21,8 +25,12 @@
     <g:each var="patient" in="${patients}">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#patientsAccordion-${groupId}" href="#collapse-${patient.id}">
-                    <div class="panel-title row">
+                <div class="panel-title row">
+                    <div class="pull-left">
+                        <input type="checkbox" data-id="${patient.id}" ${patient.handover ? 'checked' : ''} class="patient-handover">
+                    </div>
+
+                    <a data-toggle="collapse" data-parent="#patientsAccordion-${groupId}" href="#collapse-${patient.id}">
                         <div class="col-sm-1 col-md-1">
                             ${patient.location}
                         </div>
@@ -53,8 +61,8 @@
                         <div class="pull-right">
                             <span class="glyphicon glyphicon-plus"></span>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
 
             <div id="collapse-${patient.id}" class="panel-collapse collapse ${patient == patients.first() ? 'in' : ''}">

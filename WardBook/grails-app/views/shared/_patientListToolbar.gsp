@@ -80,29 +80,29 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <hr/>
-                    </div>
+                    %{--<div class="row">--}%
+                        %{--<hr/>--}%
+                    %{--</div>--}%
 
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3">
-                            Sign off to
-                        </div>
-                        <div class="col-sm-9 col-md-9">
-                            <% def users = User.list()
-                            users.remove(request.user) %>
-                            <g:select id="user2" name="user2" class="form-control" from="${users}" noSelection="['':'- Select user -']" optionKey="id" optionValue="name" />
-                        </div>
-                    </div>
+                    %{--<div class="row">--}%
+                        %{--<div class="col-sm-3 col-md-3">--}%
+                            %{--Sign off to--}%
+                        %{--</div>--}%
+                        %{--<div class="col-sm-9 col-md-9">--}%
+                            %{--<% def users = User.list()--}%
+                            %{--users.remove(request.user) %>--}%
+                            %{--<g:select id="user2" name="user2" class="form-control" from="${users}" noSelection="['':'- Select user -']" optionKey="id" optionValue="name" />--}%
+                        %{--</div>--}%
+                    %{--</div>--}%
 
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3">
-                            Password
-                        </div>
-                        <div class="col-sm-9 col-md-9">
-                            <input type="password" class="form-control" id="password2" name="password2" placeholder="Password" />
-                        </div>
-                    </div>
+                    %{--<div class="row">--}%
+                        %{--<div class="col-sm-3 col-md-3">--}%
+                            %{--Password--}%
+                        %{--</div>--}%
+                        %{--<div class="col-sm-9 col-md-9">--}%
+                            %{--<input type="password" class="form-control" id="password2" name="password2" placeholder="Password" />--}%
+                        %{--</div>--}%
+                    %{--</div>--}%
                 </form>
 
                 <div id="signoffSuccessDiv" style="display: none">
