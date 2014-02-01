@@ -23,7 +23,7 @@
         </div>
     </div>
     <g:each var="patient" in="${patients}">
-        <div class="panel panel-info">
+        <div class="panel panel-info patient-panel">
             <div class="panel-heading">
                 <div class="panel-title row">
                     <div class="pull-left">
@@ -39,7 +39,7 @@
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender[0]}
                         </div>
 
-                        <div class="col-sm-3 col-md-3">
+                        <div class="col-sm-5 col-md-5">
                             <%
                                 def activeTasks = patient.tasks.findAll { it.isActive() }
                                 def taskCountByStatus = activeTasks.countBy { it.status }

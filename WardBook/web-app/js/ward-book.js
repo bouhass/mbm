@@ -175,6 +175,16 @@ var patientTableSearch = function() {
     }).hide();
 }
 
+var patientListSearch = function() {
+    var $rows = $('.patient-panel');
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+    $rows.show().filter(function() {
+        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+    }).hide();
+}
+
 function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {
     $(element).editable({
         mode: 'inline',
