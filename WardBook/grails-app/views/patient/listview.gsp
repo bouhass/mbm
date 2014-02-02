@@ -41,16 +41,23 @@
                 <g:each var="consultant" in="${User.consultants()}">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" /> ${consultant}
+                            <input checked="true" type="checkbox" value="${consultant}" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                            ${consultant}
                         </label>
                     </div>
                 </g:each>
+                <div class="checkbox">
+                    <label>
+                        <input checked="true" type="checkbox" value="Empty" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                        Not set
+                    </label>
+                </div>
                 <hr/>
                 <h4>Status</h4>
                 <g:each var="status" in="${Patient.constraints.status.inList}">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" /> ${status}
+                            <input checked="true" type="checkbox" value="${status}" class="patient-filter" data-filter-type="status" onclick="javascript:filterPatients()"/> ${status}
                         </label>
                     </div>
                 </g:each>

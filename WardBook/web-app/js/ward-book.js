@@ -185,6 +185,22 @@ var patientListSearch = function() {
     }).hide();
 }
 
+function filterPatients() {
+    var uncheckedElements = $('.patient-filter:checkbox:not(:checked)');
+    $('.filterable-element').show().filter(function() {
+        var filterableElement = $(this);
+        var hide = false;
+        uncheckedElements.each(function() {
+            var filterType = $(this).attr('data-filter-type');
+            if (filterableElement.find('.patient-'+filterType).text() == $(this).attr('value')) {
+                hide = true;
+                return false; // to break from the each
+            }
+        });
+        return hide;
+    }).hide();
+}
+
 function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {
     $(element).editable({
         mode: 'inline',

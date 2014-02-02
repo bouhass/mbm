@@ -23,7 +23,7 @@
         </div>
     </div>
     <g:each var="patient" in="${patients}">
-        <div class="panel panel-info patient-panel">
+        <div class="panel panel-info patient-panel filterable-element">
             <div class="panel-heading">
                 <div class="panel-title row">
                     <div class="pull-left">
