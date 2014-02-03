@@ -21,6 +21,7 @@
                 <div class="row">
                     <a id="handover" class="btn btn-primary form-control">
                         Handover
+                        <span class="glyphicon glyphicon-flag"></span>
                     </a>
                 </div>
 
@@ -41,14 +42,14 @@
                 <g:each var="consultant" in="${User.consultants()}">
                     <div class="checkbox">
                         <label>
-                            <input checked="true" type="checkbox" value="${consultant}" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                            <input type="checkbox" value="${consultant}" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
                             ${consultant}
                         </label>
                     </div>
                 </g:each>
                 <div class="checkbox">
                     <label>
-                        <input checked="true" type="checkbox" value="Empty" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                        <input type="checkbox" value="Empty" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
                         Not set
                     </label>
                 </div>
@@ -57,7 +58,7 @@
                 <g:each var="status" in="${Patient.constraints.status.inList}">
                     <div class="checkbox">
                         <label>
-                            <input checked="true" type="checkbox" value="${status}" class="patient-filter" data-filter-type="status" onclick="javascript:filterPatients()"/> ${status}
+                            <input type="checkbox" value="${status}" class="patient-filter" data-filter-type="status" onclick="javascript:filterPatients()"/> ${status}
                         </label>
                     </div>
                 </g:each>
@@ -171,7 +172,7 @@
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
     <script>
         $(window).load(function() {
-            $('#search').keyup(patientListSearch);
+            $('#search').keyup(patientSearch);
         });
     </script>
 

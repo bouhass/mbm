@@ -86,6 +86,12 @@
                         <div class="row">
                             <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status">${patient.status}</a>
                         </div>
+
+                        <div class="row">
+                            <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-default">
+                                View profile
+                            </g:link>
+                        </div>
                     </div>
 
                     <div class="col-sm-6 col-md-6">

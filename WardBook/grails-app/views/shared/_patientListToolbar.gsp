@@ -55,7 +55,7 @@
 
 <script>
     $(window).load(function() {
-        $('#search').keyup(patientTableSearch);
+        $('#search').keyup(patientSearch);
 
         $('#wards').on('change', function(e) {
             switchWard(this.value);

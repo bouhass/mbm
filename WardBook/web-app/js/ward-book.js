@@ -165,18 +165,8 @@ function addNewRecord(name, patient_id, type) {
         })
 }
 
-var patientTableSearch = function() {
-    var $rows = $('#patients-table > tbody > tr');
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
-}
-
-var patientListSearch = function() {
-    var $rows = $('.patient-panel');
+var patientSearch = function() {
+    var $rows = $('.filterable-element');
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
     $rows.show().filter(function() {
@@ -186,14 +176,14 @@ var patientListSearch = function() {
 }
 
 function filterPatients() {
-    var uncheckedElements = $('.patient-filter:checkbox:not(:checked)');
+    var checkedElements = $('.patient-filter:checked');
     $('.filterable-element').show().filter(function() {
         var filterableElement = $(this);
-        var hide = false;
-        uncheckedElements.each(function() {
+        var hide = true;
+        checkedElements.each(function() {
             var filterType = $(this).attr('data-filter-type');
             if (filterableElement.find('.patient-'+filterType).text() == $(this).attr('value')) {
-                hide = true;
+                hide = false;
                 return false; // to break from the each
             }
         });
