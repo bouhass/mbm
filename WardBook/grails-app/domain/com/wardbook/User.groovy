@@ -57,6 +57,14 @@ class User {
         }
     }
 
+    def onLoad() {
+        if (springSecurityService.currentUser == this) {
+            User.async.withTransaction {
+                lastSeenAt = new Date()
+            }
+        }
+    }
+
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
     }
