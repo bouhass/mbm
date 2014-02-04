@@ -165,7 +165,7 @@ function addNewRecord(name, patient_id, type) {
         })
 }
 
-var patientSearch = function() {
+var filterableSearch = function() {
     var $rows = $('.filterable-element');
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
@@ -175,20 +175,25 @@ var patientSearch = function() {
     }).hide();
 }
 
-function filterPatients() {
-    var checkedElements = $('.patient-filter:checked');
-    $('.filterable-element').show().filter(function() {
-        var filterableElement = $(this);
-        var hide = true;
-        checkedElements.each(function() {
-            var filterType = $(this).attr('data-filter-type');
-            if (filterableElement.find('.patient-'+filterType).text() == $(this).attr('value')) {
-                hide = false;
-                return false; // to break from the each
-            }
-        });
-        return hide;
-    }).hide();
+function filterableFilter() {
+    var checkedElements = $('.checkbox-filter:checked');
+    if (checkedElements.size() == 0) {
+        $('.filterable-element').show();
+    }
+    else {
+        $('.filterable-element').show().filter(function() {
+            var filterableElement = $(this);
+            var hide = true;
+            checkedElements.each(function() {
+                var filterType = $(this).attr('data-filter-type');
+                if (filterableElement.find('.filterable-'+filterType).text() == $(this).attr('value')) {
+                    hide = false;
+                    return false; // to break from the each
+                }
+            });
+            return hide;
+        }).hide();
+    }
 }
 
 function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {

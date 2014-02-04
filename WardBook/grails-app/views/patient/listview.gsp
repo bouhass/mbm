@@ -1,8 +1,4 @@
-<%@ page import="com.wardbook.Patient; com.wardbook.User; com.wardbook.ReferralList; com.wardbook.Ward" %>
-
-<head>
-    <title>${request.user.ward ? request.user.ward : request.user.referralList}</title>
-</head>
+<%@ page import="com.wardbook.Patient; com.wardbook.User;" %>
 
 <g:applyLayout name="bootstrap-navbar">
 
@@ -42,14 +38,14 @@
                 <g:each var="consultant" in="${User.consultants()}">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="${consultant}" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                            <input type="checkbox" value="${consultant}" class="checkbox-filter" data-filter-type="consultant" onclick="javascript:filterableFilter()" />
                             ${consultant}
                         </label>
                     </div>
                 </g:each>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="Empty" class="patient-filter" data-filter-type="consultant" onclick="javascript:filterPatients()" />
+                        <input type="checkbox" value="Empty" class="checkbox-filter" data-filter-type="consultant" onclick="javascript:filterableFilter()" />
                         Not set
                     </label>
                 </div>
@@ -58,7 +54,7 @@
                 <g:each var="status" in="${Patient.constraints.status.inList}">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="${status}" class="patient-filter" data-filter-type="status" onclick="javascript:filterPatients()"/> ${status}
+                            <input type="checkbox" value="${status}" class="checkbox-filter" data-filter-type="status" onclick="javascript:filterableFilter()"/> ${status}
                         </label>
                     </div>
                 </g:each>
@@ -67,73 +63,8 @@
     </div>
 
     <div class="col-sm-10 col-md-10">
-        <div class="row">
 
-            <div class="col-sm-7 col-md-7" style="margin-left: -15px;">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-link btn-lg dropdown-toggle" data-toggle="dropdown">
-                        <h3>
-                            ${
-                                request.user.ward ?
-                                    request.user.ward :
-                                    request.user.referralList ?
-                                        request.user.referralList :
-                                        'All patients' }
-                            <span class="caret"></span>
-                        </h3>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" style="width: 480px;">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4>Wards</h4>
-                                <li class="divider"></li>
-                                <g:each in="${Ward.list()}" var="ward">
-                                    <li>
-                                        <a href='javascript: switchWard(${ward.id})'>${ward}</a>
-                                    </li>
-                                </g:each>
-                            </div>
-                            <div class="col-md-6">
-                                <h4>Lists</h4>
-                                <li class="divider"></li>
-                                <g:each in="${ReferralList.list()}" var="referralList">
-                                    <li>
-                                        <a href='javascript: switchList(${referralList.id})'>${referralList}</a>
-                                    </li>
-                                </g:each>
-                            </div>
-                        </div>
-
-                        <div class="row col-md-12">
-                            <hr/>
-                            <a href='javascript: switchWard()'>Show all patients</a>
-                        </div>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pull-right col-sm-4 col-md-4" style="margin-right: -15px;">
-                <div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search" name="search" id="search">
-
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pull-right">
-                <a class="btn btn-primary" onclick="window.print()">
-                    <span class="glyphicon glyphicon-print"></span>
-                </a>
-            </div>
-
-        </div>
-        <div class="row"></div>
+        <g:render template="/shared/listViewToolbar" model="[showPrintButton: true]" />
 
         <g:if test="${!request.user.ward}">
 
@@ -170,10 +101,5 @@
 
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
-    <script>
-        $(window).load(function() {
-            $('#search').keyup(patientSearch);
-        });
-    </script>
 
 </g:applyLayout>

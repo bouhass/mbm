@@ -23,7 +23,7 @@
         </div>
     </div>
     <g:each var="patient" in="${patients}">
-        <div class="panel panel-info patient-panel filterable-element">
+        <div class="panel panel-info filterable-element">
             <div class="panel-heading">
                 <div class="panel-title row">
                     <div class="pull-left">
@@ -72,7 +72,7 @@
                         <h4>Demographics</h4>
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant">${patient.consultant}</a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}</a>
                         </div>
 
                         <div class="row">
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status">${patient.status}</a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status filterable-status">${patient.status}</a>
                         </div>
 
                         <div class="row">

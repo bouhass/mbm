@@ -94,4 +94,19 @@ class User {
         def userRoles = UserRole.findAllByRole(role)
         userRoles*.user
     }
+
+    def patients() {
+        def patients = Patient.createCriteria().list {
+            if (ward) {
+                eq('ward', ward)
+            }
+            if (referralList) {
+                referralLists {
+                    eq 'id', referralList.id
+                }
+            }
+            ne('status', 'Discharged')
+        }
+        return patients
+    }
 }

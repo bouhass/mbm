@@ -1,6 +1,6 @@
 <g:applyLayout name="bootstrap-grid-layout">
 
-    <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
+    <g:render template="/shared/gridViewToolbar" model="[referralLists: referralLists]" />
 
     <div class="row hidden hidden-print">
         <div class="hidden-sm col-md-12">

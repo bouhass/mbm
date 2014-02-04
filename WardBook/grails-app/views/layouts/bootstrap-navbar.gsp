@@ -1,7 +1,9 @@
 <g:applyLayout name="bootstrap">
 
 <head>
-    <title><g:layoutTitle/></title>
+    <title>
+        ${request.user.ward ? request.user.ward : request.user.referralList}</title>
+    </title>
     <g:layoutHead/>
     <style>
     body {
@@ -40,7 +42,7 @@
                 </li>
 
                 <li class="${controllerName == 'task' ? 'active' : ''}">
-                    <g:link controller="task" action="mylist">My tasks</g:link>
+                    <g:link controller="task" action="listview">Tasks</g:link>
                 </li>
 
                 <li class="${controllerName == 'staff' ? 'active' : ''}">
