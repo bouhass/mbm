@@ -40,7 +40,7 @@
                         </g:if>
                     </div>
                 </td>
-                <td class="update-task-status" data-target-task-id="${task.id}">
+                <td class="update-task-status" data-task-status="${task.status}" data-target-task-id="${task.id}">
                     <img />
                 </td>
             </tr>
