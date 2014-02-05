@@ -10,7 +10,7 @@ var updateTaskStatus = function() {
     self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
     var taskElement = $('[data-task-id="'+self.attr('data-target-task-id')+'"]');
     var taskId = taskElement.attr('data-task-id');
-    var currentStatus = taskElement.attr('data-status');
+    var currentStatus = taskElement.attr('data-task-status');
     var newStatus = {
         'PENDING': 'STARTED',
         'STARTED': 'COMPLETED',
@@ -23,7 +23,7 @@ var updateTaskStatus = function() {
     })
         .done(function(task) {
             self.children('img').attr('src', taskStatusToImage(task.status));
-            taskElement.attr('data-status', task.status);
+            taskElement.attr('data-task-status', task.status);
         })
         .fail(function() {
 //            alert("ERROR: could not update the task status");
@@ -83,7 +83,7 @@ function addTask(patient_id, task) {
         '<tr>' +
             '<td id="'+taskDeleteId+'" class="delete-task"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
             '<td>' +
-                '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
+                '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-task-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
                     '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+
                         task.name+
                         '<span class="task-creator"> - '+CURRENT_USER_NAME+'</span>'+
@@ -186,7 +186,15 @@ function filterableFilter() {
             var hide = true;
             checkedElements.each(function() {
                 var filterType = $(this).attr('data-filter-type');
-                if (filterableElement.find('.filterable-'+filterType).text() == $(this).attr('value')) {
+                var value;
+                if ($(this).attr('data-filter-mode') == 'attribute') {
+                    value = filterableElement.find('[data-'+filterType+']').attr('data-'+filterType);
+                }
+                else { // text based
+                    value = filterableElement.find('.filterable-'+filterType).text().trim();
+                }
+
+                if (value == $(this).attr('value')) {
                     hide = false;
                     return false; // to break from the each
                 }

@@ -21,7 +21,7 @@
                     <div data-type="task"
                          data-task-id="${task.id}"
                          data-name="${task.name}"
-                         data-status="${task.status}"
+                         data-task-status="${task.status}"
                          data-priority="${task.priority}"
                          data-assignee="${task.assignee}"
                          data-time-due="${task.timeDue ?: ''}"

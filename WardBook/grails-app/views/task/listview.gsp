@@ -11,13 +11,22 @@
                 <g:each var="status" in="${Task.constraints.status.inList}">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="${status}" class="checkbox-filter" data-filter-type="status" onclick="javascript:filterableFilter()"/> ${status}
+                            <input type="checkbox"
+                                   value="${status}"
+                                   class="checkbox-filter"
+                                   data-filter-mode="attribute"
+                                   data-filter-type="task-status"
+                                   onclick="javascript:filterableFilter()"/> ${status}
                         </label>
                     </div>
                 </g:each>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="mytask" class="checkbox-filter" data-filter-type="mytask" onclick="javascript:filterableFilter()"/> My tasks
+                        <input type="checkbox"
+                               value="${request.user}"
+                               class="checkbox-filter"
+                               data-filter-type="assignee"
+                               onclick="javascript:filterableFilter()"/> My tasks
                     </label>
                 </div>
             </div>
@@ -86,7 +95,10 @@
                                 </div>
                             </a>
 
-                            <div class="col-sm-1 col-md-1 update-task-status" data-task-id="${task.id}" data-target-task-id="${task.id}" data-status="${task.status}">
+                            <div class="col-sm-1 col-md-1 update-task-status filterable-task-status"
+                                 data-task-id="${task.id}"
+                                 data-target-task-id="${task.id}"
+                                 data-task-status="${task.status}">
                                 <img />
                             </div>
 
@@ -110,7 +122,7 @@
 
                                     <dl>
                                         <dt>Assign to</dt>
-                                        <dd><a href="#" data-id="${task.id}" data-value="${task.assignee?.id}" class="task-assignee">${task.assignee ?: ''}</a></dd>
+                                        <dd><a href="#" data-id="${task.id}" data-value="${task.assignee?.id}" class="task-assignee filterable-assignee">${task.assignee ?: ''}</a></dd>
                                     </dl>
                                     <dl>
                                         <dt>Priority</dt>
@@ -164,10 +176,6 @@
 
     <script>
         $(window).load(function() {
-            $('.update-task-status').each(function() {
-                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
-            });
-
             $('.task-assignee').each(function() {
                 updateBeanField(this, this, 'task', $(this).attr('data-id'), 'assignee.id', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'helpers/users');
             });

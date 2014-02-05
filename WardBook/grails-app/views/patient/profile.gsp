@@ -151,7 +151,7 @@
                             <td>${task.name}</td>
                             <td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>
                             <td>${task.comments.size}</td>
-                            <td class="task-status" data-status="${task.status}"><img/></td>
+                            <td class="task-status" data-task-status="${task.status}"><img/></td>
                         </tr>
                     </g:if>
                 </g:each>
@@ -232,10 +232,6 @@
                     tags: ${ ReferralList.list().collect { "'${it}'" } }
                 },
                 tpl: '<input type="hidden" style="min-width: 100px">'
-            });
-
-            $('.task-status').each(function() {
-                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
             });
         });
     </script>

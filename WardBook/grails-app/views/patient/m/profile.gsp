@@ -29,7 +29,7 @@
                             <div class="col-xs-1 update-task-status" data-target-task-id="${task.id}">
                                 <img />
                             </div>
-                            <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-status="${task.status}">
+                            <g:link controller="task" action="partialEdit" id="${task.id}" class="task" data-task-id="${task.id}" data-task-status="${task.status}">
                                 <div class="col-xs-9">
                                     ${task} - <span class="task-creator">${User.get(task.createdBy)}</span>
                                 </div>
@@ -65,7 +65,7 @@
             $('.task').each(function() {
                 var taskId = $(this).attr('data-task-id');
                 var taskStatusImage = $('[data-target-task-id="'+taskId+'"]').children('img');
-                taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-status')));
+                taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-task-status')));
             });
 
             $('.update-task-status').live('click', updateTaskStatus);
@@ -77,7 +77,7 @@
                         <div class="col-xs-1 update-task-status" data-target-task-id="'+task.id+'">\
                             <img src="'+taskStatusToImage(task.status)+'"/>\
                         </div>\
-                        <a href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" class="task" data-task-id="'+task.id+'" data-status="'+task.status+'">\
+                        <a href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" class="task" data-task-id="'+task.id+'" data-task-status="'+task.status+'">\
                             <div class="col-xs-9">\
                                 <span>'+task.name+'</span>\
                             </div>\

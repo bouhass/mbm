@@ -5,7 +5,7 @@
         <div class="page-header">
             <h3>
                 ${task.name} - ${task.priority}
-                <div class="task-status pull-right" data-status="${task.status}">
+                <div class="task-status pull-right" data-task-status="${task.status}">
                     <img />
                 </div>
             </h3>
@@ -75,7 +75,7 @@
     <script>
         $(window).load(function() {
             $('.task-status').each(function() {
-                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-status')));
+                $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-task-status')));
             });
         });
     </script>
