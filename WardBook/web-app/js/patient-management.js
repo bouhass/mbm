@@ -7,6 +7,18 @@ $(window).load(function() {
         updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'consultant.id', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'helpers/consultants')
     });
 
+    $('.patient-nhsNumber').each(function() {
+        updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'nhsNumber', 'text', $(this).attr('data-value'), '')
+    });
+
+    $('.patient-firstName').each(function() {
+        updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'firstName', 'text', $(this).attr('data-value'), '')
+    });
+
+    $('.patient-lastName').each(function() {
+        updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'lastName', 'text', $(this).attr('data-value'), '')
+    });
+
     $('.patient-status').each(function() {
         var patientId = $(this).attr('data-id');
         updateBeanField(this,
@@ -69,6 +81,8 @@ $(window).load(function() {
                 location.reload();
             });
     });
+
+    updateBeanDateField($('.patient-dob'), 'dateOfBirth', 'patient');
 
     $('input.add-record-input').keyup(function (e) {
         if (e.keyCode == 13) {

@@ -233,7 +233,31 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
     });
 }
 
-function updateBeanDateTimeField(element, beanType) {
+function updateBeanDateField(element, field, beanType) {
+    $(element).editable({
+        mode: 'inline',
+        format: "YYYY-MM-DD",
+        viewformat: "DD-MM-YYYY",
+        template: "D MMM YYYY ",
+        combodate: {
+            minYear: 1900,
+            maxYear: (new Date()).getFullYear()
+        },
+        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        params : function(params) {
+            var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2})$/)
+            var ret = {};
+            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret[field] = 'date.struct';
+            ret[field+'_day'] = parsedDate[3];
+            ret[field+'_month'] = parsedDate[2];
+            ret[field+'_year'] = parsedDate[1];
+            return ret;
+        }
+    });
+}
+
+function updateBeanDateTimeField(element, field, beanType) {
     $(element).editable({
         mode: 'inline',
         format: "YYYY-MM-DD HH:mm",
@@ -251,15 +275,15 @@ function updateBeanDateTimeField(element, beanType) {
         url: WEB_APP_ROOT+beanType+'/partialUpdate',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/)
-            return {
-                'id' : $(element).attr('data-'+beanType+'-id'),
-                'timeDue' : 'date.struct',
-                'timeDue_day' : parsedDate[3],
-                'timeDue_month' : parsedDate[2],
-                'timeDue_year' : parsedDate[1],
-                'timeDue_hour' : parsedDate[4],
-                'timeDue_minute' : parsedDate[5]
-            }
+            var ret = {};
+            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret[field] = 'date.struct';
+            ret[field+'_day'] = parsedDate[3];
+            ret[field+'_month'] = parsedDate[2];
+            ret[field+'_year'] = parsedDate[1];
+            ret[field+'_hour'] = parsedDate[4];
+            ret[field+'_minute'] = parsedDate[5];
+            return ret;
         }
     });
 }

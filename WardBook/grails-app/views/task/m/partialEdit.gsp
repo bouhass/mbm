@@ -34,7 +34,7 @@
                 updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", URGENT: "URGENT" });
             });
 
-            updateBeanDateTimeField($('.task-time-due'), 'task');
+            updateBeanDateTimeField($('.task-time-due'), 'timeDue', 'task');
         });
     </script>
 
