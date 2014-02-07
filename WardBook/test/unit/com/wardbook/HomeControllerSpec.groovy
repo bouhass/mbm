@@ -15,7 +15,7 @@ class HomeControllerSpec extends Specification {
     }
 
 
-    void "if user has a ward selected should redirect to patient list"() {
+    void "if user has a ward selected, should redirect to patient controller"() {
         setup:
         request.user = [ward: 'a ward']
 
@@ -23,11 +23,11 @@ class HomeControllerSpec extends Specification {
         controller.index()
 
         then:
-        response.redirectUrl == '/patients'
+        response.redirectUrl == '/patient'
     }
 
 
-    void "if user has a list selected should redirect to patient list"() {
+    void "if user has a list selected, should redirect to the patient controller"() {
         setup:
         request.user = [referralList: 'a list']
 
@@ -39,7 +39,7 @@ class HomeControllerSpec extends Specification {
     }
 
 
-    void "if user not selected a ward nor a list should redirect to selection screen"() {
+    void "if user has not selected a ward nor a list, should redirect to the home index"() {
         when:
         controller.index()
 
@@ -48,7 +48,7 @@ class HomeControllerSpec extends Specification {
     }
 
 
-    void "if mobile, should redirect to patient list"() {
+    void "if mobile, should redirect to the patient controller"() {
         setup:
         controller.metaClass.isMobile = { return true }
 
