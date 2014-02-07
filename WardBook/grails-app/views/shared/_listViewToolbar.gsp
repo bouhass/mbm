@@ -1,7 +1,20 @@
 <%@ page import="com.wardbook.ReferralList; com.wardbook.Ward" %>
+
+<style type="text/css" media="print">
+
+
+nav,
+input,
+button,
+.ward-select,
+.hidden-print { /* TODO : this is a hack as bootstrap hidden-print is not working */
+    display: none !important;
+}
+</style>
+
 <div class="row">
 
-    <div class="col-sm-7 col-md-7" style="margin-left: -15px;">
+    <div class="col-sm-7 col-md-7 ward-select" style="margin-left: -15px;">
         <div class="btn-group">
             <button type="button" class="btn btn-link btn-lg dropdown-toggle" data-toggle="dropdown">
                 <h3>

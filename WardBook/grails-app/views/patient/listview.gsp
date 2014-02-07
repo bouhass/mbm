@@ -2,8 +2,8 @@
 
 <g:applyLayout name="bootstrap-navbar">
 
-    <div class="col-sm-2 col-md-2">
-        <div class="row">
+    <div class="col-sm-2 col-md-2 fixed">
+        <div class="row gap-bottom">
             <g:link controller="patient" action="add" class="btn btn-primary form-control">
                 Add patient
             </g:link>
@@ -62,9 +62,33 @@
         </div>
     </div>
 
-    <div class="col-sm-10 col-md-10">
+    <div class="col-sm-10 col-md-10" style="left: 16.55555%;">
 
         <g:render template="/shared/listViewToolbar" model="[showPrintButton: true]" />
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <div class="panel-title row">
+                        <div class="pull-left">
+                            <span class="glyphicon glyphicon-flag"></span>
+                        </div>
+
+                        <div class="col-sm-1 col-md-1">
+                            LOC
+                        </div>
+
+                        <div class="col-sm-4 col-md-4">
+                            Patient
+                        </div>
+
+                        <div class="col-sm-4 col-md-4">
+                            Tasks
+                        </div>
+                    </div>
+                </h4>
+            </div>
+        </div>
 
         <g:if test="${!request.user.ward}">
 
@@ -82,7 +106,7 @@
                             </a>
                         </div>
                         <div id="collapseWard-${group.key.id}" class="panel-collapse collapse in">
-                            <div class="panel-body">
+                            <div class="panel-body no-padding">
                                 <% def wardPatients = groupedPatients[group.key] %>
                                 <g:render template="patientsAccordion" model="[groupId: group.key.id, patients: wardPatients]" />
                             </div>

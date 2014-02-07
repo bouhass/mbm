@@ -1,27 +1,4 @@
 <div class="panel-group" id="patientsAccordion-${groupId}">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <div class="panel-title row">
-                    <div class="pull-left">
-                        <span class="glyphicon glyphicon-flag"></span>
-                    </div>
-
-                    <div class="col-sm-1 col-md-1">
-                        LOC
-                    </div>
-
-                    <div class="col-sm-4 col-md-4">
-                        Patient
-                    </div>
-
-                    <div class="col-sm-4 col-md-4">
-                        Tasks
-                    </div>
-                </div>
-            </h4>
-        </div>
-    </div>
     <g:each var="patient" in="${patients}">
         <div class="panel panel-info filterable-element">
             <div class="panel-heading">
