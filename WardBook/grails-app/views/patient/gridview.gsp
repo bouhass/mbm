@@ -1,14 +1,14 @@
 <g:applyLayout name="bootstrap-grid-layout">
 
-    <g:render template="/shared/patientListToolbar" model="[referralLists: referralLists]" />
+    <g:render template="/shared/gridViewToolbar" model="[referralLists: referralLists]" />
 
-    <div class="row hidden-print">
+    <div class="row hidden hidden-print">
         <div class="hidden-sm col-md-12">
             <ul id="view-selector" class="nav nav-tabs" style="border-bottom: 0px;">
                 <li><a href="#"> Doctor </a></li>
                 <li><a href="#"> Nurse </a></li>
                 <li><a href="#"> Physio </a></li>
-                %{--<li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>--}%
+                <li><a data-toggle="modal" href="#customizeView"> <span class="glyphicon glyphicon-plus"></span> </a></li>
             </ul>
         </div>
     </div>
@@ -29,7 +29,7 @@
         </thead>
         <tbody>
         <g:each var="p" in="${patients}">
-            <tr id="${p.id}" ${p.status.contains('Unwell') ? 'class="danger"' : ''}>
+            <tr id="${p.id}" ${p.status.contains('Unwell') ? 'class="danger"' : ''} class="filterable-element">
                 <td>
                     <g:render template="patientInfo" model="[patient: p]" />
                 </td>

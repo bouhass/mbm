@@ -39,7 +39,7 @@ class TaskControllerTests {
     void testIndex() {
         controller.index()
 
-        assert response.redirectedUrl == '/task/mylist'
+        assert response.redirectedUrl == '/task/listview'
     }
 
 //    void testMylist() {

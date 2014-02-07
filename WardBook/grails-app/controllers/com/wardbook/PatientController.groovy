@@ -15,15 +15,15 @@ class PatientController {
         if (isMobile()) {
             view = 'm/listview'
         }
-        render(view: view, model: [patients: wardPatients()])
+        render(view: view, model: [patients: request.user.patients()])
     }
 
     def gridview = {
-        render(view: 'gridview', model: [patients: wardPatients()])
+        render(view: 'gridview', model: [patients: request.user.patients()])
     }
 
     def joblist = {
-        [patients: wardPatients()]
+        [patients: request.user.patients()]
     }
 
     def profile() {
@@ -71,7 +71,7 @@ class PatientController {
 
     def jsonlist() {
         JSON.use('deep')
-        render wardPatients() as JSON
+        render request.user.patients() as JSON
     }
 
     def search() {
@@ -88,20 +88,5 @@ class PatientController {
             maxResults(5)
         }
         render patients as JSON
-    }
-
-    private def wardPatients() {
-        def patients = Patient.createCriteria().list {
-            if (request.user.ward) {
-                eq('ward', request.user.ward)
-            }
-            if (request.user.referralList) {
-                referralLists {
-                    eq 'id', request.user.referralList.id
-                }
-            }
-            ne('status', 'Discharged')
-        }
-        return patients
     }
 }

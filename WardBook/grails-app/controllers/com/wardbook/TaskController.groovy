@@ -5,13 +5,12 @@ class TaskController {
     static scaffold = true
 	
     def index() {
-		redirect action: 'mylist'
+		redirect action: 'listview'
 	}
 
-    def mylist() {
-        def tasks = Task.createCriteria().list {
-            eq('assignee', request.user)
-        }
+    def listview() {
+        def patients = request.user.patients()
+        def tasks = patients*.tasks.flatten().findAll { it.isActive() }
         [tasks: tasks]
     }
 

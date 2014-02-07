@@ -10,7 +10,7 @@ var updateTaskStatus = function() {
     self.children('img').attr('src', WEB_APP_ROOT+'images/spinner.gif');
     var taskElement = $('[data-task-id="'+self.attr('data-target-task-id')+'"]');
     var taskId = taskElement.attr('data-task-id');
-    var currentStatus = taskElement.attr('data-status');
+    var currentStatus = taskElement.attr('data-task-status');
     var newStatus = {
         'PENDING': 'STARTED',
         'STARTED': 'COMPLETED',
@@ -23,7 +23,7 @@ var updateTaskStatus = function() {
     })
         .done(function(task) {
             self.children('img').attr('src', taskStatusToImage(task.status));
-            taskElement.attr('data-status', task.status);
+            taskElement.attr('data-task-status', task.status);
         })
         .fail(function() {
 //            alert("ERROR: could not update the task status");
@@ -83,7 +83,7 @@ function addTask(patient_id, task) {
         '<tr>' +
             '<td id="'+taskDeleteId+'" class="delete-task"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
             '<td>' +
-                '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
+                '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-task-status="PENDING" data-name="'+task.name+'" data-priority="NORMAL" class="editable editable-click task">' +
                     '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+
                         task.name+
                         '<span class="task-creator"> - '+CURRENT_USER_NAME+'</span>'+
@@ -165,8 +165,8 @@ function addNewRecord(name, patient_id, type) {
         })
 }
 
-var patientTableSearch = function() {
-    var $rows = $('#patients-table > tbody > tr');
+var filterableSearch = function() {
+    var $rows = $('.filterable-element');
     var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
 
     $rows.show().filter(function() {
@@ -175,30 +175,33 @@ var patientTableSearch = function() {
     }).hide();
 }
 
-var patientListSearch = function() {
-    var $rows = $('.patient-panel');
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+function filterableFilter() {
+    var checkedElements = $('.checkbox-filter:checked');
+    if (checkedElements.size() == 0) {
+        $('.filterable-element').show();
+    }
+    else {
+        $('.filterable-element').show().filter(function() {
+            var filterableElement = $(this);
+            var hide = true;
+            checkedElements.each(function() {
+                var filterType = $(this).attr('data-filter-type');
+                var value;
+                if ($(this).attr('data-filter-mode') == 'attribute') {
+                    value = filterableElement.find('[data-'+filterType+']').attr('data-'+filterType);
+                }
+                else { // text based
+                    value = filterableElement.find('.filterable-'+filterType).text().trim();
+                }
 
-    $rows.show().filter(function() {
-        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-    }).hide();
-}
-
-function filterPatients() {
-    var uncheckedElements = $('.patient-filter:checkbox:not(:checked)');
-    $('.filterable-element').show().filter(function() {
-        var filterableElement = $(this);
-        var hide = false;
-        uncheckedElements.each(function() {
-            var filterType = $(this).attr('data-filter-type');
-            if (filterableElement.find('.patient-'+filterType).text() == $(this).attr('value')) {
-                hide = true;
-                return false; // to break from the each
-            }
-        });
-        return hide;
-    }).hide();
+                if (value == $(this).attr('value')) {
+                    hide = false;
+                    return false; // to break from the each
+                }
+            });
+            return hide;
+        }).hide();
+    }
 }
 
 function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {
@@ -230,7 +233,31 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
     });
 }
 
-function updateBeanDateTimeField(element, beanType) {
+function updateBeanDateField(element, field, beanType) {
+    $(element).editable({
+        mode: 'inline',
+        format: "YYYY-MM-DD",
+        viewformat: "DD-MM-YYYY",
+        template: "D MMM YYYY ",
+        combodate: {
+            minYear: 1900,
+            maxYear: (new Date()).getFullYear()
+        },
+        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        params : function(params) {
+            var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2})$/)
+            var ret = {};
+            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret[field] = 'date.struct';
+            ret[field+'_day'] = parsedDate[3];
+            ret[field+'_month'] = parsedDate[2];
+            ret[field+'_year'] = parsedDate[1];
+            return ret;
+        }
+    });
+}
+
+function updateBeanDateTimeField(element, field, beanType) {
     $(element).editable({
         mode: 'inline',
         format: "YYYY-MM-DD HH:mm",
@@ -248,15 +275,15 @@ function updateBeanDateTimeField(element, beanType) {
         url: WEB_APP_ROOT+beanType+'/partialUpdate',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/)
-            return {
-                'id' : $(element).attr('data-'+beanType+'-id'),
-                'timeDue' : 'date.struct',
-                'timeDue_day' : parsedDate[3],
-                'timeDue_month' : parsedDate[2],
-                'timeDue_year' : parsedDate[1],
-                'timeDue_hour' : parsedDate[4],
-                'timeDue_minute' : parsedDate[5]
-            }
+            var ret = {};
+            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret[field] = 'date.struct';
+            ret[field+'_day'] = parsedDate[3];
+            ret[field+'_month'] = parsedDate[2];
+            ret[field+'_year'] = parsedDate[1];
+            ret[field+'_hour'] = parsedDate[4];
+            ret[field+'_minute'] = parsedDate[5];
+            return ret;
         }
     });
 }

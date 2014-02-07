@@ -43,7 +43,11 @@ $(window).load(function() {
     $('.task').each(function() {
         var taskId = $(this).attr('data-task-id');
         var taskStatusImage = $('[data-target-task-id="'+taskId+'"]').children('img');
-        taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-status')));
+        taskStatusImage.attr('src', taskStatusToImage($(this).attr('data-task-status')));
+    });
+
+    $('.update-task-status').each(function() {
+        $(this).children('img').attr('src', taskStatusToImage($(this).attr('data-task-status')));
     });
 
     $('.update-task-status').live('click', updateTaskStatus);

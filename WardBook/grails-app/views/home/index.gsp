@@ -30,8 +30,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <g:link controller="patient" class="btn btn-default">View patients ></g:link>
+        <div class="row pull-right">
+            <g:link controller="patient" class="btn btn-primary">View patients ></g:link>
         </div>
     </div>
 

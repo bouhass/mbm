@@ -70,7 +70,7 @@
 <script>
     $(window).load(function() {
         $('#handover').on('click', function() {
-            var $rows = $('#patients-table > tbody > tr');
+            var $rows = $('.filterable-element');
             if ($(this).hasClass('active')) {
                 $rows.show();
                 $(this).removeClass('active');

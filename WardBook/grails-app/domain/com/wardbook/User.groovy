@@ -57,6 +57,14 @@ class User {
         }
     }
 
+    def onLoad() {
+        if (springSecurityService.currentUser == this) {
+            User.async.withTransaction {
+                lastSeenAt = new Date()
+            }
+        }
+    }
+
     protected void encodePassword() {
         password = springSecurityService.encodePassword(password)
     }
@@ -85,5 +93,20 @@ class User {
         def role = Role.findByAuthority('ROLE_CONSULTANT')
         def userRoles = UserRole.findAllByRole(role)
         userRoles*.user
+    }
+
+    def patients() {
+        def patients = Patient.createCriteria().list {
+            if (ward) {
+                eq('ward', ward)
+            }
+            if (referralList) {
+                referralLists {
+                    eq 'id', referralList.id
+                }
+            }
+            ne('status', 'Discharged')
+        }
+        return patients
     }
 }
