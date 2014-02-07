@@ -44,7 +44,6 @@ body {
 
 .navbar{
     min-height: 44px;
-    height: 44px;
 }
 
 .navbar-inverse{
@@ -52,10 +51,6 @@ body {
     border-color: #3ab3f0;
 }
 
-.navbar>h4{
-    margin-top: 6px;
-    margin-bottom: 4px;
-}
 
 
 .navbar>p{
@@ -185,7 +180,7 @@ a.task{
  * Off Canvas
  * --------------------------------------------------
  */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .row-offcanvas {
         position: relative;
         -webkit-transition: all 0.25s ease-out;

@@ -17,9 +17,15 @@
         </ul>
     </div>
 
-    <div id="Tasks" class="view list-group">
-        <div class="list-group-item add-task">
-            <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue form-control" maxlength="60" /> <span class="glyphicon glyphicon-pencil"></span>
+    <div id="Tasks" class="view list-group" style="height: 100%">
+        <div class="list-group-item" style="z-index: 100; position: absolute; bottom: 45px; width: 100%">
+            <div class="input-group">
+                <input type="text" placeholder="Type to add" data-patient_id="${patient.id}" class="add-task-input mbm-input-blue form-control" maxlength="60" />
+
+                <div class="input-group-btn">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+            </div>
         </div>
         <div id="task-list">
             <g:each in="${patient.tasks}" var="task">
