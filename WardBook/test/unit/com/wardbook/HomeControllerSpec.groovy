@@ -10,11 +10,52 @@ import spock.lang.Specification
 class HomeControllerSpec extends Specification {
 
     def setup() {
+        controller.metaClass.isMobile = { return false }
+        request.user = []
     }
 
-    def cleanup() {
+
+    void "if user has a ward selected should redirect to patient list"() {
+        setup:
+        request.user = [ward: 'a ward']
+
+        when:
+        controller.index()
+
+        then:
+        response.redirectUrl == '/patients'
     }
 
-    void "test something"() {
+
+    void "if user has a list selected should redirect to patient list"() {
+        setup:
+        request.user = [referralList: 'a list']
+
+        when:
+        controller.index()
+
+        then:
+        response.redirectUrl == '/patient'
+    }
+
+
+    void "if user not selected a ward nor a list should redirect to selection screen"() {
+        when:
+        controller.index()
+
+        then:
+        view == '/home/index'
+    }
+
+
+    void "if mobile, should redirect to patient list"() {
+        setup:
+        controller.metaClass.isMobile = { return true }
+
+        when:
+        controller.index()
+
+        then:
+        response.redirectUrl == '/patient'
     }
 }

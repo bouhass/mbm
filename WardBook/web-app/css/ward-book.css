@@ -30,14 +30,6 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     font-style: italic;
 }
 
-.danger {
-    background: #ffdddd !important;
-}
-
-.danger > td {
-    background: #ffdddd !important;
-}
-
 dl {
     width:100%;
     overflow:hidden;

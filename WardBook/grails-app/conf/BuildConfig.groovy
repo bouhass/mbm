@@ -66,7 +66,7 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.1'
 
-        compile ":twitter-bootstrap:3.0.3"
+        compile ":twitter-bootstrap:3.1.0"
 		runtime ":fields:1.3"
         compile ":twitter-typeahead:0.9.3.1"
 
