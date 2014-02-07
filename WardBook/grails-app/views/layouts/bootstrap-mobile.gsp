@@ -7,8 +7,8 @@
     <div class="row-offcanvas row-offcanvas-left">
         <div class="col-xs-9 sidebar-offcanvas" id="sidebar-left" role="navigation">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title text-center">WardBook</h3>
+                <div class="panel-heading navbar">
+                    <h3 class="panel-title text-center">Edit Patient list</h3>
                 </div>
 
                 <div class="panel-heading s-header">
@@ -37,9 +37,13 @@
                     </a>
                 </div>
 
-                <g:link uri="/logout" class="btn btn-default list-group-item">
-                    <span class="glyphicon glyphicon-log-out"></span> Logout
-                </g:link>
+                <div class="list-group-item">
+                    <button class="btn btn-lg btn-primary btn-block">
+                        <g:link uri="/logout">
+                            <span class="glyphicon glyphicon-log-out"></span> Logout
+                        </g:link>
+                    </button>
+                </div>
             </div>
         </div><!--/span-->
     </div>
