@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="col-sm-10 col-md-10" style="left: 16.55555%;">
+    <div class="col-sm-10 col-md-10" id="patient-view">
 
         <g:render template="/shared/listViewToolbar" model="[showPrintButton: true]" />
 
@@ -100,7 +100,7 @@
                         <div class="panel-heading">
                             <%-- removed (data-parent="#groupsAccordion") to be able to expand them all at the same time --%>
                             <a data-toggle="collapse" href="#collapseWard-${group.key.id}" style="text-decoration: none; :hover: text-decoration: none; color: white;"> <%-- TODO : move to css --%>
-                                <h4 class="panel-title">
+                                <h4 class="panel-title text-center">
                                     ${group.key}
                                 </h4>
                             </a>

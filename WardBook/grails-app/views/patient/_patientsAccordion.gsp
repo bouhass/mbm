@@ -46,7 +46,7 @@
                 <div class="panel-body">
 
                     <div class="col-sm-2 col-md-2">
-                        <h4>Demographics</h4>
+                        <h5>Demographics</h5>
 
                         <div class="row">
                             <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}</a>
@@ -65,26 +65,26 @@
                         </div>
 
                         <div class="row">
-                            <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-default">
+                            <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-secodary btn-sm">
                                 View profile
                             </g:link>
                         </div>
                     </div>
 
                     <div class="col-sm-6 col-md-6">
-                        <div class="col-sm-6 col-md-6">
-                            <h4>PMH</h4>
+                    <div class="col-sm-6 col-md-6">
+                            <h5>Clinical History</h5>
                             <g:render template="/shared/recordList" model="[patient: patient, recordType: 'HISTORY']" />
                         </div>
 
                         <div class="col-sm-6 col-md-6">
-                            <h4>Plan</h4>
+                            <h5>Current Plan</h5>
                             <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN']" />
                         </div>
                     </div>
 
                     <div class="col-sm-4 col-md-4">
-                        <h4>Tasks</h4>
+                        <h5>Tasks</h5>
                         <g:render template="/shared/taskList" model="[patient: patient]" />
                     </div>
                 </div>

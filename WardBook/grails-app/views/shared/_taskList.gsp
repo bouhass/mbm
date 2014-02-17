@@ -13,7 +13,7 @@
         <g:if test="${task.isActive()}">
             <tr>
                 <td class="delete-task">
-                    <button type="button" class="btn btn-danger btn-xs hidden">
+                    <button type="button" class="btn btn-delete btn-xs hidden">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>

@@ -13,7 +13,7 @@
             <g:if test="${record.type == recordType}">
                 <tr>
                     <td class="delete-record">
-                        <button type="button" class="btn btn-danger btn-xs hidden">
+                        <button type="button" class="btn btn-delete btn-xs hidden">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
                     </td>
