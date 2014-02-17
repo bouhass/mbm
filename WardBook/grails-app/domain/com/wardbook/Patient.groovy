@@ -16,6 +16,7 @@ class Patient implements Commentable {
 	String location
 	String speciality
     Boolean handover = false
+    String history
     Ward ward
     User consultant
 	static hasMany = [tasks: Task, records: Record, referralLists: ReferralList]
@@ -41,6 +42,7 @@ class Patient implements Commentable {
 		nhsNumber nullable:true
         consultant nullable:true
         speciality nullable:true
+        history nullable:true, maxSize: 4096
     }
 
 	String toString() { "${firstName} ${lastName}" }

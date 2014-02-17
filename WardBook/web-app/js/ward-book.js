@@ -213,6 +213,7 @@ function updateBeanField(element, bean, beanType, beanId, field, fieldType, fiel
         value: fieldValue,
         source: source,
         showbuttons: false,
+        onblur: 'submit',
         params: function(params) {
             var ret = {};
             ret['id'] = beanId;
@@ -244,6 +245,7 @@ function updateBeanDateField(element, field, beanType) {
             maxYear: (new Date()).getFullYear()
         },
         url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        onblur: 'submit',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2})$/)
             var ret = {};
@@ -273,6 +275,7 @@ function updateBeanDateTimeField(element, field, beanType) {
             minuteStep: 5
         },
         url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        onblur: 'submit',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/)
             var ret = {};

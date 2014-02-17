@@ -72,9 +72,9 @@
                     </div>
 
                     <div class="col-sm-6 col-md-6">
-                    <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-6">
                             <h5>Clinical History</h5>
-                            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'HISTORY']" />
+                            <a href="#" data-id="${patient.id}" data-value="${patient.history}" class="patient-history">${patient.history}</a>
                         </div>
 
                         <div class="col-sm-6 col-md-6">

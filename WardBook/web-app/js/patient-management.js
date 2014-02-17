@@ -19,6 +19,10 @@ $(window).load(function() {
         updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'lastName', 'text', $(this).attr('data-value'), '')
     });
 
+    $('.patient-history').each(function() {
+        updateBeanField(this, this, 'patient', $(this).attr('data-id'), 'history', 'textarea', $(this).attr('data-value'), '')
+    });
+
     $('.patient-status').each(function() {
         var patientId = $(this).attr('data-id');
         updateBeanField(this,
@@ -87,19 +91,7 @@ $(window).load(function() {
     $('input.add-record-input').keyup(function (e) {
         if (e.keyCode == 13) {
             addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
-            $(this).typeahead('setQuery', '');
         }
-    });
-
-    $('input.add-record-input').on('typeahead:selected', function() {
-        addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
-        $(this).typeahead('setQuery', '');
-    });
-
-    $('input.add-record-input').typeahead({
-        name: 'record-names',
-        prefetch: WEB_APP_ROOT+'record/names',
-        remote: WEB_APP_ROOT+'record/names?q=%QUERY'
     });
 
     $('.delete-record').live('click', deleteRecord);
@@ -114,6 +106,7 @@ $(window).load(function() {
             pk : $(this).attr('data-rid'),
             url: WEB_APP_ROOT+'record/saveOrUpdate',
             showbuttons: false,
+            onblur: 'submit',
             params : function(params) {
                 return {
                     'id' : $(this).attr('data-rid'),
