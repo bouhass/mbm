@@ -1,7 +1,55 @@
+/*-------------------------------------
+--------------- FONTS ----------------
+-------------------------------------*/
+
+/*@font-face {*/
+    /*font-family: 'brandon_grotesque';*/
+    /*src: url('../fonts/brandon-grotesque/brandon-grotesque/brandon_bld-webfont.eot');*/
+    /*src: url('../fonts/brandon-grotesque/brandon_bld-webfont.eot?#iefix') format('embedded-opentype'),*/
+    /*url('../fonts/brandon-grotesque/brandon_bld-webfont.woff') format('woff'),*/
+    /*url('../fonts/brandon-grotesque/brandon_bld-webfont.ttf') format('truetype'),*/
+    /*url('../fonts/brandon-grotesque/brandon_bld-webfont.svg#brandon_grotesquebold') format('svg');*/
+    /*font-weight: 700;*/
+    /*font-style: normal;*/
+
+/*}*/
+
+
+
+
+@font-face {
+    font-family: 'brandon_grotesque';
+    src: url('../fonts/brandon-grotesque/brandon_med-webfont.eot');
+    src: url('../fonts/brandon-grotesque/brandon_med-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/brandon-grotesque/brandon_med-webfont.woff') format('woff'),
+    url('../fonts/brandon-grotesque/brandon_med-webfont.ttf') format('truetype'),
+    url('../fonts/brandon-grotesque/brandon_med-webfont.svg#brandon_grotesquemedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+
+
+
+
+/*-------------------------------------
+------------ BASIC STYLE --------------
+-------------------------------------*/
+
 body {
     font-size: 13px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'brandon_grotesque' sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+h4, h5 {
+    text-transform: uppercase;
+}
 
 .container {
     margin: 0px;
