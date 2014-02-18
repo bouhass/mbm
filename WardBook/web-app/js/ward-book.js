@@ -208,38 +208,32 @@ function filterableFilter() {
     }
 }
 
-function updateBeanField(element, bean, beanType, beanId, field, fieldType, fieldValue, source, validate, afterSuccess) {
-    $(element).editable({
+function updateEntityField(entity, entityType, field, fieldType, optionalParams) {
+    var options = {
         mode: 'inline',
         type: fieldType,
-        pk : beanId,
-        url: WEB_APP_ROOT+beanType+'/partialUpdate',
-        value: fieldValue,
-        source: source,
+        pk : $(entity).attr('data-id'),
+        url: WEB_APP_ROOT+entityType+'/partialUpdate',
+        value: $(this).attr('data-value'),
         showbuttons: false,
         onblur: 'submit',
         params: function(params) {
             var ret = {};
-            ret['id'] = beanId;
+            ret['id'] = $(entity).attr('data-id');
             ret[field] = params.value;
             return ret;
-        },
-        validate: function(value) {
-            if (validate != undefined) {
-                return validate(value);
-            }
-        },
-        success: function(response, newValue) {
-            if (afterSuccess != undefined) {
-                afterSuccess(response, newValue);
-            }
-            $(bean).attr('data-'+field, newValue);
         }
-    });
+    };
+
+    if (optionalParams != undefined) {
+        options = $.extend(options, optionalParams);
+    }
+
+    $(entity).editable(options);
 }
 
-function updateBeanDateField(element, field, beanType) {
-    $(element).editable({
+function updateEntityDateField(entity, field, entityType) {
+    $(entity).editable({
         mode: 'inline',
         format: "YYYY-MM-DD",
         viewformat: "DD-MM-YYYY",
@@ -248,12 +242,12 @@ function updateBeanDateField(element, field, beanType) {
             minYear: 1900,
             maxYear: (new Date()).getFullYear()
         },
-        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        url: WEB_APP_ROOT+entityType+'/partialUpdate',
         onblur: 'submit',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2})$/)
             var ret = {};
-            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret['id'] = $(entity).attr('data-'+entityType+'-id');
             ret[field] = 'date.struct';
             ret[field+'_day'] = parsedDate[3];
             ret[field+'_month'] = parsedDate[2];
@@ -263,8 +257,8 @@ function updateBeanDateField(element, field, beanType) {
     });
 }
 
-function updateBeanDateTimeField(element, field, beanType) {
-    $(element).editable({
+function updateEntityDateTimeField(entity, field, entityType) {
+    $(entity).editable({
         mode: 'inline',
         format: "YYYY-MM-DD HH:mm",
         viewformat: "D MMM, YYYY, HH:mm",
@@ -278,12 +272,12 @@ function updateBeanDateTimeField(element, field, beanType) {
             yearDescending: false,
             minuteStep: 5
         },
-        url: WEB_APP_ROOT+beanType+'/partialUpdate',
+        url: WEB_APP_ROOT+entityType+'/partialUpdate',
         onblur: 'submit',
         params : function(params) {
             var parsedDate = params['value'].match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})$/)
             var ret = {};
-            ret['id'] = $(element).attr('data-'+beanType+'-id');
+            ret['id'] = $(entity).attr('data-'+entityType+'-id');
             ret[field] = 'date.struct';
             ret[field+'_day'] = parsedDate[3];
             ret[field+'_month'] = parsedDate[2];

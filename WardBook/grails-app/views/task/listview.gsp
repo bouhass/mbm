@@ -177,14 +177,14 @@
     <script>
         $(window).load(function() {
             $('.task-assignee').each(function() {
-                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'assignee.id', 'select', $(this).attr('data-value'), WEB_APP_ROOT+'helpers/users');
+                updateEntityField(this, 'task', 'assignee.id', 'select', { source: WEB_APP_ROOT+'helpers/users'});
             });
 
             $('.task-priority').each(function() {
-                updateBeanField(this, this, 'task', $(this).attr('data-id'), 'priority', 'select', $(this).attr('data-value'), { NORMAL: "NORMAL", URGENT: "URGENT" });
+                updateEntityField(this, 'task', 'priority', 'select', { source: { NORMAL: "NORMAL", URGENT: "URGENT" } });
             });
 
-            updateBeanDateTimeField($('.task-time-due'), 'timeDue', 'task');
+            updateEntityDateTimeField($('.task-time-due'), 'timeDue', 'task');
         });
     </script>
 

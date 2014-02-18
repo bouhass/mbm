@@ -8,8 +8,8 @@
                           data-patient_id="${patient.id}"
                           data-type="${recordType}"
                           data-input-type="${inputType}"
-                          placeholder="Type to add"
-                          rows="1"></textarea>
+                          placeholder="${placehoder ?: 'Type to add'}"
+                          rows="2"></textarea>
             </tr>
         </g:if>
 
@@ -20,7 +20,7 @@
                 </td>
                 <td colspan="2">
                     <input type="text"
-                           placeholder="Type to add"
+                           placeholder="${placehoder ?: 'Type to add'}"
                            data-patient_id="${patient.id}"
                            data-type="${recordType}"
                            data-input-type="${inputType}"
