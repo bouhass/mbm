@@ -463,3 +463,7 @@ th, td {
 .collapse {
     border-bottom: 1px solid #eeeeee;
 }
+
+.add-record-textarea {
+    resize: none;
+}

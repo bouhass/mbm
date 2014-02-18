@@ -47,13 +47,13 @@
         </div>
 
         <div class="col-sm-3 col-md-3">
-            <h4>PMH</h4>
-            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'HISTORY']" />
+            <h4>Clinical History</h4>
+            <a href="#" data-id="${patient.id}" data-value="${patient.history}" class="patient-history">${patient.history}</a>
         </div>
 
         <div class="col-sm-3 col-md-3">
-            <h4>Plan</h4>
-            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN']" />
+            <h4>Current Plan</h4>
+            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea']" />
         </div>
 
         <div class="col-sm-3 col-md-3">
@@ -64,53 +64,53 @@
     </div>
 
     <div class="row col-sm-12 col-md-12">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-6">
             <h4>Weight</h4>
             <canvas id="weightChart" width="320" height="200"></canvas>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-            <h4>Additional info</h4>
-            <dl>
-                <dt>PDD</dt>
-                <dd><g:formatDate date="${new Date(System.currentTimeMillis() + (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate> - [day 7]</dd>
+        %{--<div class="col-sm-6 col-md-4">--}%
+            %{--<h4>Additional info</h4>--}%
+            %{--<dl>--}%
+                %{--<dt>PDD</dt>--}%
+                %{--<dd><g:formatDate date="${new Date(System.currentTimeMillis() + (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate> - [day 7]</dd>--}%
 
-                <dt>Medically fit</dt>
-                <dd><g:formatDate date="${new Date(System.currentTimeMillis() - (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate></dd>
-            </dl>
+                %{--<dt>Medically fit</dt>--}%
+                %{--<dd><g:formatDate date="${new Date(System.currentTimeMillis() - (1 * 24 * 3600 * 1000))}" format="dd-MM-yyyy"></g:formatDate></dd>--}%
+            %{--</dl>--}%
 
-            <h4>Length of stay</h4>
+            %{--<h4>Length of stay</h4>--}%
 
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-info" style="width: 60%">
-                            <span>4.3</span>
-                        </div>
+            %{--<div class="row">--}%
+                %{--<div class="col-md-10">--}%
+                    %{--<div class="progress">--}%
+                        %{--<div class="progress-bar progress-bar-info" style="width: 60%">--}%
+                            %{--<span>4.3</span>--}%
+                        %{--</div>--}%
 
-                        <div class="progress-bar" style="width: 15%">
-                            <span>4.8</span>
-                        </div>
+                        %{--<div class="progress-bar" style="width: 15%">--}%
+                            %{--<span>4.8</span>--}%
+                        %{--</div>--}%
 
-                        <div class="progress-bar progress-bar-danger" style="width: 25%">
-                            <span>5.4</span>
-                        </div>
-                    </div>
-                </div>
+                        %{--<div class="progress-bar progress-bar-danger" style="width: 25%">--}%
+                            %{--<span>5.4</span>--}%
+                        %{--</div>--}%
+                    %{--</div>--}%
+                %{--</div>--}%
 
-                <div class="col-md-2">
-                    days
-                </div>
-            </div>
+                %{--<div class="col-md-2">--}%
+                    %{--days--}%
+                %{--</div>--}%
+            %{--</div>--}%
 
-            <div class="row col-md-12">
-                <span class="label label-info">Patient</span>
-                <span class="label label-primary">Hospital avg</span>
-                <span class="label label-danger">National avg</span>
-            </div>
-        </div>
+            %{--<div class="row col-md-12">--}%
+                %{--<span class="label label-info">Patient</span>--}%
+                %{--<span class="label label-primary">Hospital avg</span>--}%
+                %{--<span class="label label-danger">National avg</span>--}%
+            %{--</div>--}%
+        %{--</div>--}%
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-6">
             <g:render template="/shared/comments" model="[commentable: patient]"/>
         </div>
     </div>

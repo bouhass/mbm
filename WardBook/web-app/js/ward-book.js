@@ -119,20 +119,24 @@ function addNewTask(name, patient_id, afterSuccess) {
         })
 }
 
-function addRecord(patient_id, record) {
+function addRecord(patient_id, record, inputType) {
     var id = new Date().getTime();
 
     var recordElement = '' +
         '<tr>' +
-          '<td class="delete-record"><button type="button" class="btn btn-danger btn-xs hidden"><span class="glyphicon glyphicon-remove"></span></button></td>' +
-          '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" class="record">'+record.name+'</td>' +
+          '<td class="delete-record">' +
+            '<button type="button" class="btn btn-delete btn-xs hidden">' +
+                '<span class="glyphicon glyphicon-remove"></span>' +
+            '</button>' +
+            '</td>' +
+          '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" data-input-type="'+inputType+'" class="record">'+record.name+'</td>' +
         '</tr>';
 
     $(recordElement).insertAfter('#record-'+record.type+'-'+patient_id+' .input-tr');
 
     $('[data-rid='+record.id+']').editable({
         mode: 'inline',
-        type: 'text',
+        type: inputType,
         pk : record.id,
         url: WEB_APP_ROOT+'record/saveOrUpdate',
         showbuttons: false,
@@ -145,7 +149,7 @@ function addRecord(patient_id, record) {
     });
 }
 
-function addNewRecord(name, patient_id, type) {
+function addNewRecord(name, patient_id, type, inputType) {
     if (name.length == 0) {
         console.error("ERROR: attempting to add a record with no name");
         return;
@@ -157,7 +161,7 @@ function addNewRecord(name, patient_id, type) {
         'patient.id': patient_id
     })
         .done(function(record) {
-            addRecord(patient_id, record);
+            addRecord(patient_id, record, inputType);
         })
         .fail(function() {
 //            alert("ERROR: could not add the task");

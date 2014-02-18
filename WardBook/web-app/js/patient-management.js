@@ -90,8 +90,21 @@ $(window).load(function() {
 
     $('input.add-record-input').keyup(function (e) {
         if (e.keyCode == 13) {
-            addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'));
+            addNewRecord($(this).val(), $(this).attr('data-patient_id'), $(this).attr('data-type'), $(this).attr('data-input-type'));
         }
+    });
+
+    $(".add-record-textarea").click(function() {
+        $(this).attr('rows', 5);
+    });
+
+    $(".add-record-textarea").blur(function() {
+        var val = $(this).val();
+        if (val.length > 0) {
+            addNewRecord(val, $(this).attr('data-patient_id'), $(this).attr('data-type'), $(this).attr('data-input-type'));
+            $(this).val('');
+        }
+        $(this).attr('rows', 1);
     });
 
     $('.delete-record').live('click', deleteRecord);
@@ -102,7 +115,7 @@ $(window).load(function() {
     $('.record').each(function() {
         $(this).editable({
             mode: 'inline',
-            type: 'text',
+            type: $(this).attr('data-input-type'),
             pk : $(this).attr('data-rid'),
             url: WEB_APP_ROOT+'record/saveOrUpdate',
             showbuttons: false,

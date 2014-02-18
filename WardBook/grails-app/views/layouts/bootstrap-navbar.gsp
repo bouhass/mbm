@@ -49,9 +49,9 @@
                     <g:link controller="staff" action="list">Staff</g:link>
                 </li>
 
-                <li class="${controllerName == 'dashboard' ? 'active' : ''}">
-                    <g:link controller="dashboard" action="index"><span class="glyphicon glyphicon-stats"></span></g:link>
-                </li>
+                %{--<li class="${controllerName == 'dashboard' ? 'active' : ''}">--}%
+                    %{--<g:link controller="dashboard" action="index"><span class="glyphicon glyphicon-stats"></span></g:link>--}%
+                %{--</li>--}%
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
