@@ -5,7 +5,7 @@
         </td>
         <td>
             <g:link controller="patient" action="profile" id="${patient.id}">
-                ${patient} [${patient.gender[0]}]
+                ${patient} [${patient.gender ? patient.gender[0] : ''}]
             </g:link>
         </td>
     </tr>

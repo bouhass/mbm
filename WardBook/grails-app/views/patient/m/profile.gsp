@@ -8,7 +8,7 @@
             ${patient.location ? "${patient.location}" : ''} -
             ${patient.consultant ? "${patient.consultant}" : ''} -
             ${new Date().year - patient.dateOfBirth.year}y -
-            ${patient.gender[0]}
+            ${patient.gender ? patient.gender[0] : ''}
         </h4>
 
         <ul id="view-selector" class="nav nav-tabs task-view">

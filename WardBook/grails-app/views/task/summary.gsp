@@ -28,7 +28,7 @@
         </g:link>
 
         <div class="page-header">
-            <h3>${task.patient.location} - ${task.patient} [${task.patient.gender[0]}]</h3>
+            <h3>${task.patient.location} - ${task.patient} ${task.patient.gender ? [task.patient.gender[0]] : ''}</h3>
         </div>
 
         <div id="Overview" class="view">

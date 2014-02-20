@@ -7,26 +7,30 @@ import org.grails.comments.Commentable
 @gorm.AuditStamp
 class Patient implements Commentable {
 	
-	String firstName
-	String lastName
-	Date dateOfBirth
-	String gender
-	String nhsNumber
-	String status = 'Default (no concerns)'
-	String location
-	String speciality
+	String  firstName
+	String  lastName
+	Date    dateOfBirth
+    String  hospitalIdentifier
+    String  status = 'Default (no concerns)'
     Boolean handover = false
-    String history
-    Ward ward
-    User consultant
+    Ward    ward
+
+    // optional
+    User    consultant
+	String  gender
+    String  history
+	String  location
+	String  nhsNumber
+	String  speciality
+
 	static hasMany = [tasks: Task, records: Record, referralLists: ReferralList]
     static belongsTo = [Ward, User, ReferralList]
 
     static constraints = {
-		firstName nullable:false
-		lastName nullable:false
+		firstName nullable:false, maxSize: 35
+		lastName nullable:false, maxSize: 35
         dateOfBirth max:new Date()
-		gender inList: ['MALE', 'FEMALE']
+        hospitalIdentifier nullable:false
 		status inList: [
                 'To come in',
                 'Default (no concerns)',
@@ -38,11 +42,13 @@ class Patient implements Commentable {
                 'For Home',
                 'Discharged'
         ]
+
+        consultant nullable:true
+        gender nullable:true, inList: ['MALE', 'FEMALE']
+        history nullable:true, maxSize: 4096
 		location nullable:true
 		nhsNumber nullable:true
-        consultant nullable:true
         speciality nullable:true
-        history nullable:true, maxSize: 4096
     }
 
 	String toString() { "${firstName} ${lastName}" }

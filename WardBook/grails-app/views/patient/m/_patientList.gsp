@@ -6,7 +6,7 @@
         <span ${view == 'doc' ? 'style="font-weight: bold;"' : ''}>${patient.consultant ? "- ${patient.consultant}" : ''}</span>
         <br/>
         ${new Date().year - patient.dateOfBirth.year}y -
-        ${patient.gender[0]} -
+        ${patient.gender ? patient.gender[0] : ''}
         ${patient.tasks.findAll { it.isActive() }.size()} tasks
         <div class="list-chevron-right">
             <span class="glyphicon glyphicon-chevron-right"></span>

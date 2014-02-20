@@ -13,7 +13,7 @@
                         </div>
 
                         <div class="col-sm-4 col-md-4">
-                            ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender[0]}
+                            ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender ? patient.gender[0] : ''}
                         </div>
 
                         <div class="col-sm-5 col-md-5">
