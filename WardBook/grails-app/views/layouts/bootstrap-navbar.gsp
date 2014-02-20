@@ -14,7 +14,7 @@
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav id="unlockedNavbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -89,6 +89,10 @@
                         </sec:ifAllGranted>
                         <li role="presentation" class="divider"></li>
                         <li>
+                            <a href="javascript:lockScreen();"><span class="glyphicon glyphicon-lock"></span> Lock </a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
+                        <li>
                             <a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
                         </li>
                     </ul>
@@ -98,6 +102,11 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 
+    <nav id="lockedNavbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="display: none;">
+
+    </nav>
+
+    <script src="${resource(dir: 'js', file: 'screen-management.js')}"></script>
     <script>
         $(window).load(function() {
             $('#clock').text(moment().format('Do MMM HH:mm'));
@@ -107,7 +116,29 @@
         });
     </script>
 
-    <g:layoutBody/>
+    <div id="unlocked">
+        <g:layoutBody/>
+    </div>
+
+    <div id="locked" class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle" style="display: none;">
+
+        <div class="error-box">
+        </div>
+
+        <div class="form-group">
+            <h5>
+                <sec:username/>
+            </h5>
+        </div>
+
+        <div class="form-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password to unlock" />
+        </div>
+
+        <button id="unlock" type="submit" class="btn btn-primary btn-block btn-lg" onclick="javascript:unlockScreen();">
+            Unlock
+        </button>
+    </div>
 
 </body>
 

@@ -73,9 +73,9 @@ button,
 
     <g:if test="${showPrintButton}">
         <div class="pull-right">
-            <a class="btn btn-primary" onclick="window.print()">
+            <g:link controller="patient" action="gridview" params="${[print: true]}" class="btn btn-primary">
                 <span class="glyphicon glyphicon-print"></span>
-            </a>
+            </g:link>
         </div>
     </g:if>
 

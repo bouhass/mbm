@@ -3,12 +3,6 @@
 <head>
     <title><g:meta name="app.name"/></title>
     <meta name="layout" content="bootstrap"/>
-    <style>
-    .login_message {
-        color: red;
-        margin-bottom: 10px;
-    }
-    </style>
 </head>
 
 <body>
@@ -22,7 +16,7 @@
 <div class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle">
 
     <g:if test='${flash.message}'>
-        <div class='login_message'>${flash.message}</div>
+        <div class='error-box'>${flash.message}</div>
     </g:if>
 
     <form action='${postUrl}' method='POST' id='loginForm'>

@@ -74,6 +74,15 @@ class HelpersController {
         }
     }
 
+    def authenticate() {
+        if (request.user.password == springSecurityService.encodePassword(params.password)) {
+            render(status: 201)
+            return
+        }
+
+        render(status: 500)
+    }
+
     def signOff() {
         def user1 = request.user
         def encodedPassword = springSecurityService.encodePassword(params.password)

@@ -20,7 +20,7 @@ $(window).load(function() {
     });
 
     $('.patient-history').each(function() {
-        updateEntityField(this, 'patient', 'history', 'textarea', {emptytext: 'Situation/background'})
+        updateEntityField(this, 'patient', 'history', 'textarea', {emptytext: 'Admission:\nBackground:'})
     });
 
     $('.patient-status').each(function() {

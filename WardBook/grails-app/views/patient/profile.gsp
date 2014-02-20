@@ -53,7 +53,8 @@
 
         <div class="col-sm-3 col-md-3">
             <h4>Current Plan</h4>
-            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea', placehoder: 'Reason for handover / changes over weekend']" />
+            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea',
+                    placehoder: 'Reason for handover / Changes over weekend / Ceiling of care']" />
         </div>
 
         <div class="col-sm-3 col-md-3">
