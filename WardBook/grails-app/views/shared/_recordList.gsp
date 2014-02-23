@@ -9,7 +9,7 @@
                           data-type="${recordType}"
                           data-input-type="${inputType}"
                           placeholder="${placehoder ?: 'Type to add'}"
-                          rows="2"></textarea>
+                          rows="3"></textarea>
             </tr>
         </g:if>
 

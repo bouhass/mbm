@@ -71,13 +71,20 @@ button,
         </div>
     </div>
 
-    <g:if test="${showPrintButton}">
+
         <div class="pull-right">
-            <g:link controller="patient" action="gridview" params="${[print: true]}" class="btn btn-primary">
-                <span class="glyphicon glyphicon-print"></span>
-            </g:link>
+            <g:if test="${showPrintButton}">
+                <g:link action="gridview" params="${[print: true]}" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-print"></span>
+                </g:link>
+            </g:if>
+
+            <g:if test="${showExportButton}">
+                <g:link action="csvlist" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-export"></span>
+                </g:link>
+            </g:if>
         </div>
-    </g:if>
 
 </div>
 

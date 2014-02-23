@@ -19,6 +19,7 @@ grails.mime.types = [
     atom:          'application/atom+xml',
     css:           'text/css',
     csv:           'text/csv',
+//    excel:         'application/vnd.ms-excel',
     form:          'application/x-www-form-urlencoded',
     html:          ['text/html','application/xhtml+xml'],
     js:            'text/javascript',

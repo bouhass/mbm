@@ -37,8 +37,8 @@
                 <dt>Consultant</dt>
                 <dd>${task.patient.consultant}</dd>
 
-                <dt>NHS</dt>
-                <dd>${task.patient.nhsNumber}</dd>
+                <dt>Hospital identifier</dt>
+                <dd>${task.patient.hospitalIdentifier}</dd>
 
                 <dt>DOB</dt>
                 <dd><g:formatDate format="dd-MM-yyyy" date="${task.patient.dateOfBirth}"/></dd>

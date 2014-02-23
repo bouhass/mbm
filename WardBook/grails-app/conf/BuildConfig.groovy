@@ -86,6 +86,8 @@ grails.project.dependency.resolution = {
 
         compile ":spring-mobile:0.5.1"
 
+        compile ":export:1.5"
+
         test ":cucumber:0.9.0"
         test ":geb:0.9.1"
         test ":code-coverage:1.2.7"

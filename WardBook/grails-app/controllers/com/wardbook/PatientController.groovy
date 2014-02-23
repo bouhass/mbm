@@ -6,6 +6,9 @@ class PatientController {
 
     static scaffold = true
 
+    def exportService
+    def grailsApplication
+
     def index() {
         redirect(action:listview)
     }
@@ -72,6 +75,47 @@ class PatientController {
     def jsonlist() {
         JSON.use('deep')
         render request.user.patients() as JSON
+    }
+
+    def csvlist() {
+        response.contentType = grailsApplication.config.grails.mime.types['csv']
+        def fileName = "patients-${new Date().format('ddMMyyyyHHmm')}.csv"
+        response.setHeader("Content-disposition", "attachment; filename=${fileName}")
+
+        List fields = ['DEMOGRAPHICS', 'CLINICAL HISTORY', 'CURRENT PLAN', 'TASKS']
+        Map formatters = [
+                'DEMOGRAPHICS': { patient, value ->
+                    return "${patient.location}\n" +
+                            "${patient}\n"+
+                            "${patient.consultant ?: ''}\n" +
+                            "${patient.dateOfBirth.format('dd-MM-yyyy')}\n" +
+                            "${patient.hospitalIdentifier}\n" +
+                            "${patient.status}"
+                },
+                'CLINICAL HISTORY': { patient, value ->
+                    return "${patient.history ?: ''}"
+                },
+                'CURRENT PLAN': { patient, value ->
+                    def plans = ""
+                    patient.records.each {
+                        if (it.type == 'PLAN') {
+                            plans += it.name+'\n'
+                        }
+                    }
+                    return plans
+                },
+                'TASKS': { patient, value ->
+                    def tasks = ""
+                    patient.tasks.each {
+                        tasks += it.name+'\n'
+                    }
+                    return tasks
+                }
+        ]
+//        Map parameters = [title: "Patient list", "column.widths": [25, 25, 25, 25]]
+        Map parameters = [title: "Patient list"]
+
+        exportService.export('csv', response.outputStream, request.user.patients(), fields, [:], formatters, parameters)
     }
 
     def search() {

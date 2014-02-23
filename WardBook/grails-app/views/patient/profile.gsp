@@ -30,6 +30,9 @@
                     </a>
                 </dd>
 
+                <dt>Hospital identifier</dt>
+                <dd><a href="#" data-id="${patient.id}" data-value="${patient.hospitalIdentifier}" class="patient-hospitalIdentifier">${patient.hospitalIdentifier}</a></dd>
+
                 <dt>NHS number</dt>
                 <dd><a href="#" data-id="${patient.id}" data-value="${patient.nhsNumber}" class="patient-nhsNumber">${patient.nhsNumber}</a></dd>
 

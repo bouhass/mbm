@@ -7,6 +7,10 @@ $(window).load(function() {
         updateEntityField(this, 'patient', 'consultant.id', 'select', { source: WEB_APP_ROOT+'helpers/consultants' })
     });
 
+    $('.patient-hospitalIdentifier').each(function() {
+        updateEntityField(this, 'patient', 'hospitalIdentifier', 'text')
+    });
+
     $('.patient-nhsNumber').each(function() {
         updateEntityField(this, 'patient', 'nhsNumber', 'text')
     });
@@ -86,7 +90,7 @@ $(window).load(function() {
     });
 
     $(".add-record-textarea").click(function() {
-        $(this).attr('rows', 5);
+        $(this).attr('rows', 3);
     });
 
     $(".add-record-textarea").blur(function() {

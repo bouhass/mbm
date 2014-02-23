@@ -64,7 +64,7 @@
 
     <div class="col-sm-10 col-md-10" id="patient-view">
 
-        <g:render template="/shared/listViewToolbar" model="[showPrintButton: true]" />
+        <g:render template="/shared/listViewToolbar" model="[showPrintButton: true, showExportButton: true]" />
 
         <div class="panel panel-default">
             <div class="panel-heading">

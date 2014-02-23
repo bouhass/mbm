@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="row">
-                            ${patient.nhsNumber}
+                            ${patient.hospitalIdentifier}
                         </div>
 
                         <div class="row">

@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <td>
-            ${patient.nhsNumber}
+            ${patient.hospitalIdentifier}
         </td>
         <td>
             <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status">${patient.status}</a>

@@ -89,7 +89,7 @@
                         </sec:ifAllGranted>
                         <li role="presentation" class="divider"></li>
                         <li>
-                            <a href="javascript:lockScreen();"><span class="glyphicon glyphicon-lock"></span> Lock </a>
+                            <a href="javascript:lockScreen();"><span class="glyphicon glyphicon-lock"></span> Lock (F12) </a>
                         </li>
                         <li role="presentation" class="divider"></li>
                         <li>

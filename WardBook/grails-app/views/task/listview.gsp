@@ -146,7 +146,7 @@
                                     </div>
 
                                     <div class="row">
-                                        ${task.patient.nhsNumber}
+                                        ${task.patient.hospitalIdentifier}
                                     </div>
 
                                     <div class="row">
