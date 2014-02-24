@@ -85,6 +85,10 @@
                         <div class="col-sm-4 col-md-4">
                             Tasks
                         </div>
+
+                        <button id="collapseExpandAll" class="btn btn-xs pull-right">
+                            Expand all
+                        </button>
                     </div>
                 </h4>
             </div>
@@ -125,5 +129,20 @@
 
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
+
+    <script>
+        $(window).load(function() {
+            $('#collapseExpandAll').click(function() {
+                if ($(this).text().trim() == 'Collapse all') {
+                    $('.filterable-element .collapse').addClass('in');
+                    $(this).text('Expand all');
+                }
+                else {
+                    $('.filterable-element .collapse').removeClass('in');
+                    $(this).text('Collapse all');
+                }
+            });
+        });
+    </script>
 
 </g:applyLayout>
