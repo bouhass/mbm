@@ -13,7 +13,7 @@
         </thead>
         <tbody>
         <g:each var="p" in="${patients}">
-            <tr id="${p.id}" ${p.status.contains('Unwell') ? 'class="danger"' : ''} class="filterable-element">
+            <tr id="${p.id}" class="filterable-element ${p.status.contains('Unwell') ? 'danger' : ''}">
                 <td>
                     <g:render template="patientInfo" model="[patient: p]" />
                 </td>

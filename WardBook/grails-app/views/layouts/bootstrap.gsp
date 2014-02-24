@@ -47,6 +47,7 @@
 
     $(document).ajaxError(function(e, xhr, settings, exception) {
         if(xhr.status==401) {
+            $.removeCookie('locked');
             window.location.reload();
         }
     });

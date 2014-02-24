@@ -47,10 +47,18 @@ $(window).load(function() {
                 },
                 success: function(response, newValue) {
                     if (newValue.indexOf("Unwell") != -1) {
-                        $('tr[id='+patientId+']').addClass('danger');
+                        // for gridview
+                        $('.filterable-element[id='+patientId+']').addClass('danger');
+                        // for listview
+                        $('.filterable-element[id='+patientId+']').removeClass('panel-info');
+                        $('.filterable-element[id='+patientId+']').addClass('panel-danger');
                     }
                     else {
-                        $('tr[id='+patientId+']').removeClass('danger');
+                        // for gridview
+                        $('.filterable-element[id='+patientId+']').removeClass('danger');
+                        // for listview
+                        $('.filterable-element[id='+patientId+']').removeClass('panel-danger');
+                        $('.filterable-element[id='+patientId+']').addClass('panel-info');
                     }
                 }
             }

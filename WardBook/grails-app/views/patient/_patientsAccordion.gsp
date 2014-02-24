@@ -1,6 +1,6 @@
 <div class="panel-group" id="patientsAccordion-${groupId}">
     <g:each var="patient" in="${patients}">
-        <div class="panel panel-info filterable-element">
+        <div id="${patient.id}" class="panel ${patient.status.contains('Unwell') ? 'panel-danger' : 'panel-info'} filterable-element">
             <div class="panel-heading">
                 <div class="panel-title row">
                     <div class="pull-left">

@@ -132,13 +132,13 @@ class ${className}Controller {
     def partialUpdate() {
         def ${propertyName} = ${className}.get(params.id)
         if (!${propertyName}) {
-            flash.message = message(code: 'default.not.found.message', args: ["${className}", params.id])
+            render (status: 404, text: message(code: 'default.not.found.message', args: ["${className}", params.id]))
             return
         }
 
         ${propertyName}.properties = params
         if (!${propertyName}.save(flush: true)) {
-//            render view: 'create', model: [${propertyName}: ${propertyName}]
+            render (status: 500, text: ${propertyName}.errors.allErrors.join(' \\n'))
             return
         }
 

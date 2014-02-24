@@ -96,20 +96,10 @@ class PatientController {
                     return "${patient.history ?: ''}"
                 },
                 'CURRENT PLAN': { patient, value ->
-                    def plans = ""
-                    patient.records.each {
-                        if (it.type == 'PLAN') {
-                            plans += it.name+'\n'
-                        }
-                    }
-                    return plans
+                    return patient.records.findAll{ it.type == 'PLAN' }*.name.join('\n')
                 },
                 'TASKS': { patient, value ->
-                    def tasks = ""
-                    patient.tasks.each {
-                        tasks += it.name+'\n'
-                    }
-                    return tasks
+                    return patient.tasks*.name.join('\n')
                 }
         ]
 //        Map parameters = [title: "Patient list", "column.widths": [25, 25, 25, 25]]
