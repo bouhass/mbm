@@ -134,11 +134,11 @@
         $(window).load(function() {
             $('#collapseExpandAll').click(function() {
                 if ($(this).text().trim() == 'Collapse all') {
-                    $('.filterable-element .collapse').addClass('in');
+                    $('.filterable-element .collapse').removeClass('in');
                     $(this).text('Expand all');
                 }
                 else {
-                    $('.filterable-element .collapse').removeClass('in');
+                    $('.filterable-element .collapse').addClass('in');
                     $(this).text('Collapse all');
                 }
             });
