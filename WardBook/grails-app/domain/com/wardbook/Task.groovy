@@ -15,13 +15,13 @@ class Task implements Commentable {
 
 	String name
 	String status = 'PENDING'
-    String priority = 'NORMAL'
+    String priority = 'NON-URGENT'
     Date timeDue
 	static belongsTo = [patient: Patient, assignee: User]
 
     static constraints = {
 		status inList: ['PENDING', 'STARTED', 'COMPLETED']
-        priority inList: ['NORMAL', 'URGENT']
+        priority inList: ['NON-URGENT', 'URGENT']
         timeDue nullable: true
         assignee nullable: true
     }

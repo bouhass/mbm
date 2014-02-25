@@ -39,7 +39,7 @@
             });
 
             $('.task-priority').each(function() {
-                updateEntityField(this, 'task', 'priority', 'select', {source: { NORMAL: "NORMAL", URGENT: "URGENT" }});
+                updateEntityField(this, 'task', 'priority', 'select', {source: { 'NON-URGENT': "NON-URGENT", 'URGENT': "URGENT" }});
             });
 
             updateEntityDateTimeField($('.task-time-due'), 'timeDue', 'task');
