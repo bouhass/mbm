@@ -63,7 +63,7 @@ class PatientController {
                 }
 
                 flash.message = message(code: 'default.created.message', args: ['Patient', patientInstance.id])
-                redirect action: 'listview'
+                redirect action: 'listview', fragment: patientInstance.id, params: [new: patientInstance.id]
                 break
         }
     }

@@ -69,13 +69,11 @@ class PatientControllerTests {
 
         assert response.json == [
                 'To come in': 'To come in',
-                'Default (no concerns)': 'Default (no concerns)',
                 'New Admission': 'New Admission',
-                'Unwell (To Be Aware)': 'Unwell (To Be Aware)',
-                'Unwell (For Night Review)': 'Unwell (For Night Review)',
-                'Unwell (Urgent Review)': 'Unwell (Urgent Review)',
-                '?Home Today': '?Home Today',
-                'For Home': 'For Home',
+                'No concerns': 'No concerns',
+                'Unwell': 'Unwell',
+                'Potential discharge': 'Potential discharge',
+                'For home': 'For home',
                 'Discharged': 'Discharged'
         ]
     }

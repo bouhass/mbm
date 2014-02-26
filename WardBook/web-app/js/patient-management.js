@@ -33,7 +33,7 @@ $(window).load(function() {
             {
                 source: WEB_APP_ROOT+'patient/statuses',
                 validate: function(value) {
-                    if (value == 'Unwell (Urgent Review)') {
+                    if (value == 'Unwell') {
                         if (!confirm('FOR ACUTELY UNWELL PATIENT A VERBAL HANDOVER MUST BE DONE, CLICK YES TO CONFIRM YOU HAVE DONE SO')) {
                             return {newValue: '', msg: 'Pending verbal handover'};
                         }

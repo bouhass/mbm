@@ -11,7 +11,7 @@ class Patient implements Commentable {
 	String  lastName
 	Date    dateOfBirth
     String  hospitalIdentifier
-    String  status = 'Default (no concerns)'
+    String  status = 'No concerns'
     Boolean handover = false
     Ward    ward
 
@@ -33,12 +33,10 @@ class Patient implements Commentable {
         hospitalIdentifier nullable:false
 		status inList: [
                 'To come in',
-                'Default (no concerns)',
                 'New Admission',
-                'Unwell (To Be Aware)',
-                'Unwell (For Night Review)',
-                'Unwell (Urgent Review)',
-                '?Home Today',
+                'No concerns',
+                'Unwell',
+                'Potential discharge',
                 'For Home',
                 'Discharged'
         ]

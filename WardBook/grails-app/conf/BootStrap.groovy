@@ -96,7 +96,7 @@ class BootStrap {
                 dateOfBirth: Date.parse("dd-MMM-yyyy", "28-Feb-1930"),
                 gender: 'MALE',
                 nhsNumber: '4472927495',
-                status: 'Default (no concerns)',
+                status: 'No concerns',
                 location: 'B2B4',
                 speciality: 'Cardiology',
                 ward: Ward.get(1)

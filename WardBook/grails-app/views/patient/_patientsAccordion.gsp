@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div id="collapse-${patient.id}" class="panel-collapse collapse ${patient == patients.first() ? 'in' : ''}">
+            <div id="collapse-${patient.id}" class="panel-collapse collapse ${(patient == patients.first() || params['new'] == "${patient.id}") ? 'in' : ''}">
                 <div class="panel-body">
 
                     <div class="col-sm-2 col-md-2">
