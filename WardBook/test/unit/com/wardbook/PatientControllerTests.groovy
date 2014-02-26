@@ -73,7 +73,7 @@ class PatientControllerTests {
                 'No concerns': 'No concerns',
                 'Unwell': 'Unwell',
                 'Potential discharge': 'Potential discharge',
-                'For home': 'For home',
+                'For Home': 'For Home',
                 'Discharged': 'Discharged'
         ]
     }
