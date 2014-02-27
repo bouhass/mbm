@@ -75,15 +75,15 @@
                         </div>
 
                         <div class="col-sm-1 col-md-1">
-                            LOC
+                            <g:link action="listview" params="[sort: 'location']">
+                                LOC <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+                            </g:link>
                         </div>
 
-                        <div class="col-sm-4 col-md-4">
-                            Patient
-                        </div>
-
-                        <div class="col-sm-4 col-md-4">
-                            Tasks
+                        <div class="col-sm-7 col-md-7">
+                            <g:link action="listview" params="[sort: 'lastName']">
+                                Patient <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+                            </g:link>
                         </div>
 
                         <button id="collapseExpandAll" class="btn btn-xs pull-right">
@@ -111,7 +111,10 @@
                         </div>
                         <div id="collapseWard-${group.key.id}" class="panel-collapse collapse in">
                             <div class="panel-body no-padding">
-                                <% def wardPatients = groupedPatients[group.key] %>
+                                <%
+                                    def wardPatients = groupedPatients[group.key]
+                                    if (params['sort']) wardPatients.sort { it."${params['sort']}" }
+                                %>
                                 <g:render template="patientsAccordion" model="[groupId: group.key.id, patients: wardPatients]" />
                             </div>
                         </div>
@@ -121,6 +124,7 @@
         </g:if>
 
         <g:if test="${request.user.ward}">
+            <% if (params['sort']) patients.sort { it."${params['sort']}" } %>
             <g:render template="patientsAccordion" model="[groupId: '', patients: patients]" />
         </g:if>
     </div>

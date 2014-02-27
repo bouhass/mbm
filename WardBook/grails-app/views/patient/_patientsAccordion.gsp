@@ -12,11 +12,14 @@
                             ${patient.location}
                         </div>
 
-                        <div class="col-sm-4 col-md-4">
+                        <div class="col-sm-7 col-md-7">
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender ? patient.gender[0] : ''}
+                            <g:if test="${!request.user.referralList && patient.referralLists}">
+                                | ${patient.referralLists}
+                            </g:if>
                         </div>
 
-                        <div class="col-sm-5 col-md-5">
+                        <div class="col-sm-3 col-md-3">
                             <%
                                 def activeTasks = patient.tasks.findAll { it.isActive() }
                                 def taskCountByStatus = activeTasks.countBy { it.status }
