@@ -14,8 +14,8 @@
 
                         <div class="col-sm-7 col-md-7">
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender ? patient.gender[0] : ''}
-                            <g:if test="${!request.user.referralList && patient.referralLists}">
-                                | ${patient.referralLists}
+                            <g:if test="${!request.user.teamList && patient.teamLists}">
+                                | ${patient.teamLists}
                             </g:if>
                         </div>
 

@@ -1,6 +1,6 @@
 package com.wardbook
 
-class ReferralListController {
+class TeamListController {
 
     static scaffold = true
 

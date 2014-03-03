@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.ReferralList; com.wardbook.Ward" %>
+<%@ page import="com.wardbook.TeamList; com.wardbook.Ward" %>
 <g:applyLayout name="bootstrap-navbar">
 
     <div class="col-xs-10 col-sm-6 col-md-4 col-xs-offset-1 col-sm-offset-3 col-md-offset-4 box-middle">
@@ -23,8 +23,8 @@
             <div class="form-group">
                 <select onchange="switchList($(this).find('option:selected').attr('value'))" class="form-control">
                     <option value="">All lists</option>
-                    <g:each in="${ReferralList.list()}" var="referralList">
-                        <option value="${referralList.id}" ${referralList.id == request.user.referralList?.id ? 'selected' : ''}>${referralList}</option>
+                    <g:each in="${TeamList.list()}" var="teamList">
+                        <option value="${teamList.id}" ${teamList.id == request.user.teamList?.id ? 'selected' : ''}>${teamList}</option>
                     </g:each>
                 </select>
             </div>

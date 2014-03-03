@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.ReferralList" %>
+<%@ page import="com.wardbook.TeamList;" %>
 <g:applyLayout name="bootstrap-navbar">
     <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
 
@@ -45,7 +45,7 @@
                     <span class="glyphicon glyphicon-list-alt"></span>
                     Add to list(s)...
                 </h4>
-                <a href="#" id="referralLists" data-type="select2">${patient.referralLists?.join(', ')}</a>
+                <a href="#" id="teamLists" data-type="select2">${patient.teamLists?.join(', ')}</a>
             </div>
         </div>
 
@@ -185,16 +185,16 @@
             );
             </g:if>
 
-            $('#referralLists').editable({
+            $('#teamLists').editable({
                 title: 'Select list(s)',
                 type: 'select2',
-                url: WEB_APP_ROOT+"helpers/referralLists",
+                url: WEB_APP_ROOT+"helpers/teamLists",
                 pk: ${patient.id},
                 onblur: 'submit',
                 select2: {
                     placeholder: 'Select list(s)',
                     tokenSeparators: [",", " "],
-                    tags: ${ ReferralList.list().collect { "'${it}'" } }
+                    tags: ${ TeamList.list().collect { "'${it}'" } }
                 },
                 tpl: '<input type="hidden" style="min-width: 100px">'
             });

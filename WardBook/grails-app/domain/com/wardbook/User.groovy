@@ -25,7 +25,7 @@ class User {
     String speciality
     static hasMany = [createdTasks: Task, assignedTasks: Task, patients: Patient, givenHandovers: Handover, receivedHandovers: Handover]
     static mappedBy = [assignedTasks: 'assignee', givenHandovers: 'from', receivedHandovers: 'to']
-    static belongsTo = [ward: Ward, referralList: ReferralList]
+    static belongsTo = [ward: Ward, teamList: TeamList]
 
     static constraints = {
         username blank: false, unique: true
@@ -36,7 +36,7 @@ class User {
         onCall nullable: true
         speciality nullable: true
         ward nullable: true
-        referralList nullable: true
+        teamList nullable: true
     }
 
     static mapping = {
@@ -100,9 +100,9 @@ class User {
             if (ward) {
                 eq('ward', ward)
             }
-            if (referralList) {
-                referralLists {
-                    eq 'id', referralList.id
+            if (teamList) {
+                teamLists {
+                    eq 'id', teamList.id
                 }
             }
             ne('status', 'Discharged')

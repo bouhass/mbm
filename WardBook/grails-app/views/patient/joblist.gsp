@@ -1,6 +1,6 @@
 <g:applyLayout name="bootstrap-grid-layout">
 
-    <g:render template="/shared/gridViewToolbar" model="[referralLists: referralLists]" />
+    <g:render template="/shared/gridViewToolbar" model="[teamLists: teamLists]" />
 
     <table id="patients-table" class="table table-striped table-bordered table-hover">
         <thead>

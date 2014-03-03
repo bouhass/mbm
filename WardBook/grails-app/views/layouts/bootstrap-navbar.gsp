@@ -2,7 +2,7 @@
 
 <head>
     <title>
-        ${request.user.ward ? request.user.ward : request.user.referralList}</title>
+        ${request.user.ward ? request.user.ward : request.user.teamList}</title>
     </title>
     <g:layoutHead/>
     <style>

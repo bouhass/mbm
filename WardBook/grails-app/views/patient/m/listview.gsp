@@ -1,7 +1,7 @@
 <g:applyLayout name="bootstrap-mobile">
 
     <g:set var="navTitle" value="${request.user.ward ? "${request.user.ward.name}" :
-        (request.user.referralList ? "${request.user.referralList}" : "All patients")}" scope="request" />
+        (request.user.teamList ? "${request.user.teamList}" : "All patients")}" scope="request" />
 
     <div class="row">
         <div class="col-sm-11 col-md-12">

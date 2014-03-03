@@ -21,7 +21,7 @@ class HelpersController {
         render wards as JSON
     }
 
-    def referralLists() {
+    def teamLists() {
         switch (request.method) {
             case 'GET':
                 break
@@ -29,13 +29,13 @@ class HelpersController {
                 def patient = Patient.get(params.pk)
 
                 def tmp = []
-                tmp.addAll(patient.referralLists)
+                tmp.addAll(patient.teamLists)
                 tmp.each { it.removeFromPatients(patient) }
 
-                def newReferralLists = params['value[]']
-                if (newReferralLists) {
-                    if (!newReferralLists.class.isArray()) newReferralLists = [newReferralLists]
-                    newReferralLists.each { patient.addToReferralLists(ReferralList.findByName(it)) }
+                def newTeamLists = params['value[]']
+                if (newTeamLists) {
+                    if (!newTeamLists.class.isArray()) newTeamLists = [newTeamLists]
+                    newTeamLists.each { patient.addToTeamLists(TeamList.findByName(it)) }
                 }
 
                 render(status: 201)
@@ -43,7 +43,7 @@ class HelpersController {
     }
 
     def switchWard() {
-        request.user.referralList = null
+        request.user.teamList = null
             request.user.ward = Ward.get(params.'ward.id')
         if (!request.user.save(flush: true)) {
             render(status: 500, text: 'Failed to update ward')
@@ -55,7 +55,7 @@ class HelpersController {
 
     def switchList() {
         request.user.ward = null
-        request.user.referralList = ReferralList.get(params.'list.id')
+        request.user.teamList = TeamList.get(params.'list.id')
         if (!request.user.save(flush: true)) {
             render(status: 500, text: 'Failed to update list')
         }

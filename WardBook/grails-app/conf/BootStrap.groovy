@@ -1,4 +1,4 @@
-import com.wardbook.ReferralList
+import com.wardbook.TeamList
 import com.wardbook.Role
 import com.wardbook.User
 import com.wardbook.UserRole
@@ -42,10 +42,10 @@ class BootStrap {
                 new Ward(name: 'Purple ward', speciality: 'Pediatrics').save(failOnError: true)
             }
 
-            if (ReferralList.list().isEmpty()) {
-                new ReferralList(name: 'Alpha list').save(failOnError: true)
-                new ReferralList(name: 'Beta list').save(failOnError: true)
-                new ReferralList(name: 'Gamma list').save(failOnError: true)
+            if (TeamList.list().isEmpty()) {
+                new TeamList(name: 'Alpha list').save(failOnError: true)
+                new TeamList(name: 'Beta list').save(failOnError: true)
+                new TeamList(name: 'Gamma list').save(failOnError: true)
             }
 
             if (Patient.list().isEmpty()) {

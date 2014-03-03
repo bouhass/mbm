@@ -1,7 +1,7 @@
 package com.wardbook
 
 @gorm.AuditStamp
-class ReferralList {
+class TeamList {
 
     String name
     static hasMany = [patients: Patient, users: User]

@@ -23,8 +23,8 @@ class Patient implements Commentable {
 	String  nhsNumber
 	String  speciality
 
-	static hasMany = [tasks: Task, records: Record, referralLists: ReferralList]
-    static belongsTo = [Ward, User, ReferralList]
+	static hasMany = [tasks: Task, records: Record, teamLists: TeamList]
+    static belongsTo = [Ward, User, TeamList]
 
     static constraints = {
 		firstName nullable:false, maxSize: 35

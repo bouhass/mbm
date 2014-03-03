@@ -1,7 +1,7 @@
-<%@ page import="com.wardbook.User; com.wardbook.Ward; com.wardbook.ReferralList" %>
+<%@ page import="com.wardbook.User; com.wardbook.Ward; com.wardbook.TeamList" %>
 
 <head>
-    <title>${request.user.ward ? request.user.ward : request.user.referralList}</title>
+    <title>${request.user.ward ? request.user.ward : request.user.teamList}</title>
 </head>
 
 <div class="row hidden-print">
@@ -13,9 +13,9 @@
     </div>
 
     <div class="col-sm-2 col-md-2">
-        <g:select id="referralLists" name="referralLists" class="form-control"
-                  from="${ReferralList.list()}" value="${request.user.referralList?.id}"
-                  noSelection="${ request.user.referralList ? ['':'- Display all -'] : ['':'- Select list -']}"
+        <g:select id="teamLists" name="teamLists" class="form-control"
+                  from="${TeamList.list()}" value="${request.user.teamList?.id}"
+                  noSelection="${ request.user.teamList ? ['':'- Display all -'] : ['':'- Select list -']}"
                   optionKey="id" optionValue="name"/>
     </div>
 
@@ -61,7 +61,7 @@
             switchWard(this.value);
         });
 
-        $('#referralLists').on('change', function(e) {
+        $('#teamLists').on('change', function(e) {
             switchList(this.value);
         });
     });

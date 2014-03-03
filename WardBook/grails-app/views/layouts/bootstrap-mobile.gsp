@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.Ward; com.wardbook.ReferralList" %>
+<%@ page import="com.wardbook.Ward; com.wardbook.TeamList" %>
 <g:applyLayout name="bootstrap">
     <head>
         <link rel="stylesheet" href="${resource(dir: 'css', file: 'ward-book-mobile.css')}">
@@ -30,9 +30,9 @@
 
                 <div class="panel-body">
                     <a href="javascript:;">
-                        <g:select id="referralLists" name="referralLists" class="form-control"
-                                  from="${ReferralList.list()}" value="${request.user.referralList?.id}"
-                                  noSelection="${request.user.referralList ? ['': '- Display all -'] : ['': '- Default List -']}"
+                        <g:select id="teamLists" name="teamLists" class="form-control"
+                                  from="${TeamList.list()}" value="${request.user.teamList?.id}"
+                                  noSelection="${request.user.teamList ? ['': '- Display all -'] : ['': '- Default List -']}"
                                   optionKey="id" optionValue="name"/>
                     </a>
                 </div>
@@ -109,7 +109,7 @@
                 switchWard(this.value);
             });
 
-            $('#referralLists').on('change', function(e) {
+            $('#teamLists').on('change', function(e) {
                 switchList(this.value);
             });
 

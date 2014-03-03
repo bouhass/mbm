@@ -29,7 +29,7 @@ class HomeControllerSpec extends Specification {
 
     void "if user has a list selected, should redirect to the patient controller"() {
         setup:
-        request.user = [referralList: 'a list']
+        request.user = [teamList: 'a list']
 
         when:
         controller.index()

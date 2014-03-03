@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.ReferralList; com.wardbook.Ward" %>
+<%@ page import="com.wardbook.TeamList; com.wardbook.Ward" %>
 
 <style type="text/css" media="print">
 
@@ -21,8 +21,8 @@ button,
                     ${
                         request.user.ward ?
                             request.user.ward :
-                            request.user.referralList ?
-                                request.user.referralList :
+                            request.user.teamList ?
+                                request.user.teamList :
                                 'All patients' }
                     <span class="caret"></span>
                 </h3>
@@ -41,9 +41,9 @@ button,
                     <div class="col-md-6">
                         <h4>Lists</h4>
                         <li class="divider"></li>
-                        <g:each in="${ReferralList.list()}" var="referralList">
+                        <g:each in="${TeamList.list()}" var="teamList">
                             <li>
-                                <a href='javascript: switchList(${referralList.id})'>${referralList}</a>
+                                <a href='javascript: switchList(${teamList.id})'>${teamList}</a>
                             </li>
                         </g:each>
                     </div>

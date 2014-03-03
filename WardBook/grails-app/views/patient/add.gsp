@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.ReferralList" %>
+<%@ page import="com.wardbook.TeamList" %>
 <g:applyLayout name="bootstrap-navbar">
 
     <div class="col-md-12">
@@ -78,9 +78,9 @@
 
                 <div class="col-sm-3 col-md-3">
                     <div class="control-group">
-                        <label class="control-label" for="referralLists">Referral lists</label>
+                        <label class="control-label" for="teamLists">Team lists</label>
                         <div class="controls">
-                            <g:select from="${ReferralList.list()}" name="referralLists" id="referralLists" multiple="true" optionKey="id" optionValue="name" />
+                            <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
                         </div>
                     </div>
                 </div>
