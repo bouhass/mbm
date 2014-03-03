@@ -38,12 +38,15 @@ $(window).load(function () {
 
     $(this).mousemove(function (e) {
         idleTime = 0;
+        $.removeCookie('locked');
     });
     $(this).keypress(function (e) {
         idleTime = 0;
+        $.removeCookie('locked');
     });
     $(this).click(function (e) {
         idleTime = 0;
+        $.removeCookie('locked');
     });
 
     $('#locked #password').keyup(function (e) {

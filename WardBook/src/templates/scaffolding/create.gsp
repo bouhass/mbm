@@ -7,9 +7,9 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row">
 			
-			<div class="span3">
+			<div class="col-sm-3 col-md-3">
 				<div class="well">
 					<ul class="nav nav-list">
 						<li class="nav-header">\${entityName}</li>
@@ -29,7 +29,7 @@
 				</div>
 			</div>
 			
-			<div class="span9">
+			<div class="col-sm-9 col-md-9">
 
 				<div class="page-header">
 					<h1><g:message code="default.create.label" args="[entityName]" /></h1>

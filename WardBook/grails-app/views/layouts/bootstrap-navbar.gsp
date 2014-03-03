@@ -46,7 +46,7 @@
                 </li>
 
                 <li class="${controllerName == 'staff' ? 'active' : ''}">
-                    <g:link controller="staff" action="list">Staff</g:link>
+                    <g:link controller="contact" action="index">Directory</g:link>
                 </li>
 
                 %{--<li class="${controllerName == 'dashboard' ? 'active' : ''}">--}%
