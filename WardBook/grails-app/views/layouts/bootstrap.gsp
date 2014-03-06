@@ -57,7 +57,6 @@
 
 <script src="${resource(dir: 'bootstrap-editable/js', file: 'bootstrap-editable.js')}"></script>
 <script src="${resource(dir: 'js', file: 'moment.min.js')}"></script>
-<script src="${resource(dir: 'js', file: 'jquery.cookie.js')}"></script>
 <script src="${resource(dir: 'js', file: 'ward-book.js')}"></script>
 
 </body>

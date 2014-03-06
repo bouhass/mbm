@@ -1,5 +1,5 @@
 function lockScreen() {
-    $.cookie('locked', 'true');
+    localStorage['locked'] = 'true';
     $('#unlocked').hide();
     $('#unlockedNavbar').hide();
     $('#locked').show();
@@ -12,7 +12,7 @@ function unlockScreen() {
         password: $('#locked #password').val()
     })
         .done(function(patient) {
-            $.removeCookie('locked');
+            localStorage['locked'] = '';
             $('#locked').hide();
             $('#lockedNavbar').hide();
             $('#unlocked').show();
@@ -28,9 +28,7 @@ function unlockScreen() {
 var idleTime = 0;
 
 $(window).load(function () {
-    $.cookie.raw = true;
-
-    if ($.cookie('locked') == 'true') {
+    if (localStorage['locked'] == 'true') {
         lockScreen();
     }
 
@@ -38,15 +36,12 @@ $(window).load(function () {
 
     $(this).mousemove(function (e) {
         idleTime = 0;
-        $.removeCookie('locked');
     });
     $(this).keypress(function (e) {
         idleTime = 0;
-        $.removeCookie('locked');
     });
     $(this).click(function (e) {
         idleTime = 0;
-        $.removeCookie('locked');
     });
 
     $('#locked #password').keyup(function (e) {

@@ -47,6 +47,11 @@
     (function() {
         document.forms['loginForm'].elements['j_username'].focus();
     })();
+
+    $(window).load(function () {
+        // in case screen locked, then session expires, to avoid used logging in only to find the screen locked
+        localStorage['locked'] = '';
+    });
 </script>
 
 </body>
