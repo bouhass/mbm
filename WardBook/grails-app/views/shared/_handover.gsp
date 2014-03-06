@@ -53,13 +53,12 @@
                 </form>
 
                 <div id="signoffSuccessDiv" style="display: none">
-                    Successfully signed off
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="signoff" type="button" class="btn btn-primary">Sign off</button>
+                <button id="signoff" type="submit" class="btn btn-primary">Sign off</button>
                 <g:link id="logout" uri="/logout" class="btn btn-primary" style="display: none">Logout</g:link>
             </div>
         </div><!-- /.modal-content -->
@@ -85,17 +84,25 @@
             }
         });
 
-        $('#signoff').on('click', function() {
+        var signOff = function() {
             $.post(WEB_APP_ROOT+'helpers/signOff', $('#signoffModal form').serialize())
-                    .done(function(task) {
+                    .done(function() {
                         $('#signoffForm').hide();
                         $('#signoff').hide()
+                        var signOffText = 'Thanks. Your sign off has been logged at '+moment(new Date()).format('DD/MM/YYYY HH:mm');
+                        $('#signoffSuccessDiv').text(signOffText);
                         $('#signoffSuccessDiv').show();
                         $('#logout').show();
                     })
                     .fail(function() {
                         alert('Could not process the request. Please check your details again.');
                     })
+        }
+
+        $('#signoff').on('click', signOff);
+        $('#signoffForm').submit(function(ev) {
+            ev.preventDefault();
+            signOff();
         });
     });
 </script>
