@@ -71,7 +71,7 @@
     </div>
 
     <div class="row col-sm-12 col-md-12">
-        <div class="col-sm-6 col-md-6">
+        <div id="WEIGHT" class="col-sm-6 col-md-6">
             <h4>Weight</h4>
             <canvas id="weightChart" width="320" height="200"></canvas>
         </div>
@@ -130,7 +130,7 @@
                 <th>Location</th>
                 <th>Patient</th>
                 <th>Task</th>
-                <th>Time due</th>
+                %{--<th>Time due</th>--}%
                 <th>Comments</th>
                 <th>Status</th>
             </tr>
@@ -142,7 +142,7 @@
                         <td>${task.patient.location}</td>
                         <td>${task.patient}</td>
                         <td>${task.name}</td>
-                        <td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>
+                        %{--<td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>--}%
                         <td>${task.comments.size}</td>
                         <td class="task-status" data-task-status="${task.status}"><img/></td>
                     </tr>

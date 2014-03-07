@@ -29,10 +29,10 @@
                 <f:field bean="task" property="priority" required="true" />
                 <f:field bean="task" property="assignee" />
                 <div class="control-group">
-                    <label class="control-label" for="timeDue">Time due</label>
-                    <div class="controls">
-                        <g:datePicker name="timeDue" id="timeDue" relativeYears="${0..10}" precision="minute" default="none" noSelection="['':'']" />
-                    </div>
+                    %{--<label class="control-label" for="timeDue">Time due</label>--}%
+                    %{--<div class="controls">--}%
+                        %{--<g:datePicker name="timeDue" id="timeDue" relativeYears="${0..10}" precision="minute" default="none" noSelection="['':'']" />--}%
+                    %{--</div>--}%
                 </div>
             </div>
 
