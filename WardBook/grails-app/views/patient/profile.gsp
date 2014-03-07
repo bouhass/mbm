@@ -56,8 +56,11 @@
 
         <div class="col-sm-3 col-md-3">
             <h4>Current Plan</h4>
-            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea',
-                    placehoder: 'Reason for handover / Changes over weekend / Ceiling of care']" />
+            <g:render template="/shared/recordList" model="[
+                    patient: patient,
+                    recordType: 'PLAN',
+                    inputType: 'textarea',
+                    placehoder: message(code: 'add.plan.record.input.placeholder')]" />
         </div>
 
         <div class="col-sm-3 col-md-3">
@@ -147,6 +150,15 @@
             </g:each>
             </tbody>
         </table>
+    </div>
+
+    <div id="PLAN" class="row col-sm-12 col-md-12">
+        <h2>Plan</h2>
+
+        <g:render template="/shared/recordList" model="[
+                patient: patient,
+                recordType: 'PLAN',
+                showAllEntries: true]" />
     </div>
 
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>

@@ -1,4 +1,11 @@
-<% def records = patient.records.sort { it.createdDate }.reverse() %>
+<%
+    def records = patient.records.sort { it.createdDate }.reverse()
+    def cropped = false
+    if (!showAllEntries && (records.size > 3)) {
+        cropped = true
+        records = records[0..2]
+    }
+%>
 <td class="${recordType}">
     <table id="record-${recordType}-${patient.id}" class="inner-table">
 
@@ -47,5 +54,17 @@
                 </tr>
             </g:if>
         </g:each>
+
+        <g:if test="${cropped}">
+            <tr>
+                <td></td>
+                <td>
+                    <g:link controller="patient" action="profile" id="${patient.id}" fragment="${recordType}">
+                        Show more ...
+                    </g:link>
+                </td>
+            </tr>
+        </g:if>
+
     </table>
 </td>

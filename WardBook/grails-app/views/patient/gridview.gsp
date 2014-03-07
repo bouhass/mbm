@@ -20,8 +20,11 @@
                 <td>
                     <a href="#" data-id="${p.id}" data-value="${p.history}" class="patient-history">${p.history}</a>
                 </td>
-                <g:render template="/shared/recordList" model="[patient: p, recordType: 'PLAN', inputType: 'textarea',
-                        placehoder: 'Reason for handover / Changes over weekend / Ceiling of care']" />
+                <g:render template="/shared/recordList" model="[
+                        patient: p,
+                        recordType: 'PLAN',
+                        inputType: 'textarea',
+                        placehoder: message(code: 'add.plan.record.input.placeholder')]" />
                 <g:render template="/shared/recordList" model="[patient: p, recordType: 'WEIGHT', inputType: 'text']" />
             </tr>
         </g:each>

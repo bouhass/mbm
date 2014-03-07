@@ -107,7 +107,7 @@ $(window).load(function() {
             addNewRecord(val, $(this).attr('data-patient_id'), $(this).attr('data-type'), $(this).attr('data-input-type'));
             $(this).val('');
         }
-        $(this).attr('rows', 2);
+        $(this).attr('rows', 3);
     });
 
     $('.delete-record').live('click', deleteRecord);
