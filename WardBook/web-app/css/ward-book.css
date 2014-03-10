@@ -303,7 +303,7 @@ th, td {
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active{
-
+    background-color: #1775a4;
 
 }
 
@@ -343,6 +343,15 @@ th, td {
     color:#3ab3f0
 }
 
+
+
+/*-------------------------------------
+------------- PATIENT LIST ------------
+-------------------------------------*/
+#patient-view {
+    margin-bottom: 50px;
+}
+
 .panel-group{
     border-left: 1px solid #eeeeee;
     border-right: 1px solid #eeeeee;
@@ -362,7 +371,7 @@ th, td {
 }
 
 .panel-primary {
-   border: none;
+    border: none;
 }
 
 .panel-info > .panel-heading   {
@@ -385,13 +394,6 @@ th, td {
 
 .collapse {
     border-bottom: 1px solid #eeeeee;
-}
-
-/*-------------------------------------
-------------- PATIENT LIST ------------
--------------------------------------*/
-#patient-view {
-    margin-bottom: 50px;
 }
 
 .ward-select button {
@@ -472,3 +474,14 @@ th, td {
 .add-record-textarea {
     resize: none;
 }
+
+
+/*-------------------------------------
+------------- ADD PATIENT ------------
+-------------------------------------*/
+
+#add-patient-form .page-header {
+    text-transform: uppercase;
+    color: #3ab3f0;
+}
+

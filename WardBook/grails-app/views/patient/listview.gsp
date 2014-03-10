@@ -11,7 +11,7 @@
 
         <div class="row panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Handover</h3>
+                <h4 class="panel-title">Handover</h4>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -31,10 +31,10 @@
 
         <div class="row panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Filters</h3>
+                <h4 class="panel-title">Filters</h4>
             </div>
             <div class="panel-body">
-                <h4>Consultant</h4>
+                <h5>Consultant</h5>
                 <g:each var="consultant" in="${User.consultants()}">
                     <div class="checkbox">
                         <label>
@@ -50,7 +50,7 @@
                     </label>
                 </div>
                 <hr/>
-                <h4>Status</h4>
+                <h5>Status</h5>
                 <g:each var="status" in="${Patient.constraints.status.inList}">
                     <div class="checkbox">
                         <label>

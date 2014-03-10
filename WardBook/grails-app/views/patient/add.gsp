@@ -1,10 +1,10 @@
 <%@ page import="com.wardbook.TeamList" %>
 <g:applyLayout name="bootstrap-navbar">
 
-    <div class="col-md-12">
+    <div class="col-md-5 col-md-offset-3" id="add-patient-form">
 
         <div class="page-header">
-            <h1>Add patient</h1>
+            <h2>Add patient</h2>
         </div>
 
         <g:if test="${flash.message}">
@@ -23,88 +23,123 @@
 
         <g:form action="add" method="post">
             <div class="row">
-                <div class="col-sm-2 col-md-2">
-                    <f:field bean="patientInstance" property="firstName" required="true" />
-                </div>
-
-                <div class="col-sm-2 col-md-2">
-                    <f:field bean="patientInstance" property="lastName" required="true" />
-                </div>
-
-                <div class="col-sm-2 col-md-2">
-                    <f:field bean="patientInstance" property="hospitalIdentifier" required="true" />
-                </div>
-
-                <div class="col-sm-3 col-md-3">
-                    <div class="control-group">
-                        <label class="control-label" for="dateOfBirth">Date Of Birth</label>
-                        <div class="controls">
-                            <g:datePicker name="dateOfBirth" id="dateOfBirth" relativeYears="${-100..0}" precision="day" />
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                        <f:field bean="patientInstance" property="firstName" required="true" />
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <f:field bean="patientInstance" property="lastName" required="true" />
                         </div>
                     </div>
-                </div>
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="ward" required="true" default="${request.user.ward}" />
+
+                </div>
+                </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                        <f:field bean="patientInstance" property="hospitalIdentifier" required="true" />
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+                            <div class="control-group">
+                                <label class="control-label" for="dateOfBirth">Date Of Birth</label>
+                                <div class="controls">
+                                    <g:datePicker name="dateOfBirth" id="dateOfBirth" relativeYears="${-100..0}" precision="day" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                        <f:field bean="patientInstance" property="ward" required="true" default="${request.user.ward}" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row"><br/></div>
 
-            <div class="row">
-                <h4>Optional details</h4>
+            <div class="row" id="accordion">
+                <h4>
+                <a data-toggle="collapse" data-parent="#accordion" href="#moreDetail">
+                <span class="glyphicon glyphicon-plus cirle"></span>Add Optional Details</a></h4>
+                <div id="moreDetail" class="collapse">
+                    <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="consultant" />
-                </div>
+                            <div class="col-sm-4 col-md-4">
+                                <f:field bean="patientInstance" property="gender" />
+                            </div>
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="location" />
-                </div>
+                            <div class="col-sm-4 col-md-4">
+                                <f:field bean="patientInstance" property="nhsNumber" />
+                            </div>
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="nhsNumber" />
-                </div>
+                            <div class="col-sm-4 col-md-4">
+                                <f:field bean="patientInstance" property="location" />
+                            </div>
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="status" />
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="gender" />
-                </div>
-
-                <div class="col-sm-3 col-md-3">
-                    <div class="control-group">
-                        <label class="control-label" for="teamLists">Team lists</label>
-                        <div class="controls">
-                            <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-3 col-md-3">
-                    <f:field bean="patientInstance" property="speciality" />
-                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="row">
 
-                <div class="col-sm-3 col-md-3">
+                            <div class="col-sm-4 col-md-4">
+                                <f:field bean="patientInstance" property="consultant" />
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+                                <f:field bean="patientInstance" property="speciality" />
+                            </div>
+
+                            <div class="col-sm-4 col-md-4">
+                                <div class="control-group">
+                                    <label class="control-label" for="teamLists">Team lists</label>
+                                    <div class="controls">
+                                        <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                <hr/>
+                    <hr/>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-sm-12 col-md-12">
-                    <button type="submit" class="btn btn-primary pull-right">
-                        <span class="glyphicon glyphicon-ok icon-white"></span>
-                        Add
-                    </button>
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+                            <g:link controller="patient" action="listview" class="btn btn-lg btn-danger form-control">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                    Cancel
+                            </g:link>
+                        </div>
+
+                    <div class="col-sm-6 col-md-6">
+                        <button type="submit" class="btn btn-lg btn-primary form-control">
+                            <span class="glyphicon glyphicon-ok icon-white"></span>
+                            Add
+                        </button>
+
+                    </div>
+
+                    </div>
                 </div>
             </div>
 
