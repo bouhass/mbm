@@ -12,9 +12,9 @@ button,
 }
 </style>
 
-<div class="row">
+<div class="row toolbar">
 
-    <div class="col-sm-7 col-md-7 ward-select" style="margin-left: -15px;">
+    <div class="col-sm-7 col-md-7 ward-select">
         <div class="btn-group">
             <button type="button" class="btn btn-link btn-lg dropdown-toggle" data-toggle="dropdown">
                 <h3>

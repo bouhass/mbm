@@ -1,10 +1,10 @@
 <%@ page import="com.wardbook.TeamList" %>
 <g:applyLayout name="bootstrap-navbar">
 
-    <div class="col-md-5 col-md-offset-3" id="add-patient-form">
+    <div class="col-md-5 col-md-offset-3 shadow" id="add-patient-form">
 
         <div class="page-header">
-            <h2>Add patient</h2>
+            <h4><span class="glyphicon glyphicon-user"></span>Add New Patient</h4>
         </div>
 
         <g:if test="${flash.message}">

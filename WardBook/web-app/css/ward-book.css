@@ -37,8 +37,16 @@
 ------------ BASIC STYLE --------------
 -------------------------------------*/
 
-body {
+body{
     font-size: 13px;
+}
+
+#patient-view .panel-collapse {
+    font-size: 12px;
+}
+
+textarea {
+    font-size: 11px !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,6 +72,23 @@ h4, h5 {
     margin-bottom: 0px;
     margin-left: 0px;
 }
+
+.toolbar {
+    margin-bottom: 6px;
+}
+
+.toolbar .ward-select {
+    margin-left: -15px;
+}
+
+.margin-left {
+    margin-left: 15px;
+}
+
+.margin-right {
+    margin-right: 15px;
+}
+
 
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
     margin-right: 0px;
@@ -274,8 +299,6 @@ th, td {
     color: #0c0;
 }
 
-
-
 .no-padding {
     padding: 0;
 }
@@ -284,15 +307,27 @@ th, td {
     margin-bottom: 14px;
 }
 
+.shadow {
+    -moz-box-shadow:    0 2px 15px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 2px 15px rgba(0,0,0,0.5);
+    box-shadow:         0 2px 15px rgba(0,0,0,0.5);
+}
+
 /*-------------------------------------
 ------------- BUTTON STYLE ------------
 -------------------------------------*/
+.btn-link:hover, .btn-link:focus {
+    text-decoration: none;
+}
 
 .btn {
+    letter-spacing: 1px;
     margin-bottom: 0;
     font-size: 14px;
     border: 1px solid transparent;
     border-radius: 2px;
+    -webkit-transition: background-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: background-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 
@@ -307,13 +342,13 @@ th, td {
 
 }
 
-.btn-secodary{
+.btn-secondary{
     color: #fff;
     background-color: #32cb98;
     border-bottom: 2px solid #238c69
 }
 
-.btn-secodary:hover, .btn-secodary:focus, .btn-secodary:active, .btn-secodary.active{
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active{
     color:#fff;
 
 }
@@ -326,6 +361,7 @@ th, td {
 
 
 .btn-delete {
+    min-height: 19px;
     font-size: 10px;
     color: #fff;
     background-color: #ddd;
@@ -343,7 +379,14 @@ th, td {
     color:#3ab3f0
 }
 
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+}
 
+input.form-control {
+    height: 35px;
+}
 
 /*-------------------------------------
 ------------- PATIENT LIST ------------
@@ -374,6 +417,7 @@ th, td {
     border: none;
 }
 
+
 .panel-info > .panel-heading   {
     border-bottom: 1px solid #eeeeee;
 }
@@ -398,11 +442,16 @@ th, td {
 
 .ward-select button {
     padding-top: 0;
+    margin-bottom: 0px;
+
+
 }
 
 .ward-select button h3 {
     margin-top: 0;
+    padding-top: 6px;
     text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .panel, .panel-heading, .panel-group .panel {
@@ -437,6 +486,8 @@ th, td {
     border-bottom: 1px solid #333;
 }
 
+
+
 .panel-primary > .panel-heading + .panel-collapse .panel-body  {
     border:none;
 }
@@ -451,7 +502,9 @@ th, td {
 
 .panel-info > .panel-heading   {
     border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 0 3px rgba(0,0,0,0.15);
 }
+
 
 #groupsAccordion.panel-group{
     border:none;
@@ -475,13 +528,135 @@ th, td {
     resize: none;
 }
 
+.record-plan tr{
+    line-height: 20px;
+
+}
+
+.record-plan textarea.form-control {
+    height: 46px;
+    margin-bottom: 10px;
+}
+
+record-plan textarea.form-control:active {
+    height: 66px;
+}
 
 /*-------------------------------------
 ------------- ADD PATIENT ------------
 -------------------------------------*/
 
+#add-patient-form{
+
+    border-radius: 6px;
+    padding: 0;
+}
+
 #add-patient-form .page-header {
     text-transform: uppercase;
-    color: #3ab3f0;
+    color: #fff;
+    background-color: #3e4446;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 2px solid #333;
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
+
+#add-patient-form .page-header h4{
+    letter-spacing: 1px;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+
+
+#add-patient-form .row {
+    margin-top: 25px;
+}
+
+#add-patient-form label {
+    display: inline-block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-family: 'brandon_grotesque' sans-serif;
+    color: #000;
+}
+
+#add-patient-form input[type="text"] {
+    width: 100%;
+    min-height: 26px;
+    border: none;
+    padding: 0 6px;
+    background: url("../images/input-field_default.png") bottom left no-repeat;
+}
+
+#add-patient-form input[type="text"]:focus {
+    outline: none;
+    background: url("../images/input-field_active.png") bottom left no-repeat;
+}
+
+#add-patient-form input[type="text"]#nhsNumber, #add-patient-form input[type="text"]#location, #add-patient-form input[type="text"]#speciality {
+    width: 100%;
+    min-height: 26px;
+    border: none;
+    padding: 0 6px;
+    background: url("../images/input-field_default-small.png") bottom left no-repeat;
+}
+
+#add-patient-form input[type="text"]#nhsNumber:focus, #add-patient-form input[type="text"]#location:focus, #add-patient-form input[type="text"]#speciality:focus {
+    outline: none;
+    background: url("../images/input-field_active-small.png") bottom left no-repeat;
+}
+
+#add-patient-form .collapse{
+    border-bottom: none;
+}
+
+#add-patient-form select{
+    margin-top: 10px;
+}
+
+#add-patient-form select#ward {
+    width: 100%;
+}
+
+/*#add-patient-form select {*/
+    /*margin-top: 10px;*/
+    /*height: 26px;*/
+    /*-webkit-appearance: none;*/
+/*}*/
+
+/*#add-patient-form select:after {*/
+    /*content: "";*/
+    /*display: block;*/
+    /*width: 26px;*/
+    /*height: 26px;*/
+    /*background-color: #3ab3f0;*/
+
+/*}*/
+
+.form-action .col-sm-12, .form-action .col-md-12, .form-action .col-sm-6, .form-action .col-md-6 {
+    padding: 0;
+}
+
+.form-action .btn{
+    height: 50px;
+    width: 100%;
+    padding: 16px 16px;
+
+}
+
+.form-action .btn-danger{
+    border-radius: 0 0 0 6px;
+}
+
+.form-action .btn-primary{
+    border-radius: 0 0 6px 0;
+}
+
+
 

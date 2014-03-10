@@ -46,13 +46,13 @@
             </div>
 
             <div id="collapse-${patient.id}" class="panel-collapse collapse ${(patient == patients.first() || params['new'] == "${patient.id}") ? 'in' : ''}">
-                <div class="panel-body">
+                <div class="panel-body inner-content">
 
                     <div class="col-sm-2 col-md-2">
                         <h5>Demographics</h5>
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}</a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}<span class="glyphicon glyphicon-pencil pull-right">edit</span></a>
                         </div>
 
                         <div class="row">
@@ -64,12 +64,12 @@
                         </div>
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status filterable-status">${patient.status}</a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status filterable-status">${patient.status}<span class="glyphicon glyphicon-pencil pull-right">edit</span></a>
                         </div>
 
                         <div class="row">
-                            <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-secodary btn-sm">
-                                View profile
+                            <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-secondary btn-md">
+                               <span class="glyphicon glyphicon-eye-open"></span> View profile
                             </g:link>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                             <a href="#" data-id="${patient.id}" data-value="${patient.history}" class="patient-history">${patient.history}</a>
                         </div>
 
-                        <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-6 record-plan">
                             <h5>Current Plan</h5>
                             <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea',
                                     placehoder: 'Reason for handover / Changes over weekend / Ceiling of care']" />

@@ -2,7 +2,7 @@
 
     <g:render template="/shared/gridViewToolbar" model="[teamLists: teamLists]" />
 
-    <table id="patients-table" class="table table-striped table-bordered table-hover">
+    <table id="patients-table" class="table table-striped table-bordered table-hover print-mode">
         <thead>
             <tr>
                 <th>DEMOGRAPHICS</th>
