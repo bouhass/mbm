@@ -50,13 +50,13 @@
                                 Patient
                             </div>
 
-                            <div class="col-sm-3 col-md-3">
+                            <div class="col-sm-5 col-md-5">
                                 Task
                             </div>
 
-                            <div class="col-sm-2 col-md-2">
-                                Time due
-                            </div>
+                            %{--<div class="col-sm-2 col-md-2">--}%
+                                %{--Time due--}%
+                            %{--</div>--}%
 
                             <div class="col-sm-1 col-md-1">
                                 <span class="glyphicon glyphicon-comment"></span>
@@ -82,13 +82,13 @@
                                     ${task.patient}
                                 </div>
 
-                                <div class="col-sm-3 col-md-3">
+                                <div class="col-sm-5 col-md-5">
                                     ${task.name}
                                 </div>
 
-                                <div class="col-sm-2 col-md-2">
-                                    <g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/>
-                                </div>
+                                %{--<div class="col-sm-2 col-md-2">--}%
+                                    %{--<g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/>--}%
+                                %{--</div>--}%
 
                                 <div class="col-sm-1 col-md-1">
                                     ${task.comments.size}
@@ -128,10 +128,10 @@
                                         <dt>Priority</dt>
                                         <dd><a href="#" data-id="${task.id}" data-value="${task.priority}" class="task-priority">${task.priority}</a></dd>
                                     </dl>
-                                    <dl>
-                                        <dt>Time due</dt>
-                                        <dd><a href="#" data-type="combodate" data-pk="${task.id}" data-task-id="${task.id}" data-value="${task.timeDue}" class="task-time-due"></a></dd>
-                                    </dl>
+                                    %{--<dl>--}%
+                                        %{--<dt>Time due</dt>--}%
+                                        %{--<dd><a href="#" data-type="combodate" data-pk="${task.id}" data-task-id="${task.id}" data-value="${task.timeDue}" class="task-time-due"></a></dd>--}%
+                                    %{--</dl>--}%
                                 </div>
 
                                 <div class="row">
@@ -184,7 +184,7 @@
                 updateEntityField(this, 'task', 'priority', 'select', { source: { 'NON-URGENT': "NON-URGENT", 'URGENT': "URGENT" } });
             });
 
-            updateEntityDateTimeField($('.task-time-due'), 'timeDue', 'task');
+//            updateEntityDateTimeField($('.task-time-due'), 'timeDue', 'task');
         });
     </script>
 

@@ -56,8 +56,11 @@
 
         <div class="col-sm-3 col-md-3">
             <h4>Current Plan</h4>
-            <g:render template="/shared/recordList" model="[patient: patient, recordType: 'PLAN', inputType: 'textarea',
-                    placehoder: 'Reason for handover / Changes over weekend / Ceiling of care']" />
+            <g:render template="/shared/recordList" model="[
+                    patient: patient,
+                    recordType: 'PLAN',
+                    inputType: 'textarea',
+                    placehoder: message(code: 'add.plan.record.input.placeholder')]" />
         </div>
 
         <div class="col-sm-3 col-md-3">
@@ -68,7 +71,7 @@
     </div>
 
     <div class="row col-sm-12 col-md-12">
-        <div class="col-sm-6 col-md-6">
+        <div id="WEIGHT" class="col-sm-6 col-md-6">
             <h4>Weight</h4>
             <canvas id="weightChart" width="320" height="200"></canvas>
         </div>
@@ -127,7 +130,7 @@
                 <th>Location</th>
                 <th>Patient</th>
                 <th>Task</th>
-                <th>Time due</th>
+                %{--<th>Time due</th>--}%
                 <th>Comments</th>
                 <th>Status</th>
             </tr>
@@ -139,7 +142,7 @@
                         <td>${task.patient.location}</td>
                         <td>${task.patient}</td>
                         <td>${task.name}</td>
-                        <td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>
+                        %{--<td><g:formatDate format="dd-MM-yyyy HH:mm" date="${task.timeDue}"/></td>--}%
                         <td>${task.comments.size}</td>
                         <td class="task-status" data-task-status="${task.status}"><img/></td>
                     </tr>
@@ -147,6 +150,15 @@
             </g:each>
             </tbody>
         </table>
+    </div>
+
+    <div id="PLAN" class="row col-sm-12 col-md-12">
+        <h2>Plan</h2>
+
+        <g:render template="/shared/recordList" model="[
+                patient: patient,
+                recordType: 'PLAN',
+                showAllEntries: true]" />
     </div>
 
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
