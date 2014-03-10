@@ -4,7 +4,7 @@
     <div class="col-md-4 col-md-offset-4 shadow" id="add-patient-form">
 
         <div class="page-header">
-            <h4><span class="glyphicon glyphicon-user"></span>Add New Patient</h4>
+            <h4><span class="glyphicon glyphicon-user margin-right"></span>Add New Patient</h4>
         </div>
 
         <g:if test="${flash.message}">
@@ -56,7 +56,7 @@
             <div class="row" id="accordion">
                 <h5>
                 <a class="margin-left" data-toggle="collapse" data-parent="#accordion" href="#moreDetail">
-                Add Optional Details <span class="glyphicon glyphicon-plus cirle"></span></a></h5>
+                Add Optional Details <span class="glyphicon glyphicon-plus margin-left"></span></a></h5>
                 <div id="moreDetail" class="collapse">
                    <div class="row">
 
