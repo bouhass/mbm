@@ -639,7 +639,7 @@ record-plan textarea.form-control:active {
 
 /*}*/
 
-.form-action .col-sm-12, .form-action .col-md-12, .form-action .col-sm-6, .form-action .col-md-6 {
+.form-action .col-sm-6, .form-action .col-md-6 {
     padding: 0;
 }
 
