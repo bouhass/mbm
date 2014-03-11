@@ -31,6 +31,10 @@
                         patient: p,
                         recordType: 'WEIGHT',
                         inputType: 'text']" />
+
+                <td class="hidden">
+                    <g:render template="/shared/taskList" model="[patient: p]" />
+                </td>
             </tr>
         </g:each>
         </tbody>

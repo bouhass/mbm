@@ -52,6 +52,10 @@
             border:none;
         }
 
+        .WEIGHT {
+            display: none;
+        }
+
     </style>
 </head>
 
