@@ -548,12 +548,11 @@ input.form-control {
 }
 
 .record-plan textarea.form-control {
-    height: 46px;
     margin-bottom: 10px;
 }
 
-record-plan textarea.form-control:active {
-    height: 66px;
+.editable-container.editable-inline {
+    width: 100%;
 }
 
 td.update-task-status {
@@ -562,6 +561,14 @@ td.update-task-status {
 
 td.delete-record {
     vertical-align: top;
+}
+
+.editHistory-textarea{
+    height: 168px !important;
+}
+
+textarea, .control-group, .form-group, .editable-input {
+    width: 100% !important;
 }
 
 /*-------------------------------------
