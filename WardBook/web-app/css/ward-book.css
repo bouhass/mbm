@@ -89,6 +89,17 @@ h4, h5 {
     margin-right: 15px;
 }
 
+.no-padding {
+    padding:0;
+}
+
+.no-padding-lf {
+    padding-left: 0;
+}
+
+.no-padding-rt {
+    padding-right: 0;
+}
 
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
     margin-right: 0px;
@@ -367,6 +378,8 @@ th, td {
     background-color: #ddd;
     border-radius: 20px;
     padding: 1px 3px;
+    letter-spacing: 0;
+
 }
 
 .btn-delete:hover, .btn-delete:focus, .btn-delete:active, .btn-delete.active{
@@ -391,6 +404,7 @@ input.form-control {
 /*-------------------------------------
 ------------- PATIENT LIST ------------
 -------------------------------------*/
+
 #patient-view {
     margin-bottom: 50px;
 }
@@ -542,6 +556,14 @@ record-plan textarea.form-control:active {
     height: 66px;
 }
 
+td.update-task-status {
+    text-align: right;
+}
+
+td.delete-record {
+    vertical-align: top;
+}
+
 /*-------------------------------------
 ------------- ADD PATIENT ------------
 -------------------------------------*/
@@ -656,6 +678,15 @@ record-plan textarea.form-control:active {
 
 .form-action .btn-primary{
     border-radius: 0 0 6px 0;
+}
+
+select#consultant {
+    max-width: 100%;
+}
+
+select#teamLists {
+    width: 100%;
+    padding: 5px;
 }
 
 

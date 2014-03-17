@@ -16,7 +16,7 @@
                           data-type="${recordType}"
                           data-input-type="${inputType}"
                           placeholder="${placehoder ?: message(code: 'add.entry.input.default.placeholder')}"
-                          rows="3"></textarea>
+                          rows="2"></textarea>
             </tr>
         </g:if>
 

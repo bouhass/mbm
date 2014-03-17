@@ -12,14 +12,14 @@
                             ${patient.location}
                         </div>
 
-                        <div class="col-sm-7 col-md-7">
+                        <div class="col-sm-8 col-md-8">
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender ? patient.gender[0] : ''}
                             <g:if test="${!request.user.teamList && patient.teamLists}">
                                 | ${patient.teamLists}
                             </g:if>
                         </div>
 
-                        <div class="col-sm-3 col-md-3">
+                        <div class="col-sm-2 col-md-2">
                             <%
                                 def activeTasks = patient.tasks.findAll { it.isActive() }
                                 def taskCountByStatus = activeTasks.countBy { it.status }
@@ -48,7 +48,7 @@
             <div id="collapse-${patient.id}" class="panel-collapse collapse ${(patient == patients.first() || params['new'] == "${patient.id}") ? 'in' : ''}">
                 <div class="panel-body inner-content">
 
-                    <div class="col-sm-2 col-md-2">
+                    <div class="col-sm-2 col-md-2 no-padding-lf">
                         <h5>Demographics</h5>
 
                         <div class="row">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6 col-md-6">
+                    <div class="col-sm-7 col-md-7 no-padding">
                         <div class="col-sm-6 col-md-6">
                             <h5>Clinical History</h5>
                             <a href="#" data-id="${patient.id}" data-value="${patient.history}" class="patient-history">${patient.history}</a>
@@ -90,7 +90,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-md-4">
+                    <div class="col-sm-3 col-md-3 no-padding-rt">
                         <h5>Tasks</h5>
                         <g:render template="/shared/taskList" model="[patient: patient]" />
                     </div>

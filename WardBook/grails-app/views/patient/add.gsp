@@ -61,36 +61,40 @@
                    <div class="row">
 
                             <div class="col-sm-4 col-md-4">
-                                <f:field bean="patientInstance" property="gender" />
+                                <f:field bean="patientInstance" property="consultant" />
                             </div>
 
                             <div class="col-sm-4 col-md-4">
-                                <f:field bean="patientInstance" property="nhsNumber" />
+                                <f:field bean="patientInstance" property="location" />
                             </div>
 
                             <div class="col-sm-4 col-md-4">
-                                 <f:field bean="patientInstance" property="location" />
+                                <div class="control-group">
+                                <label class="control-label" for="teamLists">Team lists</label>
+                                    <div class="controls">
+                                        <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
+                                    </div>
+                                </div>
+
                             </div>
+
 
                    </div>
 
                 <div class="row">
                     <div class="col-sm-4 col-md-4">
-                        <f:field bean="patientInstance" property="consultant" />
+                        <f:field bean="patientInstance" property="gender" />
+                    </div>
+
+                    <div class="col-sm-4 col-md-4">
+                        <f:field bean="patientInstance" property="nhsNumber" />
                     </div>
 
                     <div class="col-sm-4 col-md-4">
                         <f:field bean="patientInstance" property="speciality" />
                     </div>
 
-                    <div class="col-sm-4 col-md-4">
-                        <div class="control-group">
-                            <label class="control-label" for="teamLists">Team lists</label>
-                            <div class="controls">
-                                <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
 

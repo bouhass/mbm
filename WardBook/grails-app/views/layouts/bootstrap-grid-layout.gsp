@@ -24,7 +24,7 @@
 
 
         .print-mode {
-            font-size: 11px;
+            font-size: 10px;
         }
 
         .print-mode th {
@@ -34,10 +34,15 @@
         .print-mode td {
             padding: 2px;
             width: auto !important;
+            vertical-align: top;
+        }
+
+        .patient-info tr td {
+            padding-bottom: 0;
         }
 
         .print-mode .inner-table td {
-            line-height: 16px;
+            line-height: 12px;
         }
 
         .print-mode textarea {
@@ -54,6 +59,44 @@
 
         .WEIGHT {
             display: none;
+        }
+
+        .input-tr  {
+            display: none;
+        }
+
+        .DEMOGRAPHICS {
+            min-width: 250px;
+        }
+
+        .editable, a {
+            text-decoration: none;
+            border-bottom: none !important;
+            color: black;
+        }
+
+        img {
+            max-height: 12px;
+        }
+
+        #patients-table {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .patient-info tr {
+            display: inline;
+        }
+
+        .patient-info td {
+            display: inline;
+            border-right: 1px solid !important;
+        }
+
+        table {
+            border: none !important;
+            border-spacing: 0;
         }
 
     </style>

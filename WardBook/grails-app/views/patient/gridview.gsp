@@ -5,16 +5,17 @@
     <table id="patients-table" class="table table-striped table-bordered table-hover print-mode">
         <thead>
             <tr>
-                <th>DEMOGRAPHICS</th>
+                <th class="DEMOGRAPHICS">DEMOGRAPHICS</th>
                 <th class="HISTORY">CURRENT HISTORY</th>
                 <th class="PLAN">CURRENT PLAN</th>
                 <th class="WEIGHT">WEIGHT</th>
+                <th class="hidden">TASKS</th>
             </tr>
         </thead>
         <tbody>
         <g:each var="p" in="${patients}">
             <tr id="${p.id}" class="filterable-element ${p.status.contains('Unwell') ? 'danger' : ''}">
-                <td>
+                <td class="DEMOGRAPHICS">
                     <g:render template="patientInfo" model="[patient: p]" />
                 </td>
                 <td>
@@ -40,6 +41,7 @@
         </tbody>
     </table>
 
+    <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
     <script>
         $(window).load(function() {
             if (window.location.search.indexOf('print') != -1) {

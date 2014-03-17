@@ -98,7 +98,7 @@ $(window).load(function() {
     });
 
     $(".add-record-textarea").click(function() {
-        $(this).attr('rows', 3);
+        $(this).attr('rows', 10);
     });
 
     $(".add-record-textarea").blur(function() {
@@ -107,7 +107,7 @@ $(window).load(function() {
             addNewRecord(val, $(this).attr('data-patient_id'), $(this).attr('data-type'), $(this).attr('data-input-type'));
             $(this).val('');
         }
-        $(this).attr('rows', 3);
+        $(this).attr('rows', 2);
     });
 
     $('.delete-record').live('click', deleteRecord);
