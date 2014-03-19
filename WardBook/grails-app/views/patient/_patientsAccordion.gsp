@@ -9,7 +9,7 @@
 
                     <a data-toggle="collapse" data-parent="#patientsAccordion-${groupId}" href="#collapse-${patient.id}">
                         <div class="col-sm-1 col-md-1">
-                            ${patient.location}
+                            <a href="#" data-id="${patient.id}" data-value="${patient.location}" class="patient-location">${patient.location}</a>
                         </div>
 
                         <div class="col-sm-8 col-md-8">
