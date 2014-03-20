@@ -7,11 +7,11 @@
                         <input type="checkbox" data-id="${patient.id}" ${patient.handover ? 'checked' : ''} class="patient-handover">
                     </div>
 
-                    <a data-toggle="collapse" data-parent="#patientsAccordion-${groupId}" href="#collapse-${patient.id}">
-                        <div class="col-sm-1 col-md-1">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.location}" class="patient-location">${patient.location}</a>
-                        </div>
+                    <div class="col-sm-1 col-md-1">
+                        <a href="#" data-id="${patient.id}" data-value="${patient.location}" class="patient-location">${patient.location}</a>
+                    </div>
 
+                    <a data-toggle="collapse" data-parent="#patientsAccordion-${groupId}" href="#collapse-${patient.id}">
                         <div class="col-sm-8 col-md-8">
                             ${patient} - ${new Date().year - patient.dateOfBirth.year} ${patient.gender ? patient.gender[0] : ''}
                             <g:if test="${!request.user.teamList && patient.teamLists}">
@@ -49,10 +49,14 @@
                 <div class="panel-body inner-content">
 
                     <div class="col-sm-2 col-md-2 no-padding-lf">
-                        <h5>Demographics</h5>
+                        <h5>
+                            Demographics
+                        </h5>
+
+                        %{--<span class="glyphicon glyphicon-pencil pull-right">edit</span>--}%
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}<span class="glyphicon glyphicon-pencil pull-right">edit</span></a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}</a>
                         </div>
 
                         <div class="row">
@@ -64,7 +68,7 @@
                         </div>
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status filterable-status">${patient.status}<span class="glyphicon glyphicon-pencil pull-right">edit</span></a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.status}" class="patient-status filterable-status">${patient.status}</a>
                         </div>
 
                         <div class="row">

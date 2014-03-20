@@ -1,11 +1,13 @@
 <%
-    def records = patient.records.findAll { it.type == recordType }.sort { it.createdDate }.reverse()
+    def records = patient.records.findAll { it.type == recordType }.sort { it.editedDate }.reverse()
     def cropped = false
-    if (!showAllEntries && (records.size > 3)) {
+    def aWeekBefore = (new Date() - 7)
+    if (!showAllEntries && records.find { it.editedDate < aWeekBefore }) {
+        records = records.findAll { it.editedDate >= aWeekBefore }
         cropped = true
-        records = records[0..2]
     }
 %>
+
 <td class="${recordType}">
     <table id="record-${recordType}-${patient.id}" class="inner-table">
 
@@ -58,7 +60,7 @@
                 <td></td>
                 <td>
                     <g:link controller="patient" action="profile" id="${patient.id}" fragment="${recordType}">
-                        Show more ...
+                        Show history ...
                     </g:link>
                 </td>
             </tr>
