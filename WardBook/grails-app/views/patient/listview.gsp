@@ -45,7 +45,7 @@
                 </g:each>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="Empty" class="checkbox-filter" data-filter-type="consultant" onclick="javascript:filterableFilter()" />
+                        <input type="checkbox" value="CONS" class="checkbox-filter" data-filter-type="consultant" onclick="javascript:filterableFilter()" />
                         Not set
                     </label>
                 </div>

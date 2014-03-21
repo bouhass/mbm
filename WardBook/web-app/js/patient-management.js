@@ -4,7 +4,10 @@ $(window).load(function() {
     });
 
     $('.patient-consultant').each(function() {
-        updateEntityField(this, 'patient', 'consultant.id', 'select', { source: WEB_APP_ROOT+'helpers/consultants' })
+        updateEntityField(this, 'patient', 'consultant.id', 'select', {
+            source: WEB_APP_ROOT+'helpers/consultants',
+            emptytext: 'CONS'
+        })
     });
 
     $('.patient-hospitalIdentifier').each(function() {

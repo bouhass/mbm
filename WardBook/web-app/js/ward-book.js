@@ -85,8 +85,7 @@ function addTask(patient_id, task) {
             '<td>' +
                 '<div id="'+taskNameId+'" data-type="task" data-task-id="'+task.id+'" data-task-status="PENDING" data-name="'+task.name+'" data-priority="NON-URGENT" class="editable editable-click task">' +
                     '<a data-toggle="modal" href="'+WEB_APP_ROOT+'task/partialEdit/'+task.id+'" data-target="#task-edit-modal">'+
-                        task.name+
-                        '<span class="task-creator"> - '+CURRENT_USER_NAME+'</span>'+
+                        '<span class="task-name">'+task.name+'</span> - <span class="task-creator">'+CURRENT_USER_NAME+'</span>' +
                     '</a>' +
                 '</div>' +
             '</td>' +
