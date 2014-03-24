@@ -26,7 +26,7 @@
                         patient: p,
                         recordType: 'PLAN',
                         inputType: 'textarea',
-                        placehoder: message(code: 'add.plan.record.input.placeholder')]" />
+                        placeholder: message(code: 'add.plan.record.input.placeholder')]" />
 
                 <g:render template="/shared/recordList" model="[
                         patient: p,

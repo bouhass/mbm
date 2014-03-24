@@ -17,7 +17,7 @@
                           data-patient_id="${patient.id}"
                           data-type="${recordType}"
                           data-input-type="${inputType}"
-                          placeholder="${placehoder ?: message(code: 'add.entry.input.default.placeholder')}"
+                          placeholder="${placeholder ?: message(code: 'add.entry.input.default.placeholder')}"
                           rows="2"></textarea>
             </tr>
         </g:if>
@@ -29,7 +29,7 @@
                 </td>
                 <td colspan="2">
                     <input type="text"
-                           placeholder="${placehoder ?: message(code: 'add.entry.input.default.placeholder')}"
+                           placeholder="${placeholder ?: message(code: 'add.entry.input.default.placeholder')}"
                            data-patient_id="${patient.id}"
                            data-type="${recordType}"
                            data-input-type="${inputType}"

@@ -51,7 +51,7 @@
 
         <div class="col-sm-3 col-md-3">
             <h4>Clinical History</h4>
-            <a href="#" data-id="${patient.id}" data-value="${patient.history}" class="patient-history">${patient.history}</a>
+            <a href="#" data-id="${patient.id}" data-value="${patient.history ?: message(code: 'patient.history.input.placeholder')}" class="patient-history">${patient.history}</a>
         </div>
 
         <div class="col-sm-3 col-md-3">
@@ -60,7 +60,7 @@
                     patient: patient,
                     recordType: 'PLAN',
                     inputType: 'textarea',
-                    placehoder: message(code: 'add.plan.record.input.placeholder')]" />
+                    placeholder: message(code: 'add.plan.record.input.placeholder')]" />
         </div>
 
         <div class="col-sm-3 col-md-3">

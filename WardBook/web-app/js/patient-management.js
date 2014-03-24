@@ -27,7 +27,7 @@ $(window).load(function() {
     });
 
     $('.patient-history').each(function() {
-        updateEntityField(this, 'patient', 'history', 'textarea', {emptytext: 'Admission:\nBackground:', inputclass: 'editHistory-textarea'})
+        updateEntityField(this, 'patient', 'history', 'textarea', {inputclass: 'editHistory-textarea'})
     });
 
     $('.patient-status').each(function() {
@@ -102,6 +102,7 @@ $(window).load(function() {
 
     $(".add-record-textarea").click(function() {
         $(this).attr('rows', 10);
+        $(this).val($(this).attr('placeholder'));
     });
 
     $(".add-record-textarea").blur(function() {
