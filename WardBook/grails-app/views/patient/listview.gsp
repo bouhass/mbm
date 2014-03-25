@@ -1,4 +1,4 @@
-<%@ page import="com.wardbook.Patient; com.wardbook.User;" %>
+<%@ page import="com.wardbook.TeamList; com.wardbook.Patient; com.wardbook.User;" %>
 
 <g:applyLayout name="bootstrap-navbar">
 
@@ -136,6 +136,24 @@
 
     <script>
         $(window).load(function() {
+            $('.teamLists').each(function() {
+                $(this).editable({
+                    title: 'Select list(s)',
+                    type: 'select2',
+                    url: WEB_APP_ROOT+"helpers/teamLists",
+                    pk: $(this).attr('data-id'),
+                    onblur: 'submit',
+                    placement: 'right',
+                    select2: {
+                        placeholder: 'Select list(s)',
+                        tokenSeparators: [",", " "],
+                        tags: ${ TeamList.list().collect { "'${it}'" } }
+                    },
+
+                    tpl: '<input type="hidden" style="min-width: 100px">'
+                });
+            });
+
             $('#collapseExpandAll').click(function() {
                 if ($(this).text().trim() == 'Collapse all') {
                     $('.filterable-element .collapse').removeClass('in');

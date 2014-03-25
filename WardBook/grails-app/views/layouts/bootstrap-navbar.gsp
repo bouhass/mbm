@@ -10,6 +10,7 @@
         padding-top: 70px !important
     }
     </style>
+    <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
 </head>
 
 <body>
@@ -103,6 +104,7 @@
     </nav>
 
     <script src="${resource(dir: 'js', file: 'screen-management.js')}"></script>
+    <script src="${resource(dir: 'select2/js', file: 'select2.js')}"></script>
     <script>
         $(window).load(function() {
             $('#clock').text(moment().format('Do MMM HH:mm'));

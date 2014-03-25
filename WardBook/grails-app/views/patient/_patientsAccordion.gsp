@@ -72,6 +72,14 @@
                         </div>
 
                         <div class="row">
+                            <h5>
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                                Add to list(s)...
+                            </h5>
+                            <a href="#" class="teamLists" data-type="select2" data-id="${patient.id}">${patient.teamLists?.join(', ')}</a>
+                        </div>
+
+                        <div class="row">
                             <g:link controller="patient" action="profile" id="${patient.id}" class="btn btn-secondary btn-md">
                                <span class="glyphicon glyphicon-eye-open"></span> View profile
                             </g:link>

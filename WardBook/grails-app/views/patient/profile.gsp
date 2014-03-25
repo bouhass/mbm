@@ -1,7 +1,5 @@
 <%@ page import="com.wardbook.TeamList;" %>
 <g:applyLayout name="bootstrap-navbar">
-    <link rel="stylesheet" href="${resource(dir: 'select2/css',  file: 'select2.css')}">
-
     <div class="row col-sm-12 col-md-12">
 
         <div class="col-sm-3 col-md-3">
@@ -45,7 +43,7 @@
                     <span class="glyphicon glyphicon-list-alt"></span>
                     Add to list(s)...
                 </h4>
-                <a href="#" id="teamLists" data-type="select2">${patient.teamLists?.join(', ')}</a>
+                <a href="#" class="teamLists" data-type="select2" data-id="${patient.id}">${patient.teamLists?.join(', ')}</a>
             </div>
         </div>
 
@@ -164,7 +162,6 @@
     <script src="${resource(dir: 'js', file: 'patient-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'task-management.js')}"></script>
     <script src="${resource(dir: 'js', file: 'Chart.min.js')}"></script>
-    <script src="${resource(dir: 'select2/js', file: 'select2.js')}"></script>
 
     <script>
         <%
@@ -197,11 +194,11 @@
             );
             </g:if>
 
-            $('#teamLists').editable({
+            $('.teamLists').editable({
                 title: 'Select list(s)',
                 type: 'select2',
                 url: WEB_APP_ROOT+"helpers/teamLists",
-                pk: ${patient.id},
+                pk: $(this).attr('data-id'),
                 onblur: 'submit',
                 select2: {
                     placeholder: 'Select list(s)',
