@@ -29,10 +29,6 @@
                 <div class="col-sm-4 col-md-4">
                     <f:field bean="contactInstance" property="phoneNumber" required="true" />
                 </div>
-
-                <div class="col-sm-4 col-md-4">
-                    <f:field bean="contactInstance" property="location" required="false" />
-                </div>
             </div>
 
             <div class="row">

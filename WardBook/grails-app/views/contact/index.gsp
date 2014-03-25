@@ -45,7 +45,6 @@
             <tr>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Location</th>
             </tr>
             </thead>
             <tbody>
@@ -56,9 +55,6 @@
                     </td>
                     <td>
                         <a data-id="${contact.id}" data-value="${contact.phoneNumber}" class="contact-phoneNumber">${contact.phoneNumber}</a>
-                    </td>
-                    <td>
-                        <a data-id="${contact.id}" data-value="${contact.location}" class="contact-location">${contact.location}</a>
                     </td>
                 </tr>
             </g:each>
@@ -72,16 +68,12 @@
 
     <script>
         $(window).load(function() {
-            $('.contact-name').each(function() {
+            $('.contact-name').each(function () {
                 updateEntityField(this, 'contact', 'name', 'text')
             });
 
-            $('.contact-phoneNumber').each(function() {
+            $('.contact-phoneNumber').each(function () {
                 updateEntityField(this, 'contact', 'phoneNumber', 'text')
-            });
-
-            $('.contact-location').each(function() {
-                updateEntityField(this, 'contact', 'location', 'text')
             });
         });
     </script>

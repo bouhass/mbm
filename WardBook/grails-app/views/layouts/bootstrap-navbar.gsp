@@ -70,10 +70,6 @@
                         </li>
                         <li role="presentation" class="divider"></li>
                         <li>
-                            <a href="#"><span class="glyphicon glyphicon-user"></span> My profile</a>
-                        </li>
-                        <li role="presentation" class="divider"></li>
-                        <li>
                             <g:if test="${request.user.onCall}">
                                 <a href="#" onclick="userOnCall(false)"><span class="glyphicon glyphicon-minus"></span> Leave On Call</a>
                             </g:if>
