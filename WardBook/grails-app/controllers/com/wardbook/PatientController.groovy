@@ -57,6 +57,7 @@ class PatientController {
                 }
 
                 patientInstance = new Patient(params)
+                patientInstance.teamLists.each { patientInstance.addToTeamLists(it) }
                 if (!patientInstance.save(flush: true)) {
                     render view: 'add', model: [patientInstance: patientInstance]
                     return

@@ -69,13 +69,7 @@
                             </div>
 
                             <div class="col-sm-4 col-md-4">
-                                <div class="control-group">
-                                <label class="control-label" for="teamLists">Team lists</label>
-                                    <div class="controls">
-                                        <g:select from="${TeamList.list()}" name="teamLists" id="teamLists" multiple="true" optionKey="id" optionValue="name" />
-                                    </div>
-                                </div>
-
+                                <f:field bean="patientInstance" property="teamLists" />
                             </div>
 
 
