@@ -194,18 +194,20 @@
             );
             </g:if>
 
-            $('.teamLists').editable({
-                title: 'Select list(s)',
-                type: 'select2',
-                url: WEB_APP_ROOT+"helpers/teamLists",
-                pk: $(this).attr('data-id'),
-                onblur: 'submit',
-                select2: {
-                    placeholder: 'Select list(s)',
-                    tokenSeparators: [",", " "],
-                    tags: ${ TeamList.list().collect { "'${it}'" } }
-                },
-                tpl: '<input type="hidden" style="min-width: 100px">'
+            $('.teamLists').each(function() {
+                $(this).editable({
+                    title: 'Select list(s)',
+                    type: 'select2',
+                    url: WEB_APP_ROOT+"helpers/teamLists",
+                    pk: $(this).attr('data-id'),
+                    onblur: 'submit',
+                    select2: {
+                        placeholder: 'Select list(s)',
+                        tokenSeparators: [",", " "],
+                        tags: ${ TeamList.list().collect { "'${it}'" } }
+                    },
+                    tpl: '<input type="hidden" style="min-width: 100px">'
+                });
             });
 
             $('.task-status').each(function() {
