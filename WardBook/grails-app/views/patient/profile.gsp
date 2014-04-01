@@ -121,7 +121,7 @@
     </div>
 
     <div class="row col-sm-12 col-md-12">
-        <h2>History</h2>
+        <h2>Task archive</h2>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -151,7 +151,7 @@
     </div>
 
     <div id="PLAN" class="row col-sm-12 col-md-12">
-        <h2>Plan</h2>
+        <h2>Plan archive</h2>
 
         <g:render template="/shared/recordList" model="[
                 patient: patient,
