@@ -46,7 +46,9 @@
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </td>
-                <td data-rid="${record.id}" data-name="${record.name}" data-input-type="${inputType ?: 'text'}" class="record">${record.name}</td>
+                <td>
+                    <a href="#" data-rid="${record.id}" data-name="${record.name}" data-input-type="${inputType ?: 'text'}" class="record">${record.name}</a>
+                </td>
                 <td class="record-date">
                     <g:if test="${record.type in ['PROGRESS', 'PLAN', 'WEIGHT']}">
                         <g:formatDate format="dd/MMM" date="${record.editedDate}"/>

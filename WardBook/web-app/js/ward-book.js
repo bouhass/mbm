@@ -55,12 +55,12 @@ var deleteTask = function() {
 
 var deleteRecord = function() {
     var self = $(this);
-    var taskElement = self.siblings();
-    if (confirm('Are you sure you want to delete this record? ('+taskElement.attr('data-name')+')')) {
+    var recordElement = self.siblings().children();
+    if (confirm('Are you sure you want to delete this record? ('+recordElement.attr('data-name')+')')) {
         self.children().removeClass('glyphicon');
         self.children().removeClass('glyphicon-remove');
         self.append('<img src="'+WEB_APP_ROOT+'images/spinner.gif" />');
-        var recordId = taskElement.attr('data-rid');
+        var recordId = recordElement.attr('data-rid');
         $.get(WEB_APP_ROOT+'record/delete/'+recordId)
             .done(function(record) {
                 self.parent().remove();
@@ -128,7 +128,9 @@ function addRecord(patient_id, record, inputType) {
                 '<span class="glyphicon glyphicon-remove"></span>' +
             '</button>' +
             '</td>' +
-          '<td id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" data-input-type="'+inputType+'" class="record">'+record.name+'</td>' +
+          '<td>' +
+            '<a href="#" id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" data-input-type="'+inputType+'" class="record">'+record.name+'</a>' +
+          '</td>' +
         '</tr>';
 
     $(recordElement).insertAfter('#record-'+record.type+'-'+patient_id+' .input-tr');
