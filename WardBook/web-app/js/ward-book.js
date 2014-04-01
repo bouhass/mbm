@@ -336,3 +336,9 @@ var switchView = function () {
     $(this).addClass('active');
     $('#' + $(this).text().replace(' ', '_')).show();
 }
+
+function logout() {
+    if (confirm('Have you disposed of your handover sheet?')) {
+        window.location = WEB_APP_ROOT + 'logout';
+    }
+}

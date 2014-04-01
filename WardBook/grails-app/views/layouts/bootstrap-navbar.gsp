@@ -90,7 +90,7 @@
                         </li>
                         <li role="presentation" class="divider"></li>
                         <li>
-                            <a href="${createLink(uri: '/logout')}"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
+                            <a href="javascript:logout();"><span class="glyphicon glyphicon-log-out"></span> Logout </a>
                         </li>
                     </ul>
                 </li>
