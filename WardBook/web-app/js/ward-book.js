@@ -141,6 +141,7 @@ function addRecord(patient_id, record, inputType) {
         pk : record.id,
         url: WEB_APP_ROOT+'record/saveOrUpdate',
         showbuttons: false,
+        onblur: 'submit',
         params : function(params) {
             return {
                 'id' : record.id,
