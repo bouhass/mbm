@@ -56,7 +56,7 @@
                         %{--<span class="glyphicon glyphicon-pencil pull-right">edit</span>--}%
 
                         <div class="row">
-                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant">${patient.consultant}</a>
+                            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant filterable-consultant" title="Consultant">${patient.consultant}</a>
                         </div>
 
                         <div class="row">

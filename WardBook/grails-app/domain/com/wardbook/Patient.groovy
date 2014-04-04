@@ -44,7 +44,7 @@ class Patient implements Commentable {
         consultant nullable:true
         gender nullable:true, inList: ['MALE', 'FEMALE']
         history nullable:true, maxSize: 4096
-		location nullable:true
+		location nullable:true, unique: true
 		nhsNumber nullable:true
         speciality nullable:true
     }

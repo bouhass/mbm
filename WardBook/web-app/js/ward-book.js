@@ -131,6 +131,9 @@ function addRecord(patient_id, record, inputType) {
           '<td>' +
             '<a href="#" id="'+id+'" data-rid="'+record.id+'" data-name="'+record.name+'" data-input-type="'+inputType+'" class="record">'+record.name+'</a>' +
           '</td>' +
+          '<td class="record-date">' +
+            'NEW' +
+          '</td>' +
         '</tr>';
 
     $(recordElement).insertAfter('#record-'+record.type+'-'+patient_id+' .input-tr');

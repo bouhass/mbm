@@ -13,6 +13,8 @@ class ${className}Controller {
             names: 'GET'
     ]
 
+    def messageSource
+
     def index() {
         redirect action: 'list', params: params
     }
@@ -138,7 +140,7 @@ class ${className}Controller {
 
         ${propertyName}.properties = params
         if (!${propertyName}.save(flush: true)) {
-            render (status: 500, text: ${propertyName}.errors.allErrors.join(' \\n'))
+            render (status: 500, text: ${propertyName}.errors.allErrors.collect{ messageSource.getMessage(it, null) }.join(' \\n'))
             return
         }
 

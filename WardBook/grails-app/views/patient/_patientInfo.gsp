@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td>
-            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant">${patient.consultant}</a>
+            <a href="#" data-id="${patient.id}" data-value="${patient.consultant}" class="patient-consultant" title="Consultant">${patient.consultant}</a>
         </td>
         <td>
             <g:formatDate format="dd-MM-yyyy" date="${patient.dateOfBirth}"/>
