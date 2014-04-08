@@ -96,4 +96,13 @@ grails.project.dependency.resolution = {
 
 coverage {
     xml = true
+    exclusions = [
+            '**/*Config*',
+            '**/*Filters*',
+            '**/*Resources*',
+            '**/*CommentableController*',
+            '**/*LoginController*',
+            '**/*LogoutController*',
+            '**/twitter/bootstrap/scaffolding/**'
+    ]
 }
