@@ -103,6 +103,9 @@ coverage {
             '**/*CommentableController*',
             '**/*LoginController*',
             '**/*LogoutController*',
+            '**/*Role*',
+            '**/*User*',
+            '**/*UserRole*',
             '**/twitter/bootstrap/scaffolding/**'
     ]
 }

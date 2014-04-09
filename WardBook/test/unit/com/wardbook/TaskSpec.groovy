@@ -1,11 +1,12 @@
 package com.wardbook
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.TestMixin
+import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Unroll
 
 import java.util.concurrent.TimeUnit
 
-@TestFor(Task)
+@TestMixin(GrailsUnitTestMixin)
 class TaskSpec extends ConstraintUnitSpec {
 
     def task = new Task()
@@ -99,5 +100,9 @@ class TaskSpec extends ConstraintUnitSpec {
         'priority'  | null          | 'nullable'
         'priority'  | 'NON-URGENT'  | 'valid'
         'priority'  | 'URGENT'      | 'valid'
+
+        'timeDue'   | null          | 'valid'
+
+        'assignee'  | null          | 'valid'
     }
 }

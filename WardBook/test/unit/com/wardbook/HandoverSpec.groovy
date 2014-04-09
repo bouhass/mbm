@@ -1,9 +1,10 @@
 package com.wardbook
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.TestMixin
+import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Unroll
 
-@TestFor(Handover)
+@TestMixin(GrailsUnitTestMixin)
 class HandoverSpec extends ConstraintUnitSpec {
 
     def setup() {
@@ -19,7 +20,10 @@ class HandoverSpec extends ConstraintUnitSpec {
         validateConstraints(obj, field, error)
 
         where:
-        field   | val   | error
-        'from'  | null  | 'nullable'
+        field  | val  | error
+        'from' | null | 'nullable'
+        'from' | ''   | 'nullable'
+        'to'   | null | 'valid'
+        'to'   | ''   | 'valid'
     }
 }

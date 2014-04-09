@@ -1,9 +1,10 @@
 package com.wardbook
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.TestMixin
+import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Unroll
 
-@TestFor(Contact)
+@TestMixin(GrailsUnitTestMixin)
 class ContactSpec extends ConstraintUnitSpec {
 
     def setup() {
