@@ -4,6 +4,8 @@ class RecordController {
 	
 	static scaffold = true
 
-    def index() { }
+    def index() {
+        render view: 'index'
+    }
 
 }

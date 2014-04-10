@@ -77,11 +77,4 @@ class PatientControllerTests {
                 'Discharged': 'Discharged'
         ]
     }
-
-//    void testJsonlist() {
-//        controller.jsonlist()
-//
-//        assert response.text == new JSON(patient_list).toString()
-//    }
-
 }

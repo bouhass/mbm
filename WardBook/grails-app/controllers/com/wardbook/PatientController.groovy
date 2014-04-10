@@ -73,11 +73,6 @@ class PatientController {
         render Patient.constraints.status.inList.collectEntries { [it, it] } as JSON
     }
 
-    def jsonlist() {
-        JSON.use('deep')
-        render request.user.patients() as JSON
-    }
-
     def csvlist() {
         response.contentType = grailsApplication.config.grails.mime.types['csv']
         def fileName = "patients-${new Date().format('ddMMyyyyHHmm')}.csv"
