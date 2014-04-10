@@ -2,5 +2,7 @@ package com.wardbook
 
 class DashboardController {
 
-    def index() {}
+    def index() {
+        render view: 'index'
+    }
 }
