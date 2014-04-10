@@ -4,12 +4,14 @@ class ContactController {
 
     static scaffold = true
 
-    def index() {}
+    def index() {
+        render view: 'index'
+    }
 
     def add() {
         switch (request.method) {
             case 'GET':
-                [contactInstance: new Contact(params)]
+                render view: 'add', model: [contactInstance: new Contact(params)]
                 break
             case 'POST':
                 def contactInstance = new Contact(params)
