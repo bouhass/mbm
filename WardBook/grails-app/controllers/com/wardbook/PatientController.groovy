@@ -10,43 +10,37 @@ class PatientController {
     def grailsApplication
 
     def index() {
-        redirect(action:listview)
+        redirect action: listview
     }
 
     def listview = {
-        def view = 'listview'
-        if (isMobile()) {
-            view = 'm/listview'
-        }
-        render(view: view, model: [patients: request.user.patients()])
+        def view = isMobile() ? 'm/listview' : 'listview'
+        render view: view, model: [patients: request.user.patients()]
     }
 
     def gridview = {
-        render(view: 'gridview', model: [patients: request.user.patients()])
+        render view: 'gridview', model: [patients: request.user.patients()]
     }
 
     def joblist = {
-        [patients: request.user.patients()]
+        render view: 'joblist', model: [patients: request.user.patients()]
     }
 
-    def profile() {
+    def profile = {
         def patient = Patient.get(params.id)
         if (!patient) {
             flash.message = message(code: 'default.not.found.message', args: ['Patient', params.id])
             return
         }
 
-        def view = 'profile'
-        if (isMobile()) {
-            view = 'm/profile'
-        }
-        render(view: view, model: [patient: patient])
+        def view = isMobile() ? 'm/profile' : 'profile'
+        render view: view, model: [patient: patient]
     }
 
 	def add() {
         switch (request.method) {
             case 'GET':
-                [patientInstance: new Patient(params)]
+                render view: 'add', model: [patientInstance: new Patient(params)]
                 break
             case 'POST':
                 def patientInstance = Patient.findByFirstNameAndLastNameAndDateOfBirth(params.firstName, params.lastName, params.dateOfBirth)
