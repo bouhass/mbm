@@ -57,6 +57,13 @@ class PatientController {
                     return
                 }
 
+                // the 2 instructions below are so that the user can see his newly added patient in the list
+                if (patientInstance.ward != request.user.ward)
+                    request.user.ward = null
+
+                if (patientInstance.teamLists && !patientInstance.teamLists.contains(request.user.teamList))
+                    request.user.teamList = null
+
                 flash.message = message(code: 'default.created.message', args: ['Patient', patientInstance.id])
                 redirect action: 'listview', fragment: patientInstance.id, params: [new: patientInstance.id]
                 break
