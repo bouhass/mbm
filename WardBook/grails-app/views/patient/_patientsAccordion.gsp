@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="row">
-                            ${patient.hospitalIdentifier}
+                            ID: ${patient.hospitalIdentifier}
                         </div>
 
                         <div class="row">

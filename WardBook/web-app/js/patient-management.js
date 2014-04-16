@@ -100,7 +100,7 @@ $(window).load(function() {
         }
     });
 
-    $(".add-record-textarea").click(function() {
+    $(".add-record-textarea").focus(function() {
         $(this).attr('rows', 10);
         $(this).val($(this).attr('placeholder'));
     });
